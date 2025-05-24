@@ -124,14 +124,40 @@
     <img src="images/art-work-main-page.jpg" alt="Artworkmainpage" class="main-image" />
   </div>
 
-  <script>
-    function toggleSubmenu() {
-      const submenu = document.getElementById('submenu-2025');
-      const toggle = document.getElementById('toggle-2025');
+ <script>
+  function toggleSubmenu() {
+    const submenu = document.getElementById('submenu-2025');
+    const toggle = document.getElementById('toggle-2025');
+    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+    toggle.classList.toggle('small-caps');
+  }
 
-      submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-      toggle.classList.toggle('small-caps');
+  document.addEventListener("DOMContentLoaded", () => {
+    const content = document.getElementById("content");
+
+    async function loadSection(section) {
+      try {
+        const response = await fetch(`sections/${section}.html`);
+        if (!response.ok) throw new Error("Not found");
+        const html = await response.text();
+        content.innerHTML = html;
+      } catch (error) {
+        content.innerHTML = "<p>Section not found.</p>";
+      }
     }
-  </script>
+
+    document.querySelectorAll('[data-section]').forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const section = link.getAttribute("data-section");
+        loadSection(section);
+      });
+    });
+
+    // Загрузить секцию по умолчанию
+    loadSection("selected");
+  });
+</script>
+
 </body>
 </html>
