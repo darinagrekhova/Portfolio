@@ -39,3 +39,28 @@ main {
   height: auto;
   border: 1px solid #ccc;
 }
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+aside {
+  width: 200px;
+  position: sticky;
+  top: 20px;
+  text-align: right;
+}
+
+aside nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+aside nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
