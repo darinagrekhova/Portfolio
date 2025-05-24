@@ -20,17 +20,26 @@
     }
 
     .sidebar {
-      width: 25%;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  width: 25%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
 
     .logo {
         width: 100px;
   height: auto;
     }
+    
+    .name {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: lowercase;
+}
 
     .sidebar a {
       text-decoration: none;
