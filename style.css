@@ -4,20 +4,20 @@ body {
   margin: 0;
   padding: 0;
   background: #fff;
-  color: #faf2f2;
-  line-height: 1.2;
+  color: #0a0000;
+  line-height: 1.6;
 }
 
 header {
   background: #fff;
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 nav a {
   margin: 0 15px;
   text-decoration: none;
-  color: #f11;
+  color: #0a0000;
   font-weight: bold;
 }
 
