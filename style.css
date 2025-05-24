@@ -47,3 +47,40 @@ aside {
   font-variant: small-caps;
   font-size: 22px;
 }
+.cv {
+  max-width: 700px;
+  padding: 20px 40px;
+  font-family: 'Minion Pro', serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  /* фон и тень убраны */
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.cv h2 {
+  font-family: 'Minion Pro', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #bbb;
+  padding-bottom: 6px;
+  color: #333;
+}
+
+.cv p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.cv p strong {
+  font-weight: 600;
+  color: #444;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.cv p br {
+  line-height: 1.4;
+}
+
