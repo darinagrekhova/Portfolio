@@ -1,15 +1,15 @@
 body {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
+  font-size: 15px;
   margin: 0;
   padding: 0;
   background: #fff;
-  color: #111;
+  color: #faf2f2;
   line-height: 1.6;
 }
 
 header {
-  background: #f8f8f8;
+  background: #fff;
   padding: 20px;
   text-align: center;
 }
@@ -17,7 +17,7 @@ header {
 nav a {
   margin: 0 15px;
   text-decoration: none;
-  color: #333;
+  color: #f11;
   font-weight: bold;
 }
 
@@ -43,20 +43,20 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
+  padding: 5px;
 }
 
 aside {
-  width: 200px;
+  width: 20px;
   position: sticky;
-  top: 20px;
+  top: 5px;
   text-align: right;
 }
 
 aside nav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 aside nav a {
