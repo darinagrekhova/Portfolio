@@ -43,3 +43,6 @@ aside {
   text-decoration: none;
   color: black;
 }
+.small-caps {
+  font-variant: small-caps;
+}
