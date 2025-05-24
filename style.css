@@ -1,17 +1,17 @@
 body {
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
+  font-size: 12px;
   margin: 0;
   padding: 0;
   background: #fff;
   color: #faf2f2;
-  line-height: 1.6;
+  line-height: 1.2;
 }
 
 header {
   background: #fff;
-  padding: 20px;
-  text-align: center;
+  padding: 10px;
+  text-align: left;
 }
 
 nav a {
@@ -24,7 +24,7 @@ nav a {
 main {
   padding: 40px 20px;
   max-width: 800px;
-  margin: auto;
+  margin: left;
 }
 
 .gallery {
@@ -50,7 +50,7 @@ aside {
   width: 20px;
   position: sticky;
   top: 5px;
-  text-align: right;
+  text-align: left;
 }
 
 aside nav {
