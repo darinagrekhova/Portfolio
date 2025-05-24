@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Darina Grekhova</title>
   <style>
     * {
@@ -12,7 +12,7 @@
     }
 
     body {
-      font-family: Minion pro, serif;
+      font-family: 'Minion Pro', serif;
       background-color: white;
       color: #000;
       display: flex;
@@ -28,42 +28,28 @@
       position: fixed;
       height: 100vh;
       overflow-y: auto;
+      background: #fafafa;
     }
 
     .logo {
       width: 100px;
       height: auto;
+      margin-bottom: 20px;
     }
 
     .name {
       font-size: 18px;
       font-weight: 500;
       text-transform: lowercase;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
-    .sidebar a {
+    .sidebar a, .menu-toggle {
       text-decoration: none;
       color: black;
       font-size: 18px;
-    }
-
-    .content {
-      width: 75%;
-      margin-left: 25%;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .main-image {
-      margin-left: auto;
-      margin-right: 70px;
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
+      cursor: pointer;
+      user-select: none;
     }
 
     .menu-item {
@@ -71,76 +57,74 @@
       flex-direction: column;
     }
 
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 18px;
-      color: black;
-    }
-
     .submenu {
       display: none;
       flex-direction: column;
-      margin-left: 10px;
+      margin-left: 15px;
       gap: 6px;
+      margin-top: 8px;
     }
 
     .submenu a {
       font-size: 16px;
-      text-decoration: none;
       color: black;
     }
 
     .small-caps {
       font-variant: small-caps;
-  font-size: 22px;
-  font-weight: 500;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .content {
+      width: 75%;
+      margin-left: 25%;
+      padding: 30px;
+      overflow-y: auto;
     }
   </style>
 </head>
 <body>
+
   <div class="sidebar">
     <img src="images/logo.jpg" alt="logo" class="logo" />
     <div class="name">darina grekhova</div>
 
-    <a href="#">selected works</a>
+    <a href="#" data-section="selected">selected works</a>
 
     <div class="menu-item">
       <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu()">2025</div>
       <div class="submenu" id="submenu-2025">
-        <a href="#">notnotfun</a>
-        <a href="#">foreigners</a>
-        <a href="#">volante</a>
+        <a href="#" data-section="notnotfun">notnotfun</a>
+        <a href="#" data-section="foreigners">foreigners</a>
+        <a href="#" data-section="volante">volante</a>
       </div>
     </div>
 
-     <div class="menu-item">
-    <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu()">2025</div>
-    <div class="submenu" id="submenu-2025">
-      <a href="#" data-section="notnotfun">notnotfun</a>
-      <a href="#" data-section="foreigners">foreigners</a>
-      <a href="#" data-section="volante">volante</a>
-    </div>
+    <a href="#" data-section="2024">2024</a>
+    <a href="#" data-section="2023">2023</a>
+    <a href="#" data-section="sketchbook">sketchbook</a>
+    <a href="#" data-section="cv">cv</a>
+    <a href="#" data-section="contacts">contacts</a>
   </div>
 
-  <a href="#" data-section="2024">2024</a>
-  <a href="#" data-section="2023">2023</a>
-  <a href="#" data-section="sketchbook">sketchbook</a>
-  <a href="#" data-section="cv">cv</a>
-  <a href="#" data-section="contacts">contacts</a>
-</div>
-
-
-
-  <div class="content">
-    <img src="images/art-work-main-page.jpg" alt="Artworkmainpage" class="main-image" />
+  <div class="content" id="content">
+    <!-- Здесь будет загружаться содержимое секций -->
+    <img src="images/art-work-main-page.jpg" alt="Artwork main page" style="width: 100%; height: auto; object-fit: contain;" />
   </div>
 
- <script>
+<script>
   function toggleSubmenu() {
     const submenu = document.getElementById('submenu-2025');
     const toggle = document.getElementById('toggle-2025');
-    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-    toggle.classList.toggle('small-caps');
+
+    if (submenu.style.display === 'flex') {
+      submenu.style.display = 'none';
+      toggle.classList.remove('small-caps');
+    } else {
+      submenu.style.display = 'flex';
+      toggle.classList.add('small-caps');
+    }
   }
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -165,7 +149,7 @@
       });
     });
 
-    // Загрузить секцию по умолчанию
+    // Загрузить секцию по умолчанию (selected works)
     loadSection("selected");
   });
 </script>
