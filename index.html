@@ -10,6 +10,12 @@
       padding: 0;
       box-sizing: border-box;
     }
+<script>
+  function toggleSubmenu() {
+    const submenu = document.getElementById('submenu-2025');
+    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+  }
+</script>
 
     body {
       font-family: Minion pro, serif;
@@ -73,6 +79,16 @@
   
     <a href="#">selected works</a>
     <a href="#">2025</a>
+    
+    <div class="menu-item">
+  <div class="menu-toggle" onclick="toggleSubmenu()">2025</div>
+  <div class="submenu" id="submenu-2025">
+    <a href="#">notnotfun</a>
+    <a href="#">foreigners</a>
+    <a href="#">volante</a>
+  </div>
+</div>
+
     <a href="#">2024</a>
     <a href="#">2023</a>
     <a href="#">sketchbook</a>
