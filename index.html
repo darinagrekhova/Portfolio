@@ -2,81 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Darina Grekhova</title>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: 'Libre Baskerville', serif;
+      background: white;
+      color: black;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 200px;
+      padding: 2rem 1rem;
+      border-right: 1px solid #ccc;
+    }
+
+    .sidebar img.logo {
+      width: 40px;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar nav a {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: black;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .sidebar nav a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .artwork {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .description {
+      margin-top: 1rem;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
-
-  <div class="sidebar">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
-    <div class="name">darina grekhova</div> 
-    <div class="name">selected works</div>
-
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu()">2025</div>
-      <div class="submenu" id="submenu-2025">
-        <a href="#" data-section="notnotfun">notnotfun</a>
-        <a href="#" data-section="foreigners">foreigners</a>
-        <a href="#" data-section="volante">volante</a>
-      </div>
-    </div>
-
-    <a href="#" data-section="2024">2024</a>
-    <a href="#" data-section="2023">2023</a>
-    <a href="#" data-section="sketchbook">sketchbook</a>
-    <a href="#" data-section="cv">cv</a>
-    <a href="#" data-section="contacts">contacts</a>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <div>darina grekhova</div>
+      <nav>
+        <a href="#selected">selected works</a>
+        <a href="#2025">2025</a>
+        <a href="#2024">2024</a>
+        <a href="#2023">2023</a>
+        <a href="#sketchbook">sketchbook</a>
+        <a href="#cv">cv</a>
+        <a href="#contacts">contacts</a>
+      </nav>
+    </aside>
+    <main class="content">
+      <section id="selected">
+        <img src="artwork.jpg" alt="artwork" class="artwork" />
+        <div class="description">
+          <p><em>foreigner</em><br />oil on paper<br />30×40 cm</p>
+        </div>
+      </section>
+    </main>
   </div>
-
-  <div class="content" id="content">
-    <!-- Здесь будет загружаться содержимое секций -->
-    <img src="images/art-work-main-page.jpg" alt="Artwork main page" class="main-image" />
-
-  </div>
-
-<script>
-  function toggleSubmenu() {
-    const submenu = document.getElementById('submenu-2025');
-    const toggle = document.getElementById('toggle-2025');
-
-    if (submenu.style.display === 'flex') {
-      submenu.style.display = 'none';
-      toggle.classList.remove('small-caps');
-    } else {
-      submenu.style.display = 'flex';
-      toggle.classList.add('small-caps');
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const content = document.getElementById("content");
-
-    async function loadSection(section) {
-      try {
-        const response = await fetch(`sections/${section}.html`);
-        if (!response.ok) throw new Error("Not found");
-        const html = await response.text();
-        content.innerHTML = html;
-      } catch (error) {
-        content.innerHTML = "<p>Section not found.</p>";
-      }
-    }
-
-    document.querySelectorAll('[data-section]').forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const section = link.getAttribute("data-section");
-        loadSection(section);
-      });
-    });
-
-    // Загрузить секцию по умолчанию (selected works)
-    loadSection("selected");
-  });
-</script>
-
 </body>
 </html>
+
+
