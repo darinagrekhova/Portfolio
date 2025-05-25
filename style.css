@@ -26,13 +26,20 @@ body {
       margin-bottom: 2rem;
     }
 
-    .sidebar nav a {
-      display: block;
-      margin-bottom: 0.8rem;
-      color: black;
-      text-decoration: none;
-      font-size: 16px;
-    }
+  .sidebar nav {
+  display: flex;
+  flex-wrap: wrap; /* перенос строк при нехватке ширины */
+  gap: 1rem; /* расстояние между ссылками */
+}
+
+.sidebar nav a {
+  display: inline-block;
+  margin: 0;
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+}
+
 
   .content {
   width: 75%;
