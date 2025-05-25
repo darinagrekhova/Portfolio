@@ -8,7 +8,7 @@ body {
   background-color: white;
   color: #000;
   line-height: 1.6;
-  display: flex;
+  display: column;
   height: 100vh;
 }
 
@@ -18,11 +18,7 @@ body {
       min-height: 100vh;
     }
 
-    .sidebar {
-      width: 200px;
-      padding: 2rem 1rem;
-      border-right: 1px solid #ccc;
-    }
+
 
     .sidebar img.logo {
       width: 40px;
@@ -35,10 +31,6 @@ body {
       color: black;
       text-decoration: none;
       font-size: 16px;
-    }
-
-    .sidebar nav a:hover {
-      text-decoration: underline;
     }
 
     .content {
@@ -139,14 +131,6 @@ aside {
   overflow-y: auto;
 }
 
-.main-image,
-.content img {
-  width: 40%;
-  max-width: 300px;
-  height: auto;
-  display: block;
-  margin: 20px auto;
-}
 
 /* Стиль CV */
 .cv {
