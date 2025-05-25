@@ -8,7 +8,8 @@ body {
   background-color: white;
   color: #000;
   line-height: 1.6;
-  display: column;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
@@ -33,10 +34,12 @@ body {
       font-size: 16px;
     }
 
-    .content {
-      flex: 1;
-      padding: 2rem;
-    }
+  .content {
+  width: 75%;
+  margin-left: 25%;
+  padding: 30px;
+  overflow-y: auto;
+}
 
     .artwork {
       max-width: 100%;
@@ -47,10 +50,6 @@ body {
       margin-top: 1rem;
       font-style: italic;
     }
-  </style>
-
-
-
 
 
 main {
@@ -124,12 +123,7 @@ aside {
   font-weight: 500;
 }
 
-.content {
-  width: 75%;
-  margin-left: 25%;
-  padding: 30px;
-  overflow-y: auto;
-}
+
 
 
 /* Стиль CV */
