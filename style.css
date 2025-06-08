@@ -54,3 +54,14 @@
       object-fit: contain;
     }
 
+     a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #555;
+  text-decoration: underline;
+}
+
+
