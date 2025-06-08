@@ -21,8 +21,15 @@
       gap: 20px;
     }
 
+.name {
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+
     .logo {
-      height: 80px;
+      height: auto;
       width: 100px;
     }
 
