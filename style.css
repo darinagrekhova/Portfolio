@@ -1,7 +1,9 @@
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Minion Pro', serif;
   font-size: 14px;
@@ -13,63 +15,9 @@ body {
   height: 100vh;
 }
 
-
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
-
-
-
-    .sidebar img.logo {
-      width: 40px;
-      margin-bottom: 2rem;
-    }
-
-  .sidebar nav {
+.container {
   display: flex;
-  flex-wrap: wrap; /* перенос строк при нехватке ширины */
-  gap: 1rem; /* расстояние между ссылками */
-}
-
-.sidebar nav a {
-  display: inline-block;
-  margin: 0;
-  color: black;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-
-  .content {
-  width: 75%;
-  margin-left: 25%;
-  padding: 30px;
-  overflow-y: auto;
-}
-
-    .artwork {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .description {
-      margin-top: 1rem;
-      font-style: italic;
-    }
-
-
-main {
-  padding: 10px 50px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-aside {
-  width: 150px;
-  position: sticky;
-  top: 5px;
-  text-align: left;
+  min-height: 100vh;
 }
 
 .sidebar {
@@ -82,6 +30,11 @@ aside {
   height: 100vh;
   overflow-y: auto;
   background: #fff;
+}
+
+.sidebar img.logo {
+  width: 40px;
+  margin-bottom: 2rem;
 }
 
 .logo {
@@ -97,11 +50,18 @@ aside {
   margin-bottom: 30px;
 }
 
+.sidebar nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sidebar nav a,
 .sidebar a,
 .menu-toggle {
   text-decoration: none;
   color: black;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   user-select: none;
 }
@@ -130,8 +90,39 @@ aside {
   font-weight: 500;
 }
 
+.content {
+  width: 75%;
+  margin-left: 25%;
+  padding: 30px;
+  overflow-y: auto;
+}
 
+.artwork {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
 
+.description {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+main {
+  padding: 10px 50px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+aside {
+  width: 150px;
+  position: sticky;
+  top: 5px;
+  text-align: left;
+}
 
 /* Стиль CV */
 .cv {
@@ -167,4 +158,29 @@ aside {
 
 .cv p br {
   line-height: 1.4;
+}
+
+/* 🔧 Добавлено: адаптация под маленькие экраны */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .content {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .sidebar nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
