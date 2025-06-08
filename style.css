@@ -17,13 +17,12 @@ body {
   min-height: 100vh;
 }
 
-/* SIDEBAR */
 .sidebar {
   width: 25%;
   padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   position: fixed;
   height: 100vh;
   overflow-y: auto;
@@ -50,16 +49,16 @@ body {
   gap: 10px;
 }
 
+.menu-item {
+  display: flex;
+  flex-direction: column;
+}
+
 .menu a {
   text-decoration: none;
   color: black;
   font-size: 16px;
   cursor: pointer;
-}
-
-.menu-item {
-  display: flex;
-  flex-direction: column;
 }
 
 .submenu {
@@ -70,17 +69,12 @@ body {
   gap: 6px;
 }
 
-.submenu a {
-  font-size: 16px;
-  color: black;
-}
-
-/* CONTENT */
 .content {
-  width: 75%;
+  width: calc(100% - 25%);
   margin-left: 25%;
   padding: 50px;
   overflow-y: auto;
+  max-width: 1000px;
 }
 
 .artwork-wrapper {
@@ -92,11 +86,9 @@ body {
 }
 
 .artwork {
-  max-width: 400px;
-  width: 100%;
+  max-width: 300px;
   height: auto;
   object-fit: contain;
-  display: block;
 }
 
 .description {
@@ -106,7 +98,6 @@ body {
   align-self: flex-end;
 }
 
-/* CV (если загружается) */
 .cv {
   max-width: 700px;
   padding: 20px 40px;
