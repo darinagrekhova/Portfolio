@@ -83,23 +83,27 @@ body {
 
 .artwork-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-end;
   gap: 2rem;
   margin-top: 2rem;
 }
 
 .artwork {
-  width: 100%;
-  max-width: 700px;
+  flex: 0 0 auto; /* не растягивать */
+  width: 60%;
+  max-width: 400px; /* абсолютный предел */
   height: auto;
 }
 
 .description {
+  flex: 1;
   font-style: italic;
-  max-width: 200px;
   text-align: left;
+  align-self: flex-end;
+  max-width: 200px;
 }
+
 
 .cv {
   max-width: 700px;
