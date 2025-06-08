@@ -77,7 +77,7 @@
 
 a:hover {
   color: #555;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .menu-item {
