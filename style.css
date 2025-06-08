@@ -89,11 +89,13 @@ body {
   margin-top: 2rem;
 }
 
+
 .artwork {
-  flex: 0 0 auto; /* не растягивать */
-  width: 60%;
-  max-width: 400px; /* абсолютный предел */
+  max-width: 100%;
   height: auto;
+  width: auto;
+  max-height: 80vh; /* ограничение по высоте окна */
+  object-fit: contain;
 }
 
 .description {
