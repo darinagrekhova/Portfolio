@@ -19,7 +19,17 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-    }
+    
+    .sidebar {
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+.content {
+  margin-left: 25%;
+  width: 75%;
+}
+
 
 .name {
   font-size: 22px;
@@ -29,7 +39,7 @@
 
 
     .logo {
-      height: auto;
+      
       width: 100px;
     }
 
