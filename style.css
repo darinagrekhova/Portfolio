@@ -91,7 +91,7 @@ body {
 
 
 .artwork {
-  max-width: 100%;
+  max-width: 20%;
   height: auto;
   width: auto;
   max-height: 80vh; /* ограничение по высоте окна */
