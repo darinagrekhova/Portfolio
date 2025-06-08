@@ -30,8 +30,8 @@ body {
 }
 
 .logo {
-  width: 10px;
-  height: auto;
+  width: 400px;
+  height: 400px;
   display: block;
   margin-bottom: 20px;
 }
@@ -47,11 +47,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-decoration: none;
 }
 
 .menu-item {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 
 .menu a {
@@ -62,7 +64,7 @@ body {
 }
 
 .submenu {
-  display: none;
+  display: flex;
   flex-direction: column;
   margin-left: 15px;
   margin-top: 8px;
