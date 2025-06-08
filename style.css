@@ -20,15 +20,6 @@
       flex-direction: column;
       gap: 20px;
     
-    .sidebar {
-  position: fixed;
-  height: 100vh;
-  overflow-y: auto;
-}
-.content {
-  margin-left: 25%;
-  width: 75%;
-}
 
 
 .name {
