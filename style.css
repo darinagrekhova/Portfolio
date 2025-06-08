@@ -31,6 +31,13 @@
    white-space: nowrap;
 }
 
+.selested {
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: lowercase;
+   white-space: nowrap;
+}
+
 
     .logo {
       
