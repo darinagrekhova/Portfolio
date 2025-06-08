@@ -5,52 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>darina grekhova</title>
   <link rel="stylesheet" href="styles.css"/>
-  <script>
-    // Показывать/скрывать подменю
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggles = document.querySelectorAll('.menu-toggle');
-      toggles.forEach(toggle => {
-        toggle.addEventListener('click', () => {
-          const submenu = toggle.nextElementSibling;
-          submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-      });
-    });
-  </script>
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
-      <img src="images/logo.jpg" alt="logo" class="logo" />
+      <img src="images/logo.png" alt="logo" class="logo"/>
       <div class="name">darina grekhova</div>
-      <nav>
-        <div class="menu-item"><a href="#">selected works</a></div>
+
+      <nav class="menu">
         <div class="menu-item">
-          <div class="menu-toggle">2025</div>
+          <a class="menu-toggle">selected works</a>
           <div class="submenu">
-            <a href="#">notnotfun</a>
-            <a href="#">foreigners</a>
-            <a href="#">volante</a>
+            <a href="#" onclick="loadContent('2025')">2025</a>
+            <a href="#" onclick="loadContent('2024')">2024</a>
+            <a href="#" onclick="loadContent('2023')">2023</a>
           </div>
         </div>
-        <div class="menu-item"><a href="#">2024</a></div>
-        <div class="menu-item"><a href="#">2023</a></div>
-        <div class="menu-item"><a href="#">sketchbook</a></div>
-        <div class="menu-item"><a href="#">cv</a></div>
-        <div class="menu-item"><a href="#">contacts</a></div>
+        <a href="#" onclick="loadContent('sketchbook')">sketchbook</a>
+        <a href="#" onclick="loadContent('cv')">cv</a>
+        <a href="#" onclick="loadContent('contacts')">contacts</a>
       </nav>
     </aside>
 
-    <main class="content">
-      <div class="artwork-block">
-        <img src="images/artwork.jpg" alt="artwork" class="artwork" />
+    <main class="content" id="main-content">
+      <div class="artwork-wrapper">
+        <img src="images/girl_in_pool.jpg" alt="girl in a pool" class="artwork"/>
         <div class="description">
-          <em>girl in a pool</em><br>
-          oil on canvas<br>
-          30×40 cm
+          <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
         </div>
       </div>
     </main>
   </div>
+
+  <script>
+    // Раскрытие подменю
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+      });
+    });
+
+    // Загрузка контента при клике
+    function loadContent(page) {
+      fetch(`${page}.html`)
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('main-content').innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById('main-content').innerHTML = "<p>Content not found.</p>";
+        });
+    }
+  </script>
 </body>
 </html>
