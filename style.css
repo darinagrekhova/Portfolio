@@ -46,7 +46,9 @@
     .content {
       width: 75%;
       background: white;
-      display: flex;
+     margin-left: auto;
+       margin-right: 0;
+        display: block;
       align-items: center;
       justify-content: center;
        min-height: 100vh;
