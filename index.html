@@ -38,7 +38,7 @@
   </div>
 
   <script>
-    // Раскрытие подменю
+    // раскрытие подменю
     document.querySelectorAll('.menu-toggle').forEach(toggle => {
       toggle.addEventListener('click', () => {
         const submenu = toggle.nextElementSibling;
@@ -46,7 +46,7 @@
       });
     });
 
-    // Загрузка контента при клике
+    // загрузка контента
     function loadContent(page) {
       fetch(`${page}.html`)
         .then(response => response.text())
