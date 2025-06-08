@@ -21,9 +21,18 @@
             <a href="#" onclick="loadContent('2023')">2023</a>
           </div>
         </div>
-        <a href="#" onclick="loadContent('sketchbook')">sketchbook</a>
-        <a href="#" onclick="loadContent('cv')">cv</a>
-        <a href="#" onclick="loadContent('contacts')">contacts</a>
+
+        <div class="menu-item">
+          <a href="#" onclick="loadContent('sketchbook')">sketchbook</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" onclick="loadContent('cv')">cv</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="#" onclick="loadContent('contacts')">contacts</a>
+        </div>
       </nav>
     </aside>
 
@@ -38,7 +47,7 @@
   </div>
 
   <script>
-    // раскрытие подменю
+    // Показать/скрыть подменю
     document.querySelectorAll('.menu-toggle').forEach(toggle => {
       toggle.addEventListener('click', () => {
         const submenu = toggle.nextElementSibling;
@@ -46,7 +55,7 @@
       });
     });
 
-    // загрузка контента
+    // Загрузка внешнего HTML-контента
     function loadContent(page) {
       fetch(`${page}.html`)
         .then(response => response.text())
