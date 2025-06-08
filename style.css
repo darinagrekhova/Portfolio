@@ -17,12 +17,13 @@ body {
   min-height: 100vh;
 }
 
+/* SIDEBAR */
 .sidebar {
   width: 25%;
   padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   position: fixed;
   height: 100vh;
   overflow-y: auto;
@@ -30,13 +31,11 @@ body {
 }
 
 .logo {
-  width: 100%;
-  max-width: 120px;
+  width: 100px;
   height: auto;
   display: block;
   margin-bottom: 20px;
 }
-
 
 .name {
   font-size: 18px;
@@ -76,9 +75,9 @@ body {
   color: black;
 }
 
+/* CONTENT */
 .content {
-  width: calc(100% - 25%);
-  max-width: 1000px;
+  width: 75%;
   margin-left: 25%;
   padding: 50px;
   overflow-y: auto;
@@ -92,24 +91,22 @@ body {
   margin-top: 2rem;
 }
 
-
 .artwork {
-  max-width: 20%;
+  max-width: 400px;
+  width: 100%;
   height: auto;
-  width: auto;
-  max-height: 80vh; /* ограничение по высоте окна */
   object-fit: contain;
+  display: block;
 }
 
 .description {
-  flex: 1;
   font-style: italic;
+  max-width: 200px;
   text-align: left;
   align-self: flex-end;
-  max-width: 200px;
 }
 
-
+/* CV (если загружается) */
 .cv {
   max-width: 700px;
   padding: 20px 40px;
