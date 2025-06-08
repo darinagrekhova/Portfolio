@@ -29,10 +29,14 @@ body {
   background: #fff;
 }
 
-  .logo {
-      height: 40px;
-      width: 40px;
-    }
+.logo {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
 
 .name {
   font-size: 18px;
