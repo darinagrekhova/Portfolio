@@ -2,75 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>darina grekhova</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darina Grekhova</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Minion pro, serif;
+      background-color: white;
+      color: #000;
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 25%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .logo {
+      height: 40px;
+      width: 40px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+    }
+
+    .content {
+      width: 75%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <img src="images/logo.jpg" alt="logo" class="logo"/>
-      <div class="name">darina grekhova</div>
-
-      <nav class="menu">
-  <div class="menu-item">
-    <a class="menu-toggle">selected works</a>
-    <div class="submenu">
-      <a href="#" onclick="loadContent('2025')">2025</a>
-       <div>
-             <div class="submenu">
-      <a href="#" onclick="loadContent('2024')">2024</a>
-               <div>
-                     <div class="submenu">
-      <a href="#" onclick="loadContent('2023')">2023</a>
-    </div>
+  <div class="sidebar">
+    <img src="images/logo.jpg" alt="logo" class="logo" />
+    <div>darina grekhova</div>
+    <a href="#">selected works</a>
+    <a href="#">2025</a>
+    <a href="#">2024</a>
+    <a href="#">2023</a>
+    <a href="#">sketchbook</a>
+    <a href="#">cv</a>
+    <a href="#">contacts</a>
   </div>
-
-  <div class="menu-item">
-    <a href="#" onclick="loadContent('sketchbook')">sketchbook</a>
+  <div class="content">
+    <img src="images/art-work-main-page.jpg" alt="Artwork" class="main-image" />
   </div>
-
-  <div class="menu-item">
-    <a href="#" onclick="loadContent('cv')">cv</a>
-  </div>
-
-  <div class="menu-item">
-    <a href="#" onclick="loadContent('contacts')">contacts</a>
-  </div>
-</nav>
-
-    </aside>
-
-    <main class="content" id="main-content">
-      <div class="artwork-wrapper">
-        <img src="images/art-work-main-page.jpg" alt="art-work-main-page" class="artwork"/>
-        <div class="description">
-          <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <script>
-    // Показать/скрыть подменю
-    document.querySelectorAll('.menu-toggle').forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const submenu = toggle.nextElementSibling;
-        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-      });
-    });
-
-    // Загрузка внешнего HTML-контента
-    function loadContent(page) {
-      fetch(`${page}.html`)
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('main-content').innerHTML = html;
-        })
-        .catch(() => {
-          document.getElementById('main-content').innerHTML = "<p>Content not found.</p>";
-        });
-    }
-  </script>
 </body>
 </html>
