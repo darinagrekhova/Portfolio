@@ -80,7 +80,7 @@ a:hover {
 .menu-item {
   display: flex;
   flex-direction: column;
-   gap: 20px;
+   gap: 2px;
    font-size: 18px;
 }
 
@@ -95,7 +95,7 @@ a:hover {
   display: none;
   flex-direction: column;
   margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 1px;
   margin-bottom: 10px;
   gap: 10px;
 }
