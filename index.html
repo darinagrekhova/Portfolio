@@ -8,14 +8,9 @@
  
 </head>
   
-  <script>
-  function toggleSubmenu() {
-    const submenu = document.getElementById('submenu-2025');
-    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-  }
-</script>
 
-  <script>
+
+ <script>
   function toggleSubmenu() {
     const submenu = document.getElementById('submenu-2025');
     const toggle = document.getElementById('toggle-2025');
@@ -23,40 +18,33 @@
     toggle.classList.toggle('small-caps');
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const content = document.getElementById("content");
 
-    const sections = {
-      selected: '<img src="images/art-work-main-page.jpg" alt="Artworkmainpage" class="main-image" />',
-      cv: `<div class="cv-text">
-             <p><strong>Darina Grekhova</strong><br>
-             Artist working with figurative painting and drawing.<br>
-             Participated in group exhibitions from 2023 to 2025.<br>
-             Studied painting and illustration, background in visual culture and art theory.</p>
-           </div>`,
-      contacts: `<div class="cv-text">
-                   <p>email: darinagrekhova@example.com<br>instagram: @darina_painting</p>
-                 </div>`,
-      notnotfun: `<img src="images/notnotfun.jpg" alt="notnotfun" class="main-image" />`,
-      foreigners: `<img src="images/foreigners.jpg" alt="foreigners" class="main-image" />`,
-      volante: `<img src="images/volante.jpg" alt="volante" class="main-image" />`,
-      '2024': `<img src="images/2024.jpg" alt="2024" class="main-image" />`,
-      '2023': `<img src="images/2023.jpg" alt="2023" class="main-image" />`,
-      sketchbook: `<img src="images/sketchbook.jpg" alt="sketchbook" class="main-image" />`
-    };
+    async function loadSection(section) {
+      try {
+        const response = await fetch(`sections/${section}.html`);
+        if (!response.ok) throw new Error("Not found");
+        const html = await response.text();
+        content.innerHTML = html;
+      } catch (error) {
+        content.innerHTML = "<p>Section not found.</p>";
+      }
+    }
 
     document.querySelectorAll('[data-section]').forEach(link => {
-      link.addEventListener("click", function (e) {
+      link.addEventListener("click", e => {
         e.preventDefault();
-        const section = this.getAttribute("data-section");
-        content.innerHTML = sections[section] || "<p>Section not found.</p>";
+        const section = link.getAttribute("data-section");
+        loadSection(section);
       });
     });
 
-    // Показать что-то по умолчанию
-    content.innerHTML = sections["selected"];
+    // Загрузить секцию по умолчанию
+    loadSection("selected");
   });
 </script>
+
 
 
 <body>
