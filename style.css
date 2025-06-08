@@ -1,135 +1,77 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Minion Pro', serif;
-  font-size: 14px;
-  background-color: white;
-  color: #000;
-  line-height: 1.6;
   margin: 0;
-  padding: 0;
+  font-family: Georgia, serif;
+  background: white;
+  color: black;
 }
 
 .container {
   display: flex;
-  min-height: 100vh;
 }
 
 .sidebar {
-  width: 25%;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: fixed;
-  height: 100vh;
-  overflow-y: auto;
-  background: #fff;
+  width: 240px;
+  padding: 2rem 1.5rem;
 }
 
 .logo {
-  width: 400px;
-  height: 400px;
-  display: block;
-  margin-bottom: 20px;
+  width: 40px;
+  margin-bottom: 1rem;
 }
 
 .name {
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: lowercase;
-  margin-bottom: 30px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 .menu {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.menu-item {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
+.menu li {
+  margin-bottom: 0.8rem;
 }
 
-.menu a {
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
+button.year,
+.menu button {
+  all: unset;
   cursor: pointer;
 }
 
-.submenu {
+.sub-menu {
+  display: none;
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+main.content {
+  flex: 1;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
-  margin-top: 8px;
-  gap: 6px;
+  align-items: center;
 }
 
-.content {
-  width: calc(100% - 25%);
-  margin-left: 25%;
-  padding: 50px;
-  
-  max-width: 100px;
-}
-
-.artwork-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.artwork {
-  max-width: 300px;
+#work-display img {
+  max-width: 100%;
   height: auto;
-  object-fit: contain;
 }
 
-.description {
-  font-style: italic;
-  max-width: 200px;
-  text-align: left;
-  align-self: flex-end;
+#work-caption {
+  margin-top: 1rem;
+  text-align: right;
+  font-size: 0.9rem;
 }
 
-.cv {
-  max-width: 700px;
-  padding: 20px 40px;
-  font-family: 'Minion Pro', serif;
-  color: #1a1a1a;
-  line-height: 1.6;
-  background-color: transparent;
+#text-display {
+  display: none;
+  max-width: 600px;
 }
 
-.cv h2 {
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #bbb;
-  padding-bottom: 6px;
-  color: #333;
-}
-
-.cv p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-.cv p strong {
-  font-weight: 600;
-  color: #444;
-  display: inline-block;
-  margin-bottom: 4px;
-}
-
-.cv p br {
-  line-height: 1.4;
+.hidden {
+  display: none;
 }
