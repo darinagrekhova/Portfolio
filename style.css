@@ -70,4 +70,28 @@ a:hover {
   text-decoration: underline;
 }
 
+.menu-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  color: black;
+}
+
+.submenu {
+  display: none;
+  flex-direction: column;
+  margin-left: 10px;
+  gap: 6px;
+}
+
+.submenu a {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+}
+
 
