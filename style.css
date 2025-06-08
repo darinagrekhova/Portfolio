@@ -9,7 +9,7 @@
       font-family: Minion pro, serif;
       background-color: white;
       color: #000;
-      display: flex;
+      
       height: 100vh;
     }
 
@@ -17,7 +17,7 @@
       width: 25%;
       padding: 40px;
       flex-direction: column;
-      gap: 10px;
+      gap: 0px;
       position: fixed;
        overflow-y: auto;
     }
@@ -40,7 +40,6 @@
 
 
     .logo {
-      
       width: 100px;
     }
 
@@ -81,8 +80,7 @@ a:hover {
 .menu-item {
   display: flex;
   flex-direction: column;
-
-    gap: 10px;
+   gap: 20px;
    font-size: 18px;
 }
 
@@ -97,7 +95,7 @@ a:hover {
   display: none;
   flex-direction: column;
   margin-left: 10px;
-  gap: 6px;
+  gap: 10px;
 }
 
 .submenu a {
