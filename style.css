@@ -16,11 +16,11 @@
     .sidebar {
       width: 25%;
       padding: 40px;
-      display: block;
       flex-direction: column;
       gap: 10px;
-       position: fixed;
-       }
+      position: fixed;
+       overflow-y: auto;
+    }
     
 
 
@@ -32,7 +32,7 @@
 }
 
 .selected {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
   text-transform: lowercase;
    white-space: nowrap;
@@ -55,9 +55,7 @@
       background: white;
      margin-left: auto;
        margin-right: 0;
-        display: flex;
-      align-items: center;
-      justify-content: center;
+        display: block;
        min-height: 100vh;
     }
 
@@ -83,12 +81,16 @@ a:hover {
 .menu-item {
   display: flex;
   flex-direction: column;
+
+    gap: 10px;
+   font-size: 18px;
 }
 
 .menu-toggle {
   cursor: pointer;
   font-size: 18px;
   color: black;
+  
 }
 
 .submenu {
