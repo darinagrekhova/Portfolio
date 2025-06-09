@@ -14,10 +14,13 @@
 
     .sidebar {
       width: 25%;
+       height: 100vh;
       padding: 40px;
       flex-direction: column;
       gap: 0px;
       position: fixed;
+       top: 0;
+  left: 0;
        display: flex;
        overflow-y: auto;
     }
