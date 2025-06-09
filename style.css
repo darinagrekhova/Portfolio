@@ -9,7 +9,6 @@
       font-family: Cormorant, serif;
       background-color: white;
       color: #000;
-      
       height: 100vh;
     }
 
@@ -19,16 +18,15 @@
       flex-direction: column;
       gap: 0px;
       position: fixed;
+       display: flex;
        overflow-y: auto;
     }
     
-
-
 .name {
   font-size: 22px;
   font-weight: 500;
   text-transform: lowercase;
-   white-space: nowrap;
+white-space: nowrap;
 }
 
 .selected {
