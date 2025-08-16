@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="images/logo.jpg">
+ <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Darina Grekhova</title>
   <link rel="stylesheet" href="style.css" />
   <script defer>
-    function toggleSubmenu() {
-      const submenu = document.getElementById('submenu-' + id);
-      const toggle = document.getElementById('toggle-' + id);
-      submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-      toggle.classList.toggle('small-caps');
+  function toggleSubmenu(id) {
+    const submenu = document.getElementById("submenu-" + id);
+    const toggle = document.getElementById("toggle-" + id);
+    submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+    toggle.classList.toggle("small-caps");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const content = document.getElementById("content");
+
+    async function loadSection(section) {
+      try {
+        const response = await fetch(`sections/${section}.html`);
+        if (!response.ok) throw new Error("Not found");
+        const html = await response.text();
+        content.innerHTML = html;
+      } catch (error) {
+        content.innerHTML = "<p>section not found.</p>";
+      }
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const content = document.getElementById("content");
-
-      async function loadSection(section) {
-        try {
-          const response = await fetch(`sections/${section}.html`);
-          if (!response.ok) throw new Error("Not found");
-          const html = await response.text();
-          content.innerHTML = html;
-        } catch (error) {
-          content.innerHTML = "<p>section not found.</p>";
-        }
-      }
-
-      document.querySelectorAll('[data-section]').forEach(link => {
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          const section = link.getAttribute("data-section");
-          loadSection(section);
-        });
+    document.querySelectorAll("[data-section]").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const section = link.getAttribute("data-section");
+        loadSection(section);
       });
-
-      // Загрузить секцию по умолчанию
-      loadSection("selected");
     });
-  </script>
+
+    // Загрузить секцию по умолчанию
+    loadSection("selected");
+  });
+</script>
+
 </head>
 
 <body>
@@ -48,22 +50,22 @@
     <div class="name">darina grekhova</div>
     <div class="selected">selected works</div>
 
-    <div class="menu">
-      <div class="menu-item">
-        <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025)">2025</div>
-        <div class="submenu" id="submenu-2025">
-          <a href="#" data-section="notnotfun">notnotfun</a>
-          <a href="#" data-section="foreigners">foreigners</a>
-          <a href="#" data-section="volante">volante</a>
-        </div>
-      </div>
+    <div class="menu-item">
+  <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025')">2025</div>
+  <div class="submenu" id="submenu-2025">
+    <a href="#" data-section="notnotfun">notnotfun</a>
+    <a href="#" data-section="foreigners">foreigners</a>
+    <a href="#" data-section="volante">volante</a>
+  </div>
+</div>
 
-      <div class="menu-item">
-        <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
-        <div class="submenu" id="submenu-2024">
-          <a href="#" data-section="slavic mythology">slavic mythology</a>
-           </div>
-      </div>
+<div class="menu-item">
+  <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
+  <div class="submenu" id="submenu-2024">
+    <a href="#" data-section="slavic mythology">slavic mythology</a>
+  </div>
+</div>
+
       
       <div class="menu-item">
         <a href="#" data-section="2023">2023</a>
