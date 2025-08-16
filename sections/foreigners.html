@@ -95,11 +95,13 @@
 
 .artworks {
   display: block;
-  width: 70%; /* регулируй ширину картинок */
-  height: auto;
+  width: 50%; /* все картинки будут одинаково широкими */
+  max-width: 800px; /* ограничение, чтобы не растягивались слишком сильно */
+  height: auto; /* сохраняем пропорции */
   object-fit: contain;
-  margin-bottom: 6px; /* расстояние между картинкой и подписью */
+  margin: 0 auto 10px auto; /* центрируем и делаем отступ снизу */
 }
+
 
 .description {
   font-size: 14px;
