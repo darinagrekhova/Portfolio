@@ -12,23 +12,19 @@
   html, body {
     height: 100%;
     margin: 0;
-    overflow: hidden; /* убирает скролл */
   }
 
   body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;     /* высота экрана */
-    margin: 0;
-    overflow: hidden;  /* убираем скролл */
+    justify-content: center; /* центр по горизонтали */
+    align-items: center;     /* центр по вертикали */
+    font-family: Cormorant, serif;
   }
 
   .contact-wrapper {
-    height: 100vh;
     display: flex;
     flex-direction: column; /* текст над картинкой */
-    justify-content: center; /* центр по вертикали */
+    justify-content: center; /* центр внутри контейнера */
     align-items: center;     /* центр по горизонтали */
     text-align: center;
     gap: 20px;               /* расстояние между текстом и картинкой */
@@ -37,12 +33,11 @@
   .contact {
     font-size: 16px;
     line-height: 1.5;
-    text-align: center; /* обязательно центр текста */
+    text-align: center;
   }
 
   .element_cv {
     max-width: 30%;
     height: auto;
-    display: block;
   }
 </style>
