@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="style.css" />
   <script defer>
     function toggleSubmenu() {
-      const submenu = document.getElementById('submenu-2025');
-      const toggle = document.getElementById('toggle-2025');
+      const submenu = document.getElementById('submenu-' + id);
+      const toggle = document.getElementById('toggle-' + id);
       submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
       toggle.classList.toggle('small-caps');
     }
@@ -24,7 +24,7 @@
           const html = await response.text();
           content.innerHTML = html;
         } catch (error) {
-          content.innerHTML = "<p>Section #A found.</p>";
+          content.innerHTML = "<p>section not found.</p>";
         }
       }
 
@@ -50,7 +50,7 @@
 
     <div class="menu">
       <div class="menu-item">
-        <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu()">2025</div>
+        <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025)">2025</div>
         <div class="submenu" id="submenu-2025">
           <a href="#" data-section="notnotfun">notnotfun</a>
           <a href="#" data-section="foreigners">foreigners</a>
@@ -59,7 +59,7 @@
       </div>
 
       <div class="menu-item">
-        <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu()">2024</div>
+        <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
         <div class="submenu" id="submenu-2024">
           <a href="#" data-section="slavic mythology">slavic mythology</a>
            </div>
