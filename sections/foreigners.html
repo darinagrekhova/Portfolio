@@ -30,7 +30,7 @@
 
 <div class="artwork-wrapper">
   <div class="image-container">
-    <img src="images/foreigner/foreigner IV.jpg" alt="Artwork" class="artworks" />
+    <img src="images/foreigner/foreigner IV.JPG" alt="Artwork" class="artworks" />
     <div class="description">
       <p><em>foreigner IV</em><br>oil on Inkjet paper<br>29×21 cm</p>
     </div>
@@ -95,11 +95,13 @@
 
 .artworks {
   display: block;
-  max-width: 50%; /* регулируй ширину картинок */
-  height: auto;
+  width: 400px; /* все картинки будут одинаково широкими */
+  
+  height: auto; /* сохраняем пропорции */
   object-fit: contain;
-  margin-bottom: 6px; /* расстояние между картинкой и подписью */
+  margin: 0 auto 10px auto; /* центрируем и делаем отступ снизу */
 }
+
 
 .description {
   font-size: 14px;

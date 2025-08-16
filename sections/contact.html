@@ -1,28 +1,42 @@
-<div class="contact">
-  <p>
-    email: darinagrekhova@gmail.com<br>
-    inst: @belfesprit
-  </p>
+<div class="wrapper">
+  <div class="contact">
+    <p>
+      email: darinagrekhova@gmail.com<br>
+      inst: @belfesprit
+    </p>
+  </div>
+  <img src="images/element_cv.jpg" alt="Artwork" class="element_cv" />
 </div>
-<img src="images/element_cv.jpg" alt="Artwork" class="element_cv" />
 
 <style>
-  html {
-    overflow-y: scroll;
+  html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* убирает скролл */
   }
 
+ body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;     /* высота экрана */
+  margin: 0;
+  overflow: hidden;  /* убираем скролл */
+}
+
+.wrapper {
+  text-align: center;
+  transform: translateY(-10px); /* поднимаем вверх (настрой по вкусу) */
+}
+
+
   .contact {
-    max-width: 600px;
-    margin: 80px auto 20px auto;
-    padding: 20px;
+    margin-bottom: 20px;
     font-size: 16px;
     line-height: 1.5;
-    text-align: center;
   }
 
   .element_cv {
-    display: block;
-    margin: 0 auto 0 auto;
     max-width: 30%;
     height: auto;
     object-fit: contain;

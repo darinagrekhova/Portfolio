@@ -1,20 +1,37 @@
+
 <div class="artwork-wrapper">
   <div class="image-container">
     <img src="images/nnf/1.jpg" alt="Artwork" class="artworks" />
     <div class="description">
-      <p><em>Girl in pool</em><br>oil on canvas<br>30×40 cm</p>
+      <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
     </div>
   </div>
 </div>
 
+
 <div class="artwork-wrapper">
   <div class="image-container">
-    <img src="fun for fun sketch 2.jpg" alt="Artwork" class="artworks" />
+    <img src="images/nnf/fun for fun sketch 2.jpg" alt="Artwork" class="artworks" />
     <div class="description">
-      <p><em>Summer evening</em><br>oil on canvas<br>40×50 cm</p>
+      <p><em>fun for fun sketch 2</em><br>oil on paper<br>9×14 cm</p>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
 .artwork-wrapper {
@@ -29,11 +46,13 @@
 
 .artworks {
   display: block;
-  max-width: 50%; /* регулируй ширину картинок */
-  height: auto;
+  width: 400px; /* все картинки будут одинаково широкими */
+  
+  height: auto; /* сохраняем пропорции */
   object-fit: contain;
-  margin-bottom: 6px; /* расстояние между картинкой и подписью */
+  margin: 0 auto 10px auto; /* центрируем и делаем отступ снизу */
 }
+
 
 .description {
   font-size: 14px;
@@ -42,4 +61,3 @@
   color: #000;
 }
 </style>
-
