@@ -15,15 +15,20 @@
     overflow: hidden; /* убирает скролл */
   }
 
-  body {
-    display: flex;
-    justify-content: center; /* по горизонтали */
-    align-items: center;     /* по вертикали */
-  }
+ body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;     /* высота экрана */
+  margin: 0;
+  overflow: hidden;  /* убираем скролл */
+}
 
-  .wrapper {
-    text-align: center;
-  }
+.wrapper {
+  text-align: center;
+  transform: translateY(-60px); /* поднимаем вверх (настрой по вкусу) */
+}
+
 
   .contact {
     margin-bottom: 20px;
