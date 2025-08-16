@@ -24,24 +24,24 @@
   overflow: hidden;  /* убираем скролл */
 }
 
-.wrapper {
+.contact-wrapper {
+  height: 100vh; /* на всю высоту окна */
+  display: flex;
+  flex-direction: column; /* текст над картинкой */
+  justify-content: center; /* по вертикали */
+  align-items: center;     /* по горизонтали */
   text-align: center;
-  transform: translateY(70px); /* поднимаем вверх (настрой по вкусу) */
- 
-  
-  
 }
 
+.contact {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-  .contact {
-    margin-bottom: 20px;
-    font-size: 16px;
-    line-height: 1.5;
-  }
+.element_cv {
+  max-width: 30%;
+  height: auto;
+}
 
-  .element_cv {
-    max-width: 30%;
-    height: auto;
-    object-fit: contain;
-  }
 </style>
