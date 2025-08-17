@@ -36,10 +36,10 @@
       margin: 0;
     }
 
-    /* Переключатель языка */
+    /* Переключатель языка в сайдбаре */
     .language-switch {
-      text-align: right;
-      margin: 20px 20px 0 0;
+      margin-top: auto;
+      font-size: 16px;
     }
 
     .language-switch a {
@@ -47,11 +47,14 @@
       color: #000;
       margin-left: 10px;
     }
+
+    .language-switch a:hover {
+      color: #555;
+    }
   </style>
   <script defer>
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
-      const toggle = document.getElementById("toggle-" + id);
       submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
     }
   </script>
@@ -110,14 +113,15 @@
     <div class="menu-item">
       <a href="contact.html" class="selected">contacts</a>
     </div>
+
+    <!-- Переключатель языка внизу -->
+    <div class="language-switch">
+      <a href="ru/contact.html">ru</a> | <a href="contact.html">en</a>
+    </div>
   </div>
 
   <!-- Контент -->
   <div class="content">
-    <div class="language-switch">
-      <a href="ru/contact.html">ru</a> <a href="contact.html">en</a>
-    </div>
-
     <div class="artwork-wrapper">
       <figure class="image-container">
         <figcaption class="description">
