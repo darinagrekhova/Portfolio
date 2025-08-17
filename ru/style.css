@@ -60,10 +60,9 @@ white-space: nowrap;
     }
 
     .main-image {
-      margin-left: auto;
-       margin-right: 0;
-        display: block;
-       width: 100%;
+      display: block;
+      margin: 40px auto 0 auto;
+      width: 100%;
       height: auto;
       object-fit: contain;
     }
