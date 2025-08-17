@@ -1,18 +1,44 @@
 
-  <div class="contact">
-    <p>
-      email: darinagrekhova@gmail.com<br>
-      inst: @belfesprit
-    </p>
+<div class="artwork-wrapper">
+  <div class="description">
+      <p><em>email: darinagrekhova@gmail.com</em><br>inst: @belfesprit</p>
+  <div class="image-container">
+    <img src="images/element_cv.jpg" alt="Artwork" class="artworks" />
+    
+    </div>
   </div>
-  <img src="images/element_cv.jpg" alt="Artwork" class="element_cv" />
 </div>
 
+
 <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
+.artwork-wrapper {
+  margin: 40px auto;
+  text-align: center; /* чтобы все блоки были по центру страницы */
+}
+
+.image-container {
+  display: inline-block;
+  text-align: center; /* текст подписи строго по центру */
+}
+
+.artworks {
+  display: block;
+  width: 400px; /* все картинки будут одинаково широкими */
+  
+  height: auto; /* сохраняем пропорции */
+  object-fit: contain;
+  margin: 0 auto 10px auto; /* центрируем и делаем отступ снизу */
+}
+
+
+.description {
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+  color: #000;
+}
+</style>
+
 
   body {
     display: flex;
@@ -33,4 +59,4 @@
     max-width: 30%;
     height: auto;
   }
-</style>
+
