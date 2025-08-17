@@ -8,60 +8,6 @@
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
   <style>
-    /* Сайдбар */
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 220px;
-      height: 100%;
-      background: #f5f5f5;
-      padding: 20px;
-      box-sizing: border-box;
-      overflow-y: auto;
-    }
-
-    .logo {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .name {
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .menu-item {
-      margin-bottom: 10px;
-    }
-
-    .menu-item a {
-      text-decoration: none;
-      color: #000;
-    }
-
-    .submenu {
-      margin-left: 10px;
-      display: none;
-      flex-direction: column;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .small-caps {
-      font-variant: small-caps;
-    }
-
-    /* Основной контент */
-    .content {
-      margin-left: 240px;
-      padding: 20px;
-    }
-
     /* Контент страницы */
     .artwork-wrapper {
       margin: 40px auto;
@@ -107,7 +53,6 @@
       const submenu = document.getElementById("submenu-" + id);
       const toggle = document.getElementById("toggle-" + id);
       submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-      toggle.classList.toggle("small-caps");
     }
   </script>
 </head>
@@ -163,7 +108,7 @@
     </div>
 
     <div class="menu-item">
-      <a href="contact.html">contacts</a>
+      <a href="contact.html" class="selected">contacts</a>
     </div>
   </div>
 
