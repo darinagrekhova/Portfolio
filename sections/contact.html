@@ -1,9 +1,9 @@
 <div class="artwork-wrapper">
   <figure class="image-container">
-    <img src="images/element_cv.jpg" alt="Artwork" class="contact-artwork" />
     <figcaption class="description">
       <p><em>email: darinagrekhova@gmail.com</em><br>inst: @belfesprit</p>
     </figcaption>
+    <img src="images/element_cv.jpg" alt="Artwork" class="contact-artwork" />
   </figure>
 </div>
 
@@ -15,16 +15,16 @@
 
 .image-container {
   display: inline-block;
-  text-align: center; /* чтобы подпись совпадала с картинкой */
+  text-align: center; /* подпись по центру */
 }
 
 .contact-artwork {
   display: block;
-  max-width: 400px; /* ограничиваем ширину */
-  width: 100%;      /* но на мобильных уменьшается */
-  height: auto;     /* сохраняем пропорции */
+  max-width: 400px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
-  margin: 0 auto 10px auto; /* центрируем и даём отступ */
+  margin: 10px auto 0 auto; /* отступ сверху, чтобы отделить картинку от текста */
 }
 
 .description {
@@ -32,5 +32,6 @@
   text-align: center;
   font-style: italic;
   color: #000;
+  margin: 0; /* убираем лишние отступы */
 }
 </style>
