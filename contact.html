@@ -1,36 +1,37 @@
-
-  <div class="contact">
-    <p>
-      email: darinagrekhova@gmail.com<br>
-      inst: @belfesprit
-    </p>
-  </div>
-  <img src="images/element_cv.jpg" alt="Artwork" class="element_cv" />
+<div class="artwork-wrapper">
+  <figure class="image-container">
+    <figcaption class="description">
+      <p><em>email: darinagrekhova@gmail.com</em><br>inst: @belfesprit</p>
+    </figcaption>
+    <img src="images/element_cv.jpg" alt="Artwork" class="contact-artwork" />
+  </figure>
 </div>
 
 <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
+.artwork-wrapper {
+  margin: 40px auto;
+  text-align: center; /* центрируем всё содержимое */
+}
 
-  body {
-    display: flex;
-    justify-content: center; /* центр по горизонтали */
-    align-items: center;     /* центр по вертикали */
-    font-family: Cormorant, serif;
-   
-  }
+.image-container {
+  display: inline-block;
+  text-align: center; /* подпись по центру */
+}
 
+.contact-artwork {
+  display: block;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 10px auto 0 auto; /* отступ сверху, чтобы отделить картинку от текста */
+}
 
-  .contact {
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: center;
-    
-
-  .element_cv {
-    max-width: 30%;
-    height: auto;
-  }
+.description {
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  color: #000;
+  margin: 0; /* убираем лишние отступы */
+}
 </style>
