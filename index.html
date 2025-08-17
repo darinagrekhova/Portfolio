@@ -1,111 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="shortcut icon" href="images/favicon.png"  type="image/x-icon">
-<link rel="icon" href="images/favicon.png"  type="image/x-icon">
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Darina Grekhova</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer>
-  function toggleSubmenu(id) {
-    const submenu = document.getElementById("submenu-" + id);
-    const toggle = document.getElementById("toggle-" + id);
-    submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-    toggle.classList.toggle("small-caps");
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const content = document.getElementById("content");
-
-    async function loadSection(section) {
-      try {
-        const response = await fetch(`sections/${section}.html`);
-        if (!response.ok) throw new Error("Not found");
-        const html = await response.text();
-        content.innerHTML = html;
-      } catch (error) {
-        content.innerHTML = "<p>section not found.</p>";
-      }
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    document.querySelectorAll("[data-section]").forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const section = link.getAttribute("data-section");
-        loadSection(section);
-      });
-    });
+    body {
+      font-family: Cormorant, serif;
+      background-color: white;
+      color: #000;
+      min-height: 100vh;
+      display: flex;
+    }
 
-    // Загрузить секцию по умолчанию
-    loadSection("selected");
-  });
-</script>
+    /* Сайдбар */
+    .sidebar {
+      width: 25%;
+      height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+    }
 
+    .logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 500;
+      text-transform: lowercase;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 18px;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 18px;
+      color: black;
+    }
+
+    .submenu {
+      display: none;
+      flex-direction: column;
+      margin-left: 10px;
+      margin-top: 1px;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .submenu a {
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+    }
+
+    a:hover {
+      color: #555;
+      text-decoration: none;
+    }
+
+    /* Переключатель языка */
+    .language-switch {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      text-decoration: none;
+      color: black;
+      margin-right: 10px;
+    }
+
+    /* Основной контент */
+    .content {
+      width: 75%;
+      margin-left: 25%;
+      padding: 20px;
+      display: block;
+      min-height: 100vh;
+    }
+
+    .main-image {
+      display: block;
+      margin: 40px auto 0 auto;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  </style>
+
+  <script defer>
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
 </head>
-
 <body>
+
+  <!-- Сайдбар -->
   <div class="sidebar">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
+    <img src="images/logo.jpg" alt="logo" class="logo">
     <div class="name">darina grekhova</div>
-   
 
     <div class="menu-item">
-  <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025')">2025</div>
-  <div class="submenu" id="submenu-2025">
-    <a href="#" data-section="notnotfun">notnotfun</a>
-    <a href="#" data-section="foreigners">foreigners</a>
-    <a href="#" data-section="volante">volante</a>
-   
-  </div>
-</div>
-
-<div class="menu-item">
-  <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
-  <div class="submenu" id="submenu-2024">
-    <a href="#" data-section="slavic myth on canvas">slavic myth on canvas</a>
-   <a href="#" data-section="slavic myth on paper">slavic myth on paper</a>
-  </div>
-</div>
-
-<div class="menu-item">
-  <div class="menu-toggle" id="toggle-2023" onclick="toggleSubmenu('2023')">2023</div>
-  <div class="submenu" id="submenu-2023">
-    <a href="#" data-section="unknown stories">unknown stories</a>
-   <a href="#" data-section="good night">good night</a>
-   <a href="#" data-section="multifigures">multifigures</a>
-  </div>
-</div>
-
-   
-   <div class="menu-item">
- <a href="#" data-section="selected-independent">selected independent</a>
- </div>
-
-      <div class="menu-item">
-  <div class="menu-toggle" id="books-and-zines" onclick="toggleSubmenu('selected independent')">books and zines</div>
-  <div class="submenu" id="submenu-books-and-zines">
-    <a href="#" data-section="books-and-zines">books and zines</a>
-  </div>
-</div>
-   
-      <div class="menu-item">
-        <a href="#" data-section="sketchbook">sketchbook</a>
-      </div>
-
-      <div class="menu-item">
-        <a href="#" data-section="cv">cv</a>
-      </div>
-
-      <div class="menu-item">
-        <a href="#" data-section="contact">contacts</a>
+      <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
+      <div class="submenu" id="submenu-2025">
+        <a href="notnotfun.html">notnotfun</a>
+        <a href="foreigners.html">foreigners</a>
+        <a href="volante.html">volante</a>
       </div>
     </div>
 
+    <div class="menu-item">
+      <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
+      <div class="submenu" id="submenu-2024">
+        <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
+        <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
+      </div>
+    </div>
 
-  <div class="content" id="content">
-    <!-- Контент будет подгружаться сюда -->
+    <div class="menu-item">
+      <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
+      <div class="submenu" id="submenu-2023">
+        <a href="unknown-stories.html">unknown stories</a>
+        <a href="good-night.html">good night</a>
+        <a href="multifigures.html">multifigures</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="selected-independent.html">selected independent</a>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books and zines</div>
+      <div class="submenu" id="submenu-books-and-zines">
+        <a href="books-and-zines.html">books and zines</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="sketchbook.html">sketchbook</a>
+    </div>
+
+    <div class="menu-item">
+      <a href="cv.html">cv</a>
+    </div>
+
+    <div class="menu-item">
+      <a href="contact.html">contacts</a>
+    </div>
+
+    <!-- Переключатель языка -->
+    <div class="language-switch">
+      <a href="/ru/index.html">ru</a>
+      <a href="/index.html">en</a>
+    </div>
   </div>
+
+  <!-- Основной контент -->
+  <div class="content">
+    <img src="images/art-work-main-page.jpg" alt="Main artwork" class="main-image">
+  </div>
+
 </body>
 </html>
