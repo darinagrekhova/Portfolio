@@ -8,100 +8,9 @@
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Cormorant, serif;
-      background-color: white;
-      color: #000;
-      height: 100vh;
-    }
-
-    /* Сайдбар */
-    .sidebar {
-      width: 25%;
-      height: 100vh;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow-y: auto;
-    }
-
-    .logo {
-      width: 100px;
-      margin-bottom: 10px;
-    }
-
-    .name {
-      font-size: 22px;
-      font-weight: 500;
-      text-transform: lowercase;
-      white-space: nowrap;
-      margin-bottom: 20px;
-    }
-
-    .menu-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 18px;
-      color: black;
-    }
-
-    .submenu {
-      display: none;
-      flex-direction: column;
-      margin-left: 10px;
-      margin-top: 1px;
-      margin-bottom: 10px;
-      gap: 10px;
-    }
-
-    .submenu a {
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
-    }
-
-    .selected {
-      font-size: 18px;
-      font-weight: 500;
-      text-transform: lowercase;
-      white-space: nowrap;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: black;
-      font-size: 18px;
-    }
-
-    /* Контент */
-    .content {
-      width: 75%;
-      margin-left: 25%;
-      padding: 20px;
-      min-height: 100vh;
-      background: white;
-    }
-
-    /* Картинка с контактами */
+    /* Контент страницы */
     .artwork-wrapper {
-      margin: 60px auto 0 auto; /* чуть ниже */
+      margin: 40px auto;
       text-align: center;
     }
 
@@ -127,16 +36,17 @@
       margin: 0;
     }
 
-    /* Переключатель языка под меню */
+    /* Переключатель языка в сайдбаре */
     .language-switch {
+      margin-top: 20px; /* небольшой отступ сверху */
       font-size: 16px;
-      margin-top: 20px;
+      display: flex;
+      gap: 10px; /* расстояние между ru и en */
     }
 
     .language-switch a {
       text-decoration: none;
       color: #000;
-      margin-right: 10px;
     }
 
     .language-switch a:hover {
@@ -146,18 +56,20 @@
   <script defer>
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
+      const toggle = document.getElementById("toggle-" + id);
       submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+      toggle.classList.toggle("small-caps");
     }
   </script>
 </head>
 <body>
   <!-- Сайдбар -->
   <div class="sidebar">
-    <img src="images/logo.jpg" alt="logo" class="logo">
+    <img src="images/logo.jpg" alt="logo" class="logo" />
     <div class="name">darina grekhova</div>
 
     <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
+      <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025')">2025</div>
       <div class="submenu" id="submenu-2025">
         <a href="notnotfun.html">notnotfun</a>
         <a href="foreigners.html">foreigners</a>
@@ -166,7 +78,7 @@
     </div>
 
     <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
+      <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
       <div class="submenu" id="submenu-2024">
         <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
         <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
@@ -174,7 +86,7 @@
     </div>
 
     <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
+      <div class="menu-toggle" id="toggle-2023" onclick="toggleSubmenu('2023')">2023</div>
       <div class="submenu" id="submenu-2023">
         <a href="unknown-stories.html">unknown stories</a>
         <a href="good-night.html">good night</a>
@@ -187,7 +99,7 @@
     </div>
 
     <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books and zines</div>
+      <div class="menu-toggle" id="books-and-zines" onclick="toggleSubmenu('books-and-zines')">books and zines</div>
       <div class="submenu" id="submenu-books-and-zines">
         <a href="books-and-zines.html">books and zines</a>
       </div>
@@ -207,8 +119,8 @@
 
     <!-- Переключатель языка -->
     <div class="language-switch">
-      <a href="/ru/contact.html">ru</a>
-      <a href="/contact.html">en</a>
+      <a href="ru/contact.html">ru</a>
+      <a href="contact.html">en</a>
     </div>
   </div>
 
