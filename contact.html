@@ -38,14 +38,15 @@
 
     /* Переключатель языка в сайдбаре */
     .language-switch {
-      margin-top: auto;
+      margin-top: 20px; /* небольшой отступ сверху */
       font-size: 16px;
+      display: flex;
+      gap: 10px; /* расстояние между ru и en */
     }
 
     .language-switch a {
       text-decoration: none;
       color: #000;
-      margin-left: 10px;
     }
 
     .language-switch a:hover {
@@ -55,7 +56,9 @@
   <script defer>
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
+      const toggle = document.getElementById("toggle-" + id);
       submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+      toggle.classList.toggle("small-caps");
     }
   </script>
 </head>
@@ -111,12 +114,13 @@
     </div>
 
     <div class="menu-item">
-      <a href="contact.html" class="selected">contacts</a>
+      <a href="contact.html">contacts</a>
     </div>
 
-    <!-- Переключатель языка внизу -->
+    <!-- Переключатель языка -->
     <div class="language-switch">
-      <a href="ru/contact.html">ru</a> | <a href="contact.html">en</a>
+      <a href="ru/contact.html">ru</a>
+      <a href="contact.html">en</a>
     </div>
   </div>
 
