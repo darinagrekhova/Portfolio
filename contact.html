@@ -8,9 +8,119 @@
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
   <style>
-    /* Контент страницы */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Cormorant, serif;
+      background-color: white;
+      color: #000;
+      height: 100vh;
+      display: flex;
+    }
+
+    /* Сайдбар */
+    .sidebar {
+      width: 25%;
+      height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #f5f5f5;
+    }
+
+    .logo {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 500;
+      text-transform: lowercase;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 18px;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 18px;
+      color: black;
+    }
+
+    .submenu {
+      display: none;
+      flex-direction: column;
+      margin-left: 10px;
+      margin-top: 1px;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .submenu a {
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+    }
+
+    .selected {
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+
+    /* Переключатель языка внизу сайдбара */
+    .language-switch {
+      margin-top: auto;
+      font-size: 16px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .language-switch a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .language-switch a:hover {
+      color: #555;
+    }
+
+    /* Контент */
+    .content {
+      width: 75%;
+      margin-left: 25%;
+      padding: 40px 20px 20px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: white;
+      min-height: 100vh;
+    }
+
     .artwork-wrapper {
-      margin: 40px auto;
+      margin-top: 80px; /* чуть ниже */
       text-align: center;
     }
 
@@ -33,24 +143,17 @@
       text-align: center;
       font-style: italic;
       color: #000;
-      margin: 0;
+      margin: 10px 0 0 0;
     }
 
-    /* Переключатель языка в сайдбаре */
-    .language-switch {
-      margin-top: 20px; /* небольшой отступ сверху */
-      font-size: 12px;
-      display: flex;
-      gap: 12px; /* расстояние между ru и en */
-    }
-
-    .language-switch a {
+    a {
+      color: #000;
       text-decoration: none;
-      color: #d98;
     }
 
-    .language-switch a:hover {
-      color: #d98;
+    a:hover {
+      color: #555;
+      text-decoration: none;
     }
   </style>
   <script defer>
@@ -119,10 +222,8 @@
 
     <!-- Переключатель языка -->
     <div class="language-switch">
-      
-      <a href="contact.html">en</a>
       <a href="ru/contact.html">ru</a>
-
+      <a href="contact.html">en</a>
     </div>
   </div>
 
@@ -139,3 +240,4 @@
   </div>
 </body>
 </html>
+
