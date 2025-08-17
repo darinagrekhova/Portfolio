@@ -1,72 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Darina Grekhova</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Darina Grekhova</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+    body {
+      font-family: Cormorant, serif;
+      background-color: white;
+      color: #000;
+      height: 100vh;
+    }
 
-<body>
-  <div class="sidebar">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
-    <div class="name">darina grekhova</div>
+    /* Сайдбар */
+    .sidebar {
+      width: 25%;
+      height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0; /* отступы между пунктами меню минимальные */
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+    }
 
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2025">2025</div>
-      <div class="submenu" id="submenu-2025">
-        <a href="notnotfun.html">notnotfun</a>
-        <a href="foreigners.html">foreigners</a>
-        <a href="volante.html">volante</a>
-      </div>
-    </div>
+    .logo {
+      width: 100px;
+      margin-bottom: 10px;
+    }
 
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2024">2024</div>
-      <div class="submenu" id="submenu-2024">
-        <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
-        <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
-      </div>
-    </div>
+    .name {
+      font-size: 22px;
+      font-weight: 500;
+      text-transform: lowercase;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
 
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2023">2023</div>
-      <div class="submenu" id="submenu-2023">
-        <a href="unknown-stories.html">unknown stories</a>
-        <a href="good-night.html">good night</a>
-        <a href="multifigures.html">multifigures</a>
-      </div>
-    </div>
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0; /* минимальные отступы */
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
 
-    <div class="menu-item">
-      <a href="selected-independent.html">selected independent</a>
-    </div>
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 18px;
+      color: black;
+    }
 
-    <div class="menu-item">
-      <div class="menu-toggle" id="books-and-zines">books and zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="books-and-zines.html">books and zines</a>
-      </div>
-    </div>
+    .submenu {
+      display: none;
+      flex-direction: column;
+      margin-left: 10px;
+      margin-top: 1px;
+      margin-bottom: 10px;
+      gap: 0; /* минимальные отступы */
+    }
 
-    <div class="menu-item">
-      <a href="sketchbook.html">sketchbook</a>
-    </div>
+    .submenu a {
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+    }
 
-    <div class="menu-item">
-      <a href="cv.html">cv</a>
-    </div>
+    .selected {
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
 
-    <div class="menu-item">
-      <a href="contact.html">contacts</a>
-    </div>
-  </div>
-
-  <div class="content">
-    <!-- Здесь будет содержимое конкретного файла, когда пользователь откроет его -->
-  </div>
-</body>
-</html>
+    /* Контент */
+    .content {
+      width: 75%;
+      margin-left: 25%;
+      padding: 20px;
+      min-height
