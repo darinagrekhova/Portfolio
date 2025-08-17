@@ -22,32 +22,23 @@
       display: flex;
     }
 
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #555;
-      text-decoration: none;
-    }
-
+    /* Сайдбар */
     .sidebar {
       width: 25%;
       height: 100vh;
-      padding: 40px 20px;
+      padding: 40px;
       display: flex;
       flex-direction: column;
+      gap: 0px;
       position: fixed;
       top: 0;
       left: 0;
       overflow-y: auto;
-      background: #f5f5f5;
     }
 
     .logo {
       width: 100px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .name {
@@ -61,15 +52,14 @@
     .menu-item {
       display: flex;
       flex-direction: column;
+      gap: 2px;
       font-size: 18px;
-      margin-bottom: 10px;
     }
 
     .menu-toggle {
       cursor: pointer;
       font-size: 18px;
       color: black;
-      font-weight: bold;
     }
 
     .submenu {
@@ -77,34 +67,55 @@
       flex-direction: column;
       margin-left: 10px;
       margin-top: 1px;
-      gap: 5px;
+      margin-bottom: 10px;
+      gap: 10px;
     }
 
     .submenu a {
       font-size: 16px;
+      text-decoration: none;
+      color: black;
     }
 
+    .sidebar a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+    }
+
+    a:hover {
+      color: #555;
+      text-decoration: none;
+    }
+
+    /* Переключатель языка */
     .language-switch {
-      margin-top: auto; /* прижимает к низу сайдбара */
-      display: flex;
-      gap: 10px;
+      margin-top: auto;
       font-size: 16px;
     }
 
+    .language-switch a {
+      text-decoration: none;
+      color: black;
+      margin-right: 10px;
+    }
+
+    /* Основной контент */
     .content {
       width: 75%;
       margin-left: 25%;
-      padding: 40px 20px;
+      padding: 20px;
       display: block;
+      min-height: 100vh;
     }
 
     .main-image {
+      display: block;
+      margin: 40px auto 0 auto;
       width: 100%;
       height: auto;
       object-fit: contain;
-      margin-bottom: 20px;
     }
-
   </style>
 
   <script defer>
@@ -115,9 +126,10 @@
   </script>
 </head>
 <body>
+
   <!-- Сайдбар -->
   <div class="sidebar">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
+    <img src="images/logo.jpg" alt="logo" class="logo">
     <div class="name">darina grekhova</div>
 
     <div class="menu-item">
@@ -176,10 +188,10 @@
     </div>
   </div>
 
-  <!-- Контент -->
+  <!-- Основной контент -->
   <div class="content">
-    <img src="images/art-worl-main-image.jpg" alt="Main artwork" class="main-image">
-    
+    <img src="images/art-work-main-page.jpg" alt="Main artwork" class="main-image">
   </div>
+
 </body>
 </html>
