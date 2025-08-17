@@ -18,7 +18,7 @@
       font-family: Cormorant, serif;
       background-color: white;
       color: #000;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
     }
 
@@ -29,25 +29,24 @@
       padding: 40px;
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 10px;
       position: fixed;
       top: 0;
       left: 0;
-      overflow: hidden;
-      background: white;
+      overflow-y: auto;
     }
 
     .logo {
       width: 100px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .name {
       font-size: 22px;
       font-weight: 500;
       text-transform: lowercase;
-      white-space: nowrap;
       margin-bottom: 20px;
+      white-space: nowrap;
     }
 
     .menu-item {
@@ -78,10 +77,13 @@
       color: black;
     }
 
-    .sidebar a {
+    a {
+      color: #000;
       text-decoration: none;
-      color: black;
-      font-size: 18px;
+    }
+
+    a:hover {
+      color: #555;
     }
 
     .selected {
@@ -91,37 +93,18 @@
       white-space: nowrap;
     }
 
-    /* Переключатель языка внизу сайдбара */
-    .language-switch {
-      margin-top: auto;
-      font-size: 16px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .language-switch a {
-      text-decoration: none;
-      color: #000;
-    }
-
-    .language-switch a:hover {
-      color: #555;
-    }
-
     /* Контент */
     .content {
       width: 75%;
       margin-left: 25%;
-      padding: 40px 20px 20px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      padding: 40px;
       background: white;
+      display: block;
       min-height: 100vh;
     }
 
     .artwork-wrapper {
-      margin-top: 120px; /* чуть ниже */
+      margin-top: 60px; /* немного ниже подвинем картинку */
       text-align: center;
     }
 
@@ -144,17 +127,24 @@
       text-align: center;
       font-style: italic;
       color: #000;
-      margin: 10px 0 0 0;
+      margin: 0;
     }
 
-    a {
+    /* Переключатель языка */
+    .language-switch {
+      margin-top: 20px; /* сразу после меню */
+      display: flex;
+      gap: 10px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      text-decoration: none;
       color: #000;
-      text-decoration: none;
     }
 
-    a:hover {
+    .language-switch a:hover {
       color: #555;
-      text-decoration: none;
     }
   </style>
   <script defer>
@@ -221,7 +211,7 @@
       <a href="contact.html">contacts</a>
     </div>
 
-    <!-- Переключатель языка -->
+    <!-- Переключатель языка сразу под меню -->
     <div class="language-switch">
       <a href="ru/contact.html">ru</a>
       <a href="contact.html">en</a>
