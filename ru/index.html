@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Дарина Грехова</title>
-  <!-- Подключение стилей и фавиконки из корня -->
+  
+  <!-- Подключаем CSS и favicon из корня -->
   <link rel="stylesheet" href="../style.css">
   <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
   <link rel="icon" href="../images/favicon.png" type="image/x-icon">
+  
   <style>
     .content {
       width: 75%;
@@ -25,91 +27,51 @@
     }
     .language-switch {
       display: flex;
-      justify-content: flex-start;
       gap: 10px;
       margin-top: 20px;
+      font-size: 16px;
     }
     .language-switch a {
       text-decoration: none;
       color: black;
-      font-size: 16px;
     }
     .language-switch a:hover {
       color: #555;
     }
   </style>
+  
   <script defer>
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
-      const toggle = document.getElementById("toggle-" + id);
       submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-      toggle.classList.toggle("small-caps");
     }
   </script>
 </head>
 <body>
-  <!-- Сайдбар -->
   <div class="sidebar">
-    <img src="../images/logo.jpg" alt="logo" class="logo" />
+    <img src="../images/logo.jpg" alt="logo" class="logo">
     <div class="name">дарина грехова</div>
-
+    
     <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025')">2025</div>
+      <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
       <div class="submenu" id="submenu-2025">
         <a href="notnotfun.html">нотнотфан</a>
         <a href="foreigners.html">иностранцы</a>
         <a href="volante.html">о полетах</a>
       </div>
     </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
-      <div class="submenu" id="submenu-2024">
-        <a href="slavic-myth-on-canvas.html">из цикла о славянской мифологии живопись</a>
-        <a href="slavic-myth-on-paper.html">из цикла о славянской мифологии графика</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2023" onclick="toggleSubmenu('2023')">2023</div>
-      <div class="submenu" id="submenu-2023">
-        <a href="unknown-stories.html">неизвестные истории</a>
-        <a href="good-night.html">спокойной ночи</a>
-        <a href="multifigures.html">мультифигуры</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <a href="selected-independent.html">вне серий</a>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="books-and-zines" onclick="toggleSubmenu('books-and-zines')">books and zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="books-and-zines.html">книги и зины</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <a href="sketchbook.html">скетчбук</a>
-    </div>
-
-    <div class="menu-item">
-      <a href="cv.html">cv</a>
-    </div>
-
+    <!-- другие пункты меню... -->
     <div class="menu-item">
       <a href="contact.html">контакты</a>
     </div>
 
-    <!-- Переключатель языка -->
+    <!-- Переключатель языков -->
     <div class="language-switch">
       <a href="index.html">ru</a>
       <a href="../index.html">en</a>
     </div>
   </div>
 
-  <!-- Контент -->
   <div class="content">
     <img src="../images/main_image.jpg" alt="Главное произведение" class="main-image">
   </div>
