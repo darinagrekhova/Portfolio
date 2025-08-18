@@ -108,3 +108,15 @@ a:hover {
 }
 
 
+.brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px; /* как было по макету */
+}
+
+
+
+
