@@ -1,76 +1,167 @@
-<div class="cv">
-  <h2>education</h2>
-  
-  <p>2024–2025<br>
-  Professional Development Program in Academic Painting and Drawing,<br>
-  Moscow Academic Art Institute named after V.I. Surikov<br>
-  Online Painting Workshop, RadioPaint</p>
-  
-  <p>2022–2024<br>
-  Illustration, British Higher School of Art and Design</p>
-  
-  <p>2020–2021<br>
-  BBE: Graphic Design and Illustration</p>
-  
-  <p>2019–2020<br>
-  Art Criticism Lab, “Baza” Institute</p>
-  
-  <p>2017–2019<br>
-  Visual Culture, Higher School of Economics</p>
-  
-  <p>2012–2016<br>
-  Cultural Studies: Western European Culture,<br>
-  Russian State University for the Humanities</p>
-  
-  <h2>group exhibitions</h2>
-  
-  <p>2025<br>
-  – blazar young art fair 2025, Museum of Moscow<br> 
-  – aha, you hear that radio too, Cube.Moscow  – Curated by Olya Makhno<br>   
-  – a—s—t—r—a open vol.6, January – Curated by Svetlana Taylor<br>
-  – Altai Biennale of Contemporary Art, January – Curated by Svetlana Taylor</p>
-  
-  <p>2024<br>
-  – And Here I Am, Omelchenko Gallery, December – Curated by Tanya Ivankova and Anya Zhuravleva<br>
-  – So That’s How It Was, Space13 Gallery, Samara, November – Curated by Tanya Ivankova and Olya Makhno<br>
-  – So That’s How It Was, RadioGallery (online), August – Curated by Olya Makhno<br>
-  – How Are You? How Am I?, U Contemporary Gallery, February – Curated by Tanya Ivankova and Olya Makhno</p>
-  
-  <p>2023<br>
-  – Mural for Artplay Center, November – Art direction by Ilya Kutoboy<br>
-  – Hung the Earth on Nothing, BIS ART GALLERY, June – Project lead: Masha Shishova</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Darina Grekhova</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-<style>
-  
-  .cv {
-  max-width: 700px;
-    font-size: 18 px;
-  margin: 60px auto 40px auto; /* центрирование и отступ сверху */
-  padding: 20px 40px;
-  font-family: 'Cormorant', serif;
-  color: #1a1a1a;
-  line-height: 1.4; /* увеличенный межстрочный интервал */
-  background-color: transparent;
-  text-align: left; /* весь текст по центру */
-}
+  <style>
+    /* Контент CV */
+    .cv {
+      max-width: 700px;
+      margin: 60px auto 40px auto; /* центрирование и отступ сверху */
+      padding: 20px 40px;
+      font-family: 'Cormorant', serif;
+      color: #1a1a1a;
+      line-height: 1.4;
+      background-color: transparent;
+      text-align: left;
+    }
 
-.cv p {
-  margin-bottom: 1.6rem; /* увеличенные отступы между абзацами */
-  font-size: 18 px;
-  font-weight: 400;
-}
+    .cv p {
+      margin-bottom: 1.6rem;
+      font-size: 18px;
+      font-weight: 400;
+    }
 
-.cv h2 {
-  font-weight: 400;
-  font-size: 18 px;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 8px;
-  color: #333;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-</style>
+    .cv h2 {
+      font-weight: 400;
+      font-size: 18px;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 8px;
+      color: #333;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
 
+    /* Переключатель языка в сайдбаре */
+    .language-switch {
+      margin-top: 20px;
+      font-size: 16px;
+      display: flex;
+      gap: 10px;
+    }
 
+    .language-switch a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .language-switch a:hover {
+      color: #555;
+    }
+  </style>
+
+  <script defer>
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      const toggle = document.getElementById("toggle-" + id);
+      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+      toggle.classList.toggle("small-caps");
+    }
+  </script>
+</head>
+<body>
+  <!-- Сайдбар -->
+  <div class="sidebar">
+    <img src="images/logo.jpg" alt="logo" class="logo" />
+    <div class="name">darina grekhova</div>
+
+    <div class="menu-item">
+      <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025')">2025</div>
+      <div class="submenu" id="submenu-2025">
+        <a href="notnotfun.html">notnotfun</a>
+        <a href="foreigners.html">foreigners</a>
+        <a href="volante.html">volante</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
+      <div class="submenu" id="submenu-2024">
+        <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
+        <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-toggle" id="toggle-2023" onclick="toggleSubmenu('2023')">2023</div>
+      <div class="submenu" id="submenu-2023">
+        <a href="unknown-stories.html">unknown stories</a>
+        <a href="good-night.html">good night</a>
+        <a href="multifigures.html">multifigures</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="selected-independent.html">selected independent</a>
+    </div>
+
+    <div class="menu-item">
+      <div class="menu-toggle" id="books-and-zines" onclick="toggleSubmenu('books-and-zines')">books and zines</div>
+      <div class="submenu" id="submenu-books-and-zines">
+        <a href="books-and-zines.html">books and zines</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <a href="sketchbook.html">sketchbook</a>
+    </div>
+
+    <div class="menu-item">
+      <a href="cv.html">cv</a>
+    </div>
+
+    <div class="menu-item">
+      <a href="contact.html">contacts</a>
+    </div>
+
+    <!-- Переключатель языка -->
+    <div class="language-switch">
+      <a href="ru/cv.html">ru</a>
+      <a href="cv.html">en</a>
+    </div>
+  </div>
+
+  <!-- Контент -->
+  <div class="content">
+    <div class="cv">
+      <h2>education</h2>
+      <p>2024–2025<br>
+      Professional Development Program in Academic Painting and Drawing,<br>
+      Moscow Academic Art Institute named after V.I. Surikov<br>
+      Online Painting Workshop, RadioPaint</p>
+      <p>2022–2024<br>
+      Illustration, British Higher School of Art and Design</p>
+      <p>2020–2021<br>
+      BBE: Graphic Design and Illustration</p>
+      <p>2019–2020<br>
+      Art Criticism Lab, “Baza” Institute</p>
+      <p>2017–2019<br>
+      Visual Culture, Higher School of Economics</p>
+      <p>2012–2016<br>
+      Cultural Studies: Western European Culture,<br>
+      Russian State University for the Humanities</p>
+
+      <h2>group exhibitions</h2>
+      <p>2025<br>
+      – blazar young art fair 2025, Museum of Moscow<br> 
+      – aha, you hear that radio too, Cube.Moscow – Curated by Olya Makhno<br>   
+      – a—s—t—r—a open vol.6, January – Curated by Svetlana Taylor<br>
+      – Altai Biennale of Contemporary Art, January – Curated by Svetlana Taylor</p>
+      <p>2024<br>
+      – And Here I Am, Omelchenko Gallery, December – Curated by Tanya Ivankova and Anya Zhuravleva<br>
+      – So That’s How It Was, Space13 Gallery, Samara, November – Curated by Tanya Ivankova and Olya Makhno<br>
+      – So That’s How It Was, RadioGallery (online), August – Curated by Olya Makhno<br>
+      – How Are You? How Am I?, U Contemporary Gallery, February – Curated by Tanya Ivankova and Olya Makhno</p>
+      <p>2023<br>
+      – Mural for Artplay Center, November – Art direction by Ilya Kutoboy<br>
+      – Hung the Earth on Nothing, BIS ART GALLERY, June – Project lead: Masha Shishova</p>
+    </div>
+  </div>
+</body>
+</html>
