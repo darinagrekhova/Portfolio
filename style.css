@@ -110,12 +110,26 @@ a:hover {
 
 .brand {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  flex-direction: row; /* элементы рядом */
+  align-items: center; /* выравнивание по центру по вертикали */
+  gap: 12px; /* расстояние между логотипом и именем */
   text-decoration: none;
   color: inherit;
-  margin-bottom: 20px; /* как было по макету */
+  margin-bottom: 20px; /* отступ от меню */
 }
+
+.brand .logo {
+  width: 100px;
+  height: auto;
+}
+
+.brand .name {
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
 
 
 
