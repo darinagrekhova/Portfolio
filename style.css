@@ -98,3 +98,49 @@
     max-width: 100%;
   }
 }
+
+
+
+/* --- исправления --- */
+
+/* имя под логотипом */
+.brand {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.brand .name {
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* контент с картинкой по центру */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* адаптация для мобильных */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100% !important;
+    position: relative !important;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    margin-left: 0 !important;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .menu-item {
+    margin-bottom: 12px;
+  }
+
+  .submenu {
+    margin-left: 0;
+  }
+}
