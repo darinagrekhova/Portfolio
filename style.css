@@ -15,7 +15,7 @@
     .sidebar {
       width: 25%;
        height: 100vh;
-      padding: 40px;
+      padding: 20px;
       flex-direction: column;
       gap: 10px;
       position: fixed;
