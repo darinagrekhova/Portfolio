@@ -6,12 +6,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
 }
 
 /* Логотип + имя */
 .brand {
   display: flex;
-  flex-direction: column; /* теперь имя под картинкой */
+  flex-direction: column; /* имя всегда под логотипом */
   align-items: center;
   text-decoration: none;
   margin-bottom: 30px;
@@ -34,11 +39,13 @@
 /* Меню */
 .menu-item {
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .menu-toggle {
   cursor: pointer;
   font-weight: bold;
+  display: block;
 }
 
 .submenu {
@@ -57,29 +64,37 @@
 .content {
   margin-left: 260px;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .main-image {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
+  display: block;
 }
 
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
   .sidebar {
+    position: relative;
     width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .brand {
-    width: 100%;
     margin-bottom: 20px;
   }
 
   .content {
     margin-left: 0;
     margin-top: 20px;
+    justify-content: center;
+  }
+
+  .main-image {
+    max-width: 100%;
   }
 }
