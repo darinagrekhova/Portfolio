@@ -17,10 +17,10 @@
        height: 100vh;
       padding: 40px;
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
       position: fixed;
        top: 0;
-  left: 0;
+       left: 0;
        display: flex;
        overflow-y: auto;
     }
