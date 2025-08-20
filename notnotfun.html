@@ -1,145 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Not Not Fun – Darina Grekhova</title>
 
-  <!-- Подключаем глобальные стили -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
-  <style>
-    /* Стили картинок и описаний */
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    .image-container {
-      display: inline-block;
-      text-align: left;
-    }
-
-    .artworks {
-      display: block;
-      width: 400px;   /* фиксированная ширина для единообразия */
-      height: auto;
-      object-fit: contain;
-      margin: 0 auto 10px auto;
-    }
-
-    .description {
-      font-size: 14px;
-      text-align: left;
-      font-style: italic;
-      color: #000;
-    }
-  </style>
-
-  <script defer>
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-    }
-  </script>
-</head>
-<body>
-
-  <!-- Сайдбар -->
-  <div class="sidebar">
-    <a class="brand" href="/" aria-label="Go to home">
-      <img src="images/logo.jpg" alt="logo" class="logo">
-      <div class="name">darina grekhova</div>
-    </a>
-
-    <!-- 2025 -->
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
-      <div class="submenu" id="submenu-2025" style="display:flex;">
-        <a href="notnotfun.html" class="selected">NotNotFun</a>
-        <a href="foreigners.html">Foreigners</a>
-        <a href="volante.html">Volante</a>
-      </div>
-    </div>
-
-    <!-- 2024 -->
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
-      <div class="submenu" id="submenu-2024">
-        <a href="slavic-myth-on-canvas.html">Slavic Myth – Painting</a>
-        <a href="slavic-myth-on-paper.html">Slavic Myth – Graphic</a>
-      </div>
-    </div>
-
-    <!-- 2023 -->
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
-      <div class="submenu" id="submenu-2023">
-        <a href="unknown-stories.html">Unknown Stories</a>
-        <a href="good-night.html">Good Night</a>
-        <a href="multifigures.html">Multifigures</a>
-      </div>
-    </div>
-
-    <!-- Outside series -->
-    <div class="menu-item">
-      <a href="selected-independent.html">Outside Series</a>
-    </div>
-
-    <!-- Books & Zines -->
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">Books & Zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="books-and-zines.html">Twinkling trails</a>
-      </div>
-    </div>
-
-    <!-- Sketchbook -->
-    <div class="menu-item">
-      <a href="sketchbook.html">Sketchbook</a>
-    </div>
-
-    <!-- CV -->
-    <div class="menu-item">
-      <a href="cv.html">CV</a>
-    </div>
-
-    <!-- Contacts -->
-    <div class="menu-item">
-      <a href="contact.html">Contact</a>
-    </div>
-
-    <!-- Language Switch -->
-    <div class="language-switch">
-      <a href="index.html">en</a>
-      <a href="ru/index.html">ru</a>
+<div class="artwork-wrapper">
+  <div class="image-container">
+    <img src="images/nnf/1.jpg" alt="Artwork" class="artworks" />
+    <div class="description">
+      <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
     </div>
   </div>
+</div>
 
-  <!-- Контент -->
-  <div class="content">
 
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/nnf/1.jpg" alt="Artwork" class="artworks" />
-        <div class="description">
-          <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
-        </div>
-      </div>
+<div class="artwork-wrapper">
+  <div class="image-container">
+    <img src="images/nnf/fun for fun sketch 2.jpg" alt="Artwork" class="artworks" />
+    <div class="description">
+      <p><em>fun for fun sketch 2</em><br>oil on paper<br>9×14 cm</p>
     </div>
-
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/nnf/fun for fun sketch 2.jpg" alt="Artwork" class="artworks" />
-        <div class="description">
-          <p><em>fun for fun sketch 2</em><br>oil on paper<br>9×14 cm</p>
-        </div>
-      </div>
-    </div>
-
   </div>
+</div>
 
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.artwork-wrapper {
+  margin: 40px auto;
+  text-align: center; /* чтобы все блоки были по центру страницы */
+}
+
+.image-container {
+  display: inline-block;
+  text-align: left; /* текст подписи строго по левому краю относительно картинки */
+}
+
+.artworks {
+  display: block;
+  width: 400px; /* все картинки будут одинаково широкими */
+  
+  height: auto; /* сохраняем пропорции */
+  object-fit: contain;
+  margin: 0 auto 10px auto; /* центрируем и делаем отступ снизу */
+}
+
+
+.description {
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+  color: #000;
+}
+</style>
