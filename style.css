@@ -1,10 +1,11 @@
-/* Сброс стилей */
+/* Сброс отступов */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Основное */
 body {
   font-family: Cormorant, serif;
   background-color: white;
@@ -17,27 +18,28 @@ body {
   width: 25%;
   height: 100vh;
   padding: 40px;
-  display: flex;
   flex-direction: column;
   gap: 0px;
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
   overflow-y: auto;
 }
 
 /* Логотип и имя */
 .brand {
   display: flex;
-  align-items: flex-start; /* имя выравнено по верхнему краю картинки */
-  gap: 12px;
+  flex-direction: column; /* имя будет под логотипом */
+  align-items: flex-start;
   text-decoration: none;
   color: inherit;
-  margin-bottom: 20px; /* отступ вниз */
+  margin-bottom: 20px;
 }
 
 .logo {
   width: 100px;
+  margin-bottom: 8px;
 }
 
 .name {
@@ -47,7 +49,7 @@ body {
   white-space: nowrap;
 }
 
-/* Активный пункт меню */
+/* Выбранный пункт */
 .selected {
   font-size: 18px;
   font-weight: 500;
@@ -55,7 +57,7 @@ body {
   white-space: nowrap;
 }
 
-/* Ссылки в сайдбаре */
+/* Ссылки */
 .sidebar a {
   text-decoration: none;
   color: black;
@@ -72,14 +74,14 @@ a:hover {
   text-decoration: none;
 }
 
-/* Контент справа */
+/* Контент */
 .content {
   width: 75%;
+  background: white;
   margin-left: auto;
   margin-right: 0;
   display: block;
   min-height: 100vh;
-  background: white;
 }
 
 .main-image {
@@ -120,10 +122,10 @@ a:hover {
   color: black;
 }
 
-/* Переключатель языка */
+/* Переключатель языков */
 .language-switch {
-  margin-top: auto; /* прижать к низу */
+  margin-top: 20px;
   display: flex;
   gap: 10px;
-  font-size: 16px;
 }
+
