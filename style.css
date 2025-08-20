@@ -1,110 +1,146 @@
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Cormorant, serif;
-      background-color: white;
-      color: #000;
-      height: 100vh;
-    }
-
-    .sidebar {
-      width: 25%;
-       height: 100vh;
-      padding: 40px;
-      flex-direction: column;
-      gap: 0px;
-      position: fixed;
-       top: 0;
-  left: 0;
-       display: flex;
-       overflow-y: auto;
-    }
-    
-.name {
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: lowercase;
-white-space: nowrap;
-}
-
-.selected {
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: lowercase;
-   white-space: nowrap;
-}
-
-
-    .logo {
-      width: 100px;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: black;
-      font-size: 18px;
-    }
-
-    .content {
-      width: 75%;
-      background: white;
-     margin-left: auto;
-       margin-right: 0;
-        display: block;
-       min-height: 100vh;
-    }
-
-    .main-image {
-      margin-left: auto;
-       margin-right: 0;
-        display: block;
-       width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-     a {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #555;
-  text-decoration: none;
-}
-
-.menu-item {
+/* Сайдбар */
+.sidebar {
+  width: 240px;
+  padding: 20px;
+  background: #fff;
   display: flex;
   flex-direction: column;
-   gap: 2px;
-   font-size: 18px;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+/* Логотип + имя */
+.brand {
+  display: flex;
+  flex-direction: column; /* имя всегда под логотипом */
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+
+.logo {
+  max-width: 120px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.name {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  text-transform: lowercase;
+  color: #000;
+  text-align: center;
+}
+
+/* Меню */
+.menu-item {
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 .menu-toggle {
   cursor: pointer;
-  font-size: 18px;
-  color: black;
-  
+  font-weight: bold;
+  display: block;
 }
 
 .submenu {
   display: none;
   flex-direction: column;
   margin-left: 10px;
-    margin-top: 1px;
-  margin-bottom: 10px;
-  gap: 10px;
 }
 
 .submenu a {
-  font-size: 16px;
+  margin: 4px 0;
   text-decoration: none;
-  color: black;
+  color: #333;
+}
+
+/* Контент */
+.content {
+  margin-left: 260px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.main-image {
+  max-width: 90%;
+  height: auto;
+  display: block;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand {
+    margin-bottom: 20px;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .main-image {
+    max-width: 100%;
+  }
 }
 
 
+
+/* --- исправления --- */
+
+/* имя под логотипом */
+.brand {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.brand .name {
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* контент с картинкой по центру */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* адаптация для мобильных */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100% !important;
+    position: relative !important;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    margin-left: 0 !important;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .menu-item {
+    margin-bottom: 12px;
+  }
+
+  .submenu {
+    margin-left: 0;
+  }
+}
