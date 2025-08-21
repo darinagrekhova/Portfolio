@@ -1,90 +1,4 @@
-<<<<<<< HEAD
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Cormorant, serif;
-      background-color: white;
-      color: #000;
-      height: 100vh;
-    }
-
-    .sidebar {
-      width: 25%;
-       height: 100vh;
-      padding: 40px;
-      flex-direction: column;
-      gap: 0px;
-      position: fixed;
-       top: 0;
-  left: 0;
-       display: flex;
-       overflow-y: auto;
-    }
-    
-.name {
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: lowercase;
-white-space: nowrap;
-}
-
-.selected {
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: lowercase;
-   white-space: nowrap;
-}
-
-
-    .logo {
-      width: 100px;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      color: black;
-      font-size: 18px;
-    }
-
-    .content {
-      width: 75%;
-      background: white;
-     margin-left: auto;
-       margin-right: 0;
-        display: block;
-       min-height: 100vh;
-    }
-
-    .main-image {
-      margin-left: auto;
-       margin-right: 0;
-        display: block;
-       width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-     a {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #555;
-  text-decoration: none;
-}
-
-.menu-item {
-  display: flex;
-  flex-direction: column;
-   gap: 2px;
-   font-size: 18px;
-=======
+/* Сброс стилей */
 * {
   margin: 0;
   padding: 0;
@@ -92,10 +6,10 @@ a:hover {
 }
 
 body {
-  font-family: 'Cormorant', serif;
+  font-family: Cormorant, serif;
   background-color: white;
   color: #000;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 /* Сайдбар */
@@ -110,19 +24,16 @@ body {
   top: 0;
   left: 0;
   overflow-y: auto;
-  background: white;
-  border-right: 1px solid #eee;
 }
 
-/* Лого и имя */
+/* Логотип и имя */
 .brand {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: flex-start; /* имя выравнено по верхнему краю картинки */
+  gap: 12px;
   text-decoration: none;
   color: inherit;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* отступ вниз */
 }
 
 .logo {
@@ -136,49 +47,21 @@ body {
   white-space: nowrap;
 }
 
-/* Пункты меню */
-.menu-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+/* Активный пункт меню */
+.selected {
   font-size: 18px;
->>>>>>> 784dd78ceaa2a6ff5867d609c58a82aba8f46013
+  font-weight: 500;
+  text-transform: lowercase;
+  white-space: nowrap;
 }
 
-.menu-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  color: black;
-<<<<<<< HEAD
-  
-=======
->>>>>>> 784dd78ceaa2a6ff5867d609c58a82aba8f46013
-}
-
-.submenu {
-  display: none;
-  flex-direction: column;
-  margin-left: 10px;
-<<<<<<< HEAD
-    margin-top: 1px;
-=======
-  margin-top: 1px;
->>>>>>> 784dd78ceaa2a6ff5867d609c58a82aba8f46013
-  margin-bottom: 10px;
-  gap: 10px;
-}
-
-.submenu a {
-  font-size: 16px;
+/* Ссылки в сайдбаре */
+.sidebar a {
   text-decoration: none;
   color: black;
+  font-size: 18px;
 }
-<<<<<<< HEAD
 
-
-=======
-
-/* Ссылки */
 a {
   color: #000;
   text-decoration: none;
@@ -189,83 +72,58 @@ a:hover {
   text-decoration: none;
 }
 
-/* Переключатель языка */
-.language-switch {
-  margin-top: auto;
-  display: flex;
-  gap: 10px;
-}
-
-/* Контент */
+/* Контент справа */
 .content {
-  margin-left: 25%;
-  padding: 40px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: 0;
+  display: block;
   min-height: 100vh;
   background: white;
 }
 
-/* Главное изображение */
 .main-image {
+  margin-left: auto;
+  margin-right: 0;
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   object-fit: contain;
-  margin: 0 auto;
 }
 
-/* Страница с артами */
-.artwork-wrapper {
-  margin: 40px auto;
-  text-align: center;
+/* Меню */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 18px;
 }
 
-.image-container {
-  display: inline-block;
-  text-align: left;
-  vertical-align: top;
+.menu-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  color: black;
 }
 
-.artworks {
-  display: block;
-  width: 400px;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto 10px auto;
+.submenu {
+  display: none;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-top: 1px;
+  margin-bottom: 10px;
+  gap: 10px;
 }
 
-.description {
-  font-size: 14px;
-  text-align: left;
-  font-style: italic;
-  color: #000;
+.submenu a {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
 }
 
-/* 🔹 Адаптивность */
-@media (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid #eee;
-  }
-
-  .content {
-    margin-left: 0;
-    padding: 20px;
-  }
-
-  .artworks {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .logo {
-    width: 80px;
-  }
-
-  .name {
-    font-size: 18px;
-  }
+/* Переключатель языка */
+.language-switch {
+  margin-top: auto; /* прижать к низу */
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
 }
->>>>>>> 784dd78ceaa2a6ff5867d609c58a82aba8f46013
