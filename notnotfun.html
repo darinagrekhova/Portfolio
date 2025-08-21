@@ -5,26 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Not Not Fun – Darina Grekhova</title>
 
-  <!-- Глобальные стили -->
+  <!-- Глобальные стили для страницы и сайдбара -->
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
   <style>
-    /* Контент страницы */
+    /* Стили контента страницы */
     .content {
       width: 75%;
       margin-left: 25%;
       padding: 20px;
       min-height: 100vh;
-    }
-
-    .main-image, .artworks {
-      display: block;
-      margin: 40px auto 0 auto;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
     }
 
     /* Стили для картинок и описаний */
@@ -39,8 +31,11 @@
     }
 
     .artworks {
-      width: 400px;   /* фиксированная ширина для единообразия */
-      margin-bottom: 10px;
+      display: block;
+      width: 400px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 10px auto;
     }
 
     .description {
@@ -50,34 +45,17 @@
       color: #000;
     }
   </style>
-
-  <script defer>
-    // Подгрузка sidebar
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("sidebar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("sidebar-container").innerHTML = data;
-        });
-    });
-
-    // Функция открытия подменю
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-    }
-  </script>
 </head>
 <body>
 
-  <!-- Sidebar -->
+  <!-- Контейнер для сайдбара -->
   <div id="sidebar-container"></div>
 
-  <!-- Контент -->
+  <!-- Контент страницы -->
   <div class="content">
     <div class="artwork-wrapper">
       <div class="image-container">
-        <img src="images/nnf/1.jpg" alt="girl in a pool" class="artworks" />
+        <img src="images/nnf/1.jpg" alt="Artwork" class="artworks" />
         <div class="description">
           <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
         </div>
@@ -86,13 +64,31 @@
 
     <div class="artwork-wrapper">
       <div class="image-container">
-        <img src="images/nnf/fun for fun sketch 2.jpg" alt="fun for fun sketch 2" class="artworks" />
+        <img src="images/nnf/fun for fun sketch 2.jpg" alt="Artwork" class="artworks" />
         <div class="description">
           <p><em>fun for fun sketch 2</em><br>oil on paper<br>9×14 cm</p>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Скрипт для подгрузки сайдбара и меню -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("sidebar.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("sidebar-container").innerHTML = data;
+        });
+    });
+
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      if(submenu) {
+        submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+      }
+    }
+  </script>
 
 </body>
 </html>
