@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Darina Grekhova</title>
+<<<<<<< HEAD
   
   <!-- Global CSS -->
+=======
+
+  <!-- CSS -->
+>>>>>>> 784dd78ceaa2a6ff5867d609c58a82aba8f46013
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
@@ -55,13 +61,25 @@
   </style>
 
   <script defer>
+    // функция для открытия/закрытия подпунктов
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
       submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
     }
+
+    // подгружаем sidebar.html
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("sidebar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("sidebar-container").innerHTML = data;
+        })
+        .catch(err => console.error("Error loading sidebar:", err));
+    });
   </script>
 </head>
 <body>
+<<<<<<< HEAD
   <!-- Sidebar -->
 <a class="brand" href="/" aria-label="Go to home">
   <img src="images/logo.jpg" alt="logo" class="logo" />
@@ -131,10 +149,16 @@
       <a href="ru/index.html">ru</a>
     </div>
   </div>
+=======
+
+  <!-- Контейнер для сайдбара -->
+  <div id="sidebar-container"></div>
+>>>>>>> 784dd78ceaa2a6ff5867d609c58a82aba8f46013
 
   <!-- Content -->
   <div class="content">
     <img src="images/art-work-main-page.jpg" alt="Main artwork" class="main-image">
   </div>
+
 </body>
 </html>

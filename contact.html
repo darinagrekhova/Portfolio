@@ -7,17 +7,16 @@
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+
+  
   <style>
-    /* Контент страницы */
-    .artwork-wrapper {
+     .artwork-wrapper {
       margin: 40px auto;
       text-align: center;
     }
 
-    .image-container {
-      display: inline-block;
-      text-align: center;
-    }
+   
 
     .contact-artwork {
       display: block;
@@ -52,7 +51,167 @@
     .language-switch a:hover {
       color: #555;
     }
+    /* Контент страницы */
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cormorant', serif;
+  background-color: white;
+  color: #000;
+  min-height: 100vh;
+}
+
+/* Сайдбар */
+.sidebar {
+  width: 25%;
+  height: 100vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  background: white;
+  border-right: 1px solid #eee;
+}
+
+/* Лого и имя */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+/* Пункты меню */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 18px;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  color: black;
+}
+
+.submenu {
+  display: none;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-top: 1px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.submenu a {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+}
+
+/* Ссылки */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #555;
+  text-decoration: none;
+}
+
+/* Переключатель языка */
+.language-switch {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
+/* Контент */
+.content {
+  margin-left: 25%;
+  padding: 40px;
+  min-height: 100vh;
+  background: white;
+}
+
+
+
+
+
+.image-container {
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+.artworks {
+  display: block;
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 10px auto;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+
+/* 🔹 Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .artworks {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+}
   </style>
+
+  
   <script defer>
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
@@ -65,8 +224,10 @@
 <body>
   <!-- Сайдбар -->
   <div class="sidebar">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
+    <<a class="brand" href="index.html" aria-label="Go to home">
+    <img src="images/logo.jpg" alt="logo" class="logo">
     <div class="name">darina grekhova</div>
+  </a>
 
     <div class="menu-item">
       <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025')">2025</div>
