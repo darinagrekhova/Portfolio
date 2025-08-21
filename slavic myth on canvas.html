@@ -1,63 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slavic Myth – Painting – Darina Grekhova</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-<div class="artwork-wrapper">
-  <div class="image-container">
-    <img src="images/selected independent/Devushka i sobaka.jpg" alt="Artwork" class="artworks" />
-    <div class="description">
-      <p><em>girl and a dog</em><br>oil on canvas<br>150×150 cm</p>
-    </div>
+  <style>
+    .content {
+      width: 75%;
+      margin-left: 25%;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .artworks {
+      display: block;
+      width: 400px;
+      margin: 40px auto;
+      object-fit: contain;
+    }
+    .description {
+      font-size: 14px;
+      text-align: left;
+      font-style: italic;
+      color: #000;
+      margin-bottom: 40px;
+    }
+  </style>
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("sidebar.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("sidebar-container").innerHTML = data);
+    });
+
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</head>
+<body>
+
+  <div id="sidebar-container"></div>
+
+  <div class="content">
+    <img src="images/slavic/1.jpg" alt="Slavic Myth Painting" class="artworks">
+    <div class="description"><em>forest deity</em><br>oil on canvas<br>40×50 cm</div>
   </div>
-</div>
 
-
-<div class="artwork-wrapper">
-  <div class="image-container">
-    <img src="images/selected independent/vid na dorogu.jpg" alt="Artwork" class="artworks" />
-    <div class="description">
-      <p><em>view of the road</em><br>oil on paper<br>100×90 cm</p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-.artwork-wrapper {
-  margin: 40px auto;
-  text-align: center; /* чтобы все блоки были по центру страницы */
-}
-
-.image-container {
-  display: inline-block;
-  text-align: left; /* текст подписи строго по левому краю относительно картинки */
-}
-
-.artworks {
-  display: block;
-  width: 400px; /* все картинки будут одинаково широкими */
-  
-  height: auto; /* сохраняем пропорции */
-  object-fit: contain;
-  margin: 0 auto 10px auto; /* центрируем и делаем отступ снизу */
-}
-
-
-.description {
-  font-size: 14px;
-  text-align: left;
-  font-style: italic;
-  color: #000;
-}
-</style>
+</body>
+</html>
