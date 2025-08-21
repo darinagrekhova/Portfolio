@@ -4,22 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Not Not Fun – Darina Grekhova</title>
-
-  <!-- Глобальные стили для страницы и сайдбара -->
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
   <style>
-    /* Стили контента страницы */
-    .content {
-      width: 75%;
-      margin-left: 25%;
-      padding: 20px;
-      min-height: 100vh;
-    }
-
-    /* Стили для картинок и описаний */
     .artwork-wrapper {
       margin: 40px auto;
       text-align: center;
@@ -48,10 +37,10 @@
 </head>
 <body>
 
-  <!-- Контейнер для сайдбара -->
+  <!-- Sidebar container -->
   <div id="sidebar-container"></div>
 
-  <!-- Контент страницы -->
+  <!-- Content -->
   <div class="content">
     <div class="artwork-wrapper">
       <div class="image-container">
@@ -72,22 +61,22 @@
     </div>
   </div>
 
-  <!-- Скрипт для подгрузки сайдбара и меню -->
+  <!-- Load sidebar -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("sidebar.html")
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById("sidebar-container").innerHTML = data;
-        });
-    });
+    fetch("sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
 
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      if(submenu) {
-        submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-      }
-    }
+        // Init toggle menus
+        const toggles = document.querySelectorAll(".menu-toggle");
+        toggles.forEach(toggle => {
+          toggle.addEventListener("click", () => {
+            const submenu = toggle.nextElementSibling;
+            submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+          });
+        });
+      });
   </script>
 
 </body>
