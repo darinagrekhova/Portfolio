@@ -2,83 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Not Not Fun – Darina Grekhova</title>
-
-  <!-- Глобальные стили -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
+  <title>Sketchbook | Darina Grekhova</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- твой внешний CSS -->
   <style>
-    /* Контент страницы */
-    .content {
-      width: 75%;
-      margin-left: 25%;
-      padding: 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cormorant', serif;
+      background-color: white;
+      color: #000;
       min-height: 100vh;
     }
 
-    .main-image, .artworks {
-      display: block;
-      margin: 40px auto 0 auto;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
+    .sidebar {
+      width: 25%;
+      height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
     }
 
-    /* Стили для картинок и описаний */
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    .image-container {
-      display: inline-block;
-      text-align: left;
-    }
-
-    .artworks {
-      width: 400px;   /* фиксированная ширина для единообразия */
-      margin-bottom: 10px;
-    }
-
-    .description {
-      font-size: 14px;
-      text-align: left;
-      font-style: italic;
-      color: #000;
-    }
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Cormorant', serif;
-  background-color: white;
-  color: #000;
-  min-height: 100vh;
-}
-
-/* Сайдбар */
-.sidebar {
-  width: 25%;
-  height: 100vh;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-  background: white;
-  border-right: 1px solid #eee;
-}
-
-/* Лого и имя */
+   /* Лого и имя */
 .brand {
   display: flex;
   flex-direction: column;
@@ -100,87 +54,182 @@ body {
   white-space: nowrap;
 }
 
-/* Пункты меню */
-.menu-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-size: 18px;
-}
-
-.menu-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  color: black;
-}
-
-.submenu {
-  display: none;
-  flex-direction: column;
-  margin-left: 10px;
-  margin-top: 1px;
-  margin-bottom: 10px;
-  gap: 10px;
-}
-
-.submenu a {
-  font-size: 16px;
-  text-decoration: none;
-  color: black;
-}
-
-/* Ссылки */
-a {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #555;
-  text-decoration: none;
-}
-
-/* Переключатель языка */
-.language-switch {
-  margin-top: auto;
-  display: flex;
-  gap: 10px;
-}
-    
-  </style>
-
-  <script defer>
-    // Подгрузка sidebar
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("sidebar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("sidebar-container").innerHTML = data;
-        });
-    });
-
-    // Функция открытия подменю
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 18px;
     }
-  </script>
+
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 18px;
+      color: black;
+    }
+
+    .submenu {
+      display: none;
+      flex-direction: column;
+      margin-left: 10px;
+      margin-top: 1px;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .submenu a {
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .language-switch {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .content {
+      margin-left: 25%;
+      padding: 40px;
+      min-height: 100vh;
+      background: white;
+    }
+
+    .artwork-wrapper {
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .image-container {
+      display: inline-block;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .artworks {
+      display: block;
+      width: 400px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 10px auto;
+    }
+
+    .description {
+      font-size: 14px;
+      text-align: left;
+      font-style: italic;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div id="sidebar-container"></div>
+<!-- Сайдбар -->
+<div class="sidebar">
+  <a href="index.html" class="brand">
+    <img src="images/logo.jpg" alt="logo" class="logo" />
+    <div class="name">darina grekhova</div>
+  </a>
 
-  <!-- Контент -->
-  <div class="content">
-    <div class="artwork-wrapper">
-      <div class="image-container">
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
+    <div class="submenu" id="submenu-2025">
+      <a href="notnotfun.html">notnotfun</a>
+      <a href="foreigners.html">foreigners</a>
+      <a href="volante.html">volante</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
+    <div class="submenu" id="submenu-2024">
+      <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
+      <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
+    <div class="submenu" id="submenu-2023">
+      <a href="unknown-stories.html">unknown stories</a>
+      <a href="good-night.html">good night</a>
+      <a href="multifigures.html">multifigures</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <a href="selected-independent.html">selected independent</a>
+  </div>
+
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books and zines</div>
+    <div class="submenu" id="submenu-books-and-zines">
+      <a href="books-and-zines.html">books and zines</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <a href="sketchbook.html">sketchbook</a>
+  </div>
+
+  <div class="menu-item">
+    <a href="cv.html">cv</a>
+  </div>
+
+  <div class="menu-item">
+    <a href="contact.html">contacts</a>
+  </div>
+
+  <!-- Переключатель языка -->
+  <div class="language-switch">
+    <a href="ru/sketchbook.html">ru</a>
+    <a href="sketchbook.html">en</a>
+  </div>
+</div>
+
+<!-- Контент: Галерея -->
+<div class="content">
+  <!-- Генерация блоков для изображений -->
+  <div class="artwork-wrapper">
+    div class="image-container">
         <img src="images/nnf/1.jpg" alt="girl in a pool" class="artworks" />
         <div class="description">
           <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
         </div>
       </div>
     </div>
+  <div class="artwork-wrapper">
+    div class="image-container">
+        <img src="images/nnf/1.jpg" alt="girl in a pool" class="artworks" />
+        <div class="description">
+          <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+<!-- JS для toggle меню -->
+<script>
+function toggleSubmenu(id) {
+  const submenu = document.getElementById('submenu-' + id);
+  submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
+}
+</script>
+
+</body>
+</html>
+      <
 
     <div class="artwork-wrapper">
       <div class="image-container">
@@ -190,7 +239,4 @@ a:hover {
         </div>
       </div>
     </div>
-  </div>
 
-</body>
-</html>
