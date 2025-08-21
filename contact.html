@@ -7,7 +7,50 @@
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+
+  
   <style>
+     .artwork-wrapper {
+      margin: 40px auto;
+      text-align: center;
+    }
+
+   
+
+    .contact-artwork {
+      display: block;
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: 10px auto 0 auto;
+    }
+
+    .description {
+      font-size: 14px;
+      text-align: center;
+      font-style: italic;
+      color: #000;
+      margin: 0;
+    }
+
+    /* Переключатель языка в сайдбаре */
+    .language-switch {
+      margin-top: 20px; /* небольшой отступ сверху */
+      font-size: 16px;
+      display: flex;
+      gap: 10px; /* расстояние между ru и en */
+    }
+
+    .language-switch a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .language-switch a:hover {
+      color: #555;
+    }
     /* Контент страницы */
    * {
   margin: 0;
@@ -115,20 +158,9 @@ a:hover {
   background: white;
 }
 
-/* Главное изображение */
-.main-image {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto;
-}
 
-/* Страница с артами */
-.artwork-wrapper {
-  margin: 40px auto;
-  text-align: center;
-}
+
+
 
 .image-container {
   display: inline-block;
@@ -144,12 +176,10 @@ a:hover {
   margin: 0 auto 10px auto;
 }
 
-.description {
-  font-size: 14px;
-  text-align: left;
-  font-style: italic;
-  color: #000;
+.small-caps {
+  font-variant: small-caps;
 }
+
 
 /* 🔹 Адаптивность */
 @media (max-width: 768px) {
@@ -180,6 +210,8 @@ a:hover {
   }
 }
   </style>
+
+  
   <script defer>
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
