@@ -9,49 +9,176 @@
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
   <style>
     /* Контент страницы */
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .image-container {
-      display: inline-block;
-      text-align: center;
-    }
+body {
+  font-family: 'Cormorant', serif;
+  background-color: white;
+  color: #000;
+  min-height: 100vh;
+}
 
-    .contact-artwork {
-      display: block;
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      margin: 10px auto 0 auto;
-    }
+/* Сайдбар */
+.sidebar {
+  width: 25%;
+  height: 100vh;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  background: white;
+  border-right: 1px solid #eee;
+}
 
-    .description {
-      font-size: 14px;
-      text-align: center;
-      font-style: italic;
-      color: #000;
-      margin: 0;
-    }
+/* Лого и имя */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 20px;
+}
 
-    /* Переключатель языка в сайдбаре */
-    .language-switch {
-      margin-top: 20px; /* небольшой отступ сверху */
-      font-size: 16px;
-      display: flex;
-      gap: 10px; /* расстояние между ru и en */
-    }
+.logo {
+  width: 100px;
+}
 
-    .language-switch a {
-      text-decoration: none;
-      color: #000;
-    }
+.name {
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
 
-    .language-switch a:hover {
-      color: #555;
-    }
+/* Пункты меню */
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 18px;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  color: black;
+}
+
+.submenu {
+  display: none;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-top: 1px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.submenu a {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+}
+
+/* Ссылки */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #555;
+  text-decoration: none;
+}
+
+/* Переключатель языка */
+.language-switch {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
+/* Контент */
+.content {
+  margin-left: 25%;
+  padding: 40px;
+  min-height: 100vh;
+  background: white;
+}
+
+/* Главное изображение */
+.main-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Страница с артами */
+.artwork-wrapper {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.image-container {
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+.artworks {
+  display: block;
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 10px auto;
+}
+
+.description {
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+  color: #000;
+}
+
+/* 🔹 Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .artworks {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+}
   </style>
   <script defer>
     function toggleSubmenu(id) {
