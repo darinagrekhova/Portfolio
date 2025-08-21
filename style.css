@@ -23,13 +23,15 @@ body {
   top: 0;
   left: 0;
   overflow-y: auto;
+  background: white;
+  border-right: 1px solid #eee;
 }
 
 /* Лого и имя */
 .brand {
   display: flex;
-  flex-direction: column;   /* теперь вертикально */
-  align-items: flex-start;  /* по левому краю */
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
   text-decoration: none;
   color: inherit;
@@ -105,10 +107,10 @@ a:hover {
 /* Главное изображение */
 .main-image {
   display: block;
-  max-width: 100%;   /* не больше ширины контейнера */
-  height: auto;      /* сохраняем пропорции */
+  max-width: 100%;
+  height: auto;
   object-fit: contain;
-  margin: 0 auto;    /* центрируем */
+  margin: 0 auto;
 }
 
 /* Страница с артами */
@@ -136,4 +138,33 @@ a:hover {
   text-align: left;
   font-style: italic;
   color: #000;
+}
+
+/* 🔹 Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .artworks {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
 }
