@@ -5,30 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Not Not Fun – Darina Grekhova</title>
 
+  <!-- Глобальные стили -->
   <link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
+  <style>
+    /* Контент страницы */
+    .content {
+      width: 75%;
+      margin-left: 25%;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .main-image, .artworks {
+      display: block;
+      margin: 40px auto 0 auto;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Стили для картинок и описаний */
+    .artwork-wrapper {
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .image-container {
+      display: inline-block;
+      text-align: left;
+    }
+
+    .artworks {
+      width: 400px;   /* фиксированная ширина для единообразия */
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 14px;
+      text-align: left;
+      font-style: italic;
+      color: #000;
+    }
+  </style>
+
   <script defer>
+    // Подгрузка sidebar
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("sidebar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("sidebar-container").innerHTML = data;
+        });
+    });
+
+    // Функция открытия подменю
     function toggleSubmenu(id) {
       const submenu = document.getElementById("submenu-" + id);
       submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch('sidebar.html')
-        .then(response => response.text())
-        .then(html => {
-          document.body.insertAdjacentHTML('afterbegin', html);
-        });
-    });
   </script>
 </head>
 <body>
+
+  <!-- Sidebar -->
+  <div id="sidebar-container"></div>
+
+  <!-- Контент -->
   <div class="content">
     <div class="artwork-wrapper">
       <div class="image-container">
-        <img src="images/nnf/1.jpg" alt="Artwork" class="artworks" />
+        <img src="images/nnf/1.jpg" alt="girl in a pool" class="artworks" />
         <div class="description">
           <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
         </div>
@@ -37,12 +86,13 @@
 
     <div class="artwork-wrapper">
       <div class="image-container">
-        <img src="images/nnf/fun for fun sketch 2.jpg" alt="Artwork" class="artworks" />
+        <img src="images/nnf/fun for fun sketch 2.jpg" alt="fun for fun sketch 2" class="artworks" />
         <div class="description">
           <p><em>fun for fun sketch 2</em><br>oil on paper<br>9×14 cm</p>
         </div>
       </div>
     </div>
   </div>
+
 </body>
 </html>
