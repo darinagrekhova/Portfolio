@@ -5,9 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV - Darina Grekhova</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+
+  <script defer>
+    // функция для открытия/закрытия подпунктов
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+    }
+
+    // подгружаем sidebar.html
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("sidebar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("sidebar-container").innerHTML = data;
+        })
+        .catch(err => console.error("Error loading sidebar:", err));
+    });
+  </script>
 
   <style>
     /* Контент CV */
@@ -38,279 +56,11 @@
       text-align: center;
       letter-spacing: 0.5px;
     }
-
-    /* Переключатель языка в сайдбаре */
-    .language-switch {
-      margin-top: 20px;
-      font-size: 16px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .language-switch a {
-      text-decoration: none;
-      color: #000;
-    }
-
-    .language-switch a:hover {
-      color: #555;
-    }
-
-       .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-
-
-    /* Переключатель языка в сайдбаре */
-    .language-switch {
-      margin-top: 20px; /* небольшой отступ сверху */
-      font-size: 16px;
-      display: flex;
-      gap: 10px; /* расстояние между ru и en */
-    }
-
-    .language-switch a {
-      text-decoration: none;
-      color: #000;
-    }
-
-    .language-switch a:hover {
-      color: #555;
-    }
-
-  /* Контент страницы */
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Cormorant', serif;
-  background-color: white;
-  color: #000;
-  min-height: 100vh;
-}
-
-/* Сайдбар */
-.sidebar {
-  width: 25%;
-  height: 100vh;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-  background: white;
-  border-right: 1px solid #eee;
-}
-
-/* Лого и имя */
-.brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 100px;
-}
-
-.name {
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
-}
-
-/* Пункты меню */
-.menu-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-size: 18px;
-}
-
-.menu-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  color: black;
-}
-
-.submenu {
-  display: none;
-  flex-direction: column;
-  margin-left: 10px;
-  margin-top: 1px;
-  margin-bottom: 10px;
-  gap: 10px;
-}
-
-.submenu a {
-  font-size: 16px;
-  text-decoration: none;
-  color: black;
-}
-
-/* Ссылки */
-a {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #555;
-  text-decoration: none;
-}
-
-/* Переключатель языка */
-.language-switch {
-  margin-top: auto;
-  display: flex;
-  gap: 10px;
-}
-
-/* Контент */
-.content {
-  margin-left: 25%;
-  padding: 40px;
-  min-height: 100vh;
-  background: white;
-}
-
-
-
-
-
-.image-container {
-  display: inline-block;
-  text-align: left;
-  vertical-align: top;
-}
-
-.artworks {
-  display: block;
-  width: 400px;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto 10px auto;
-}
-
-.small-caps {
-  font-variant: small-caps;
-}
-
-
-/* 🔹 Адаптивность */
-@media (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid #eee;
-  }
-
-  .content {
-    margin-left: 0;
-    padding: 20px;
-  }
-
-  .artworks {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .logo {
-    width: 80px;
-  }
-
-  .name {
-    font-size: 18px;
-  }
-}
-    
   </style>
-
-  <script defer>
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      const toggle = document.getElementById("toggle-" + id);
-      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-      toggle.classList.toggle("small-caps");
-    }
-  </script>
 </head>
 <body>
   <!-- Сайдбар -->
-<a href="index.html" class="brand">
-  <img src="images/logo.jpg" alt="logo" class="logo" />
-  <div class="name">darina grekhova</div>
-</a>
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2025" onclick="toggleSubmenu('2025')">2025</div>
-      <div class="submenu" id="submenu-2025">
-        <a href="notnotfun.html">notnotfun</a>
-        <a href="foreigners.html">foreigners</a>
-        <a href="volante.html">volante</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2024" onclick="toggleSubmenu('2024')">2024</div>
-      <div class="submenu" id="submenu-2024">
-        <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
-        <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="toggle-2023" onclick="toggleSubmenu('2023')">2023</div>
-      <div class="submenu" id="submenu-2023">
-        <a href="unknown-stories.html">unknown stories</a>
-        <a href="good-night.html">good night</a>
-        <a href="multifigures.html">multifigures</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <a href="selected-independent.html">selected independent</a>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" id="books-and-zines" onclick="toggleSubmenu('books-and-zines')">books and zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="books-and-zines.html">books and zines</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <a href="sketchbook.html">sketchbook</a>
-    </div>
-
-    <div class="menu-item">
-      <a href="cv.html">cv</a>
-    </div>
-
-    <div class="menu-item">
-      <a href="contact.html">contacts</a>
-    </div>
-
-    <!-- Переключатель языка -->
-    <div class="language-switch">
-      <a href="ru/cv.html">ru</a>
-      <a href="cv.html">en</a>
-    </div>
-  </div>
+  <div id="sidebar-container"></div>
 
   <!-- Контент -->
   <div class="content">
