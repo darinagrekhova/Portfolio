@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Darina Grekhova</title>
+  
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
@@ -28,31 +29,49 @@
   </script>
 
   <style>
+    /* Только локальные стили контента contact (не трогаем sidebar) */
     .artwork-wrapper {
-      margin: 60px auto;
+      margin: 40px auto;
       text-align: center;
     }
-
+    .image-container {
+      display: inline-block;
+      text-align: center;
+    }
     .contact-artwork {
       display: block;
       max-width: 400px;
       width: 100%;
       height: auto;
       object-fit: contain;
-      margin: 10px auto 0 auto;
+      margin: 20px auto 0 auto;
     }
-
     .description {
-      font-size: 16px;
+      font-size: 14px;
       text-align: center;
       font-style: italic;
       color: #000;
-      margin-bottom: 15px;
-      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* Переключатель языка в сайдбаре (как на EN-страницах) */
+    .language-switch {
+      margin-top: 20px;
+      font-size: 16px;
+      display: flex;
+      gap: 10px;
+    }
+    .language-switch a {
+      text-decoration: none;
+      color: #000;
+    }
+    .language-switch a:hover {
+      color: #555;
     }
   </style>
 </head>
 <body>
+  
   <!-- Сайдбар -->
   <div class="sidebar">
   <a class="brand" href="index.html" aria-label="Go to home">
