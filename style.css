@@ -6,10 +6,10 @@
 }
 
 body {
-  font-family: Cormorant, serif;
+  font-family: 'Cormorant', serif;
   background-color: white;
   color: #000;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* Сайдбар */
@@ -19,21 +19,23 @@ body {
   padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
   position: fixed;
   top: 0;
   left: 0;
   overflow-y: auto;
+  background: white;
+  border-right: 1px solid #eee;
 }
 
 /* Логотип и имя */
 .brand {
   display: flex;
-  align-items: flex-start; /* имя выравнено по верхнему краю картинки */
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   text-decoration: none;
   color: inherit;
-  margin-bottom: 20px; /* отступ вниз */
+  margin-bottom: 20px;
 }
 
 .logo {
@@ -47,56 +49,13 @@ body {
   white-space: nowrap;
 }
 
-/* Активный пункт меню */
-.selected {
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
-}
-
-/* Ссылки в сайдбаре */
-.sidebar a {
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
-}
-
-a {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #555;
-  text-decoration: none;
-}
-
-/* Контент справа */
-.content {
-  width: 75%;
-  margin-left: auto;
-  margin-right: 0;
-  display: block;
-  min-height: 100vh;
-  background: white;
-}
-
-.main-image {
-  margin-left: auto;
-  margin-right: 0;
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Меню */
+/* Пункты меню */
 .menu-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .menu-toggle {
@@ -110,7 +69,6 @@ a:hover {
   flex-direction: column;
   margin-left: 10px;
   margin-top: 1px;
-  margin-bottom: 10px;
   gap: 10px;
 }
 
@@ -120,10 +78,61 @@ a:hover {
   color: black;
 }
 
+/* Ссылки */
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #555;
+  text-decoration: none;
+}
+
 /* Переключатель языка */
 .language-switch {
-  margin-top: auto; /* прижать к низу */
+  margin-top: auto;
   display: flex;
   gap: 10px;
   font-size: 16px;
+}
+
+/* Контент справа */
+.content {
+  margin-left: 25%;
+  padding: 40px;
+  min-height: 100vh;
+  background: white;
+}
+
+.main-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* 🔹 Адаптивность */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
 }
