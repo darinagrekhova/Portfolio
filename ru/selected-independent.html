@@ -1,5 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>selected independent | Darina Grekhova</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- внешний CSS -->
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<div class="artwork-wrapper">
+    body {
+      font-family: 'Cormorant', serif;
+      background-color: white;
+      color: #000;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 25%;
+      height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+    }
+
+    /* Лого и имя */
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 100px;
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 500;
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 18px;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 18px;
+      color: black;
+    }
+
+    .submenu {
+      display: none;
+      flex-direction: column;
+      margin-left: 10px;
+      margin-top: 1px;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .submenu a {
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .language-switch {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .content {
+      margin-left: 25%;
+      padding: 40px;
+      min-height: 100vh;
+      background: white;
+    }
+
+    .artwork-wrapper {
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .image-container {
+      display: inline-block;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .artworks {
+      display: block;
+      width: 400px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 10px auto;
+    }
+
+    .description {
+      font-size: 14px;
+      text-align: left;
+      font-style: italic;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+ <!-- Сайдбар -->
+<div class="sidebar">
+  <a href="index.html" class="brand">
+    <img src="../images/logo.jpg" alt="logo" class="logo" />
+    <div class="name">дарина грехова</div>
+  </a>
+    
+    <!-- 2025 -->
+    <div class="menu-item">
+      <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
+      <div class="submenu" id="submenu-2025">
+        <a href="notnotfun.html">нотнотфан</a>
+        <a href="foreigners.html">иностранцы</a>
+        <a href="volante.html">о полетах</a>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="menu-item">
+      <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
+      <div class="submenu" id="submenu-2024">
+        <a href="slavic-myth-on-canvas.html">из цикла о славянской мифологии живопись</a>
+        <a href="slavic-myth-on-paper.html">из цикла о славянской мифологии графика</a>
+      </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="menu-item">
+      <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
+      <div class="submenu" id="submenu-2023">
+        <a href="unknown-stories.html">неизвестные истории</a>
+        <a href="good-night.html">спокойной ночи</a>
+        <a href="multifigures.html">мультифигуры</a>
+      </div>
+    </div>
+
+    <!-- вне серий -->
+    <div class="menu-item">
+      <a href="selected-independent.html">вне серий</a>
+    </div>
+
+    <!-- книги и зины -->
+    <div class="menu-item">
+      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">книги и зины</div>
+      <div class="submenu" id="submenu-books-and-zines">
+        <a href="books-and-zines.html">книги и зины</a>
+      </div>
+    </div>
+
+    <!-- скетчбук -->
+    <div class="menu-item">
+      <a href="sketchbook.html">скетчбук</a>
+    </div>
+
+    <!-- CV -->
+    <div class="menu-item">
+      <a href="cv.html">cv</a>
+    </div>
+
+    <!-- Контакты -->
+    <div class="menu-item">
+      <a href="contact.html">контакты</a>
+    </div>
+
+  <!-- Переключатель языка -->
+  <div class="language-switch">
+    <a href="ru/notnotfun.html">ru</a>
+    <a href="../selected-independent.html">en</a>
+  </div>
+</div>
+
+<!-- Контент: Галерея -->
+<div class="content">
+
+ <div class="artwork-wrapper">
   <div class="image-container">
     <img src="images/selected independent/Devushka i sobaka.jpg" alt="Artwork" class="artworks" />
     <div class="description">
@@ -18,46 +228,18 @@
   </div>
 </div>
 
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-.artwork-wrapper {
-  margin: 40px auto;
-  text-align: center; /* чтобы все блоки были по центру страницы */
+<!-- JS для toggle меню -->
+<script>
+function toggleSubmenu(id) {
+  const submenu = document.getElementById('submenu-' + id);
+  submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
 }
+</script>
 
-.image-container {
-  display: inline-block;
-  text-align: left; /* текст подписи строго по левому краю относительно картинки */
-}
-
-.artworks {
-  display: block;
-  width: 400px; /* все картинки будут одинаково широкими */
-  
-  height: auto; /* сохраняем пропорции */
-  object-fit: contain;
-  margin: 0 auto 10px auto; /* центрируем и делаем отступ снизу */
-}
+</body>
+</html>
 
 
-.description {
-  font-size: 14px;
-  text-align: left;
-  font-style: italic;
-  color: #000;
-}
-</style>
+
