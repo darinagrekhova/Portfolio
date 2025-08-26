@@ -59,8 +59,78 @@
   </style>
 </head>
 <body>
-  <!-- Сайдбар -->
-  <div id="sidebar-container"></div>
+ 
+
+<!-- sidebar.html -->
+<div class="sidebar">
+  <a class="brand" href="index.html" aria-label="Go to home">
+    <img src="images/logo.jpg" alt="logo" class="logo">
+    <div class="name">darina grekhova</div>
+  </a>
+
+  <!-- 2025 -->
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
+    <div class="submenu" id="submenu-2025">
+      <a href="notnotfun.html">notnotfun</a>
+      <a href="foreigners.html">foreigners</a>
+      <a href="volante.html">volante</a>
+    </div>
+  </div>
+
+  <!-- 2024 -->
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
+    <div class="submenu" id="submenu-2024">
+      <a href="slavic-myth-on-canvas.html">slavic myth – painting</a>
+      <a href="slavic-myth-on-paper.html">slavic myth – graphic</a>
+    </div>
+  </div>
+
+  <!-- 2023 -->
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
+    <div class="submenu" id="submenu-2023">
+      <a href="unknown-stories.html">unknown stories</a>
+      <a href="good-night.html">good night</a>
+      <a href="multifigures.html">multifigures</a>
+    </div>
+  </div>
+
+  <!-- Outside series -->
+  <div class="menu-item">
+    <a href="selected-independent.html">outside series</a>
+  </div>
+
+  <!-- Books & Zines -->
+  <div class="menu-item">
+    <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books & zines</div>
+    <div class="submenu" id="submenu-books-and-zines">
+      <a href="books-and-zines.html">Twinkling trails</a>
+    </div>
+  </div>
+
+  <!-- Sketchbook -->
+  <div class="menu-item">
+    <a href="sketchbook.html">sketchbook</a>
+  </div>
+
+  <!-- CV -->
+  <div class="menu-item">
+    <a href="cv.html">cv</a>
+  </div>
+
+  <!-- Contacts -->
+  <div class="menu-item">
+    <a href="contact.html">contact</a>
+  </div>
+
+
+  <div class="language-switch">
+    <a href="cv.html">en</a>
+    <a href="ru/cv.html">ru</a>
+  </div>
+</div>
 
   <!-- Контент -->
   <div class="content">
