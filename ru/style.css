@@ -13,19 +13,17 @@ body {
 
 /* Сайдбар */
 .sidebar {
-  width: 25%;
-  height: 100vh;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-  background: white;
-  border-right: 1px solid #eee;
-}
+      width: 25%;
+      height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+    }
 
 /* Лого и имя */
 .brand {
