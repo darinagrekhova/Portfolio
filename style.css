@@ -1,18 +1,18 @@
-/* Сброс стилей */
+/* 🔹 Сброс стилей */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  height: 100%;
   font-family: 'Cormorant', serif;
   background-color: white;
   color: #000;
-  min-height: 100vh;
 }
 
-/* Сайдбар */
+/* 🔹 Сайдбар */
 .sidebar {
   width: 25%;
   height: 100vh;
@@ -25,9 +25,10 @@ body {
   overflow-y: auto;
   background: white;
   border-right: 1px solid #eee;
+  z-index: 10;
 }
 
-/* Логотип и имя */
+/* 🔹 Логотип и имя */
 .brand {
   display: flex;
   flex-direction: column;
@@ -49,11 +50,11 @@ body {
   white-space: nowrap;
 }
 
-/* Пункты меню */
+/* 🔹 Пункты меню */
 .menu-item {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   font-size: 18px;
   margin-bottom: 10px;
 }
@@ -68,8 +69,9 @@ body {
   display: none;
   flex-direction: column;
   margin-left: 10px;
-  margin-top: 1px;
   gap: 10px;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
 }
 
 .submenu a {
@@ -78,7 +80,7 @@ body {
   color: black;
 }
 
-/* Ссылки */
+/* 🔹 Ссылки */
 a {
   color: #000;
   text-decoration: none;
@@ -89,7 +91,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* Переключатель языка */
+/* 🔹 Переключатель языка */
 .language-switch {
   margin-top: auto;
   display: flex;
@@ -97,7 +99,7 @@ a:hover {
   font-size: 16px;
 }
 
-/* Контент справа */
+/* 🔹 Контент справа */
 .content {
   margin-left: 25%;
   padding: 40px;
@@ -105,6 +107,34 @@ a:hover {
   background: white;
 }
 
+/* 🔹 Галерея */
+.artwork-wrapper {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.image-container {
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+.artworks {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 10px auto;
+}
+
+.description {
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+  color: #000;
+}
+
+/* 🔹 Основное изображение (если используется) */
 .main-image {
   display: block;
   width: 100%;
@@ -121,6 +151,7 @@ a:hover {
     height: auto;
     border-right: none;
     border-bottom: 1px solid #eee;
+    padding: 20px;
   }
 
   .content {
