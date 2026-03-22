@@ -1,54 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B34ZQTM04E');
-</script>
-
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV - Darina Grekhova</title>
+  <title>CV — Darina Grekhova</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B34ZQTM04E');
+  </script>
+
+  <!-- Общие стили -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-  <script defer>
-    // функция для открытия/закрытия подпунктов
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-    }
-
-    // подгружаем sidebar.html
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("sidebar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("sidebar-container").innerHTML = data;
-        })
-        .catch(err => console.error("Error loading sidebar:", err));
-    });
-  </script>
-
   <style>
-    /* Контент CV */
+    /* Локальные стили CV */
     .cv {
       max-width: 700px;
-      margin: 60px auto 40px auto; /* центрирование и отступ сверху */
+      margin: 60px auto 40px auto;
       padding: 20px 40px;
       font-family: 'Cormorant', serif;
       color: #1a1a1a;
       line-height: 1.4;
-      background-color: transparent;
       text-align: left;
     }
 
@@ -69,82 +49,41 @@
       letter-spacing: 0.5px;
     }
   </style>
+
+  <script defer>
+    // toggle для подменю
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      if (submenu) {
+        submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+      }
+    }
+
+    // подгрузка sidebar.html
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("sidebar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("sidebar-container").innerHTML = data;
+
+          // активная ссылка CV
+          const links = document.querySelectorAll('.sidebar a');
+          links.forEach(link => {
+            if (link.getAttribute('href') === 'cv.html') {
+              link.classList.add('active');
+            }
+          });
+        })
+        .catch(err => console.error("Error loading sidebar:", err));
+    });
+  </script>
 </head>
 <body>
- 
 
-<!-- sidebar.html -->
-<div class="sidebar">
-  <a class="brand" href="index.html" aria-label="Go to home">
-    <img src="images/logo.jpg" alt="logo" class="logo">
-    <div class="name">darina grekhova</div>
-  </a>
+  <!-- sidebar подгружается сюда -->
+  <div id="sidebar-container"></div>
 
-  <!-- 2025 -->
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
-    <div class="submenu" id="submenu-2025">
-      <a href="notnotfun.html">notnotfun</a>
-      <a href="foreigners.html">foreigners</a>
-      <a href="volante.html">volante</a>
-    </div>
-  </div>
-
-  <!-- 2024 -->
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
-    <div class="submenu" id="submenu-2024">
-      <a href="slavic-myth-on-canvas.html">slavic myth – painting</a>
-      <a href="slavic-myth-on-paper.html">slavic myth – graphic</a>
-    </div>
-  </div>
-
-  <!-- 2023 -->
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
-    <div class="submenu" id="submenu-2023">
-      <a href="unknown-stories.html">unknown stories</a>
-      <a href="good-night.html">good night</a>
-      <a href="multifigures.html">multifigures</a>
-    </div>
-  </div>
-
-  <!-- Outside series -->
-  <div class="menu-item">
-    <a href="selected-independent.html">selected independent</a>
-  </div>
-
-  <!-- Books & Zines -->
-  <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books & zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="twinkling-trails.html">Twinkling trails</a>
-      </div>
-    </div>
-
-  <!-- drawings -->
-  <div class="menu-item">
-    <a href="drawings.html">drawings</a>
-  </div>
-
-  <!-- CV -->
-  <div class="menu-item">
-    <a href="cv.html">cv</a>
-  </div>
-
-  <!-- Contacts -->
-  <div class="menu-item">
-    <a href="contact.html">contact</a>
-  </div>
-
-
-  <div class="language-switch">
-    <a href="cv.html">en</a>
-    <a href="ru/cv.html">ru</a>
-  </div>
-</div>
-
-  <!-- Контент -->
+  <!-- Контент CV -->
   <div class="content">
     <div class="cv">
       <h2>education</h2>
