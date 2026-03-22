@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Qui exspectat | Darina Grekhova</title>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,14 +13,14 @@
     gtag('config', 'G-B34ZQTM04E');
   </script>
 
-  <!-- Шрифт и общий CSS -->
+  <!-- Шрифт и стили -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
 </head>
+
 <body>
 
-  <!-- Сайдбар (подгружается через JS) -->
+  <!-- Сайдбар -->
   <div id="sidebar-container"></div>
 
   <!-- Контент -->
@@ -44,19 +44,41 @@
     </div>
   </div>
 
-  <!-- JS: подгрузка сайдбара -->
+  <!-- JS -->
   <script>
     fetch('sidebar.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('sidebar-container').innerHTML = data;
+
+        // 🔹 language switch
+        const path = window.location.pathname;
+        const file = path.substring(path.lastIndexOf('/') + 1);
+
+        const langSwitch = document.querySelector('.language-switch');
+        if (langSwitch) {
+          langSwitch.innerHTML = `
+            <a href="ru/${file}">ru</a>
+            <a href="${file}">en</a>
+          `;
+        }
+
+        // 🔹 active state (подсветка текущей страницы)
+        const links = document.querySelectorAll('.menu-item a');
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === file) {
+            link.style.fontWeight = '600';
+          }
+        });
       });
 
-    // toggle для подменю
+    // 🔹 toggle submenu
     function toggleSubmenu(id) {
       const submenu = document.getElementById('submenu-' + id);
       if (submenu) {
-        submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
+        submenu.style.display =
+          submenu.style.display === 'flex' ? 'none' : 'flex';
       }
     }
   </script>
