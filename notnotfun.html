@@ -1,124 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B34ZQTM04E');
-</script>
-
-  
   <meta charset="UTF-8">
-  <title>notnotfun | Darina Grekhova</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>notnotfun — Darina Grekhova</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B34ZQTM04E');
+  </script>
+
+  <!-- Google Fonts & CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"> <!-- внешний CSS -->
+  <link rel="stylesheet" href="styles.css">
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Cormorant', serif;
-      background-color: white;
-      color: #000;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 25%;
-      height: 100vh;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow-y: auto;
-    }
-
-    /* Лого и имя */
-    .brand {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      text-decoration: none;
-      color: inherit;
-      margin-bottom: 20px;
-    }
-
-    .logo {
-      width: 100px;
-    }
-
-    .name {
-      font-size: 22px;
-      font-weight: 500;
-      text-transform: lowercase;
-      white-space: nowrap;
-    }
-
-    .menu-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 18px;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 18px;
-      color: black;
-    }
-
-    .submenu {
-      display: none;
-      flex-direction: column;
-      margin-left: 10px;
-      margin-top: 1px;
-      margin-bottom: 10px;
-      gap: 10px;
-    }
-
-    .submenu a {
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #555;
-      text-decoration: none;
-    }
-
-    .language-switch {
-      margin-top: auto;
-      display: flex;
-      gap: 10px;
-    }
-
-    .content {
-      margin-left: 25%;
-      padding: 40px;
-      min-height: 100vh;
-      background: white;
-    }
-
+    /* Локальные стили для галереи */
     .artwork-wrapper {
       margin: 40px auto;
       text-align: center;
@@ -145,124 +47,86 @@
       color: #000;
     }
   </style>
+
+  <script defer>
+    // Toggle для подменю
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById("submenu-" + id);
+      if (submenu) {
+        submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
+      }
+    }
+
+    // Подгрузка sidebar.html
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("sidebar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("sidebar-container").innerHTML = data;
+
+          // Активный state для notnotfun
+          const links = document.querySelectorAll('.sidebar a');
+          links.forEach(link => {
+            if (link.getAttribute('href') === 'notnotfun.html') {
+              link.classList.add('active');
+              // Если ссылка в подменю — раскрыть родительское меню
+              const parentSubmenu = link.closest('.submenu');
+              if (parentSubmenu) parentSubmenu.style.display = 'flex';
+            }
+          });
+        })
+        .catch(err => console.error("Error loading sidebar:", err));
+    });
+  </script>
 </head>
 <body>
 
-<!-- Сайдбар -->
-<div class="sidebar">
-  <a href="index.html" class="brand">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
-    <div class="name">darina grekhova</div>
-  </a>
+  <!-- Sidebar подгружается сюда -->
+  <div id="sidebar-container"></div>
 
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
-    <div class="submenu" id="submenu-2025">
-      <a href="notnotfun.html">notnotfun</a>
-      <a href="foreigners.html">foreigners</a>
-      <a href="volante.html">volante</a>
-    </div>
-  </div>
+  <!-- Контент -->
+  <div class="content">
 
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
-    <div class="submenu" id="submenu-2024">
-      <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
-      <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
-    </div>
-  </div>
-
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
-    <div class="submenu" id="submenu-2023">
-      <a href="unknown-stories.html">unknown stories</a>
-      <a href="good-night.html">good night</a>
-      <a href="multifigures.html">multifigures</a>
-    </div>
-  </div>
-
-  <div class="menu-item">
-    <a href="selected-independent.html">selected independent</a>
-  </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books & zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="twinkling-trails.html">Twinkling trails</a>
+    <!-- 1 -->
+    <div class="artwork-wrapper">
+      <div class="image-container">
+        <img src="images/nnf/1.jpg" alt="girl in a pool" class="artworks" />
+        <div class="description">
+          <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
+        </div>
       </div>
     </div>
 
-  <div class="menu-item">
-    <a href="drawings.html">drawings</a>
-  </div>
-
-  <div class="menu-item">
-    <a href="cv.html">cv</a>
-  </div>
-
-  <div class="menu-item">
-    <a href="contact.html">contacts</a>
-  </div>
-
-  <!-- Переключатель языка -->
-  <div class="language-switch">
-    <a href="ru/notnotfun.html">ru</a>
-    <a href="notnotfun.html">en</a>
-  </div>
-</div>
-
-<!-- Контент: Галерея -->
-<div class="content">
-
-  <!-- 1 -->
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/nnf/1.jpg" alt="girl in a pool" class="artworks" />
-      <div class="description">
-        <p><em>girl in a pool</em><br>oil on canvas<br>30×40 cm</p>
+    <!-- 2 -->
+    <div class="artwork-wrapper">
+      <div class="image-container">
+        <img src="images/nnf/fun-for-fun-sketch-2.jpg" alt="fun for fun sketch 2" class="artworks" />
+        <div class="description">
+          <p><em>fun for fun sketch 2</em><br>oil on paper<br>9×14 cm</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 2 -->
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/nnf/fun-for-fun-sketch-2.jpg" alt="fun for fun sketch 2" class="artworks" />
-      <div class="description">
-        <p><em>fun for fun sketch 2</em><br>oil on paper<br>9×14 cm</p>
+    <!-- 3 -->
+    <div class="artwork-wrapper">
+      <div class="image-container">
+        <img src="images/nnf/fun-for-fun-sketch-3.png" alt="fun for fun sketch 3" class="artworks" />
+        <div class="description">
+          <p><em>fun for fun sketch 3</em><br>oil on paper<br>9×14 cm</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 3 -->
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/nnf/fun-for-fun-sketch-3.png" alt="fun for fun sketch 3" class="artworks" />
-      <div class="description">
-        <p><em>fun for fun sketch 3</em><br>oil on paper<br>9×14 cm</p>
+    <!-- 4 -->
+    <div class="artwork-wrapper">
+      <div class="image-container">
+        <img src="images/nnf/fun-for-fun-sketch-4.png" alt="fun for fun sketch 4" class="artworks" />
+        <div class="description">
+          <p><em>fun for fun sketch 4</em><br>oil on paper<br>9×14 cm</p>
+        </div>
       </div>
     </div>
+
   </div>
-
-  <!-- 4 -->
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/nnf/fun-for-fun-sketch-4.png" alt="fun for fun sketch 4" class="artworks" />
-      <div class="description">
-        <p><em>fun for fun sketch 4</em><br>oil on paper<br>9×14 cm</p>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- JS для toggle меню -->
-<script>
-function toggleSubmenu(id) {
-  const submenu = document.getElementById('submenu-' + id);
-  submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
-}
-</script>
-
 </body>
 </html>
