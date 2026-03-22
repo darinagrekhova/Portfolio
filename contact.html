@@ -1,3 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B34ZQTM04E');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Darina Grekhova</title>
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+
+  <!-- Только локальные стили для contact -->
+  <style>
+    .contact-wrapper {
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .contact-text {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .contact-text em {
+      font-style: italic;
+    }
+
+    .contact-image {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      margin: 20px auto 0 auto;
+      display: block;
+    }
+  </style>
+
+</head>
+
 <body>
 
   <!-- Сайдбар -->
@@ -5,17 +56,21 @@
 
   <!-- Контент -->
   <div class="content">
-    <div class="artwork-wrapper">
-      <figure class="image-container">
-        <figcaption class="description">
-          <p><em>email: darinagrekhova@gmail.com</em><br>inst: @belfesprit</p>
-        </figcaption>
-        <img src="images/element_cv.jpg" alt="Artwork" class="contact-artwork" />
-      </figure>
+    <div class="contact-wrapper">
+
+      <div class="contact-text">
+        <p>
+          <em>email:</em> darinagrekhova@gmail.com<br>
+          <em>instagram:</em> @belfesprit
+        </p>
+      </div>
+
+      <img src="images/element_cv.jpg" alt="contact image" class="contact-image">
+
     </div>
   </div>
 
-  <!-- JS В САМОМ КОНЦЕ -->
+  <!-- JS -->
   <script>
     fetch('sidebar.html')
       .then(response => response.text())
@@ -45,3 +100,4 @@
   </script>
 
 </body>
+</html>
