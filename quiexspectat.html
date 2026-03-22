@@ -1,228 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>Qui exspectat | Darina Grekhova</title>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B34ZQTM04E');
+  </script>
 
-  gtag('config', 'G-B34ZQTM04E');
-</script>
-
-  
-  <meta charset="UTF-8">
-  <title>volante | Darina Grekhova</title>
+  <!-- Шрифт и общий CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"> <!-- твой внешний CSS -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <link rel="stylesheet" href="styles.css">
 
-    body {
-      font-family: 'Cormorant', serif;
-      background-color: white;
-      color: #000;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 25%;
-      height: 100vh;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow-y: auto;
-    }
-
-    /* Лого и имя */
-.brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 100px;
-}
-
-.name {
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
-}
-
-    .menu-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 18px;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 18px;
-      color: black;
-    }
-
-    .submenu {
-      display: none;
-      flex-direction: column;
-      margin-left: 10px;
-      margin-top: 1px;
-      margin-bottom: 10px;
-      gap: 10px;
-    }
-
-    .submenu a {
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #555;
-      text-decoration: none;
-    }
-
-    .language-switch {
-      margin-top: auto;
-      display: flex;
-      gap: 10px;
-    }
-
-    .content {
-      margin-left: 25%;
-      padding: 40px;
-      min-height: 100vh;
-      background: white;
-    }
-
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    .image-container {
-      display: inline-block;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .artworks {
-      display: block;
-      width: 400px;
-      height: auto;
-      object-fit: contain;
-      margin: 0 auto 10px auto;
-    }
-
-    .description {
-      font-size: 14px;
-      text-align: left;
-      font-style: italic;
-      color: #000;
-    }
-  </style>
 </head>
 <body>
 
-<!-- Сайдбар -->
-<div class="sidebar">
-  <a href="index.html" class="brand">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
-    <div class="name">darina grekhova</div>
-  </a>
+  <!-- Сайдбар (подгружается через JS) -->
+  <div id="sidebar-container"></div>
 
-  <!-- SERIES -->
-  <div class="menu-item"><a href="quiexspectat.html">qui exspectat</a></div>
-  <div class="menu-item"><a href="notnotfun.html">notnotfun</a></div>
-  <div class="menu-item"><a href="foreigners.html">foreigners</a></div>
+  <!-- Контент -->
+  <div class="content">
+    <div class="artwork-wrapper">
+      <div class="image-container">
+        <img src="images/qui-exspectat/ladder.jpg" alt="ladder" class="artworks">
+        <div class="description">
+          <p><em>ladder</em><br>oil on canvas<br>50×60 cm</p>
+        </div>
+      </div>
+    </div>
 
-  <div class="menu-item"><a href="unknown-stories.html">unknown stories</a></div>
-
-  <div class="menu-item"><a href="slavic-myth-on-canvas.html">slavic myth on canvas</a></div>
-  <div class="menu-item"><a href="slavic-myth-on-paper.html">slavic myth on paper</a></div>
-
-  <div class="menu-item"><a href="volante.html">volante</a></div>
-  <div class="menu-item"><a href="multifigures.html">multifigures</a></div>
-
-  <div class="menu-item"><a href="good-night.html">good night</a></div>
-
-  <!-- OTHER -->
-  <div class="menu-item"><a href="selected-independent.html">selected independent</a></div>
-  <div class="menu-item"><a href="drawings.html">drawings</a></div>
-
-  <!-- BOOKS -->
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('books')">books & zines</div>
-    <div class="submenu" id="submenu-books">
-      <a href="twinkling-trails.html">twinkling trails</a>
+    <div class="artwork-wrapper">
+      <div class="image-container">
+        <img src="images/qui-exspectat/foreignerX.jpg" alt="quid agis" class="artworks">
+        <div class="description">
+          <p><em>quid agis</em><br>oil on canvas<br>50×60 cm</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- INFO -->
-  <div class="menu-item"><a href="cv.html">cv</a></div>
-  <div class="menu-item"><a href="contact.html">contacts</a></div>
+  <!-- JS: подгрузка сайдбара -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+      });
 
-  <!-- LANG -->
- / <div class="language-switch">
-    <a href="ru/volante.html">ru</a>
-    <a href="volante.html">en</a>
-  </div>
-</div> /
-
-<!-- Контент: Галерея -->
-<div class="content">
-  <!-- Генерация блоков для 10 изображений -->
-
-<div class="artwork-wrapper">
-  <div class="image-container">
-    <img src="images/qui-exspectat/ladder.jpg" alt="Artwork" class="artworks" />
-    <div class="description">
-      <p><em>ladder</em><br>oil on canvas<br>50×60 cm</p>
-    </div>
-  </div>
-</div>
-
-
-<div class="artwork-wrapper">
-  <div class="image-container">
-    <img src="images/qui-exspectat/foreignerX.jpg" alt="Artwork" class="artworks" />
-    <div class="description">
-      <p><em>quid agis</em><br>oil on canvas<br>50×60 cm</p>
-    </div>
-  </div>
-</div>
- 
-</div>
-
-<!-- JS для toggle меню -->
-<script>
-function toggleSubmenu(id) {
-  const submenu = document.getElementById('submenu-' + id);
-  submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
-}
-</script>
+    // toggle для подменю
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById('submenu-' + id);
+      if (submenu) {
+        submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
+      }
+    }
+  </script>
 
 </body>
 </html>
