@@ -135,7 +135,7 @@ a:hover {
   max-width: calc(100% - 200px);   /* отступ слева/справа, чтобы не заезжала под сайдбар */
   max-height: calc(100vh - 80px);  /* отступ сверху/снизу */
   transform: translate(-50%, -50%) scale(1.6); /* центрирование + масштаб */
-  z-index: 150; 
+  z-index: 100; 
   cursor: zoom-out;
   transition: transform 0.4s ease;
 }
