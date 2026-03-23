@@ -41,6 +41,8 @@ body {
 
 .logo {
   width: 100px;
+  height: auto;
+  display: block;
 }
 
 .name {
@@ -54,12 +56,14 @@ body {
   font-size: 18px;
 }
 
-.menu-item a {
-  text-decoration: none;
+
+
+a {
   color: black;
+  text-decoration: none;
 }
 
-.menu-item a:hover {
+a:hover {
   color: #555;
 }
 
@@ -88,12 +92,12 @@ body {
 /* CONTENT FIX */
 .content {
   margin-left: 25%;
-  padding: 40px;
+  padding: 60px 40px;
   min-height: 100vh;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* ВАЖНО */
 }
 
 /* VIEWER */
@@ -109,10 +113,14 @@ body {
 
 /* IMAGE */
 .viewer-image {
-  max-width: 42%;
+  width: 100%;
+  max-width: 520px;   /* фиксированный визуальный размер */
   max-height: 65vh;
+
   object-fit: contain;
   transition: opacity 0.4s ease;
+
+  cursor: pointer;
 }
 
 .viewer-image.fade-out {
@@ -121,7 +129,7 @@ body {
 
 /* CAPTION */
 .viewer-caption {
-  margin-top: 12px;
+  margin-top: 16px;
   font-size: 14px;
   text-align: center;
   font-style: italic;
@@ -138,8 +146,9 @@ body {
   cursor: pointer;
 }
 
-.prev { left: -60px; }
-.next { right: -60px; }
+.prev { left: 0; transform: translate(-120%, -50%); }
+.next { right: 0; transform: translate(120%, -50%); }
+
 
 
 
