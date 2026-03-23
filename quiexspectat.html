@@ -13,6 +13,7 @@
     gtag('config', 'G-B34ZQTM04E');
   </script>
 
+  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -36,8 +37,6 @@
 
   </div>
 </div>
-
-
 
 <script>
 
@@ -71,10 +70,21 @@ const gallery = [
 let current = 0;
 let isAnimating = false;
 
+/* ===== PRELOAD ===== */
+function preloadImages() {
+  gallery.forEach(item => {
+    const img = new Image();
+    img.src = item.src;
+  });
+}
+
 /* ===== RENDER ===== */
 function render() {
-  document.getElementById("artwork").src = gallery[current].src;
-  document.getElementById("caption").innerHTML =
+  const img = document.getElementById("artwork");
+  const caption = document.getElementById("caption");
+
+  img.src = gallery[current].src;
+  caption.innerHTML =
     `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
 }
 
@@ -89,6 +99,7 @@ function nextImage() {
   setTimeout(() => {
 
     if (current === gallery.length - 1) {
+      isAnimating = false;
       goToNextSeries();
       return;
     }
@@ -108,8 +119,8 @@ function prevImage() {
   if (isAnimating || current === 0) return;
 
   isAnimating = true;
-  const img = document.getElementById("artwork");
 
+  const img = document.getElementById("artwork");
   img.classList.add("fade-out");
 
   setTimeout(() => {
@@ -128,6 +139,9 @@ function prevImage() {
 function getNextSeries() {
   const file = window.location.pathname.split("/").pop();
   const index = seriesOrder.indexOf(file);
+
+  if (index === -1) return null;
+
   return seriesOrder[index + 1] || null;
 }
 
@@ -135,28 +149,32 @@ function goToNextSeries() {
   const next = getNextSeries();
   if (!next) return;
 
- 
-
   setTimeout(() => {
     window.location.href = next;
-  }, 1000);
+  }, 800);
 }
 
-/* ===== SIDEBAR ===== */
-fetch('/sidebar.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('sidebar-container').innerHTML = data;
+/* ===== SIDEBAR LOAD ===== */
+function loadSidebar() {
+  fetch('/sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-container').innerHTML = data;
 
-    const file = window.location.pathname.split("/").pop();
+      const file = window.location.pathname.split("/").pop();
 
-    document.querySelectorAll('.menu-item a').forEach(link => {
-      if (link.getAttribute('href') === file) {
-        link.classList.add('active');
-      }
+      document.querySelectorAll('.menu-item a').forEach(link => {
+        if (link.getAttribute('href') === file) {
+          link.classList.add('active');
+        }
+      });
+    })
+    .catch(() => {
+      console.error('Sidebar not loaded');
     });
-  });
+}
 
+/* ===== TOGGLE ===== */
 function toggleSubmenu(id) {
   const submenu = document.getElementById('submenu-' + id);
   if (submenu) {
@@ -165,8 +183,12 @@ function toggleSubmenu(id) {
   }
 }
 
-/* INIT */
-render();
+/* ===== INIT ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  preloadImages();
+  render();
+  loadSidebar();
+});
 
 </script>
 
