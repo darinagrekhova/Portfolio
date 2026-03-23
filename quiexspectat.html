@@ -4,26 +4,14 @@
   <meta charset="UTF-8">
   <title>Qui exspectat | Darina Grekhova</title>
 
-  <!-- Google tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-B34ZQTM04E');
-  </script>
-
-  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
 <div class="content">
   <div class="viewer">
 
@@ -38,127 +26,28 @@
   </div>
 </div>
 
+<script src="gallery.js"></script>
+
 <script>
-
-/* ===== GALLERY ===== */
-const gallery = [
-  {
-    src: "images/qui-exspectat/ladder.jpg",
-    title: "ladder",
-    meta: "oil on canvas<br>50×60 cm"
-  },
-  {
-    src: "images/qui-exspectat/foreignerX.jpg",
-    title: "quid agis",
-    meta: "oil on canvas<br>50×60 cm"
-  }
-];
-
-let current = 0;
-let isAnimating = false;
-
-/* ===== PRELOAD ===== */
-function preloadImages() {
-  gallery.forEach(item => {
-    const img = new Image();
-    img.src = item.src;
-  });
-}
-
-/* ===== RENDER ===== */
-function render() {
-  const img = document.getElementById("artwork");
-  const caption = document.getElementById("caption");
-
-  img.src = gallery[current].src;
-  caption.innerHTML =
-    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
-}
-
-/* ===== NAV ===== */
-function nextImage() {
-  if (isAnimating) return;
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current + 1) % gallery.length;
-
-    render();
-    img.classList.remove("zoomed"); // сброс зума
-
-    setTimeout(() => {
-      img.classList.remove("fade-out");
-      isAnimating = false;
-    }, 100);
-  }, 400);
-}
-
-function prevImage() {
-  if (isAnimating) return;
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current - 1 + gallery.length) % gallery.length;
-
-    render();
-    img.classList.remove("zoomed"); // сброс зума
-
-    setTimeout(() => {
-      img.classList.remove("fade-out");
-      isAnimating = false;
-    }, 100);
-  }, 400);
-}
-
-/* ===== SIDEBAR LOAD ===== */
-function loadSidebar() {
-  fetch('/sidebar.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('sidebar-container').innerHTML = data;
-
-      const file = window.location.pathname.split("/").pop();
-
-      document.querySelectorAll('.menu-item a').forEach(link => {
-        if (link.getAttribute('href') === file) {
-          link.classList.add('active');
-        }
-      });
-    })
-    .catch(() => {
-      console.error('Sidebar not loaded');
-    });
-}
-
-/* ===== TOGGLE ===== */
-function toggleSubmenu(id) {
-  const submenu = document.getElementById('submenu-' + id);
-  if (submenu) {
-    submenu.style.display =
-      submenu.style.display === 'flex' ? 'none' : 'flex';
-  }
-}
-
-/* ===== INIT ===== */
 document.addEventListener("DOMContentLoaded", () => {
-  preloadImages();
-  render();
+
+  initGallery([
+    {
+      src: "images/qui-exspectat/ladder.jpg",
+      title: "ladder",
+      meta: "oil on canvas<br>50×60 cm"
+    },
+    {
+      src: "images/qui-exspectat/foreignerX.jpg",
+      title: "quid agis",
+      meta: "oil on canvas<br>50×60 cm"
+    }
+  ]);
+
+  initZoom();
   loadSidebar();
 
-  // подключаем zoom после загрузки DOM
-  const artworkImg = document.getElementById("artwork");
-
-  artworkImg.addEventListener("click", () => {
-    artworkImg.classList.toggle("zoomed");
-  });
 });
-
 </script>
 
 </body>
