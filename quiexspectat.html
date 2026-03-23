@@ -13,75 +13,159 @@
     gtag('config', 'G-B34ZQTM04E');
   </script>
 
-  <!-- Шрифт и стили -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <!-- Сайдбар -->
-  <div id="sidebar-container"></div>
+<div id="sidebar-container"></div>
 
-  <!-- Контент -->
-  <div class="content">
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/qui-exspectat/ladder.jpg" alt="ladder" class="artworks">
-        <div class="description">
-          <p><em>ladder</em><br>oil on canvas<br>50×60 cm</p>
-        </div>
-      </div>
-    </div>
+<div class="content">
+  <div class="viewer">
 
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/qui-exspectat/foreignerX.jpg" alt="quid agis" class="artworks">
-        <div class="description">
-          <p><em>quid agis</em><br>oil on canvas<br>50×60 cm</p>
-        </div>
-      </div>
-    </div>
+    <img id="artwork" class="viewer-image" src="" alt="">
+
+    <div class="viewer-caption" id="caption"></div>
+
+    <button class="nav prev" onclick="prevImage()">←</button>
+    <button class="nav next" onclick="nextImage()">→</button>
+
   </div>
+</div>
 
-  <!-- JS -->
-  <script>
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
+<div id="blackout"></div>
 
-        // 🔹 language switch
-        const path = window.location.pathname;
-        const file = path.substring(path.lastIndexOf('/') + 1);
+<script>
+/* ===== SERIES ORDER ===== */
+const seriesOrder = [
+  "quiexspectat.html",
+  "notnotfun.html",
+  "foreigners.html",
+  "slavic-myth-on-canvas.html",
+  "slavic-myth-on-paper.html",
+  "volante.html",
+  "unknown-stories.html",
+  "multifigures.html",
+  "good-night.html"
+];
 
-        const langSwitch = document.querySelector('.language-switch');
-        if (langSwitch) {
-          langSwitch.innerHTML = `
-            <a href="ru/${file}">ru</a>
-            <a href="${file}">en</a>
-          `;
-        }
+/* ===== GALLERY ===== */
+const gallery = [
+  {
+    src: "images/qui-exspectat/ladder.jpg",
+    title: "ladder",
+    meta: "oil on canvas<br>50×60 cm"
+  },
+  {
+    src: "images/qui-exspectat/foreignerX.jpg",
+    title: "quid agis",
+    meta: "oil on canvas<br>50×60 cm"
+  }
+];
 
-        // 🔹 active state (подсветка текущей страницы)
-        const links = document.querySelectorAll('.menu-item a');
-        links.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href === file) {
-            link.style.fontWeight = '600';
-          }
-        });
-      });
+let current = 0;
+let isAnimating = false;
 
-    // 🔹 toggle submenu
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById('submenu-' + id);
-      if (submenu) {
-        submenu.style.display =
-          submenu.style.display === 'flex' ? 'none' : 'flex';
-      }
+/* ===== RENDER ===== */
+function render() {
+  const img = document.getElementById("artwork");
+  const caption = document.getElementById("caption");
+
+  img.src = gallery[current].src;
+  caption.innerHTML = `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
+}
+
+/* ===== NAVIGATION ===== */
+function nextImage() {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+
+    if (current === gallery.length - 1) {
+      goToNextSeries();
+      return;
     }
-  </script>
+
+    current++;
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+
+  }, 400);
+}
+
+function prevImage() {
+  if (isAnimating || current === 0) return;
+
+  isAnimating = true;
+  const img = document.getElementById("artwork");
+
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    current--;
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+
+  }, 400);
+}
+
+/* ===== NEXT SERIES ===== */
+function getNextSeries() {
+  const file = window.location.pathname.split("/").pop();
+  const index = seriesOrder.indexOf(file);
+  return seriesOrder[index + 1] || null;
+}
+
+function goToNextSeries() {
+  const next = getNextSeries();
+  if (!next) return;
+
+  const blackout = document.getElementById("blackout");
+  blackout.classList.add("active");
+
+  setTimeout(() => {
+    window.location.href = next;
+  }, 1000);
+}
+
+/* ===== SIDEBAR LOAD ===== */
+fetch('sidebar.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('sidebar-container').innerHTML = data;
+
+    const file = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll('.menu-item a').forEach(link => {
+      if (link.getAttribute('href') === file) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+function toggleSubmenu(id) {
+  const submenu = document.getElementById('submenu-' + id);
+  if (submenu) {
+    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+  }
+}
+
+/* INIT */
+render();
+</script>
 
 </body>
 </html>
