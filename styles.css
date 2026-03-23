@@ -158,10 +158,13 @@ a:hover {
   border: none;
   cursor: pointer;
   z-index: 20; /* выше картинки и зума */
+  color: #000;              /* цвет стрелки */
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+  opacity: 0.5;             /* базовая прозрачность */
 }
 
-.prev { left: -70px; transform: translateY(-50%); }
-.next { right: -70px; transform: translateY(-50%); }
+.prev { left: -80px; transform: translateY(-50%); }
+.next { right: -80px; transform: translateY(-50%); }
 
 /* ACTIVE LINK */
 .menu-item a.active {
