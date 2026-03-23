@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>notnotfun — Darina Grekhova</title>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,128 +13,201 @@
     gtag('config', 'G-B34ZQTM04E');
   </script>
 
-  <!-- Google Fonts & CSS -->
+  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-
-  <style>
-    /* Локальные стили для галереи */
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    .image-container {
-      display: inline-block;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .artworks {
-      display: block;
-      width: 400px;
-      height: auto;
-      object-fit: contain;
-      margin: 0 auto 10px auto;
-    }
-
-    .description {
-      font-size: 14px;
-      text-align: left;
-      font-style: italic;
-      color: #000;
-    }
-  </style>
-
-  <script defer>
-    // Toggle для подменю
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      if (submenu) {
-        submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-      }
-    }
-
-    // Подгрузка sidebar.html
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("sidebar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("sidebar-container").innerHTML = data;
-
-          // Активный state для notnotfun
-          const links = document.querySelectorAll('.sidebar a');
-          links.forEach(link => {
-            if (link.getAttribute('href') === 'notnotfun.html') {
-              link.classList.add('active');
-              // Если ссылка в подменю — раскрыть родительское меню
-              const parentSubmenu = link.closest('.submenu');
-              if (parentSubmenu) parentSubmenu.style.display = 'flex';
-            }
-          });
-        })
-        .catch(err => console.error("Error loading sidebar:", err));
-    });
-  </script>
 </head>
+
 <body>
 
-  <!-- Sidebar подгружается сюда -->
-  <div id="sidebar-container"></div>
+<!-- SIDEBAR -->
+<div id="sidebar-container"></div>
 
-  <!-- Контент -->
-  <div class="content">
+<!-- CONTENT -->
+<div class="content">
+  <div class="viewer">
 
-    <!-- 1 -->
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/nnf/fun-for-fun-1.jpg" alt="girl in a pool" class="artworks" />
-        <div class="description">
-          <p><em>1</em><br>oil on canvas<br>30×40 cm</p>
-        </div>
-      </div>
-    </div>
+    <button class="nav prev" onclick="prevImage()">←</button>
 
-    <!-- 2 -->
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/nnf/fun-for-fun-2.jpg" alt="fun for fun sketch 2" class="artworks" />
-        <div class="description">
-          <p><em>2</em><br>oil on paper<br>9×14 cm</p>
-        </div>
-      </div>
-    </div>
+    <img id="artwork" class="viewer-image" src="" alt="">
 
-    <!-- 3 -->
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/nnf/fun-for-fun-3.jpg" alt="fun for fun sketch 3" class="artworks" />
-        <div class="description">
-          <p><em>3</em><br>oil on paper<br>9×14 cm</p>
-        </div>
-      </div>
-    </div>
+    <button class="nav next" onclick="nextImage()">→</button>
 
-    <!-- 4 -->
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/nnf/fun-for-fun-4.jpg" alt="fun for fun sketch 4" class="artworks" />
-        <div class="description">
-          <p><em>4</em><br>oil on paper<br>9×14 cm</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="artwork-wrapper">
-      <div class="image-container">
-        <img src="images/nnf/fun-for-fun-5.jpg" alt="fun for fun sketch 4" class="artworks" />
-        <div class="description">
-          <p><em>5</em><br>oil on paper<br>9×14 cm</p>
-        </div>
-      </div>
-    </div>
+    <div class="viewer-caption" id="caption"></div>
 
   </div>
+</div>
+
+<script>
+
+/* ===== SERIES ORDER ===== */
+const seriesOrder = [
+  "quiexspectat.html",
+  "notnotfun.html",
+  "foreigners.html",
+  "slavic-myth-on-canvas.html",
+  "slavic-myth-on-paper.html",
+  "volante.html",
+  "unknown-stories.html",
+  "multifigures.html",
+  "good-night.html"
+];
+
+/* ===== GALLERY ===== */
+const gallery = [
+  {
+    src: "images/nnf/fun-for-fun-1.jpg",
+    title: "funforfun 1",
+    meta: "oil on canvas<br>30×40 cm"
+  },
+  {
+    src: "images/nnf/fun-for-fun-2.jpg",
+    title: "funforfun 2",
+    meta: "oil on canvas<br>30×40 cm"
+  },
+  {
+    src: "images/nnf/fun-for-fun-3.jpg",
+    title: "funforfun 3",
+    meta: "oil on canvas<br>30×40 cm"
+  },
+  {
+    src: "images/nnf/fun-for-fun-4.jpg",
+    title: "funforfun 4",
+    meta: "oil on canvas<br>30×40 cm"
+  },
+  {
+    src: "images/nnf/fun-for-fun-5.jpg",
+    title: "funforfun 5",
+    meta: "oil on canvas<br>30×40 cm"
+  }
+  
+];
+
+let current = 0;
+let isAnimating = false;
+
+/* ===== PRELOAD ===== */
+function preloadImages() {
+  gallery.forEach(item => {
+    const img = new Image();
+    img.src = item.src;
+  });
+}
+
+/* ===== RENDER ===== */
+function render() {
+  const img = document.getElementById("artwork");
+  const caption = document.getElementById("caption");
+
+  img.src = gallery[current].src;
+  caption.innerHTML =
+    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
+}
+
+/* ===== NAV ===== */
+function nextImage() {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+
+    if (current === gallery.length - 1) {
+      isAnimating = false;
+      goToNextSeries();
+      return;
+    }
+
+    current++;
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+
+  }, 400);
+}
+
+function prevImage() {
+  if (isAnimating || current === 0) return;
+
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    current--;
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+
+  }, 400);
+}
+
+/* ===== NEXT SERIES ===== */
+function getNextSeries() {
+  const file = window.location.pathname.split("/").pop();
+  const index = seriesOrder.indexOf(file);
+
+  if (index === -1) return null;
+
+  return seriesOrder[index + 1] || null;
+}
+
+function goToNextSeries() {
+  const next = getNextSeries();
+  if (!next) return;
+
+  setTimeout(() => {
+    window.location.href = next;
+  }, 800);
+}
+
+/* ===== SIDEBAR LOAD ===== */
+function loadSidebar() {
+  fetch('/sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-container').innerHTML = data;
+
+      const file = window.location.pathname.split("/").pop();
+
+      document.querySelectorAll('.menu-item a').forEach(link => {
+        if (link.getAttribute('href') === file) {
+          link.classList.add('active');
+        }
+      });
+    })
+    .catch(() => {
+      console.error('Sidebar not loaded');
+    });
+}
+
+/* ===== TOGGLE ===== */
+function toggleSubmenu(id) {
+  const submenu = document.getElementById('submenu-' + id);
+  if (submenu) {
+    submenu.style.display =
+      submenu.style.display === 'flex' ? 'none' : 'flex';
+  }
+}
+
+/* ===== INIT ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  preloadImages();
+  render();
+  loadSidebar();
+});
+
+</script>
+
 </body>
 </html>
+
