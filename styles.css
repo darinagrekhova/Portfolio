@@ -149,7 +149,20 @@ a:hover {
 .prev { left: 0; transform: translate(-120%, -50%); }
 .next { right: 0; transform: translate(120%, -50%); }
 
-
+/* ZOOM EFFECT */
+.viewer-image.zoomed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: none;
+  max-height: 90vh;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  cursor: zoom-out;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
 
 
 /* ACTIVE LINK */
