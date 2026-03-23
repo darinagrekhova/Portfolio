@@ -129,7 +129,7 @@ a:hover {
   left: 50%;
 
   transform-origin: var(--zoom-x, 50%) var(--zoom-y, 50%);
-  transform: translate(-50%, -50%) scale(1.4);
+  transform: translate(-50%, -50%) scale(1.1);
 
   max-width: calc(100% - 220px);
   max-height: calc(100vh - 100px);
