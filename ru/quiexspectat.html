@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Qui exspectat | Дарина Грехова</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+<div id="sidebar-container"></div>
+
+<div class="content">
+  <div class="viewer">
+
+    <img id="artwork" class="viewer-image" src="" alt="">
+    <div class="viewer-caption" id="caption"></div>
+
+    <button class="nav prev" onclick="prevImage()">←</button>
+    <button class="nav next" onclick="nextImage()">→</button>
+
+  </div>
+</div>
+
+<div id="blackout"></div>
+
+<script>
+const seriesOrder = [
+  "quiexspectat.html",
+  "notnotfun.html",
+  "foreigners.html",
+  "slavic-myth-on-canvas.html",
+  "slavic-myth-on-paper.html",
+  "volante.html",
+  "unknown-stories.html",
+  "multifigures.html",
+  "good-night.html"
+];
+
+const gallery = [
+  {
+    src: "../images/qui-exspectat/ladder.jpg",
+    title: "ladder",
+    meta: "масло, холст<br>50×60 см"
+  },
+  {
+    src: "../images/qui-exspectat/foreignerX.jpg",
+    title: "quid agis",
+    meta: "масло, холст<br>50×60 см"
+  }
+];
+
+let current = 0;
+let isAnimating = false;
+
+function render() {
+  document.getElementById("artwork").src = gallery[current].src;
+  document.getElementById("caption").innerHTML =
+    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
+}
+
+function nextImage() {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    if (current === gallery.length - 1) {
+      goToNextSeries();
+      return;
+    }
+
+    current++;
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+
+  }, 400);
+}
+
+function prevImage() {
+  if (isAnimating || current === 0) return;
+
+  isAnimating = true;
+  const img = document.getElementById("artwork");
+
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    current--;
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+
+  }, 400);
+}
+
+function getNextSeries() {
+  const file = window.location.pathname.split("/").pop();
+  const index = seriesOrder.indexOf(file);
+  return seriesOrder[index + 1] || null;
+}
+
+function goToNextSeries() {
+  const next = getNextSeries();
+  if (!next) return;
+
+  document.getElementById("blackout").classList.add("active");
+
+  setTimeout(() => {
+    window.location.href = next;
+  }, 1000);
+}
+
+fetch('../sidebar.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('sidebar-container').innerHTML = data;
+  });
+
+render();
+</script>
+
+</body>
+</html>
