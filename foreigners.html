@@ -112,10 +112,16 @@ function render() {
 }
   
   // ===== ZOOM =====
-const artworkImg = document.getElementById("artwork");
+document.addEventListener("DOMContentLoaded", () => {
+  preloadImages();
+  render();
+  loadSidebar();
 
-artworkImg.addEventListener("click", () => {
-  artworkImg.classList.toggle("zoomed");
+  const artworkImg = document.getElementById("artwork");
+
+  artworkImg.addEventListener("click", () => {
+    artworkImg.classList.toggle("zoomed");
+  });
 });
   
 
@@ -130,6 +136,8 @@ function nextImage() {
   setTimeout(() => {
     current = (current + 1) % gallery.length; // циклический переход к первой картинке
     render();
+
+    img.classList.remove("zoomed");
 
     setTimeout(() => {
       img.classList.remove("fade-out");
@@ -148,7 +156,9 @@ function prevImage() {
   setTimeout(() => {
     current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
     render();
-
+    
+img.classList.remove("zoomed");
+    
     setTimeout(() => {
       img.classList.remove("fade-out");
       isAnimating = false;
