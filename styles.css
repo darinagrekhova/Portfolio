@@ -149,19 +149,19 @@ a:hover {
 .prev { left: 0; transform: translate(-120%, -50%); }
 .next { right: 0; transform: translate(120%, -50%); }
 
-/* ZOOM EFFECT */
+/* ZOOM EFFECT — сдержанный */
 .viewer-image.zoomed {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 80%;
-  max-width: none;
-  max-height: 90vh;
+  width: 70%;           /* чуть меньше, чем раньше */
+  max-width: calc(100% - 200px);  /* чтобы не заходила под сайдбар */
+  max-height: calc(100vh - 80px); /* отступ сверху/снизу */
   transform: translate(-50%, -50%);
   z-index: 9999;
   cursor: zoom-out;
   transition: all 0.4s ease;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  /* убрали box-shadow */
 }
 
 
