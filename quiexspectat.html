@@ -87,6 +87,14 @@ function render() {
   caption.innerHTML =
     `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
 }
+  
+  // ===== ZOOM =====
+const artworkImg = document.getElementById("artwork");
+
+artworkImg.addEventListener("click", () => {
+  artworkImg.classList.toggle("zoomed");
+});
+  
 
 /* ===== NAV ===== */
 function nextImage() {
