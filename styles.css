@@ -160,8 +160,8 @@ a:hover {
   z-index: 20; /* выше картинки и зума */
 }
 
-.prev { left: 30px; transform: translateY(-50%); }
-.next { right: 30px; transform: translateY(-50%); }
+.prev { left: -50px; transform: translateY(-50%); }
+.next { right: -50px; transform: translateY(-50%); }
 
 /* ACTIVE LINK */
 .menu-item a.active {
