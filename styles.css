@@ -56,8 +56,6 @@ body {
   font-size: 18px;
 }
 
-
-
 a {
   color: black;
   text-decoration: none;
@@ -89,7 +87,8 @@ a:hover {
   gap: 10px;
   font-size: 16px;
 }
-/* CONTENT FIX */
+
+/* CONTENT */
 .content {
   margin-left: 25%;
   padding: 60px 40px;
@@ -97,35 +96,51 @@ a:hover {
 
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* ВАЖНО */
+  align-items: flex-start;
 }
 
 /* VIEWER */
 .viewer {
   position: relative;
-  width: 520px;       /* фиксированная ширина */
-  height: 650px;      /* фиксированная высота */
-  
+  width: 520px;       
+  height: 650px;      
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* центрирует картинку внутри контейнера */
-  overflow: hidden;   /* картинка не выходит за края контейнера */
+  justify-content: center; 
+  overflow: hidden;   
 }
 
 /* IMAGE */
 .viewer-image {
   width: 100%;
   max-width: 520px;
-  max-height: 100%;    /* растянуть по высоте контейнера */
+  max-height: 100%;
   
   object-fit: contain;
-  transition: transform 0.3s ease, opacity 0.4s ease; /* плавный зум + плавное появление */
-
+  transition: transform 0.3s ease, opacity 0.4s ease;
   cursor: pointer;
 }
 
+.viewer-image.fade-out {
+  opacity: 0;
+}
 
+/* ZOOM */
+.viewer-image.zoomed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: auto;  
+  height: auto;
+  max-width: calc(100% - 160px);  /* отступ от краев */
+  max-height: calc(100vh - 80px); 
+  transform: translate(-50%, -50%) scale(1.8); /* центрирование + масштаб */
+  z-index: 9999; 
+  cursor: zoom-out;
+  transition: transform 0.4s ease;
+}
 
 /* CAPTION */
 .viewer-caption {
@@ -133,6 +148,7 @@ a:hover {
   font-size: 14px;
   text-align: center;
   font-style: italic;
+  line-height: 1.4;
 }
 
 /* NAV */
@@ -144,25 +160,11 @@ a:hover {
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.prev { left: -60px; transform: translate(-50%); }
-.next { right: -60px; transform: translate(-50%); }
-
-/* ZOOM EFFECT — сдержанный */
-.viewer-image.zoomed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: auto;                  /* авто для сохранения пропорций */
-  max-width: calc(100vw - 280px); /* ширина экрана минус сайдбар + отступ */
-  max-height: calc(100vh - 80px);
-  transform: translate(-50%, -50%); /* центрирование */
   z-index: 10;
-  cursor: zoom-out;
-  transition: all 0.4s ease;
 }
 
+.prev { left: -80px; }
+.next { right: -80px; }
 
 /* ACTIVE LINK */
 .menu-item a.active {
