@@ -103,31 +103,29 @@ a:hover {
 /* VIEWER */
 .viewer {
   position: relative;
-  width: 100%;
-  max-width: 900px;
-
+  width: 520px;       /* фиксированная ширина */
+  height: 650px;      /* фиксированная высота */
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* центрирует изображение по вертикали */
+  justify-content: center; /* центрирует картинку внутри контейнера */
 }
 
 /* IMAGE */
 .viewer-image {
   width: 100%;
-  max-width: 520px;   /* фиксированный визуальный размер */
-  max-height: 65vh;
-
+  max-width: 520px;
+  max-height: 100%;    /* растянуть по высоте контейнера */
+  
   object-fit: contain;
-  transition: opacity 0.4s ease;
+  transition: transform 0.3s ease, opacity 0.4s ease; /* плавный зум + плавное появление */
 
   cursor: pointer;
-  transition: transform 0.3s ease; /* для плавного зума */
-  transform-origin: center center;  /* центрируем масштаб */
 }
 
-.viewer-image.fade-out {
-  opacity: 0;
+.viewer-image.zoomed {
+  transform: scale(1.5); /* масштабирование */
 }
 
 /* CAPTION */
