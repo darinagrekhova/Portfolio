@@ -160,8 +160,8 @@ a:hover {
   width: 70%;           /* чуть меньше, чем раньше */
   max-width: calc(100% - 200px);  /* чтобы не заходила под сайдбар */
   max-height: calc(100vh - 80px); /* отступ сверху/снизу */
-  transform: translate(-50%, -50%);
-  z-index: 9999;
+  transform: scale(1.8);
+  z-index: 10;
   cursor: zoom-out;
   transition: all 0.4s ease;
   /* убрали box-shadow */
