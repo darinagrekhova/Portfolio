@@ -16,6 +16,9 @@
   <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Gallery JS -->
+  <script type="module" src="gallery.js"></script>
 </head>
 
 <body>
@@ -27,191 +30,37 @@
 <div class="content">
   <div class="viewer">
 
-    <button class="nav prev" onclick="prevImage()">←</button>
+    <button class="nav prev">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
 
-    <button class="nav next" onclick="nextImage()">→</button>
+    <button class="nav next">→</button>
 
     <div class="viewer-caption" id="caption"></div>
 
   </div>
 </div>
 
-<script>
+<script type="module">
+  // Здесь просто передаем массив изображений для этой страницы в gallery.js
+  import { initGallery } from './gallery.js';
 
+  const gallery = [
+    { src: "images/foreigner/foreigner-I.jpg", title: "foreigner I", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-II.jpg", title: "foreigner II", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-III.jpg", title: "foreigner III", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-IV.jpg", title: "foreigner IV", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-V.jpg", title: "foreigner V", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-VI.jpg", title: "foreigner VI", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-VII.jpg", title: "foreigner VII", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-VIII.jpg", title: "foreigner VIII", meta: "oil on Inkjet paper<br>29×21 cm" },
+    { src: "images/foreigner/foreigner-IX.jpg", title: "foreigner IX", meta: "oil on canvas<br>70×90 cm" }
+  ];
 
-/* ===== GALLERY ===== */
-const gallery = [
-  {
-    src: "images/foreigner/foreigner-I.jpg",
-    title: "foreigner I",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-II.jpg",
-    title: "foreigner II",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-III.jpg",
-    title: "foreigner III",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-IV.jpg",
-    title: "foreigner IV",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-V.jpg",
-    title: "foreigner V",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-VI.jpg",
-    title: "foreigner VI",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-VII.jpg",
-    title: "foreigner VII",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-VIII.jpg",
-    title: "foreigner VIII",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner-IX.jpg",
-    title: "foreigner IX",
-    meta: "oil on canvas<br>70×90 cm"
-  }
-];
-
-let current = 0;
-let isAnimating = false;
-
-/* ===== PRELOAD ===== */
-function preloadImages() {
-  gallery.forEach(item => {
-    const img = new Image();
-    img.src = item.src;
+  document.addEventListener("DOMContentLoaded", () => {
+    initGallery(gallery);
   });
-}
-
-/* ===== RENDER ===== */
-function render() {
-  const img = document.getElementById("artwork");
-  const caption = document.getElementById("caption");
-
-  img.src = gallery[current].src;
-  caption.innerHTML =
-    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
-}
-  
-  // ===== ZOOM =====
-document.addEventListener("DOMContentLoaded", () => {
-  preloadImages();
-  render();
-  loadSidebar();
-
-  const artworkImg = document.getElementById("artwork");
-
-  artworkImg.addEventListener("click", () => {
-    artworkImg.classList.toggle("zoomed");
-  });
-});
-  
-
-/* ===== NAV ===== */
-function nextImage() {
-  if (isAnimating) return;
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current + 1) % gallery.length; // циклический переход к первой картинке
-    render();
-
-    img.classList.remove("zoomed");
-
-    setTimeout(() => {
-      img.classList.remove("fade-out");
-      isAnimating = false;
-    }, 100);
-  }, 400);
-}
-
-function prevImage() {
-  if (isAnimating) return;
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
-    render();
-    
-img.classList.remove("zoomed");
-    
-    setTimeout(() => {
-      img.classList.remove("fade-out");
-      isAnimating = false;
-    }, 100);
-  }, 400);
-}
-
-
-
-
-
-/* ===== SIDEBAR LOAD ===== */
-function loadSidebar() {
-  fetch('/sidebar.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('sidebar-container').innerHTML = data;
-
-      const file = window.location.pathname.split("/").pop();
-
-      document.querySelectorAll('.menu-item a').forEach(link => {
-        if (link.getAttribute('href') === file) {
-          link.classList.add('active');
-        }
-      });
-    })
-    .catch(() => {
-      console.error('Sidebar not loaded');
-    });
-}
-
-/* ===== TOGGLE ===== */
-function toggleSubmenu(id) {
-  const submenu = document.getElementById('submenu-' + id);
-  if (submenu) {
-    submenu.style.display =
-      submenu.style.display === 'flex' ? 'none' : 'flex';
-  }
-}
-
-/* ===== INIT ===== */
-document.addEventListener("DOMContentLoaded", () => {
-  preloadImages();
-  render();
-  loadSidebar();
-});
-
 </script>
 
 </body>
 </html>
-
-
-
-
-
