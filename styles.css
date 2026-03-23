@@ -1,169 +1,64 @@
-/* 🔹 Сброс стилей */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  font-family: 'Cormorant', serif;
-  background-color: white;
-  color: #000;
-}
-
-/* 🔹 Сайдбар */
-.sidebar {
-  width: 25%;
+/* VIEWER */
+.viewer {
+  position: relative;
   height: 100vh;
-  padding: 40px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+}
+
+.viewer-image {
+  max-width: 55%;
+  max-height: 70vh;
+  object-fit: contain;
+  transition: opacity 0.4s ease;
+}
+
+.viewer-image.fade-out {
+  opacity: 0;
+}
+
+.viewer-caption {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* BLACKOUT */
+#blackout {
   position: fixed;
   top: 0;
   left: 0;
-  overflow-y: auto;
-  background: white;
-  border-right: 1px solid #eee;
-  z-index: 10;
-}
-
-/* 🔹 Логотип и имя */
-.brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 100px;
-}
-
-.name {
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
-}
-
-/* 🔹 Пункты меню */
-.menu-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.menu-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  color: black;
-}
-
-.submenu {
-  display: none;
-  flex-direction: column;
-  margin-left: 10px;
-  gap: 10px;
-  transition: max-height 0.3s ease;
-  overflow: hidden;
-}
-
-.submenu a {
-  font-size: 16px;
-  text-decoration: none;
-  color: black;
-}
-
-/* 🔹 Ссылки */
-a {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #555;
-  text-decoration: none;
-}
-
-/* 🔹 Переключатель языка */
-.language-switch {
-  margin-top: auto;
-  display: flex;
-  gap: 10px;
-  font-size: 16px;
-}
-
-/* 🔹 Контент справа */
-.content {
-  margin-left: 25%;
-  padding: 40px;
-  min-height: 100vh;
-  background: white;
-}
-
-/* 🔹 Галерея */
-.artwork-wrapper {
-  margin: 40px auto;
-  text-align: center;
-}
-
-.image-container {
-  display: inline-block;
-  text-align: left;
-  vertical-align: top;
-}
-
-.artworks {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto 10px auto;
-}
-
-.description {
-  font-size: 14px;
-  text-align: left;
-  font-style: italic;
-  color: #000;
-}
-
-/* 🔹 Основное изображение (если используется) */
-.main-image {
-  display: block;
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  z-index: 999;
 }
 
-/* 🔹 Адаптивность */
-@media (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid #eee;
-    padding: 20px;
-  }
+#blackout.active {
+  opacity: 1;
+}
 
-  .content {
-    margin-left: 0;
-    padding: 20px;
-  }
-
-  .logo {
-    width: 80px;
-  }
-
-  .name {
-    font-size: 18px;
-  }
+/* ACTIVE LINK */
+.menu-item a.active {
+  font-weight: 600;
 }
