@@ -40,8 +40,6 @@
 
 <script>
 
-
-
 /* ===== GALLERY ===== */
 const gallery = [
   {
@@ -76,14 +74,6 @@ function render() {
   caption.innerHTML =
     `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
 }
-  
-  // ===== ZOOM =====
-const artworkImg = document.getElementById("artwork");
-
-artworkImg.addEventListener("click", () => {
-  artworkImg.classList.toggle("zoomed");
-});
-  
 
 /* ===== NAV ===== */
 function nextImage() {
@@ -94,8 +84,10 @@ function nextImage() {
   img.classList.add("fade-out");
 
   setTimeout(() => {
-    current = (current + 1) % gallery.length; // циклический переход к первой картинке
+    current = (current + 1) % gallery.length;
+
     render();
+    img.classList.remove("zoomed"); // сброс зума
 
     setTimeout(() => {
       img.classList.remove("fade-out");
@@ -112,8 +104,10 @@ function prevImage() {
   img.classList.add("fade-out");
 
   setTimeout(() => {
-    current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
+    current = (current - 1 + gallery.length) % gallery.length;
+
     render();
+    img.classList.remove("zoomed"); // сброс зума
 
     setTimeout(() => {
       img.classList.remove("fade-out");
@@ -121,10 +115,6 @@ function prevImage() {
     }, 100);
   }, 400);
 }
-
-
-
-
 
 /* ===== SIDEBAR LOAD ===== */
 function loadSidebar() {
@@ -160,6 +150,13 @@ document.addEventListener("DOMContentLoaded", () => {
   preloadImages();
   render();
   loadSidebar();
+
+  // подключаем zoom после загрузки DOM
+  const artworkImg = document.getElementById("artwork");
+
+  artworkImg.addEventListener("click", () => {
+    artworkImg.classList.toggle("zoomed");
+  });
 });
 
 </script>
