@@ -1,47 +1,229 @@
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>drawings | Darina Grekhova</title>
 
-  <!-- Сайдбар -->
-  <div id="sidebar-container"></div>
-
-  <!-- Контент -->
-  <div class="content">
-    <div class="artwork-wrapper">
-      <figure class="image-container">
-        <figcaption class="description">
-          <p><em>email: darinagrekhova@gmail.com</em><br>inst: @belfesprit</p>
-        </figcaption>
-        <img src="images/element_cv.jpg" alt="Artwork" class="contact-artwork" />
-      </figure>
-    </div>
-  </div>
-
-  <!-- JS В САМОМ КОНЦЕ -->
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
   <script>
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-
-        // язык
-        const path = window.location.pathname;
-        const file = path.substring(path.lastIndexOf('/') + 1);
-
-        const langSwitch = document.querySelector('.language-switch');
-        if (langSwitch) {
-          langSwitch.innerHTML = `
-            <a href="ru/${file}">ru</a>
-            <a href="${file}">en</a>
-          `;
-        }
-      });
-
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById('submenu-' + id);
-      if (submenu) {
-        submenu.style.display =
-          submenu.style.display === 'flex' ? 'none' : 'flex';
-      }
-    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B34ZQTM04E');
   </script>
 
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div id="sidebar-container"></div>
+
+<!-- CONTENT -->
+<div class="content">
+  <div class="viewer">
+
+    <button class="nav prev" onclick="prevImage()">←</button>
+
+    <img id="artwork" class="viewer-image" src="" alt="">
+
+    <button class="nav next" onclick="nextImage()">→</button>
+
+    <div class="viewer-caption" id="caption"></div>
+
+  </div>
+</div>
+
+<script>
+
+/* ===== SERIES ORDER ===== */
+const seriesOrder = [
+  "quiexspectat.html",
+  "notnotfun.html",
+  "foreigners.html",
+  "slavic-myth-on-canvas.html",
+  "slavic-myth-on-paper.html",
+  "volante.html",
+  "unknown-stories.html",
+  "multifigures.html",
+  "good-night.html"
+];
+
+/* ===== GALLERY ===== */
+const gallery = [
+  {
+    src: "images/drawings/1.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+  },
+  {
+    src: "images/drawings/2.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+  },
+  {
+    src: "images/drawings/3.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+  },
+  {
+   src: "images/drawings/4.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+  },
+  {
+   src: "images/drawings/5.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+  },
+  {
+   src: "images/drawings/6.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+  },
+  {
+    src: "images/drawings/7.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+  },
+  {
+    src: "images/drawings/8.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm"
+  },
+  {
+   src: "images/drawings/9.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm"
+  },
+  {
+    src: "images/drawings/10.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm"
+ },
+  {
+    src: "images/drawings/11.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm"
+  },
+  {
+    src: "images/drawings/12.jpg",
+    title: "untitled",
+    meta: "markers, pencils and ink on paper<br>14×21 cm"
+  }
+];
+
+let current = 0;
+let isAnimating = false;
+
+/* ===== PRELOAD ===== */
+function preloadImages() {
+  gallery.forEach(item => {
+    const img = new Image();
+    img.src = item.src;
+  });
+}
+
+/* ===== RENDER ===== */
+function render() {
+  const img = document.getElementById("artwork");
+  const caption = document.getElementById("caption");
+
+  img.src = gallery[current].src;
+  caption.innerHTML =
+    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
+}
+  
+  // ===== ZOOM =====
+const artworkImg = document.getElementById("artwork");
+
+artworkImg.addEventListener("click", () => {
+  artworkImg.classList.toggle("zoomed");
+});
+  
+
+/* ===== NAV ===== */
+function nextImage() {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    current = (current + 1) % gallery.length; // циклический переход к первой картинке
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+  }, 400);
+}
+
+function prevImage() {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+  }, 400);
+}
+
+
+
+
+
+/* ===== SIDEBAR LOAD ===== */
+function loadSidebar() {
+  fetch('/sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-container').innerHTML = data;
+
+      const file = window.location.pathname.split("/").pop();
+
+      document.querySelectorAll('.menu-item a').forEach(link => {
+        if (link.getAttribute('href') === file) {
+          link.classList.add('active');
+        }
+      });
+    })
+    .catch(() => {
+      console.error('Sidebar not loaded');
+    });
+}
+
+/* ===== TOGGLE ===== */
+function toggleSubmenu(id) {
+  const submenu = document.getElementById('submenu-' + id);
+  if (submenu) {
+    submenu.style.display =
+      submenu.style.display === 'flex' ? 'none' : 'flex';
+  }
+}
+
+/* ===== INIT ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  preloadImages();
+  render();
+  loadSidebar();
+});
+
+</script>
+
 </body>
+</html>
