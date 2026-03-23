@@ -127,15 +127,14 @@ a:hover {
   position: fixed;
   top: 50%;
   left: 50%;
-
-  transform-origin: var(--zoom-x, 50%) var(--zoom-y, 50%);
-  transform: translate(-50%, -50%) scale(1.1);
-
-  max-width: calc(100% - 220px);
-  max-height: calc(100vh - 100px);
-
+  transform: translate(-50%, -50%); /* центрирование */
+  width: auto;
+  height: auto;
+  max-width: calc(100% - 200px);   /* не заезжает под сайдбар */
+  max-height: calc(100vh - 80px);  /* отступ сверху/снизу */
   z-index: 100;
   cursor: zoom-out;
+  transition: transform 0.35s ease;
 }
 
 /* CAPTION */
