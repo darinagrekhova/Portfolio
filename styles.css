@@ -125,7 +125,7 @@ a:hover {
 }
 
 .viewer-image.zoomed {
-  transform: scale(1.5); /* масштабирование */
+  transform: scale(1.2); /* масштабирование */
 }
 
 /* CAPTION */
