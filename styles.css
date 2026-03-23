@@ -104,12 +104,11 @@ a:hover {
   position: relative;
   width: 520px;       
   height: 650px;      
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-  overflow: hidden;   
+  /* overflow: hidden;  убрали, чтобы стрелки не обрезались */
 }
 
 /* IMAGE */
@@ -117,7 +116,6 @@ a:hover {
   width: 100%;
   max-width: 520px;
   max-height: 100%;
-  
   object-fit: contain;
   transition: transform 0.3s ease, opacity 0.4s ease;
   cursor: pointer;
@@ -132,12 +130,12 @@ a:hover {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: auto;  
+  width: auto;
   height: auto;
-  max-width: calc(100% - 160px);  /* отступ от краев */
-  max-height: calc(100vh - 80px); 
-  transform: translate(-50%, -50%) scale(1.8); /* центрирование + масштаб */
-  z-index: 100; 
+  max-width: calc(100% - 200px);   /* отступ слева/справа, чтобы не заезжала под сайдбар */
+  max-height: calc(100vh - 80px);  /* отступ сверху/снизу */
+  transform: translate(-50%, -50%) scale(1.6); /* центрирование + масштаб */
+  z-index: 150; 
   cursor: zoom-out;
   transition: transform 0.4s ease;
 }
@@ -151,19 +149,19 @@ a:hover {
   line-height: 1.4;
 }
 
-/* NAV */
+/* NAVIGATION ARROWS */
 .nav {
-  position: absolute;
+  position: fixed; /* фиксированные на экране */
   top: 50%;
   font-size: 28px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 20; /* выше картинки */
+  z-index: 200; /* выше картинки и зума */
 }
 
-.prev { left: -60px; transform: translateY(-50%); }
-.next { right: -60px; transform: translateY(-50%); }
+.prev { left: 30px; transform: translateY(-50%); }
+.next { right: 30px; transform: translateY(-50%); }
 
 /* ACTIVE LINK */
 .menu-item a.active {
