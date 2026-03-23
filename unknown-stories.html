@@ -13,254 +13,163 @@
 </script>
 
   
-  <meta charset="UTF-8">
-  <title>unknown stories | Darina Grekhova</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"> <!-- твой внешний CSS -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+ <body>
 
-    body {
-      font-family: 'Cormorant', serif;
-      background-color: white;
-      color: #000;
-      min-height: 100vh;
-    }
+<!-- SIDEBAR -->
+<div id="sidebar-container"></div>
 
-    .sidebar {
-      width: 25%;
-      height: 100vh;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow-y: auto;
-    }
-
-   /* Лого и имя */
-.brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 100px;
-}
-
-.name {
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
-}
-
-    .menu-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 18px;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 18px;
-      color: black;
-    }
-
-    .submenu {
-      display: none;
-      flex-direction: column;
-      margin-left: 10px;
-      margin-top: 1px;
-      margin-bottom: 10px;
-      gap: 10px;
-    }
-
-    .submenu a {
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #555;
-      text-decoration: none;
-    }
-
-    .language-switch {
-      margin-top: auto;
-      display: flex;
-      gap: 10px;
-    }
-
-    .content {
-      margin-left: 25%;
-      padding: 40px;
-      min-height: 100vh;
-      background: white;
-    }
-
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    .image-container {
-      display: inline-block;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .artworks {
-      display: block;
-      width: 400px;
-      height: auto;
-      object-fit: contain;
-      margin: 0 auto 10px auto;
-    }
-
-    .description {
-      font-size: 14px;
-      text-align: left;
-      font-style: italic;
-      color: #000;
-    }
-  </style>
-</head>
-<body>
-
-<!-- Сайдбар -->
-<div class="sidebar">
-  <a href="index.html" class="brand">
-    <img src="../images/logo.jpg" alt="logo" class="logo" />
-    <div class="name">darina grekhova</div>
-  </a>
-
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
-    <div class="submenu" id="submenu-2025">
-      <a href="notnotfun.html">notnotfun</a>
-      <a href="foreigners.html">foreigners</a>
-      <a href="volante.html">volante</a>
-    </div>
-  </div>
-
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
-    <div class="submenu" id="submenu-2024">
-      <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
-      <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
-    </div>
-  </div>
-
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
-    <div class="submenu" id="submenu-2023">
-      <a href="unknown-stories.html">unknown stories</a>
-      <a href="good-night.html">good night</a>
-      <a href="multifigures.html">multifigures</a>
-    </div>
-  </div>
-
-  <div class="menu-item">
-    <a href="selected-independent.html">selected independent</a>
-  </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books & zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="twinkling-trails.html">Twinkling trails</a>
-      </div>
-    </div>
-
-  <div class="menu-item">
-    <a href="drawings.html">drawings</a>
-  </div>
-
-  <div class="menu-item">
-    <a href="cv.html">cv</a>
-  </div>
-
-  <div class="menu-item">
-    <a href="contact.html">contacts</a>
-  </div>
-
-  <!-- Переключатель языка -->
-  <div class="language-switch">
-    <a href="ru/unknown-stories.html">ru</a>
-    <a href="unknown-stories.html">en</a>
-  </div>
-</div>
-
-<!-- Контент: Галерея -->
+<!-- CONTENT -->
 <div class="content">
-  <!-- Генерация блоков для 10 изображений -->
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/summerbrief/unknown stories/1.jpg" alt="Artwork" class="artworks" />
-      <div class="description">
-        <p><em>unknown stories/1</em><br>mixed media on paper<br>10×15 cm</p>
-      </div>
-    </div>
+  <div class="viewer">
+
+    <button class="nav prev" onclick="prevImage()">←</button>
+
+    <img id="artwork" class="viewer-image" src="" alt="">
+
+    <button class="nav next" onclick="nextImage()">→</button>
+
+    <div class="viewer-caption" id="caption"></div>
+
   </div>
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/summerbrief/unknown stories/2.jpg" alt="Artwork" class="artworks" />
-      <div class="description">
-        <p><em>unknown stories/2</em><br>mixed media on paper<br>10×15 cm</p>
-      </div>
-    </div>
-  </div>
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/summerbrief/unknown stories/3.jpg" alt="Artwork" class="artworks" />
-      <div class="description">
-        <p><em>unknown stories/3</em><br>mixed media on paper<br>10×15 cm</p>
-      </div>
-    </div>
-  </div>
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/summerbrief/unknown stories/4.jpg" alt="Artwork" class="artworks" />
-      <div class="description">
-        <p><em>unknown stories/4</em><br>mixed media on paper<br>10×15 cm</p>
-      </div>
-    </div>
-  </div>
-  <div class="artwork-wrapper">
-    <div class="image-container">
-      <img src="images/summerbrief/unknown stories/5.jpg" alt="Artwork" class="artworks" />
-      <div class="description">
-        <p><em>unknown stories/5</em><br>mixed media on paper<br>10×15 cm</p>
-      </div>
-    </div>
-  </div>
-  
 </div>
 
-<!-- JS для toggle меню -->
 <script>
+
+/* ===== GALLERY ===== */
+const gallery = [
+  {
+    src: "images/summerbrief/unknown stories/1.jpg",
+    title: "unknown stories 1",
+    meta: "mixed media on paper<br>10×15 cm"
+  },
+  {
+     src: "images/summerbrief/unknown stories/2.jpg",
+    title: "unknown stories 2",
+    meta: "mixed media on paper<br>10×15 cm"
+  },
+  {
+     src: "images/summerbrief/unknown stories/3.jpg",
+    title: "unknown stories 3",
+    meta: "mixed media on paper<br>10×15 cm"
+  },
+  {
+     src: "images/summerbrief/unknown stories/4.jpg",
+    title: "unknown stories 4",
+    meta: "mixed media on paper<br>10×15 cm"
+  },
+  {
+     src: "images/summerbrief/unknown stories/5.jpg",
+    title: "unknown stories 1",
+    meta: "mixed media on paper<br>10×15 cm"
+  }
+];
+
+let current = 0;
+let isAnimating = false;
+
+/* ===== PRELOAD ===== */
+function preloadImages() {
+  gallery.forEach(item => {
+    const img = new Image();
+    img.src = item.src;
+  });
+}
+
+/* ===== RENDER ===== */
+function render() {
+  const img = document.getElementById("artwork");
+  const caption = document.getElementById("caption");
+
+  img.src = gallery[current].src;
+  caption.innerHTML =
+    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
+}
+  
+  // ===== ZOOM =====
+const artworkImg = document.getElementById("artwork");
+
+artworkImg.addEventListener("click", () => {
+  artworkImg.classList.toggle("zoomed");
+});
+  
+
+/* ===== NAV ===== */
+function nextImage() {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    current = (current + 1) % gallery.length; // циклический переход к первой картинке
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+  }, 400);
+}
+
+function prevImage() {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const img = document.getElementById("artwork");
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
+    render();
+
+    setTimeout(() => {
+      img.classList.remove("fade-out");
+      isAnimating = false;
+    }, 100);
+  }, 400);
+}
+
+
+
+
+
+/* ===== SIDEBAR LOAD ===== */
+function loadSidebar() {
+  fetch('/sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-container').innerHTML = data;
+
+      const file = window.location.pathname.split("/").pop();
+
+      document.querySelectorAll('.menu-item a').forEach(link => {
+        if (link.getAttribute('href') === file) {
+          link.classList.add('active');
+        }
+      });
+    })
+    .catch(() => {
+      console.error('Sidebar not loaded');
+    });
+}
+
+/* ===== TOGGLE ===== */
 function toggleSubmenu(id) {
   const submenu = document.getElementById('submenu-' + id);
-  submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
+  if (submenu) {
+    submenu.style.display =
+      submenu.style.display === 'flex' ? 'none' : 'flex';
+  }
 }
+
+/* ===== INIT ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  preloadImages();
+  render();
+  loadSidebar();
+});
+
 </script>
 
 </body>

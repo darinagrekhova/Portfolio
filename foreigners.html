@@ -40,68 +40,51 @@
 
 <script>
 
-/* ===== SERIES ORDER ===== */
-const seriesOrder = [
-  "quiexspectat.html",
-  "notnotfun.html",
-  "foreigners.html",
-  "slavic-myth-on-canvas.html",
-  "slavic-myth-on-paper.html",
-  "volante.html",
-  "unknown-stories.html",
-  "multifigures.html",
-  "good-night.html"
-];
 
 /* ===== GALLERY ===== */
 const gallery = [
   {
-    src: "images/foreigner/foreigner I.jpg",
+    src: "images/foreigner/foreigner-I.jpg",
     title: "foreigner I",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner I.jpg",
-    title: "foreigner I",
-    meta: "oil on Inkjet paper<br>29×21 cm"
-  },
-  {
-    src: "images/foreigner/foreigner II.jpg",
+    src: "images/foreigner/foreigner-II.jpg",
     title: "foreigner II",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner III.jpg",
+    src: "images/foreigner/foreigner-III.jpg",
     title: "foreigner III",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner IV.jpg",
+    src: "images/foreigner/foreigner-IV.jpg",
     title: "foreigner IV",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner V.jpg",
+    src: "images/foreigner/foreigner-V.jpg",
     title: "foreigner V",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner VI.jpg",
+    src: "images/foreigner/foreigner-VI.jpg",
     title: "foreigner VI",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner VII.jpg",
+    src: "images/foreigner/foreigner-VII.jpg",
     title: "foreigner VII",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner VIII.jpg",
+    src: "images/foreigner/foreigner-VIII.jpg",
     title: "foreigner VIII",
     meta: "oil on Inkjet paper<br>29×21 cm"
   },
   {
-    src: "images/foreigner/foreigner IX.jpg",
+    src: "images/foreigner/foreigner-IX.jpg",
     title: "foreigner IX",
     meta: "oil on canvas<br>70×90 cm"
   }
@@ -129,10 +112,16 @@ function render() {
 }
   
   // ===== ZOOM =====
-const artworkImg = document.getElementById("artwork");
+document.addEventListener("DOMContentLoaded", () => {
+  preloadImages();
+  render();
+  loadSidebar();
 
-artworkImg.addEventListener("click", () => {
-  artworkImg.classList.toggle("zoomed");
+  const artworkImg = document.getElementById("artwork");
+
+  artworkImg.addEventListener("click", () => {
+    artworkImg.classList.toggle("zoomed");
+  });
 });
   
 
@@ -147,6 +136,8 @@ function nextImage() {
   setTimeout(() => {
     current = (current + 1) % gallery.length; // циклический переход к первой картинке
     render();
+
+    img.classList.remove("zoomed");
 
     setTimeout(() => {
       img.classList.remove("fade-out");
@@ -165,7 +156,9 @@ function prevImage() {
   setTimeout(() => {
     current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
     render();
-
+    
+img.classList.remove("zoomed");
+    
     setTimeout(() => {
       img.classList.remove("fade-out");
       isAnimating = false;
