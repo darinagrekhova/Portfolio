@@ -163,8 +163,8 @@ a:hover {
   opacity: 0.5;             /* базовая прозрачность */
 }
 
-.prev { left: -80px; transform: translateY(-50%); }
-.next { right: -80px; transform: translateY(-50%); }
+.prev { left: -100px; transform: translateY(-50%); }
+.next { right: -100px; transform: translateY(-50%); }
 
 /* ACTIVE LINK */
 .menu-item a.active {
