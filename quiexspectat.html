@@ -105,62 +105,37 @@ function nextImage() {
   img.classList.add("fade-out");
 
   setTimeout(() => {
-
-    if (current === gallery.length - 1) {
-      isAnimating = false;
-      goToNextSeries();
-      return;
-    }
-
-    current++;
+    current = (current + 1) % gallery.length; // циклический переход к первой картинке
     render();
 
     setTimeout(() => {
       img.classList.remove("fade-out");
       isAnimating = false;
     }, 100);
-
   }, 400);
 }
 
 function prevImage() {
-  if (isAnimating || current === 0) return;
-
+  if (isAnimating) return;
   isAnimating = true;
 
   const img = document.getElementById("artwork");
   img.classList.add("fade-out");
 
   setTimeout(() => {
-    current--;
+    current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
     render();
 
     setTimeout(() => {
       img.classList.remove("fade-out");
       isAnimating = false;
     }, 100);
-
   }, 400);
 }
 
-/* ===== NEXT SERIES ===== */
-function getNextSeries() {
-  const file = window.location.pathname.split("/").pop();
-  const index = seriesOrder.indexOf(file);
 
-  if (index === -1) return null;
 
-  return seriesOrder[index + 1] || null;
-}
 
-function goToNextSeries() {
-  const next = getNextSeries();
-  if (!next) return;
-
-  setTimeout(() => {
-    window.location.href = next;
-  }, 800);
-}
 
 /* ===== SIDEBAR LOAD ===== */
 function loadSidebar() {
