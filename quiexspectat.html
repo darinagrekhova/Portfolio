@@ -19,24 +19,29 @@
 
 <body>
 
+<!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
+<!-- CONTENT -->
 <div class="content">
   <div class="viewer">
 
+    <button class="nav prev" onclick="prevImage()">←</button>
+
     <img id="artwork" class="viewer-image" src="" alt="">
 
-    <div class="viewer-caption" id="caption"></div>
-
-    <button class="nav prev" onclick="prevImage()">←</button>
     <button class="nav next" onclick="nextImage()">→</button>
+
+    <div class="viewer-caption" id="caption"></div>
 
   </div>
 </div>
 
+<!-- BLACKOUT -->
 <div id="blackout"></div>
 
 <script>
+
 /* ===== SERIES ORDER ===== */
 const seriesOrder = [
   "quiexspectat.html",
@@ -69,14 +74,12 @@ let isAnimating = false;
 
 /* ===== RENDER ===== */
 function render() {
-  const img = document.getElementById("artwork");
-  const caption = document.getElementById("caption");
-
-  img.src = gallery[current].src;
-  caption.innerHTML = `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
+  document.getElementById("artwork").src = gallery[current].src;
+  document.getElementById("caption").innerHTML =
+    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== NAV ===== */
 function nextImage() {
   if (isAnimating) return;
   isAnimating = true;
@@ -133,15 +136,14 @@ function goToNextSeries() {
   const next = getNextSeries();
   if (!next) return;
 
-  const blackout = document.getElementById("blackout");
-  blackout.classList.add("active");
+  document.getElementById("blackout").classList.add("active");
 
   setTimeout(() => {
     window.location.href = next;
   }, 1000);
 }
 
-/* ===== SIDEBAR LOAD ===== */
+/* ===== SIDEBAR ===== */
 fetch('sidebar.html')
   .then(res => res.text())
   .then(data => {
@@ -159,12 +161,14 @@ fetch('sidebar.html')
 function toggleSubmenu(id) {
   const submenu = document.getElementById('submenu-' + id);
   if (submenu) {
-    submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+    submenu.style.display =
+      submenu.style.display === 'flex' ? 'none' : 'flex';
   }
 }
 
 /* INIT */
 render();
+
 </script>
 
 </body>
