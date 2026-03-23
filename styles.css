@@ -125,9 +125,7 @@ a:hover {
   cursor: pointer;
 }
 
-.viewer-image.zoomed {
-  transform: scale(1.2); /* масштабирование */
-}
+
 
 /* CAPTION */
 .viewer-caption {
@@ -160,7 +158,7 @@ a:hover {
   max-width: calc(100vw - 280px); /* ширина экрана минус сайдбар + отступ */
   max-height: calc(100vh - 80px);
   transform: translate(-50%, -50%); /* центрирование */
-  z-index: 9999;
+  z-index: 10;
   cursor: zoom-out;
   transition: all 0.4s ease;
 }
