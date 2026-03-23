@@ -110,6 +110,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center; /* центрирует картинку внутри контейнера */
+  overflow: hidden;   /* картинка не выходит за края контейнера */
 }
 
 /* IMAGE */
