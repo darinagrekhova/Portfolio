@@ -151,13 +151,13 @@ a:hover {
 
 /* NAVIGATION ARROWS */
 .nav {
-  position: fixed; /* фиксированные на экране */
+  position: absolute; /* фиксированные на экране */
   top: 50%;
   font-size: 28px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 200; /* выше картинки и зума */
+  z-index: 20; /* выше картинки и зума */
 }
 
 .prev { left: 30px; transform: translateY(-50%); }
