@@ -1,16 +1,29 @@
-/* VIEWER */
-.viewer {
-  position: relative;
-  height: 100vh;
+/* CONTENT FIX */
+.content {
+  margin-left: 25%;
+  padding: 40px;
+  min-height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
+/* VIEWER */
+.viewer {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* IMAGE */
 .viewer-image {
-  max-width: 55%;
-  max-height: 70vh;
+  max-width: 42%;
+  max-height: 65vh;
   object-fit: contain;
   transition: opacity 0.4s ease;
 }
@@ -19,8 +32,9 @@
   opacity: 0;
 }
 
+/* CAPTION */
 .viewer-caption {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 14px;
   text-align: center;
   font-style: italic;
@@ -31,14 +45,14 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 30px;
+  font-size: 28px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.prev { left: 20px; }
-.next { right: 20px; }
+.prev { left: -60px; }
+.next { right: -60px; }
 
 /* BLACKOUT */
 #blackout {
