@@ -16,9 +16,6 @@
   <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Gallery JS -->
-  <script type="module" src="gallery.js"></script>
 </head>
 
 <body>
@@ -30,21 +27,24 @@
 <div class="content">
   <div class="viewer">
 
-    <button class="nav prev">←</button>
+    <!-- Навигационные стрелки -->
+    <button class="nav prev" onclick="prevImage()">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
 
-    <button class="nav next">→</button>
+    <button class="nav next" onclick="nextImage()">→</button>
 
     <div class="viewer-caption" id="caption"></div>
 
   </div>
 </div>
 
-<script type="module">
-  import { initGallery } from './gallery.js';
+<script src="gallery.js"></script>
 
-  const gallery = [
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  initGallery([
     { src: "images/drawings/1.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
     { src: "images/drawings/2.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
     { src: "images/drawings/3.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
@@ -57,11 +57,15 @@
     { src: "images/drawings/10.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" },
     { src: "images/drawings/11.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" },
     { src: "images/drawings/12.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" }
-  ];
+  ]);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initGallery(gallery);
-  });
+  // Инициализация функций галереи
+  initZoom();
+  initKeyboard();
+  initSwipe();
+  loadSidebar();
+
+});
 </script>
 
 </body>
