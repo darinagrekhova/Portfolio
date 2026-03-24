@@ -1,257 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B34ZQTM04E');
-</script>
-
-  
   <meta charset="UTF-8">
   <title>volante | Darina Grekhova</title>
+
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B34ZQTM04E');
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"> <!-- твой внешний CSS -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Cormorant', serif;
-      background-color: white;
-      color: #000;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 25%;
-      height: 100vh;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 0px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow-y: auto;
-    }
-
-    /* Лого и имя */
-.brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 100px;
-}
-
-.name {
-  font-size: 22px;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
-}
-
-    .menu-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 18px;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 18px;
-      color: black;
-    }
-
-    .submenu {
-      display: none;
-      flex-direction: column;
-      margin-left: 10px;
-      margin-top: 1px;
-      margin-bottom: 10px;
-      gap: 10px;
-    }
-
-    .submenu a {
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #555;
-      text-decoration: none;
-    }
-
-    .language-switch {
-      margin-top: auto;
-      display: flex;
-      gap: 10px;
-    }
-
-    .content {
-      margin-left: 25%;
-      padding: 40px;
-      min-height: 100vh;
-      background: white;
-    }
-
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    .image-container {
-      display: inline-block;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .artworks {
-      display: block;
-      width: 400px;
-      height: auto;
-      object-fit: contain;
-      margin: 0 auto 10px auto;
-    }
-
-    .description {
-      font-size: 14px;
-      text-align: left;
-      font-style: italic;
-      color: #000;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+<div id="sidebar-container"></div>
 
-<!-- Сайдбар -->
-<div class="sidebar">
-  <a href="index.html" class="brand">
-    <img src="images/logo.jpg" alt="logo" class="logo" />
-    <div class="name">darina grekhova</div>
-  </a>
-
-  <div class="menu-item">
-    <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
-    <div class="submenu" id="submenu-2025">
-      <a href="notnotfun.html">notnotfun</a>
-      <a href="foreigners.html">foreigners</a>
-      <a href="volante.html">volante</a>
-    </div>
-  </div>
-
-  <div class="menu-item">
-     <a href="quiexspectat.html">qui exspectat</a>  
-      <a href="notnotfun.html">notnotfun</a>
-      <a href="foreigners.html">foreigners</a>
-        
-
-        <a href="slavic-myth-on-canvas.html">slavic myth on canvas</a>
-        <a href="slavic-myth-on-paper.html">slavic myth on paper</a>
-
-       <a href="drawings.html">drawings</a>
-
-        <a href="volante.html">volante</a>
- 
-        <a href="unknown-stories.html">unknown stories</a>
-        <a href="multifigures.html">multifigures</a>
-        <a href="good-night.html">good night</a>
-
-   <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">books & zines</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="twinkling-trails.html">Twinkling trails</a>
-      </div>
-    </div>
-
-
-
-  <div class="menu-item">
-    <a href="cv.html">cv</a>
-  </div>
-
-  <div class="menu-item">
-    <a href="contact.html">contacts</a>
-  </div>
-
-  <!-- Переключатель языка -->
-  <div class="language-switch">
-    <a href="ru/volante.html">ru</a>
-    <a href="volante.html">en</a>
-  </div>
-</div>
-
-<!-- Контент: Галерея -->
 <div class="content">
-  <!-- Генерация блоков для 10 изображений -->
-
-<div class="artwork-wrapper">
-  <div class="image-container">
-    <img src="images/volante/1.jpg" alt="Artwork" class="artworks" />
-    <div class="description">
-      <p><em>volante I</em><br>oil on canvas<br>40×50 cm</p>
-    </div>
+  <div class="viewer">
+    <button class="nav prev" onclick="prevImage()">←</button>
+    <img id="artwork" class="viewer-image" src="" alt="">
+    <button class="nav next" onclick="nextImage()">→</button>
+    <div class="viewer-caption" id="caption"></div>
   </div>
 </div>
 
+<script src="gallery.js"></script>
 
-<div class="artwork-wrapper">
-  <div class="image-container">
-    <img src="images/volante/2.jpg" alt="Artwork" class="artworks" />
-    <div class="description">
-      <p><em>volante I</em><br>oil on canvas<br>40×50 cm</p>
-    </div>
-  </div>
-</div>
- 
-</div>
-
-<!-- JS для toggle меню -->
 <script>
-function toggleSubmenu(id) {
-  const submenu = document.getElementById('submenu-' + id);
-  submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
-}
-</script>
+document.addEventListener("DOMContentLoaded", () => {
 
+  initGallery([
+    { src: "images/volante/1.jpg", title: "volante 1", meta: "oil on canvas<br>50×60 cm" },
+    { src: "images/volante/2.jpg", title: "volante 2", meta: "oil on canvas<br>50×60 cm" }
+    // добавь остальные
+  ]);
+
+  initZoom();
+  initKeyboard();
+  initSwipe();
+  loadSidebar();
+});
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
