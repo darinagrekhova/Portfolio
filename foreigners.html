@@ -16,9 +16,6 @@
   <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Gallery JS -->
-  <script type="module" src="gallery.js"></script>
 </head>
 
 <body>
@@ -30,22 +27,25 @@
 <div class="content">
   <div class="viewer">
 
-    <button class="nav prev">←</button>
+    <!-- Навигационные стрелки -->
+    <button class="nav prev" onclick="prevImage()">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
 
-    <button class="nav next">→</button>
+    <button class="nav next" onclick="nextImage()">→</button>
 
     <div class="viewer-caption" id="caption"></div>
 
   </div>
 </div>
 
-<script type="module">
-  // Здесь просто передаем массив изображений для этой страницы в gallery.js
-  import { initGallery } from './gallery.js';
+<script src="gallery.js"></script>
 
-  const gallery = [
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Данные галереи
+  initGallery([
     { src: "images/foreigner/foreigner-I.jpg", title: "foreigner I", meta: "oil on Inkjet paper<br>29×21 cm" },
     { src: "images/foreigner/foreigner-II.jpg", title: "foreigner II", meta: "oil on Inkjet paper<br>29×21 cm" },
     { src: "images/foreigner/foreigner-III.jpg", title: "foreigner III", meta: "oil on Inkjet paper<br>29×21 cm" },
@@ -55,11 +55,15 @@
     { src: "images/foreigner/foreigner-VII.jpg", title: "foreigner VII", meta: "oil on Inkjet paper<br>29×21 cm" },
     { src: "images/foreigner/foreigner-VIII.jpg", title: "foreigner VIII", meta: "oil on Inkjet paper<br>29×21 cm" },
     { src: "images/foreigner/foreigner-IX.jpg", title: "foreigner IX", meta: "oil on canvas<br>70×90 cm" }
-  ];
+  ]);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initGallery(gallery);
-  });
+  // Инициализация всех функций галереи
+  initZoom();
+  initKeyboard();
+  initSwipe();
+  loadSidebar();
+
+});
 </script>
 
 </body>
