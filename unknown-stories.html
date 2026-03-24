@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <title>unknown stories | Darina Grekhova</title>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B34ZQTM04E');
+  </script>
 
-  gtag('config', 'G-B34ZQTM04E');
-</script>
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-  
- <body>
+<body>
 
 <!-- SIDEBAR -->
 <div id="sidebar-container"></div>
@@ -33,143 +38,45 @@
   </div>
 </div>
 
+<script src="gallery.js"></script>
+
 <script>
-
-/* ===== GALLERY ===== */
-const gallery = [
-  {
-    src: "images/summerbrief/unknown stories/1.jpg",
-    title: "unknown stories 1",
-    meta: "mixed media on paper<br>10×15 cm"
-  },
-  {
-     src: "images/summerbrief/unknown stories/2.jpg",
-    title: "unknown stories 2",
-    meta: "mixed media on paper<br>10×15 cm"
-  },
-  {
-     src: "images/summerbrief/unknown stories/3.jpg",
-    title: "unknown stories 3",
-    meta: "mixed media on paper<br>10×15 cm"
-  },
-  {
-     src: "images/summerbrief/unknown stories/4.jpg",
-    title: "unknown stories 4",
-    meta: "mixed media on paper<br>10×15 cm"
-  },
-  {
-     src: "images/summerbrief/unknown stories/5.jpg",
-    title: "unknown stories 1",
-    meta: "mixed media on paper<br>10×15 cm"
-  }
-];
-
-let current = 0;
-let isAnimating = false;
-
-/* ===== PRELOAD ===== */
-function preloadImages() {
-  gallery.forEach(item => {
-    const img = new Image();
-    img.src = item.src;
-  });
-}
-
-/* ===== RENDER ===== */
-function render() {
-  const img = document.getElementById("artwork");
-  const caption = document.getElementById("caption");
-
-  img.src = gallery[current].src;
-  caption.innerHTML =
-    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
-}
-  
-  // ===== ZOOM =====
-const artworkImg = document.getElementById("artwork");
-
-artworkImg.addEventListener("click", () => {
-  artworkImg.classList.toggle("zoomed");
-});
-  
-
-/* ===== NAV ===== */
-function nextImage() {
-  if (isAnimating) return;
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current + 1) % gallery.length; // циклический переход к первой картинке
-    render();
-
-    setTimeout(() => {
-      img.classList.remove("fade-out");
-      isAnimating = false;
-    }, 100);
-  }, 400);
-}
-
-function prevImage() {
-  if (isAnimating) return;
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current - 1 + gallery.length) % gallery.length; // циклический переход к последней картинке
-    render();
-
-    setTimeout(() => {
-      img.classList.remove("fade-out");
-      isAnimating = false;
-    }, 100);
-  }, 400);
-}
-
-
-
-
-
-/* ===== SIDEBAR LOAD ===== */
-function loadSidebar() {
-  fetch('/sidebar.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('sidebar-container').innerHTML = data;
-
-      const file = window.location.pathname.split("/").pop();
-
-      document.querySelectorAll('.menu-item a').forEach(link => {
-        if (link.getAttribute('href') === file) {
-          link.classList.add('active');
-        }
-      });
-    })
-    .catch(() => {
-      console.error('Sidebar not loaded');
-    });
-}
-
-/* ===== TOGGLE ===== */
-function toggleSubmenu(id) {
-  const submenu = document.getElementById('submenu-' + id);
-  if (submenu) {
-    submenu.style.display =
-      submenu.style.display === 'flex' ? 'none' : 'flex';
-  }
-}
-
-/* ===== INIT ===== */
 document.addEventListener("DOMContentLoaded", () => {
-  preloadImages();
-  render();
-  loadSidebar();
-});
 
+  initGallery([
+    {
+      src: "images/summerbrief/unknown stories/1.jpg",
+      title: "unknown stories 1",
+      meta: "mixed media on paper<br>10×15 cm"
+    },
+    {
+      src: "images/summerbrief/unknown stories/2.jpg",
+      title: "unknown stories 2",
+      meta: "mixed media on paper<br>10×15 cm"
+    },
+    {
+      src: "images/summerbrief/unknown stories/3.jpg",
+      title: "unknown stories 3",
+      meta: "mixed media on paper<br>10×15 cm"
+    },
+    {
+      src: "images/summerbrief/unknown stories/4.jpg",
+      title: "unknown stories 4",
+      meta: "mixed media on paper<br>10×15 cm"
+    },
+    {
+      src: "images/summerbrief/unknown stories/5.jpg",
+      title: "unknown stories 5",
+      meta: "mixed media on paper<br>10×15 cm"
+    }
+  ]);
+
+  initZoom();
+  initKeyboard();
+  initSwipe();
+  loadSidebar();
+
+});
 </script>
 
 </body>
