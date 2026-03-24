@@ -16,10 +16,8 @@
   <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Gallery JS -->
-  <script type="module" src="gallery.js"></script>
 </head>
+
 <body>
 
 <!-- SIDEBAR -->
@@ -28,19 +26,52 @@
 <!-- CONTENT -->
 <div class="content">
   <div class="viewer">
-    <button class="nav prev">←</button>
+
+    <button class="nav prev" onclick="prevImage()">←</button>
+
     <img id="artwork" class="viewer-image" src="" alt="">
-    <button class="nav next">→</button>
+
+    <button class="nav next" onclick="nextImage()">→</button>
+
     <div class="viewer-caption" id="caption"></div>
+
   </div>
 </div>
 
-<script type="module">
-  import { initGalleryFromFolder } from './gallery.js';
+<script src="gallery.js"></script>
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initGalleryFromFolder("images/summerbrief/goodnight");
-  });
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  initGallery([
+    {
+      src: "images/summerbrief/goodnight/1.jpg",
+      title: "good night 1",
+      meta: "mixed media on paper<br>10×15 cm"
+    },
+    {
+      src: "images/summerbrief/goodnight/2.jpg",
+      title: "good night 2",
+      meta: "mixed media on paper<br>10×15 cm"
+    },
+    {
+      src: "images/summerbrief/goodnight/3.jpg",
+      title: "good night 3",
+      meta: "mixed media on paper<br>10×15 cm"
+    },
+    {
+      src: "images/summerbrief/goodnight/4.jpg",
+      title: "good night 4",
+      meta: "mixed media on paper<br>10×15 cm"
+    }
+  ]);
+
+  initZoom();
+  initKeyboard();
+  initSwipe();
+  loadSidebar();
+
+});
 </script>
 
 </body>
