@@ -166,3 +166,21 @@ function toggleSubmenu(id) {
       submenu.style.display === 'flex' ? 'none' : 'flex';
   }
 }
+
+export async function initGalleryFromFolder(folderPath) {
+  try {
+    const res = await fetch(`${folderPath}/manifest.json`);
+    const data = await res.json();
+
+    const gallery = data.works.map(w => ({
+      src: `${folderPath}/${w.file}`,
+      title: w.title || "",
+      meta: w.meta || ""
+    }));
+
+    initGallery(gallery);
+
+  } catch (e) {
+    console.error("Ошибка загрузки manifest.json:", e);
+  }
+}
