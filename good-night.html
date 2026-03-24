@@ -36,29 +36,10 @@
 </div>
 
 <script type="module">
-  import { initGallery } from './gallery.js';
-
-  const gallery = [
-    {
-      src: "images/summerbrief/goodnight/1.jpg",
-      title: "goodnight/1",
-      meta: "mixed media on paper<br>30×40 cm"
-    },
-    {
-      src: "images/summerbrief/goodnight/2.jpg",
-      title: "goodnight/2",
-      meta: "mixed media on paper<br>30×40 cm"
-    },
-    {
-      src: "images/summerbrief/goodnight/3.jpg",
-      title: "goodnight/3",
-      meta: "mixed media on paper<br>30×40 cm"
-    }
-    // Добавляй остальные изображения сюда
-  ];
+  import { initGalleryFromFolder } from './gallery.js';
 
   document.addEventListener("DOMContentLoaded", () => {
-    initGallery(gallery);
+    initGalleryFromFolder("images/summerbrief/goodnight");
   });
 </script>
 
