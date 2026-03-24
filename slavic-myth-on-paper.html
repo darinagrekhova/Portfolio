@@ -13,19 +13,29 @@
     gtag('config', 'G-B34ZQTM04E');
   </script>
 
+  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
+<!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
+<!-- CONTENT -->
 <div class="content">
   <div class="viewer">
+
+    <!-- Навигационные стрелки -->
     <button class="nav prev" onclick="prevImage()">←</button>
+
     <img id="artwork" class="viewer-image" src="" alt="">
+
     <button class="nav next" onclick="nextImage()">→</button>
+
     <div class="viewer-caption" id="caption"></div>
+
   </div>
 </div>
 
@@ -34,18 +44,23 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
+  // Данные галереи
   initGallery([
-    { src: "images/slavic-paper/1.jpg", title: "drawing 1", meta: "pencil and ink<br>30×40 cm" },
-    { src: "images/slavic-paper/2.jpg", title: "drawing 2", meta: "pencil and ink<br>30×40 cm" },
-    { src: "images/slavic-paper/3.jpg", title: "drawing 3", meta: "pencil and ink<br>30×40 cm" }
-    // добавь остальные
+    { src: "images/slavic mythology/drawings/dodola.jpg", title: "Dodola", meta: "pastel on paper<br>60×41 cm" },
+    { src: "images/slavic mythology/drawings/glukhoe vremya.jpg", title: "Gluhoe vremya", meta: "pastel on paper<br>50×35 cm" },
+    { src: "images/slavic mythology/drawings/orisnicy.jpg", title: "Orisnicy", meta: "pastel on paper<br>50×35 cm" },
+    { src: "images/slavic mythology/drawings/shulikuni.jpg", title: "Shulikuny", meta: "pastel on paper<br>50×35 cm" },
+    { src: "images/slavic mythology/drawings/death birth wedding.jpg", title: "Death, birth, wedding", meta: "pastel on paper<br>61×41 cm" }
   ]);
 
+  // Инициализация функций галереи
   initZoom();
   initKeyboard();
   initSwipe();
   loadSidebar();
+
 });
 </script>
+
 </body>
 </html>
