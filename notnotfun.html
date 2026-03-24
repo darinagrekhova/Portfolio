@@ -26,34 +26,40 @@
 <!-- CONTENT -->
 <div class="content">
   <div class="viewer">
-    <!-- Навигационные стрелки -->
+
+    <!-- Стрелки навигации -->
     <button class="nav prev" onclick="prevImage()">←</button>
+
     <img id="artwork" class="viewer-image" src="" alt="">
+
     <button class="nav next" onclick="nextImage()">→</button>
+
     <div class="viewer-caption" id="caption"></div>
+
   </div>
 </div>
 
-<script type="module">
-  import { initGallery, initZoom, initKeyboard, initSwipe, initSilentMode, loadSidebar } from './gallery.js';
+<script src="gallery.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
   // Данные галереи
-  const galleryData = [
+  initGallery([
     { src: "images/nnf/fun-for-fun-1.jpg", title: "funforfun 1", meta: "oil on canvas<br>30×40 cm" },
     { src: "images/nnf/fun-for-fun-2.jpg", title: "funforfun 2", meta: "oil on canvas<br>30×40 cm" },
     { src: "images/nnf/fun-for-fun-3.jpg", title: "funforfun 3", meta: "oil on canvas<br>30×40 cm" },
     { src: "images/nnf/fun-for-fun-4.jpg", title: "funforfun 4", meta: "oil on canvas<br>30×40 cm" },
     { src: "images/nnf/fun-for-fun-5.jpg", title: "funforfun 5", meta: "oil on canvas<br>30×40 cm" }
-  ];
+  ]);
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initGallery(galleryData);   // Инициализация галереи
-    initZoom();                 // Зум по клику
-    initKeyboard();             // Управление стрелками клавиатуры
-    initSwipe();                // Свайпы на мобильных
-    initSilentMode();           // Режим тишины (стрелки исчезают)
-    loadSidebar();              // Подгрузка сайдбара
-  });
+  // Инициализация зума, боковой панели, клавиатуры и swipe
+  initZoom();
+  initKeyboard();
+  initSwipe();
+  loadSidebar();
+
+});
 </script>
 
 </body>
