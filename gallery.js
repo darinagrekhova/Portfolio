@@ -160,7 +160,7 @@ function initSilentMode() {
 
 /* ===== SIDEBAR ===== */
 function loadSidebar() {
-  fetch('sidebar.html')
+  fetch('/sidebar.html')
     .then(res => res.text())
     .then(data => {
       document.getElementById('sidebar-container').innerHTML = data;
