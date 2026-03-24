@@ -1,1 +1,20 @@
-
+{
+  "title": "good night",
+  "works": [
+    {
+      "file": "1.jpg",
+      "title": "goodnight/1",
+      "meta": "mixed media on paper<br>30×40 cm"
+    },
+    {
+      "file": "2.jpg",
+      "title": "goodnight/2",
+      "meta": "mixed media on paper<br>30×40 cm"
+    },
+    {
+      "file": "3.jpg",
+      "title": "goodnight/3",
+      "meta": "mixed media on paper<br>30×40 cm"
+    }
+  ]
+}
