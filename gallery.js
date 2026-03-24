@@ -5,13 +5,26 @@ let uiTimeout;
 
 /* ===== INIT ===== */
 function initGallery(data) {
+  if (!data || !data.length) {
+    console.warn("Gallery пустая");
+    return;
+  }
+
   gallery = data;
-  preloadSmart();
+  current = 0;
+
   render();
+  preloadSmart();
+
+  initKeyboard();
+  initSwipe();
+  initSilentMode();
 }
 
 /* ===== SMART PRELOAD ===== */
 function preloadSmart() {
+  if (!gallery.length) return;
+
   const next = (current + 1) % gallery.length;
 
   [current, next].forEach(i => {
@@ -22,25 +35,30 @@ function preloadSmart() {
 
 /* ===== RENDER ===== */
 function render() {
+  if (!gallery.length) return;
+
   const img = document.getElementById("artwork");
   const caption = document.getElementById("caption");
+
+  if (!img || !caption) return;
 
   caption.style.opacity = "0";
 
   img.src = gallery[current].src;
+
   caption.innerHTML =
-    `<em>${gallery[current].title}</em><br>${gallery[current].meta}`;
+    `<em>${gallery[current].title || ""}</em><br>${gallery[current].meta || ""}`;
 
   setTimeout(() => {
     caption.style.opacity = "1";
-  }, 500);
+  }, 300);
 
   preloadSmart();
 }
 
 /* ===== NAV ===== */
 function nextImage() {
-  if (isAnimating) return;
+  if (isAnimating || gallery.length < 2) return;
   isAnimating = true;
 
   const img = document.getElementById("artwork");
@@ -54,12 +72,11 @@ function nextImage() {
       img.classList.remove("fade-out");
       isAnimating = false;
     });
-
-  }, 300);
+  }, 250);
 }
 
 function prevImage() {
-  if (isAnimating) return;
+  if (isAnimating || gallery.length < 2) return;
   isAnimating = true;
 
   const img = document.getElementById("artwork");
@@ -73,13 +90,13 @@ function prevImage() {
       img.classList.remove("fade-out");
       isAnimating = false;
     });
-
-  }, 300);
+  }, 250);
 }
 
-/* ===== ZOOM (в точку клика, без дергания) ===== */
+/* ===== ZOOM (в точку клика) ===== */
 function initZoom() {
   const img = document.getElementById("artwork");
+  if (!img) return;
 
   img.addEventListener("click", (e) => {
     const rect = img.getBoundingClientRect();
@@ -105,15 +122,15 @@ function initKeyboard() {
 /* ===== SWIPE ===== */
 function initSwipe() {
   let startX = 0;
-
   const img = document.getElementById("artwork");
+  if (!img) return;
 
   img.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
   });
 
   img.addEventListener("touchend", (e) => {
-    let endX = e.changedTouches[0].clientX;
+    const endX = e.changedTouches[0].clientX;
 
     if (endX - startX > 50) prevImage();
     if (startX - endX > 50) nextImage();
@@ -143,7 +160,7 @@ function initSilentMode() {
 
 /* ===== SIDEBAR ===== */
 function loadSidebar() {
-  fetch('/sidebar.html')
+  fetch('sidebar.html')
     .then(res => res.text())
     .then(data => {
       document.getElementById('sidebar-container').innerHTML = data;
@@ -155,32 +172,22 @@ function loadSidebar() {
           link.classList.add('active');
         }
       });
-    });
+    })
+    .catch(err => console.error("Sidebar load error:", err));
 }
 
 /* ===== SUBMENU ===== */
 function toggleSubmenu(id) {
   const submenu = document.getElementById('submenu-' + id);
-  if (submenu) {
-    submenu.style.display =
-      submenu.style.display === 'flex' ? 'none' : 'flex';
-  }
+  if (!submenu) return;
+
+  submenu.style.display =
+    submenu.style.display === 'flex' ? 'none' : 'flex';
 }
 
-export async function initGalleryFromFolder(folderPath) {
-  try {
-    const res = await fetch(`${folderPath}/manifest.json`);
-    const data = await res.json();
-
-    const gallery = data.works.map(w => ({
-      src: `${folderPath}/${w.file}`,
-      title: w.title || "",
-      meta: w.meta || ""
-    }));
-
-    initGallery(gallery);
-
-  } catch (e) {
-    console.error("Ошибка загрузки manifest.json:", e);
-  }
-}
+/* ===== GLOBAL EXPORT (для HTML) ===== */
+window.initGallery = initGallery;
+window.nextImage = nextImage;
+window.prevImage = prevImage;
+window.initZoom = initZoom;
+window.loadSidebar = loadSidebar;
