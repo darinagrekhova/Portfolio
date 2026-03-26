@@ -23,130 +23,47 @@
   <link rel="icon" href="../images/favicon.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
 
-  <style>
-    /* Только локальные стили контента contact (не трогаем sidebar) */
-    .artwork-wrapper {
-      margin: 40px auto;
-      text-align: center;
-    }
-    .image-container {
-      display: inline-block;
-      text-align: center;
-    }
-    .contact-artwork {
-      display: block;
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      margin: 20px auto 0 auto;
-    }
-    .description {
-      font-size: 14px;
-      text-align: center;
-      font-style: italic;
-      color: #000;
-      margin: 0;
-    }
 
-    /* Переключатель языка */
-    .language-switch {
-      margin-top: 20px;
-      font-size: 16px;
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .center-message {
       display: flex;
-      gap: 10px;
-    }
-    .language-switch a {
-      text-decoration: none;
-      color: #000;
-    }
-    .language-switch a:hover {
-      color: #555;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
     }
   </style>
-
-  <script defer>
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-    }
-  </script>
 </head>
+
 <body>
-  <!-- Сайдбар -->
- <div class="sidebar">
-  <a class="brand" href="index.html" aria-label="Go to home">
-    <img src="../images/logo.jpg" alt="logo" class="logo">
-    <div class="name">дарина грехова</div>
 
+<!-- SIDEBAR -->
+<div id="sidebar-container"></div>
 
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2025')">2025</div>
-      <div class="submenu" id="submenu-2025">
-        <a href="notnotfun.html">нотнотфан</a>
-        <a href="foreigners.html">иностранцы</a>
-        <a href="volante.html">о полетах</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2024')">2024</div>
-      <div class="submenu" id="submenu-2024">
-        <a href="slavic-myth-on-canvas.html">из цикла о славянской мифологии живопись</a>
-        <a href="slavic-myth-on-paper.html">из цикла о славянской мифологии графика</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('2023')">2023</div>
-      <div class="submenu" id="submenu-2023">
-        <a href="unknown-stories.html">неизвестные истории</a>
-        <a href="good-night.html">спокойной ночи</a>
-        <a href="multifigures.html">мультифигуры</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <a href="selected-independent.html">вне серий</a>
-    </div>
-
-      <div class="menu-item">
-      <div class="menu-toggle" onclick="toggleSubmenu('books-and-zines')">книги и зины</div>
-      <div class="submenu" id="submenu-books-and-zines">
-        <a href="twinkling-trails.html">Twinkling trails</a>
-      </div>
-    </div>
-
-    <div class="menu-item">
-      <a href="drawings.html">скетчбук</a>
-    </div>
-
-    <div class="menu-item">
-      <a href="cv.html">cv</a>
-    </div>
-
-    <div class="menu-item">
-      <a href="contact.html">контакты</a>
-    </div>
-
-    <!-- Переключатель языка -->
-    <div class="language-switch">
-      <a href="../contact.html">en</a>
-      <a href="contact.html">ru</a>
+<!-- CONTENT -->
+<div class="content">
+  <div class="center-message">
+    <div>
+      <p><em>Русская версия сайта находится в разработке.</em></p>
+      <p>Некоторые разделы пока недоступны, но будут добавлены в ближайшее время.</p>
     </div>
   </div>
+</div>
 
-  <!-- Контент -->
-  <div class="content">
-    <div class="artwork-wrapper">
-      <figure class="image-container">
-        <figcaption class="description">
-          <p><em>email: darinagrekhova@gmail.com</em><br>inst: @belfesprit</p>
-        </figcaption>
-        <!-- ВАЖНО: картинка через ../ -->
-        <img src="../images/element_cv.jpg" alt="Artwork" class="contact-artwork" />
-      </figure>
-    </div>
-  </div>
+<script src="gallery.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  loadSidebar();
+});
+</script>
+
 </body>
 </html>
