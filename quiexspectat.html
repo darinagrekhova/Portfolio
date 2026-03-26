@@ -1,56 +1,57 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>русская версия | Дарина Грехова</title>
+  <title>Qui exspectat | Darina Grekhova</title>
 
-  <!-- Google tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-B34ZQTM04E');
-  </script>
-
-  <!-- Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
-  <style>
-    .center-message {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-  </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR (логотип подтянется отсюда) -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
 <div class="content">
-  <div class="center-message">
-    <div>
-      <p><em>Русская версия сайта находится в разработке.</em></p>
-      <p>Некоторые разделы пока недоступны, но будут добавлены в ближайшее время.</p>
-    </div>
-  </div>
+ <div class="viewer">
+
+  <button class="nav prev" onclick="prevImage()">←</button>
+
+  <img id="artwork" class="viewer-image" src="" alt="">
+
+  <button class="nav next" onclick="nextImage()">→</button>
+
+  <div class="viewer-caption" id="caption"></div>
+
+</div>
 </div>
 
 <script src="gallery.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
+  initGallery([
+    {
+      src: "images/qui-exspectat/ladder.jpg",
+      title: "ladder",
+      meta: "oil on canvas<br>50×60 cm"
+    },
+    {
+      src: "images/qui-exspectat/foreignerX.jpg",
+      title: "quid agis",
+      meta: "oil on canvas<br>50×60 cm"
+    }
+  ]);
+
+  initZoom();
+  
+  initSilentMode();
+initKeyboard();
+initSwipe();
   loadSidebar();
+
+
 });
 </script>
 
