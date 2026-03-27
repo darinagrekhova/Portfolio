@@ -5,10 +5,7 @@ let uiTimeout;
 
 /* ===== INIT ===== */
 function initGallery(data) {
-  if (!data || !data.length) {
-    console.warn("Gallery пустая");
-    return;
-  }
+  if (!data || !data.length) return;
 
   gallery = data;
   current = 0;
@@ -93,7 +90,7 @@ function prevImage() {
   }, 250);
 }
 
-/* ===== ZOOM (в точку клика) ===== */
+/* ===== ZOOM ===== */
 function initZoom() {
   const img = document.getElementById("artwork");
   if (!img) return;
@@ -160,7 +157,10 @@ function initSilentMode() {
 
 /* ===== SIDEBAR ===== */
 function loadSidebar() {
-  fetch('/sidebar.html')
+  const isRU = window.location.pathname.includes('/ru/');
+  const sidebarPath = isRU ? '/ru/sidebar.html' : '/sidebar.html';
+
+  fetch(sidebarPath)
     .then(res => res.text())
     .then(data => {
       document.getElementById('sidebar-container').innerHTML = data;
@@ -168,12 +168,33 @@ function loadSidebar() {
       const file = window.location.pathname.split("/").pop();
 
       document.querySelectorAll('.menu-item a').forEach(link => {
-        if (link.getAttribute('href') === file) {
+        if (link.getAttribute('href').includes(file)) {
           link.classList.add('active');
         }
       });
+
+      updateLanguageLinks();
     })
     .catch(err => console.error("Sidebar load error:", err));
+}
+
+/* ===== LANGUAGE SWITCH ===== */
+function updateLanguageLinks() {
+  const path = window.location.pathname;
+  const file = path.split("/").pop();
+
+  const ruLink = document.querySelector('.language-switch a[href*="ru"]');
+  const enLink = document.querySelector('.language-switch a[href*="index"], .language-switch a[href*="/"]');
+
+  if (!ruLink || !enLink) return;
+
+  if (path.includes('/ru/')) {
+    enLink.href = '/' + file;
+    ruLink.href = path;
+  } else {
+    ruLink.href = '/ru/' + file;
+    enLink.href = path;
+  }
 }
 
 /* ===== SUBMENU ===== */
@@ -185,7 +206,7 @@ function toggleSubmenu(id) {
     submenu.style.display === 'flex' ? 'none' : 'flex';
 }
 
-/* ===== GLOBAL EXPORT (для HTML) ===== */
+/* ===== EXPORT ===== */
 window.initGallery = initGallery;
 window.nextImage = nextImage;
 window.prevImage = prevImage;
