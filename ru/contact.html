@@ -2,63 +2,54 @@
 <html lang="ru">
 <head>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Контакты — Дарина Грехова</title>
 
-  gtag('config', 'G-B34ZQTM04E');
-</script>
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" href="../images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
 
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>контакты  |  Дарина Грехова</title>
+<style>
+.contact-wrapper {
+  margin: 60px auto;
+  text-align: center;
+}
 
-  <!-- ВАЖНО: стили и фавикон из корня -->
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="../images/favicon.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+.contact-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
 
+.contact-image {
+  max-width: 400px;
+  width: 100%;
+}
+</style>
 
-
-  <!-- Fonts & Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
-    .center-message {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-  </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
 <div class="content">
-  <div class="center-message">
-    <div>
-      <p><em>Русская версия сайта находится в разработке.</em></p>
-      <p>Некоторые разделы пока недоступны, но будут добавлены в ближайшее время.</p>
+  <div class="contact-wrapper">
+
+    <div class="contact-text">
+      <p>
+        <em>email:</em> darinagrekhova@gmail.com<br>
+        <em>instagram:</em> @belfesprit
+      </p>
     </div>
+
+    <img src="../images/element_cv.jpg" class="contact-image">
+
   </div>
 </div>
 
-<script src="gallery.js"></script>
-
+<script src="../gallery.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   loadSidebar();
