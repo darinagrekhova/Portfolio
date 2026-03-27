@@ -1,4 +1,4 @@
-/* RESET */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ body {
   color: #000;
 }
 
-/* SIDEBAR */
+/* ===== SIDEBAR ===== */
 .sidebar {
   width: 25%;
   height: 100vh;
@@ -26,7 +26,7 @@ body {
   overflow-y: auto;
 }
 
-/* BRAND */
+/* ===== BRAND ===== */
 .brand {
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@ body {
   text-transform: lowercase;
 }
 
-/* MENU */
+/* ===== MENU ===== */
 .menu-item {
   margin-bottom: 10px;
   font-size: 18px;
@@ -61,7 +61,7 @@ a:hover {
   color: #555;
 }
 
-/* SUBMENU */
+/* ===== SUBMENU ===== */
 .menu-toggle {
   cursor: pointer;
 }
@@ -76,7 +76,7 @@ a:hover {
   font-size: 16px;
 }
 
-/* LANGUAGE */
+/* ===== LANGUAGE ===== */
 .language-switch {
   margin-top: auto;
   display: flex;
@@ -84,7 +84,7 @@ a:hover {
   font-size: 16px;
 }
 
-/* CONTENT */
+/* ===== CONTENT ===== */
 .content {
   margin-left: 25%;
   padding: 60px 40px;
@@ -94,7 +94,7 @@ a:hover {
   align-items: flex-start;
 }
 
-/* VIEWER */
+/* ===== VIEWER ===== */
 .viewer {
   position: relative;
   width: 520px;
@@ -105,7 +105,7 @@ a:hover {
   justify-content: center;
 }
 
-/* IMAGE */
+/* ===== IMAGE ===== */
 .viewer-image {
   width: 100%;
   max-width: 520px;
@@ -122,22 +122,22 @@ a:hover {
   opacity: 0;
 }
 
-/* ZOOM (аккуратный, без выезда за экран) */
+/* ===== ZOOM ===== */
 .viewer-image.zoomed {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* центрирование */
+  transform: translate(-50%, -50%);
   width: auto;
   height: auto;
-  max-width: calc(100% - 200px);   /* не заезжает под сайдбар */
-  max-height: calc(100vh - 80px);  /* отступ сверху/снизу */
+  max-width: calc(100% - 200px);
+  max-height: calc(100vh - 80px);
   z-index: 100;
   cursor: zoom-out;
   transition: transform 0.35s ease;
 }
 
-/* CAPTION */
+/* ===== CAPTION ===== */
 .viewer-caption {
   margin-top: 16px;
   font-size: 14px;
@@ -149,7 +149,7 @@ a:hover {
   transition: opacity 0.5s ease;
 }
 
-/* NAV (стрелки) */
+/* ===== NAV ===== */
 .nav {
   position: absolute;
   top: 50%;
@@ -180,8 +180,93 @@ a:hover {
   right: -80px;
 }
 
-/* ACTIVE LINK */
+/* ===== ACTIVE LINK ===== */
 .menu-item a.active {
   font-weight: 600;
 }
 
+/* ===================================== */
+/* ========== MOBILE VERSION ============ */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== SIDEBAR → HEADER ===== */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding: 15px 20px;
+  }
+
+  .brand {
+    margin-bottom: 0;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .name {
+    font-size: 18px;
+  }
+
+  /* скрываем меню */
+  .menu-item {
+    display: none;
+  }
+
+  .submenu {
+    display: none !important;
+  }
+
+  .language-switch {
+    margin-top: 0;
+    font-size: 14px;
+  }
+
+  /* ===== CONTENT ===== */
+  .content {
+    margin-left: 0;
+    padding: 20px 10px;
+    display: block;
+  }
+
+  /* ===== VIEWER ===== */
+  .viewer {
+    width: 100%;
+    height: auto;
+  }
+
+  .viewer-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    cursor: default;
+  }
+
+  /* убираем стрелки */
+  .nav {
+    display: none;
+  }
+
+  /* убираем zoom */
+  .viewer-image.zoomed {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    max-height: none;
+  }
+
+  /* подпись */
+  .viewer-caption {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+}
