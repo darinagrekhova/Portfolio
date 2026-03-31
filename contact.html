@@ -2,102 +2,59 @@
 <html lang="en">
 <head>
 
-  <!-- Google tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-B34ZQTM04E');
-  </script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — Darina Grekhova</title>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact — Darina Grekhova</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
 
-  <!-- Стили -->
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+<style>
+.contact-wrapper {
+  margin: 60px auto;
+  text-align: center;
+}
 
-  <!-- Только локальные стили для contact -->
-  <style>
-    .contact-wrapper {
-      margin: 60px auto;
-      text-align: center;
-    }
+.contact-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
 
-    .contact-text {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .contact-text em {
-      font-style: italic;
-    }
-
-    .contact-image {
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-      margin: 20px auto 0 auto;
-      display: block;
-    }
-  </style>
+.contact-image {
+  max-width: 400px;
+  width: 100%;
+}
+</style>
 
 </head>
 
 <body>
 
-  <!-- Сайдбар -->
-  <div id="sidebar-container"></div>
+<div id="sidebar-container"></div>
 
-  <!-- Контент -->
-  <div class="content">
-    <div class="contact-wrapper">
+<div class="content">
+  <div class="contact-wrapper">
 
-      <div class="contact-text">
-        <p>
-          <em>email:</em> darinagrekhova@gmail.com<br>
-          <em>instagram:</em> @belfesprit
-        </p>
-      </div>
-
-      <img src="images/element_cv.jpg" alt="contact image" class="contact-image">
-
+    <div class="contact-text">
+      <p>
+        <em>email:</em> darinagrekhova@gmail.com<br>
+        <em>instagram:</em> @belfesprit
+      </p>
     </div>
+
+    <img src="images/element_cv.jpg" class="contact-image">
+
   </div>
+</div>
 
-  <!-- JS -->
-  <script>
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-
-        // язык
-        const path = window.location.pathname;
-        const file = path.substring(path.lastIndexOf('/') + 1);
-
-        const langSwitch = document.querySelector('.language-switch');
-        if (langSwitch) {
-          langSwitch.innerHTML = `
-            <a href="ru/${file}">ru</a>
-            <a href="${file}">en</a>
-          `;
-        }
-      });
-
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById('submenu-' + id);
-      if (submenu) {
-        submenu.style.display =
-          submenu.style.display === 'flex' ? 'none' : 'flex';
-      }
-    }
-  </script>
+<script src="gallery.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  loadSidebar();
+});
+</script>
 
 </body>
 </html>
