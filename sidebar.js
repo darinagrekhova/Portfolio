@@ -36,3 +36,13 @@ function highlightActiveLink() {
     }
   });
 }
+function initMobileSidebarToggle() {
+  const sidebar = document.querySelector(".sidebar");
+  const brand = document.querySelector(".brand");
+
+  if (!sidebar || !brand) return;
+
+  brand.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+}
