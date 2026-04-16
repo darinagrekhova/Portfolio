@@ -79,5 +79,46 @@ const SERIES = {
       title: "foreigner IX",
       meta: "oil on canvas<br>70×90 cm"
     }
-]
+],
+
+  volante: [
+    {
+      src: "images/volante/1.jpg",
+      title: "volante 1",
+      meta: "oil on canvas<br>40×50 cm<br>sold"
+    },
+    {
+      src: "images/volante/2.jpg",
+      title: "volante 2",
+      meta: "oil on canvas<br>40×50 cm<br>sold"
+    }
+  ],
+  
+ slavic_myth_on_canvas": [
+    {
+      src: "images/slavic mythology/paintings/domovoy.jpg",
+      title: "domovoy",
+      meta: "oil on canvas<br>80×100 cm"
+    },
+    {
+      src: "images/slavic mythology/paintings/rusalki.jpg",
+      title: "rusalki",
+      meta: "oil on canvas<br>70×90 cm<br>sold"
+    },
+    {
+      src: "images/slavic mythology/paintings/zmey.jpg",
+      title: "zmey",
+      meta: "oil on canvas<br>80×100 cm"
+    },
+    {
+      src: "images/slavic mythology/paintings/kisberega.jpg",
+      title: "kiselnye berega",
+      meta: "oil on canvas<br>30×40 cm"
+    },
+    {
+      src: "images/slavic mythology/paintings/volk.jpg",
+      title: "volk",
+      meta: "oil on canvas<br>30×40 cm"
+    }
+  ]
 };
