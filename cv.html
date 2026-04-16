@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>CV — Darina Grekhova</title>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B34ZQTM04E"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -14,110 +16,129 @@
     gtag('config', 'G-B34ZQTM04E');
   </script>
 
-  <!-- Общие стили -->
+  <!-- Fonts & Styles -->
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png">
 
+  <!-- LOCAL CV STYLES (оставляем, но без конфликтов) -->
   <style>
-    /* Локальные стили CV */
+
     .cv {
       max-width: 700px;
-      margin: 60px auto 40px auto;
-      padding: 20px 40px;
+      margin: 80px auto;
+      padding: 0 40px;
+
       font-family: 'Cormorant', serif;
       color: #1a1a1a;
-      line-height: 1.4;
-      text-align: left;
-    }
+      line-height: 1.6;
 
-    .cv p {
-      margin-bottom: 1.6rem;
-      font-size: 18px;
-      font-weight: 400;
+      text-align: left;
     }
 
     .cv h2 {
       font-weight: 400;
       font-size: 18px;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
-      color: #333;
+
+      margin: 40px 0 20px;
+
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 6px;
+
       text-align: center;
       letter-spacing: 0.5px;
     }
-  </style>
 
-  <script defer>
-    // toggle для подменю
-    function toggleSubmenu(id) {
-      const submenu = document.getElementById("submenu-" + id);
-      if (submenu) {
-        submenu.style.display = submenu.style.display === "flex" ? "none" : "flex";
-      }
+    .cv p {
+      margin-bottom: 18px;
+      font-size: 17px;
     }
 
-    // подгрузка sidebar.html
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("sidebar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("sidebar-container").innerHTML = data;
+  </style>
 
-          // активная ссылка CV
-          const links = document.querySelectorAll('.sidebar a');
-          links.forEach(link => {
-            if (link.getAttribute('href') === 'cv.html') {
-              link.classList.add('active');
-            }
-          });
-        })
-        .catch(err => console.error("Error loading sidebar:", err));
-    });
-  </script>
 </head>
+
 <body>
 
-  <!-- sidebar подгружается сюда -->
+  <!-- SIDEBAR -->
   <div id="sidebar-container"></div>
 
-  <!-- Контент CV -->
-  <div class="content">
+  <!-- CONTENT -->
+  <main class="content content--text">
+
     <div class="cv">
+
       <h2>education</h2>
-      <p>2024–2025<br>
-      Professional Development Program in Academic Painting and Drawing,<br>
-      Moscow Academic Art Institute named after V.I. Surikov<br>
-      Online Painting Workshop, RadioPaint</p>
-      <p>2022–2024<br>
-      Illustration, British Higher School of Art and Design</p>
-      <p>2020–2021<br>
-      BBE: Graphic Design and Illustration</p>
-      <p>2019–2020<br>
-      Art Criticism Lab, “Baza” Institute</p>
-      <p>2017–2019<br>
-      Visual Culture, Higher School of Economics</p>
-      <p>2012–2016<br>
-      Cultural Studies: Western European Culture,<br>
-      Russian State University for the Humanities</p>
+
+      <p>
+        2024–2025<br>
+        Professional Development Program in Academic Painting and Drawing,<br>
+        Moscow Academic Art Institute named after V.I. Surikov<br>
+        Online Painting Workshop, RadioPaint
+      </p>
+
+      <p>
+        2022–2024<br>
+        Illustration, British Higher School of Art and Design
+      </p>
+
+      <p>
+        2020–2021<br>
+        BBE: Graphic Design and Illustration
+      </p>
+
+      <p>
+        2019–2020<br>
+        Art Criticism Lab, “Baza” Institute
+      </p>
+
+      <p>
+        2017–2019<br>
+        Visual Culture, Higher School of Economics
+      </p>
+
+      <p>
+        2012–2016<br>
+        Cultural Studies: Western European Culture,<br>
+        Russian State University for the Humanities
+      </p>
 
       <h2>group exhibitions</h2>
-      <p>2025<br>
-      — blazar young art fair 2025, Museum of Moscow<br> 
-      — aha, you hear that radio too, Cube.Moscow – Curated by Olya Makhno<br>   
-      — a—s—t—r—a open vol.6, January – Curated by Svetlana Taylor<br>
-      — Altai Biennale of Contemporary Art, January – Curated by Svetlana Taylor</p>
-      <p>2024<br>
-      — And Here I Am, Omelchenko Gallery, December – Curated by Tanya Ivankova and Anya Zhuravleva<br>
-      — So That’s How It Was, Space13 Gallery, Samara, November – Curated by Tanya Ivankova and Olya Makhno<br>
-      — So That’s How It Was, RadioGallery (online), August – Curated by Olya Makhno<br>
-      — How Are You? How Am I?, U Contemporary Gallery, February – Curated by Tanya Ivankova and Olya Makhno</p>
-      <p>2023<br>
-      — Mural for Artplay Center, November – Art direction by Ilya Kutoboy<br>
-      — Hung the Earth on Nothing, BIS ART GALLERY, June – Project lead: Masha Shishova</p>
+
+      <p>
+        2025<br>
+        — blazar young art fair 2025, Museum of Moscow<br>
+        — aha, you hear that radio too, Cube.Moscow – Curated by Olya Makhno<br>
+        — a—s—t—r—a open vol.6, January – Curated by Svetlana Taylor<br>
+        — Altai Biennale of Contemporary Art, January – Curated by Svetlana Taylor
+      </p>
+
+      <p>
+        2024<br>
+        — And Here I Am, Omelchenko Gallery, December<br>
+        — So That’s How It Was, Space13 Gallery, Samara, November<br>
+        — So That’s How It Was, RadioGallery (online), August<br>
+        — How Are You? How Am I?, U Contemporary Gallery, February
+      </p>
+
+      <p>
+        2023<br>
+        — Mural for Artplay Center, November<br>
+        — Hung the Earth on Nothing, BIS ART GALLERY, June
+      </p>
+
     </div>
-  </div>
+
+  </main>
+
+  <!-- SIDEBAR SCRIPT (новая система) -->
+  <script src="sidebar.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSidebar();
+    });
+  </script>
+
 </body>
 </html>
