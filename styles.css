@@ -9,6 +9,15 @@
 }
 
 /* ===================================== */
+/* SYSTEM TOKENS */
+/* ===================================== */
+
+:root {
+  --sidebar-width: 260px;
+  --page-top: 60px;
+}
+
+/* ===================================== */
 /* BASE */
 /* ===================================== */
 
@@ -23,90 +32,55 @@ body {
 /* ===================================== */
 
 .sidebar {
-  width: 220px;
-  height: 100vh;
-
   position: fixed;
   top: 0;
   left: 0;
 
-  padding: 40px;
+  width: 220px;
+  height: 100vh;
 
-  display: flex;
-  flex-direction: column;
+  padding: var(--page-top) 40px;
 
-  background: #fff;
   border-right: 1px solid #eee;
+  background: #fff;
 
   overflow-y: auto;
 }
 
-.brand {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  margin-bottom: 24px;
-
-  text-decoration: none;
-  color: inherit;
-}
-
-.logo {
-  width: 100px;
-}
-
-.name {
-  font-size: 22px;
-  text-transform: lowercase;
-}
-
-.menu-item {
-  margin-bottom: 12px;
-  font-size: 18px;
-}
-
-.menu-item a {
-  color: #000;
-  text-decoration: none;
-}
-
-.menu-item a:hover {
-  color: #666;
-}
-
-.menu-item a.active {
-  font-weight: 500;
-}
-
 /* ===================================== */
-/* CONTENT SYSTEM */
+/* CONTENT SHELL */
 /* ===================================== */
 
 .content {
+  margin-left: var(--sidebar-width);
+  padding: var(--page-top) 40px;
+
   min-height: 100vh;
 }
 
-/* TEXT PAGES */
+/* ===================================== */
+/* TEXT MODE */
+/* ===================================== */
+
 .content--text {
-  margin-left: 260px;
-  padding: 100px 40px;
-  max-width: 520px;
+  display: flex;
+  justify-content: center;
 }
 
-/* VIEWER PAGES */
-.content--viewer {
-  margin-left: 260px;
-  padding: 60px 40px;
+.text-column {
+  max-width: 620px;
+  width: 100%;
+}
 
+/* ===================================== */
+/* VIEWER MODE */
+/* ===================================== */
+
+.content--viewer {
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-
-/* ===================================== */
-/* VIEWER CORE */
-/* ===================================== */
 
 .viewer {
   width: 520px;
@@ -114,88 +88,40 @@ body {
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-
   gap: 14px;
-
-  position: relative; /* CRITICAL for arrows */
+  align-items: center;
 }
-
-/* ===================================== */
-/* IMAGE (FIXED NON-UNIFORM SYSTEM) */
-/* ===================================== */
 
 .viewer-image {
-  display: block;
-
-  width: auto;
-  height: auto;
-
   max-width: 100%;
   max-height: 72vh;
-
   object-fit: contain;
-
   cursor: pointer;
-
-  transition: opacity 0.25s ease;
 }
-
-.viewer-image.fade-out {
-  opacity: 0;
-}
-
-/* ===================================== */
-/* CAPTION */
-/* ===================================== */
 
 .viewer-caption {
   font-size: 14px;
   font-style: italic;
   text-align: center;
-  line-height: 1.4;
-
   opacity: 0;
-  transition: opacity 0.4s ease;
-
-  max-width: 520px;
+  transition: opacity 0.3s ease;
 }
 
-/* ===================================== */
-/* NAVIGATION ARROWS (FIXED) */
-/* ===================================== */
+/* NAV */
 
 .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-
   font-size: 28px;
-
   background: none;
   border: none;
-
   cursor: pointer;
-
-  color: #000;
   opacity: 0.5;
-
-  z-index: 50;
-
-  transition: opacity 0.2s ease;
 }
 
-.nav:hover {
-  opacity: 1;
-}
-
-.prev {
-  left: -70px;
-}
-
-.next {
-  right: -70px;
-}
+.prev { left: -80px; }
+.next { right: -80px; }
 
 /* ===================================== */
 /* MOBILE */
@@ -207,27 +133,20 @@ body {
     position: relative;
     width: 100%;
     height: auto;
-
-    padding: 20px 18px;
-
+    padding: 20px;
     border-bottom: 1px solid #eee;
   }
 
-  .content--text,
-  .content--viewer {
+  .content {
     margin-left: 0;
     padding: 40px 16px;
-  }
-
-  .viewer {
-    width: 100%;
   }
 
   .nav {
     display: none;
   }
 
-  .viewer-caption {
-    font-size: 13px;
+  .viewer {
+    width: 100%;
   }
 }
