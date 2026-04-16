@@ -23,11 +23,10 @@
 <!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT (IMPORTANT FIX: viewer mode applied) -->
+<!-- CONTENT -->
 <div class="content content--viewer">
   <div class="viewer">
 
-    <!-- navigation -->
     <button class="nav prev" onclick="prevImage()">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
@@ -39,74 +38,18 @@
   </div>
 </div>
 
-<!-- scripts -->
+<!-- scripts (порядок важен) -->
+<script src="gallery-data.js"></script>
 <script src="gallery.js"></script>
+<script src="sidebar.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  initGallery([
-    {
-      src: "images/drawings/1.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
-    },
-    {
-      src: "images/drawings/2.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
-    },
-    {
-      src: "images/drawings/3.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
-    },
-    {
-      src: "images/drawings/4.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
-    },
-    {
-      src: "images/drawings/5.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
-    },
-    {
-      src: "images/drawings/6.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
-    },
-    {
-      src: "images/drawings/7.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
-    },
-    {
-      src: "images/drawings/8.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm"
-    },
-    {
-      src: "images/drawings/9.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm"
-    },
-    {
-      src: "images/drawings/10.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm"
-    },
-    {
-      src: "images/drawings/11.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm"
-    },
-    {
-      src: "images/drawings/12.jpg",
-      title: "untitled",
-      meta: "markers, pencils and ink on paper<br>14×21 cm"
-    }
-  ]);
+  // 👇 имя серии должно совпадать с gallery-data.js
+  const currentSeries = "drawings";
+
+  initGallery(SERIES[currentSeries]);
 
   initZoom();
   initKeyboard();
