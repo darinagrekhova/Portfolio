@@ -92,12 +92,13 @@ body {
   gap: 10px;
   font-size: 16px;
 }
-
-/* ===== CONTENT (ГАЛЕРЕЙНАЯ КОЛОНКА) ===== */
+/* ===== OVERRIDE FOR VIEWER PAGES ===== */
 .content {
-  margin-left: 260px; /* sidebar (220) + воздух */
-  padding: 100px 40px;
-  max-width: 520px;
+  margin-left: 25%;
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   min-height: 100vh;
 }
 
