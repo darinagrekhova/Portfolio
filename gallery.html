@@ -28,6 +28,7 @@
 
 <script src="/gallery.js"></script>
 <script src="/sidebar.js"></script>
+  <script src="/gallery-data.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,21 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const series = params.get("series");
 
-  // 🔥 временно вручную (потом вынесем в отдельный файл)
-  if (series === "quiexspectat") {
-    initGallery([
-      {
-        src: "images/qui-exspectat/ladder.jpg",
-        title: "ladder",
-        meta: "oil on canvas<br>50×60 cm"
-      },
-      {
-        src: "images/qui-exspectat/foreignerX.jpg",
-        title: "quid agis",
-        meta: "oil on canvas<br>50×60 cm"
-      }
-    ]);
-  }
+  initGallery(SERIES[series]);
 
   initKeyboard();
   initSwipe();
