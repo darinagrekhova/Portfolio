@@ -18,6 +18,7 @@ function initGallery(data) {
   initKeyboard();
   initSwipe();
   initSilentMode();
+  initTapNavigation();
 }
 
 /* ===================================== */
