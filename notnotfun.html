@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>notnotfun | Darina Grekhova</title>
 
   <!-- Google tag -->
@@ -20,68 +23,70 @@
 
 <body>
 
-<!-- SIDEBAR -->
-<div id="sidebar-container"></div>
+  <!-- SIDEBAR ROOT -->
+  <div id="sidebar-container"></div>
 
-<!-- CONTENT (IMPORTANT: viewer mode class added) -->
-<div class="content content--viewer">
-  <div class="viewer">
+  <!-- CONTENT -->
+  <main class="content content--viewer">
 
-    <!-- navigation -->
-    <button class="nav prev" onclick="prevImage()">←</button>
+    <div class="viewer">
 
-    <img id="artwork" class="viewer-image" src="" alt="">
+      <!-- navigation -->
+      <button class="nav prev" onclick="prevImage()">←</button>
 
-    <button class="nav next" onclick="nextImage()">→</button>
+      <img id="artwork" class="viewer-image" src="" alt="">
 
-    <div class="viewer-caption" id="caption"></div>
+      <button class="nav next" onclick="nextImage()">→</button>
 
-  </div>
-</div>
+      <div class="viewer-caption" id="caption"></div>
 
-<!-- scripts -->
-<script src="gallery.js"></script>
+    </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+  </main>
 
-  initGallery([
-    {
-      src: "images/nnf/fun-for-fun-1.jpg",
-      title: "fun for fun 1",
-      meta: "oil on canvas<br>30×40 cm"
-    },
-    {
-      src: "images/nnf/fun-for-fun-2.jpg",
-      title: "fun for fun 2",
-      meta: "oil on canvas<br>30×40 cm"
-    },
-    {
-      src: "images/nnf/fun-for-fun-3.jpg",
-      title: "fun for fun 3",
-      meta: "oil on canvas<br>30×40 cm"
-    },
-    {
-      src: "images/nnf/fun-for-fun-4.jpg",
-      title: "fun for fun 4",
-      meta: "oil on canvas<br>30×40 cm"
-    },
-    {
-      src: "images/nnf/fun-for-fun-5.jpg",
-      title: "fun for fun 5",
-      meta: "oil on canvas<br>30×40 cm"
-    }
-  ]);
+  <!-- SCRIPTS -->
+  <script src="gallery.js"></script>
+  <script src="sidebar.js"></script>
 
-  initZoom();
-  initKeyboard();
-  initSwipe();
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-  // sidebar loader (must exist globally in gallery.js or similar)
-  loadSidebar();
+      initGallery([
+        {
+          src: "images/nnf/fun-for-fun-1.jpg",
+          title: "fun for fun 1",
+          meta: "oil on canvas<br>30×40 cm"
+        },
+        {
+          src: "images/nnf/fun-for-fun-2.jpg",
+          title: "fun for fun 2",
+          meta: "oil on canvas<br>30×40 cm"
+        },
+        {
+          src: "images/nnf/fun-for-fun-3.jpg",
+          title: "fun for fun 3",
+          meta: "oil on canvas<br>30×40 cm"
+        },
+        {
+          src: "images/nnf/fun-for-fun-4.jpg",
+          title: "fun for fun 4",
+          meta: "oil on canvas<br>30×40 cm"
+        },
+        {
+          src: "images/nnf/fun-for-fun-5.jpg",
+          title: "fun for fun 5",
+          meta: "oil on canvas<br>30×40 cm"
+        }
+      ]);
 
-});
-</script>
+      initZoom();
+      initKeyboard();
+      initSwipe();
+
+      loadSidebar();
+
+    });
+  </script>
 
 </body>
 </html>
