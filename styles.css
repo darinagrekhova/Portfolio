@@ -360,3 +360,96 @@ body {
     display: none !important;
   }
 }
+
+/* ===================================== */
+/* MOBILE FINAL LAYOUT FIX */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+  /* SIDEBAR becomes top bar */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    padding: 10px 14px; /* сильно уменьшено */
+
+    border-right: none;
+    border-bottom: 1px solid #eee;
+
+    flex-direction: row;
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  /* logo + name compact */
+  .logo {
+    width: 32px;
+  }
+
+  .name {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  /* menu becomes inline row or compact stack */
+  .menu-item {
+    font-size: 13px;
+    margin-bottom: 4px;
+    white-space: nowrap; /* no wrapping */
+  }
+
+  .menu-item a {
+    white-space: nowrap;
+  }
+
+  /* IMPORTANT: reset ALL content spacing */
+  .content {
+    margin-left: 0 !important;
+    padding: 20px 14px !important;
+    max-width: 100% !important;
+  }
+
+  /* TEXT PAGES CENTER FIX */
+  .content--text {
+    display: flex;
+    justify-content: center;
+  }
+
+  .content--text > * {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  /* VIEWER PAGES */
+  .content--viewer {
+    padding: 10px 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .viewer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* images full width behavior */
+  .viewer-image {
+    max-height: 70vh;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  /* disable desktop arrows */
+  .nav {
+    display: none !important;
+  }
+
+  /* captions tighter */
+  .viewer-caption {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
