@@ -1,9 +1,11 @@
 let current = 0;
-let isAnimating = false;
 let gallery = [];
-let uiTimeout;
+let isAnimating = false;
 
-/* ===== INIT ===== */
+/* ===================================== */
+/* INIT */
+/* ===================================== */
+
 function initGallery(data) {
   if (!data || !data.length) return;
 
@@ -11,17 +13,18 @@ function initGallery(data) {
   current = 0;
 
   render();
-  preloadSmart();
+  preload();
 
   initKeyboard();
   initSwipe();
   initSilentMode();
 }
 
-/* ===== SMART PRELOAD ===== */
-function preloadSmart() {
-  if (!gallery.length) return;
+/* ===================================== */
+/* PRELOAD */
+/* ===================================== */
 
+function preload() {
   const next = (current + 1) % gallery.length;
 
   [current, next].forEach(i => {
@@ -30,10 +33,11 @@ function preloadSmart() {
   });
 }
 
-/* ===== RENDER ===== */
-function render() {
-  if (!gallery.length) return;
+/* ===================================== */
+/* RENDER */
+/* ===================================== */
 
+function render() {
   const img = document.getElementById("artwork");
   const caption = document.getElementById("caption");
 
@@ -48,12 +52,15 @@ function render() {
 
   setTimeout(() => {
     caption.style.opacity = "1";
-  }, 300);
+  }, 250);
 
-  preloadSmart();
+  preload();
 }
 
-/* ===== NAV ===== */
+/* ===================================== */
+/* NAVIGATION */
+/* ===================================== */
+
 function nextImage() {
   if (isAnimating || gallery.length < 2) return;
   isAnimating = true;
@@ -69,7 +76,7 @@ function nextImage() {
       img.classList.remove("fade-out");
       isAnimating = false;
     });
-  }, 250);
+  }, 200);
 }
 
 function prevImage() {
@@ -87,28 +94,13 @@ function prevImage() {
       img.classList.remove("fade-out");
       isAnimating = false;
     });
-  }, 250);
+  }, 200);
 }
 
-/* ===== ZOOM ===== */
-function initZoom() {
-  const img = document.getElementById("artwork");
-  if (!img) return;
+/* ===================================== */
+/* KEYBOARD */
+/* ===================================== */
 
-  img.addEventListener("click", (e) => {
-    const rect = img.getBoundingClientRect();
-
-    const offsetX = (e.clientX - rect.left) / rect.width;
-    const offsetY = (e.clientY - rect.top) / rect.height;
-
-    img.style.setProperty('--zoom-x', `${offsetX * 100}%`);
-    img.style.setProperty('--zoom-y', `${offsetY * 100}%`);
-
-    img.classList.toggle("zoomed");
-  });
-}
-
-/* ===== KEYBOARD ===== */
 function initKeyboard() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") nextImage();
@@ -116,7 +108,10 @@ function initKeyboard() {
   });
 }
 
-/* ===== SWIPE ===== */
+/* ===================================== */
+/* SWIPE */
+/* ===================================== */
+
 function initSwipe() {
   let startX = 0;
   const img = document.getElementById("artwork");
@@ -134,19 +129,27 @@ function initSwipe() {
   });
 }
 
-/* ===== SILENT MODE ===== */
+/* ===================================== */
+/* SILENT MODE (FIXED - NO NAV BREAKING) */
+/* ===================================== */
+
 function initSilentMode() {
-  const elements = document.querySelectorAll(".nav, .viewer-caption");
+  const nav = document.querySelectorAll(".nav");
+  const caption = document.querySelectorAll(".viewer-caption");
+
+  let timeout;
 
   function showUI() {
-    elements.forEach(el => el.style.opacity = "0.5");
+    nav.forEach(el => el.style.opacity = "0.5");
+    caption.forEach(el => el.style.opacity = "1");
 
-    clearTimeout(uiTimeout);
-    uiTimeout = setTimeout(hideUI, 2000);
+    clearTimeout(timeout);
+    timeout = setTimeout(hideUI, 2500);
   }
 
   function hideUI() {
-    elements.forEach(el => el.style.opacity = "0");
+    nav.forEach(el => el.style.opacity = "0");
+    caption.forEach(el => el.style.opacity = "0.2");
   }
 
   document.addEventListener("mousemove", showUI);
@@ -155,60 +158,36 @@ function initSilentMode() {
   showUI();
 }
 
-/* ===== SIDEBAR ===== */
+/* ===================================== */
+/* SIDEBAR */
+/* ===================================== */
+
 function loadSidebar() {
   const isRU = window.location.pathname.includes('/ru/');
-  const sidebarPath = isRU ? '/ru/sidebar.html' : '/sidebar.html';
+  const path = isRU ? '/ru/sidebar.html' : '/sidebar.html';
 
-  fetch(sidebarPath)
+  fetch(path)
     .then(res => res.text())
-    .then(data => {
-      document.getElementById('sidebar-container').innerHTML = data;
+    .then(html => {
+      document.getElementById("sidebar-container").innerHTML = html;
 
       const file = window.location.pathname.split("/").pop();
 
-      document.querySelectorAll('.menu-item a').forEach(link => {
-        if (link.getAttribute('href').includes(file)) {
-          link.classList.add('active');
+      document.querySelectorAll(".menu-item a").forEach(a => {
+        if (a.getAttribute("href") === file) {
+          a.classList.add("active");
         }
       });
-
-      updateLanguageLinks();
     })
-    .catch(err => console.error("Sidebar load error:", err));
+    .catch(err => console.error("Sidebar error:", err));
 }
 
-/* ===== LANGUAGE SWITCH ===== */
-function updateLanguageLinks() {
-  const path = window.location.pathname;
-  const file = path.split("/").pop();
+/* ===================================== */
+/* EXPORT */
+/* ===================================== */
 
-  const ruLink = document.querySelector('.language-switch a[href*="ru"]');
-  const enLink = document.querySelector('.language-switch a[href*="index"], .language-switch a[href*="/"]');
-
-  if (!ruLink || !enLink) return;
-
-  if (path.includes('/ru/')) {
-    enLink.href = '/' + file;
-    ruLink.href = path;
-  } else {
-    ruLink.href = '/ru/' + file;
-    enLink.href = path;
-  }
-}
-
-/* ===== SUBMENU ===== */
-function toggleSubmenu(id) {
-  const submenu = document.getElementById('submenu-' + id);
-  if (!submenu) return;
-
-  submenu.style.display =
-    submenu.style.display === 'flex' ? 'none' : 'flex';
-}
-
-/* ===== EXPORT ===== */
 window.initGallery = initGallery;
 window.nextImage = nextImage;
 window.prevImage = prevImage;
-window.initZoom = initZoom;
 window.loadSidebar = loadSidebar;
+window.initSilentMode = initSilentMode;
