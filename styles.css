@@ -276,3 +276,87 @@ body {
     font-size: 13px;
   }
 }
+
+/* ===================================== */
+/* MOBILE NAV + GALLERY UX OVERRIDE */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== SIDEBAR → TOP BAR ===== */
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+
+    padding: 14px 16px;
+
+    flex-direction: column;
+
+    border-right: none;
+    border-bottom: 1px solid #eee;
+
+    z-index: 1000;
+  }
+
+  /* brand becomes header row */
+  .brand {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 0;
+  }
+
+  .logo {
+    width: 42px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+
+  /* MENU COLLAPSE (hidden by default) */
+  .sidebar .menu {
+    display: none;
+    flex-direction: column;
+
+    margin-top: 12px;
+  }
+
+  .sidebar.open .menu {
+    display: flex;
+  }
+
+  .menu-item {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  /* ===== CONTENT ===== */
+
+  .content {
+    margin-left: 0;
+    padding-top: 90px; /* space for top bar */
+  }
+
+  /* ===== GALLERY FULL WIDTH ===== */
+
+  .viewer {
+    width: 100%;
+  }
+
+  .viewer-image {
+    max-width: 100vw;
+    max-height: 75vh;
+  }
+
+  /* hide arrows completely */
+  .nav {
+    display: none !important;
+  }
+}
