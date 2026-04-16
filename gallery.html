@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery | Darina Grekhova</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="sidebar-container"></div>
+
+<div class="content content--viewer">
+  <div class="viewer">
+
+    <button class="nav prev" onclick="prevImage()">←</button>
+
+    <img id="artwork" class="viewer-image" src="" alt="">
+
+    <button class="nav next" onclick="nextImage()">→</button>
+
+    <div class="viewer-caption" id="caption"></div>
+
+  </div>
+</div>
+
+<script src="/gallery.js"></script>
+<script src="/sidebar.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const params = new URLSearchParams(window.location.search);
+  const series = params.get("series");
+
+  // 🔥 временно вручную (потом вынесем в отдельный файл)
+  if (series === "quiexspectat") {
+    initGallery([
+      {
+        src: "images/qui-exspectat/ladder.jpg",
+        title: "ladder",
+        meta: "oil on canvas<br>50×60 cm"
+      },
+      {
+        src: "images/qui-exspectat/foreignerX.jpg",
+        title: "quid agis",
+        meta: "oil on canvas<br>50×60 cm"
+      }
+    ]);
+  }
+
+  initKeyboard();
+  initSwipe();
+
+  loadSidebar();
+});
+</script>
+
+</body>
+</html>
