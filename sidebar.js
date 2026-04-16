@@ -21,4 +21,16 @@ function loadSidebar() {
   <div class="menu-item"><a href="/contact.html">contacts</a></div>
 </div>
   `;
+
+  highlightActiveLink();
+}
+
+function highlightActiveLink() {
+  const file = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll(".menu-item a").forEach(link => {
+    if (link.getAttribute("href").includes(file)) {
+      link.classList.add("active");
+    }
+  });
 }
