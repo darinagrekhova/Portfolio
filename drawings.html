@@ -23,11 +23,11 @@
 <!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
-<div class="content">
+<!-- CONTENT (IMPORTANT FIX: viewer mode applied) -->
+<div class="content content--viewer">
   <div class="viewer">
 
-    <!-- Навигационные стрелки -->
+    <!-- navigation -->
     <button class="nav prev" onclick="prevImage()">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
@@ -39,30 +39,79 @@
   </div>
 </div>
 
+<!-- scripts -->
 <script src="gallery.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
   initGallery([
-    { src: "images/drawings/1.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
-    { src: "images/drawings/2.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
-    { src: "images/drawings/3.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
-    { src: "images/drawings/4.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
-    { src: "images/drawings/5.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
-    { src: "images/drawings/6.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
-    { src: "images/drawings/7.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold" },
-    { src: "images/drawings/8.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" },
-    { src: "images/drawings/9.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" },
-    { src: "images/drawings/10.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" },
-    { src: "images/drawings/11.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" },
-    { src: "images/drawings/12.jpg", title: "untitled", meta: "markers, pencils and ink on paper<br>14×21 cm" }
+    {
+      src: "images/drawings/1.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/2.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/3.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/4.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/5.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/6.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/7.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/8.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/9.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/10.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/11.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/12.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    }
   ]);
 
-  // Инициализация функций галереи
   initZoom();
   initKeyboard();
   initSwipe();
+
   loadSidebar();
 
 });
