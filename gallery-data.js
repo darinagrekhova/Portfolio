@@ -120,5 +120,96 @@ const SERIES = {
       title: "volk",
       meta: "oil on canvas<br>30×40 cm"
     }
+  ],
+  
+  "slavic-myth-on-paper": [
+    {
+      src: "images/slavic mythology/drawings/dodola.jpg",
+      title: "Dodola",
+      meta: "pastel on paper<br>60×41 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/glukhoe vremya.jpg",
+      title: "Gluhoe vremya",
+      meta: "pastel on paper<br>50×35 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/orisnicy.jpg",
+      title: "Orisnicy",
+      meta: "pastel on paper<br>50×35 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/shulikuni.jpg",
+      title: "Shulikuny",
+      meta: "pastel on paper<br>50×35 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/death birth wedding.jpg",
+      title: "Death, birth, wedding",
+      meta: "pastel on paper<br>61×41 cm"
+    }
+  ],
+
+  drawings: [
+    {
+      src: "images/drawings/1.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/2.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/3.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/4.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/5.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/6.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/7.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm<br>sold"
+    },
+    {
+      src: "images/drawings/8.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/9.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/10.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/11.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    },
+    {
+      src: "images/drawings/12.jpg",
+      title: "untitled",
+      meta: "markers, pencils and ink on paper<br>14×21 cm"
+    }
   ]
 };
