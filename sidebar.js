@@ -5,6 +5,7 @@ function loadSidebar() {
   container.innerHTML = `
 <div class="sidebar">
   <a href="/index.html" class="brand">
+  <img src="images/logo.jpg" alt="logo" class="logo" />
     <div class="name">darina grekhova</div>
   </a>
 
