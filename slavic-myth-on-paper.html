@@ -23,11 +23,11 @@
 <!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
-<div class="content">
+<!-- CONTENT (IMPORTANT FIX: viewer mode applied) -->
+<div class="content content--viewer">
   <div class="viewer">
 
-    <!-- Навигационные стрелки -->
+    <!-- navigation -->
     <button class="nav prev" onclick="prevImage()">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
@@ -39,24 +39,44 @@
   </div>
 </div>
 
+<!-- scripts -->
 <script src="gallery.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Данные галереи
   initGallery([
-    { src: "images/slavic mythology/drawings/dodola.jpg", title: "Dodola", meta: "pastel on paper<br>60×41 cm" },
-    { src: "images/slavic mythology/drawings/glukhoe vremya.jpg", title: "Gluhoe vremya", meta: "pastel on paper<br>50×35 cm" },
-    { src: "images/slavic mythology/drawings/orisnicy.jpg", title: "Orisnicy", meta: "pastel on paper<br>50×35 cm" },
-    { src: "images/slavic mythology/drawings/shulikuni.jpg", title: "Shulikuny", meta: "pastel on paper<br>50×35 cm" },
-    { src: "images/slavic mythology/drawings/death birth wedding.jpg", title: "Death, birth, wedding", meta: "pastel on paper<br>61×41 cm" }
+    {
+      src: "images/slavic mythology/drawings/dodola.jpg",
+      title: "Dodola",
+      meta: "pastel on paper<br>60×41 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/glukhoe vremya.jpg",
+      title: "Gluhoe vremya",
+      meta: "pastel on paper<br>50×35 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/orisnicy.jpg",
+      title: "Orisnicy",
+      meta: "pastel on paper<br>50×35 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/shulikuni.jpg",
+      title: "Shulikuny",
+      meta: "pastel on paper<br>50×35 cm"
+    },
+    {
+      src: "images/slavic mythology/drawings/death birth wedding.jpg",
+      title: "Death, birth, wedding",
+      meta: "pastel on paper<br>61×41 cm"
+    }
   ]);
 
-  // Инициализация функций галереи
   initZoom();
   initKeyboard();
   initSwipe();
+
   loadSidebar();
 
 });
