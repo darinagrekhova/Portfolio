@@ -73,16 +73,7 @@ const SERIES = {
       title: "foreigner VI",
       meta: "oil on Inkjet paper<br>29×21 cm"
     },
-    {
-      src: "images/foreigner/foreigner-VII.jpg",
-      title: "foreigner VII",
-      meta: "oil on Inkjet paper<br>29×21 cm"
-    },
-    {
-      src: "images/foreigner/foreigner-VIII.jpg",
-      title: "foreigner VIII",
-      meta: "oil on Inkjet paper<br>29×21 cm"
-    },
+  
     {
       src: "images/foreigner/foreigner-IX.jpg",
       title: "foreigner IX",
