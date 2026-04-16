@@ -2,59 +2,66 @@
 <html lang="en">
 <head>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Darina Grekhova</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darina Grekhova</title>
 
-<link rel="stylesheet" href="styles.css" />
-<link rel="icon" href="images/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="images/favicon.png" type="image/png">
 
-<style>
-.contact-wrapper {
-  margin: 60px auto;
-  text-align: center;
-}
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&display=swap" rel="stylesheet">
 
-.contact-text {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
+  <style>
+    .content {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
 
-.contact-image {
-  max-width: 400px;
-  width: 100%;
-}
-</style>
+    .artist-text {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
 
 </head>
 
 <body>
 
-<div id="sidebar-container"></div>
+  <!-- Sidebar will be loaded here -->
+  <div id="sidebar-container"></div>
 
-<div class="content">
-  <div class="contact-wrapper">
-
-    <div class="contact-text">
+  <!-- Main content -->
+  <main class="content">
+    <div class="artist-text">
       <p>
-  Visual Artist | Research-based painting<br>
-  My practice explores the phenomenology of image and the suspension of action.<br>
-  I create liminal spaces where the memory of gesture meets the silence of the present.<br>
-  Independent artist. Open to institutional collaborations, research-based group projects,<br>
-  and curatorial enquiries focused on phenomenology and visual theory.
-</p>
+        I am a visual artist working with figurative painting and drawing.
+      </p>
+
+      <p>
+        My practice explores the phenomenology of the image through states of suspension, ambiguity, and incomplete action.
+      </p>
+
+      <p>
+        I create images that function as open situations, where gesture, memory, and perception remain in flux.
+      </p>
+
+      <p>
+        Independent artist, open to institutional collaborations, research-based projects, and curatorial enquiries.
+      </p>
     </div>
+  </main>
 
-    <img src="images/element_cv.jpg" class="contact-image">
-
-  </div>
-</div>
-
-
+  <!-- Load sidebar -->
+  <script>
+    fetch('sidebar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('sidebar-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading sidebar:', error));
+  </script>
 
 </body>
 </html>
-
-
