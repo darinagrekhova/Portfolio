@@ -1,22 +1,32 @@
-/* ===== RESET ===== */
+/* ===================================== */
+/*               RESET                   */
+/* ===================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== BASE ===== */
+/* ===================================== */
+/*               BASE                    */
+/* ===================================== */
+
 body {
   font-family: 'Cormorant', serif;
   background: #fff;
   color: #000;
 }
 
-/* ===== SIDEBAR ===== */
+/* ===================================== */
+/*             SIDEBAR                  */
+/* ===================================== */
+
 .sidebar {
-  width: 220px;              /* фиксированная ширина */
+  width: 220px;
   height: 100vh;
   padding: 40px;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -29,7 +39,8 @@ body {
   overflow-y: auto;
 }
 
-/* ===== BRAND ===== */
+/* brand */
+
 .brand {
   display: flex;
   flex-direction: column;
@@ -49,14 +60,15 @@ body {
   text-transform: lowercase;
 }
 
-/* ===== MENU ===== */
+/* menu */
+
 .menu-item {
   margin-bottom: 12px;
   font-size: 18px;
 }
 
 .menu-item a {
-  color: black;
+  color: #000;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -65,12 +77,12 @@ body {
   color: #666;
 }
 
-/* ===== ACTIVE LINK ===== */
 .menu-item a.active {
   font-weight: 600;
 }
 
-/* ===== SUBMENU ===== */
+/* submenu */
+
 .menu-toggle {
   cursor: pointer;
 }
@@ -85,24 +97,35 @@ body {
   font-size: 16px;
 }
 
-/* ===== LANGUAGE ===== */
+/* language */
+
 .language-switch {
   margin-top: auto;
   display: flex;
   gap: 10px;
   font-size: 16px;
 }
-/* ===== OVERRIDE FOR VIEWER PAGES ===== */
+
+/* ===================================== */
+/*          CONTENT SYSTEM              */
+/* ===================================== */
+
+/* BASE (ничего не ломает само по себе) */
+
 .content {
-  margin-left: 25%;
-  padding: 60px 40px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   min-height: 100vh;
 }
 
-/* ===== TEXT ===== */
+/* ===================================== */
+/*          TEXT MODE (index / cv)     */
+/* ===================================== */
+
+.content--text {
+  margin-left: 260px;
+  padding: 100px 40px;
+  max-width: 520px;
+}
+
 .artist-text {
   font-size: 17px;
   line-height: 1.75;
@@ -113,7 +136,21 @@ body {
   margin-bottom: 22px;
 }
 
-/* ===== VIEWER ===== */
+/* ===================================== */
+/*          VIEWER MODE (gallery)      */
+/* ===================================== */
+
+.content--viewer {
+  margin-left: 25%;
+  padding: 60px 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* viewer */
+
 .viewer {
   position: relative;
   width: 520px;
@@ -125,38 +162,43 @@ body {
   justify-content: center;
 }
 
-/* ===== IMAGE ===== */
+/* image */
+
 .viewer-image {
   width: 100%;
   max-width: 520px;
   max-height: 100%;
   object-fit: contain;
 
+  cursor: pointer;
   transition: transform 0.35s ease, opacity 0.3s ease;
   will-change: transform;
-
-  cursor: pointer;
 }
 
 .viewer-image.fade-out {
   opacity: 0;
 }
 
-/* ===== ZOOM ===== */
+/* zoom */
+
 .viewer-image.zoomed {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   width: auto;
   height: auto;
+
   max-width: calc(100% - 200px);
   max-height: calc(100vh - 80px);
+
   z-index: 100;
   cursor: zoom-out;
 }
 
-/* ===== CAPTION ===== */
+/* caption */
+
 .viewer-caption {
   margin-top: 16px;
   font-size: 14px;
@@ -168,7 +210,8 @@ body {
   transition: opacity 0.5s ease;
 }
 
-/* ===== NAV ===== */
+/* navigation */
+
 .nav {
   position: absolute;
   top: 50%;
@@ -181,7 +224,6 @@ body {
 
   color: #000;
   opacity: 0.5;
-  z-index: 50;
 
   transition: opacity 0.3s ease, transform 0.2s ease;
 }
@@ -200,12 +242,11 @@ body {
 }
 
 /* ===================================== */
-/* ========== MOBILE VERSION ============ */
+/*             MOBILE                   */
 /* ===================================== */
 
 @media (max-width: 768px) {
 
-  /* ===== SIDEBAR → HEADER ===== */
   .sidebar {
     position: relative;
     width: 100%;
@@ -217,6 +258,7 @@ body {
 
     border-right: none;
     border-bottom: 1px solid #eee;
+
     padding: 15px 20px;
   }
 
@@ -232,7 +274,6 @@ body {
     font-size: 18px;
   }
 
-  /* скрываем меню */
   .menu-item {
     display: none;
   }
@@ -246,14 +287,17 @@ body {
     font-size: 14px;
   }
 
-  /* ===== CONTENT ===== */
-  .content {
+  .content--text {
     margin-left: 0;
     padding: 60px 20px;
     max-width: 100%;
   }
 
-  /* ===== VIEWER ===== */
+  .content--viewer {
+    margin-left: 0;
+    padding: 40px 10px;
+  }
+
   .viewer {
     width: 100%;
     height: auto;
@@ -263,15 +307,12 @@ body {
     width: 100%;
     max-width: 100%;
     height: auto;
-    cursor: default;
   }
 
-  /* убираем стрелки */
   .nav {
     display: none;
   }
 
-  /* убираем zoom */
   .viewer-image.zoomed {
     position: static;
     transform: none;
@@ -279,7 +320,6 @@ body {
     max-height: none;
   }
 
-  /* подпись */
   .viewer-caption {
     font-size: 13px;
     padding: 0 10px;
