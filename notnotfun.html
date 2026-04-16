@@ -23,11 +23,11 @@
 <!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
-<div class="content">
+<!-- CONTENT (IMPORTANT: viewer mode class added) -->
+<div class="content content--viewer">
   <div class="viewer">
 
-    <!-- Стрелки навигации -->
+    <!-- navigation -->
     <button class="nav prev" onclick="prevImage()">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
@@ -39,24 +39,45 @@
   </div>
 </div>
 
+<!-- scripts -->
 <script src="gallery.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Данные галереи
   initGallery([
-    { src: "images/nnf/fun-for-fun-1.jpg", title: "funforfun 1", meta: "oil on canvas<br>30×40 cm" },
-    { src: "images/nnf/fun-for-fun-2.jpg", title: "funforfun 2", meta: "oil on canvas<br>30×40 cm" },
-    { src: "images/nnf/fun-for-fun-3.jpg", title: "funforfun 3", meta: "oil on canvas<br>30×40 cm" },
-    { src: "images/nnf/fun-for-fun-4.jpg", title: "funforfun 4", meta: "oil on canvas<br>30×40 cm" },
-    { src: "images/nnf/fun-for-fun-5.jpg", title: "funforfun 5", meta: "oil on canvas<br>30×40 cm" }
+    {
+      src: "images/nnf/fun-for-fun-1.jpg",
+      title: "fun for fun 1",
+      meta: "oil on canvas<br>30×40 cm"
+    },
+    {
+      src: "images/nnf/fun-for-fun-2.jpg",
+      title: "fun for fun 2",
+      meta: "oil on canvas<br>30×40 cm"
+    },
+    {
+      src: "images/nnf/fun-for-fun-3.jpg",
+      title: "fun for fun 3",
+      meta: "oil on canvas<br>30×40 cm"
+    },
+    {
+      src: "images/nnf/fun-for-fun-4.jpg",
+      title: "fun for fun 4",
+      meta: "oil on canvas<br>30×40 cm"
+    },
+    {
+      src: "images/nnf/fun-for-fun-5.jpg",
+      title: "fun for fun 5",
+      meta: "oil on canvas<br>30×40 cm"
+    }
   ]);
 
-  // Инициализация зума, боковой панели, клавиатуры и swipe
   initZoom();
   initKeyboard();
   initSwipe();
+
+  // sidebar loader (must exist globally in gallery.js or similar)
   loadSidebar();
 
 });
