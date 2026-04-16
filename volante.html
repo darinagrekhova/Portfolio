@@ -23,11 +23,11 @@
 <!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
-<div class="content">
+<!-- CONTENT (IMPORTANT FIX: viewer mode applied) -->
+<div class="content content--viewer">
   <div class="viewer">
 
-    <!-- Навигационные стрелки -->
+    <!-- navigation -->
     <button class="nav prev" onclick="prevImage()">←</button>
 
     <img id="artwork" class="viewer-image" src="" alt="">
@@ -39,21 +39,29 @@
   </div>
 </div>
 
+<!-- scripts -->
 <script src="gallery.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
   initGallery([
-    { src: "images/volante/1.jpg", title: "volante 1", meta: "oil on canvas<br>40×50 cm<br>sold" },
-    { src: "images/volante/2.jpg", title: "volante 2", meta: "oil on canvas<br>40×50 cm<br>sold" },
-    
+    {
+      src: "images/volante/1.jpg",
+      title: "volante 1",
+      meta: "oil on canvas<br>40×50 cm<br>sold"
+    },
+    {
+      src: "images/volante/2.jpg",
+      title: "volante 2",
+      meta: "oil on canvas<br>40×50 cm<br>sold"
+    }
   ]);
 
-  // Инициализация функций галереи
   initZoom();
   initKeyboard();
   initSwipe();
+
   loadSidebar();
 
 });
