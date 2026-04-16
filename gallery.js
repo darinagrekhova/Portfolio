@@ -205,3 +205,11 @@ window.nextImage = nextImage;
 window.prevImage = prevImage;
 window.loadSidebar = loadSidebar;
 window.initSilentMode = initSilentMode;
+function initTapNavigation() {
+  const img = document.getElementById("artwork");
+  if (!img) return;
+
+  img.addEventListener("click", () => {
+    nextImage();
+  });
+}
