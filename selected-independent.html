@@ -23,8 +23,8 @@
 <!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- CONTENT -->
-<div class="content">
+<!-- CONTENT (IMPORTANT FIX: viewer mode applied) -->
+<div class="content content--viewer">
   <div class="viewer">
 
     <button class="nav prev" onclick="prevImage()">←</button>
@@ -38,6 +38,7 @@
   </div>
 </div>
 
+<!-- scripts -->
 <script src="gallery.js"></script>
 
 <script>
@@ -59,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initZoom();
   initKeyboard();
   initSwipe();
+
   loadSidebar();
 
 });
