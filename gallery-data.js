@@ -94,7 +94,7 @@ const SERIES = {
     }
   ],
   
- slavic_myth_on_canvas": [
+ slavic_myth_on_canvas: [
     {
       src: "images/slavic mythology/paintings/domovoy.jpg",
       title: "domovoy",
