@@ -4,6 +4,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Darina Grekhova</title>
 
   <link rel="stylesheet" href="styles.css" />
@@ -12,69 +13,16 @@
   <!-- Typography -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <style>
-    /* === LAYOUT SYSTEM (gallery style) === */
-
-    body {
-      margin: 0;
-      font-family: 'Cormorant', serif;
-      color: #111;
-      background: #fff;
-    }
-
-    /* Sidebar placeholder */
-    #sidebar-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 220px;
-      height: 100vh;
-    }
-
-    /* Main content column */
-    .content {
-      margin-left: 260px; /* sidebar + breathing space */
-      padding: 100px 40px;
-      max-width: 520px;
-    }
-
-    /* Typography */
-    .artist-text {
-      font-size: 17px;
-      line-height: 1.75;
-      letter-spacing: 0.2px;
-    }
-
-    .artist-text p {
-      margin-bottom: 22px;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      #sidebar-container {
-        position: relative;
-        width: 100%;
-        height: auto;
-      }
-
-      .content {
-        margin-left: 0;
-        padding: 60px 20px;
-        max-width: 100%;
-      }
-    }
-
-  </style>
-
 </head>
 
 <body>
 
-  <!-- Sidebar -->
+  <!-- SIDEBAR ROOT (inject point) -->
   <div id="sidebar-container"></div>
 
-  <!-- Main content -->
-<main class="content content--text">
+  <!-- MAIN CONTENT -->
+  <main class="content content--text">
+
     <div class="artist-text">
 
       <p>
@@ -94,16 +42,16 @@
       </p>
 
     </div>
+
   </main>
 
-  <!-- Load sidebar -->
+  <!-- SCRIPTS -->
+  <script src="sidebar.js"></script>
+
   <script>
-    fetch('sidebar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sidebar-container').innerHTML = data;
-      })
-      .catch(error => console.error('Sidebar loading error:', error));
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSidebar();
+    });
   </script>
 
 </body>
