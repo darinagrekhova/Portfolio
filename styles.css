@@ -1,5 +1,5 @@
 /* ===================================== */
-/*               RESET                   */
+/* RESET */
 /* ===================================== */
 
 * {
@@ -9,7 +9,7 @@
 }
 
 /* ===================================== */
-/*               BASE                    */
+/* BASE */
 /* ===================================== */
 
 body {
@@ -19,48 +19,51 @@ body {
 }
 
 /* ===================================== */
-/*             SIDEBAR                  */
+/* SIDEBAR (DESKTOP) */
 /* ===================================== */
 
 .sidebar {
   width: 220px;
   height: 100vh;
-  padding: 40px;
 
   position: fixed;
   top: 0;
   left: 0;
+
+  padding: 40px;
 
   display: flex;
   flex-direction: column;
 
   background: #fff;
   border-right: 1px solid #eee;
+
   overflow-y: auto;
 }
 
-/* BRAND */
+/* brand */
 
 .brand {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 24px;
+
   text-decoration: none;
   color: inherit;
 }
 
 .logo {
   width: 100px;
-  display: block;
 }
 
 .name {
   font-size: 22px;
   text-transform: lowercase;
+  letter-spacing: 0.3px;
 }
 
-/* MENU */
+/* menu */
 
 .menu-item {
   margin-bottom: 12px;
@@ -68,8 +71,9 @@ body {
 }
 
 .menu-item a {
-  color: #000;
   text-decoration: none;
+  color: #000;
+
   transition: color 0.2s ease;
 }
 
@@ -78,26 +82,16 @@ body {
 }
 
 .menu-item a.active {
-  font-weight: 600;
+  font-weight: 500;
 }
 
-/* SUBMENU */
-
-.menu-toggle {
-  cursor: pointer;
-}
+/* submenu */
 
 .submenu {
   display: none;
-  margin-left: 10px;
-  margin-top: 6px;
 }
 
-.submenu a {
-  font-size: 16px;
-}
-
-/* LANGUAGE */
+/* language */
 
 .language-switch {
   margin-top: auto;
@@ -107,7 +101,7 @@ body {
 }
 
 /* ===================================== */
-/*          CONTENT SYSTEM              */
+/* CONTENT SYSTEM */
 /* ===================================== */
 
 .content {
@@ -143,10 +137,11 @@ body {
   align-items: flex-start;
 }
 
+/* ===================================== */
 /* VIEWER */
+/* ===================================== */
 
 .viewer {
-  position: relative;
   width: 520px;
   height: 650px;
 
@@ -154,64 +149,73 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  position: relative;
 }
+
+/* image */
 
 .viewer-image {
   width: 100%;
   max-width: 520px;
   max-height: 100%;
+
   object-fit: contain;
 
   cursor: pointer;
-  transition: transform 0.35s ease, opacity 0.3s ease;
-  will-change: transform;
+
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .viewer-image.fade-out {
   opacity: 0;
 }
 
-/* ZOOM */
+/* zoom */
 
 .viewer-image.zoomed {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 
-  width: auto;
-  height: auto;
+  transform: translate(-50%, -50%);
 
   max-width: calc(100% - 200px);
   max-height: calc(100vh - 80px);
 
+  width: auto;
+  height: auto;
+
   z-index: 100;
-  cursor: zoom-out;
 }
 
-/* CAPTION */
+/* caption */
 
 .viewer-caption {
   margin-top: 16px;
+
   font-size: 14px;
-  text-align: center;
   font-style: italic;
+  text-align: center;
   line-height: 1.4;
 
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
-/* NAV */
+/* navigation */
 
 .nav {
   position: absolute;
   top: 50%;
+
   transform: translateY(-50%);
 
   font-size: 28px;
+
   background: none;
   border: none;
+
   cursor: pointer;
 
   color: #000;
@@ -229,46 +233,55 @@ body {
 .next { right: -80px; }
 
 /* ===================================== */
-/*             MOBILE                   */
+/* MOBILE (GALLERY STYLE) */
 /* ===================================== */
 
 @media (max-width: 768px) {
 
-  /* SIDEBAR → HEADER */
+  /* sidebar becomes inline navigation block */
   .sidebar {
     position: relative;
     width: 100%;
     height: auto;
 
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 20px 18px;
 
-    border-right: none;
+    display: block;
+
     border-bottom: 1px solid #eee;
-
-    padding: 15px 20px;
   }
 
+  /* brand row */
   .brand {
-    margin-bottom: 10px;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+
+    margin-bottom: 14px;
   }
 
   .logo {
-    width: 50px;
+    width: 42px;
   }
 
   .name {
     font-size: 18px;
   }
 
-  /* IMPORTANT: MENU MUST STAY VISIBLE */
+  /* navigation stays visible */
   .menu-item {
     display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .menu-item a {
+    display: inline-block;
+    padding: 2px 0;
+  }
+
+  .menu-item a.active {
+    font-weight: 500;
   }
 
   .submenu {
@@ -280,19 +293,15 @@ body {
     font-size: 14px;
   }
 
-  /* TEXT MODE */
-  .content--text {
+  /* content reset */
+  .content--text,
+  .content--viewer {
     margin-left: 0;
-    padding: 60px 20px;
+    padding: 40px 16px;
     max-width: 100%;
   }
 
-  /* VIEWER MODE */
-  .content--viewer {
-    margin-left: 0;
-    padding: 40px 10px;
-  }
-
+  /* viewer mobile */
   .viewer {
     width: 100%;
     height: auto;
@@ -317,6 +326,6 @@ body {
 
   .viewer-caption {
     font-size: 13px;
-    padding: 0 10px;
+    padding-top: 10px;
   }
 }
