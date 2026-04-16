@@ -20,7 +20,7 @@ body {
 }
 
 /* ===================================== */
-/* SIDEBAR (FIXED SYSTEM) */
+/* SIDEBAR (COMPACT VERSION) */
 /* ===================================== */
 
 .sidebar {
@@ -28,10 +28,10 @@ body {
   top: 0;
   left: 0;
 
-  width: 220px;
+  width: 200px;              /* было 220 */
   height: 100vh;
 
-  padding: 40px;
+  padding: 24px;             /* было 40 */
 
   display: flex;
   flex-direction: column;
@@ -44,34 +44,43 @@ body {
 }
 
 /* brand */
+
 .brand {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 4px;                  /* было 8 */
+  margin-bottom: 18px;       /* было 24 */
   text-decoration: none;
   color: inherit;
 }
 
 .logo {
-  width: 100px;
+  width: 80px;               /* было 100 */
 }
 
 .name {
-  font-size: 22px;
-  letter-spacing: 0.3px;
+  font-size: 18px;           /* было 22 */
+  letter-spacing: 0.2px;
   text-transform: lowercase;
+
+  line-height: 1.1;
 }
 
 /* menu */
+
 .menu-item {
-  margin-bottom: 12px;
-  font-size: 18px;
+  margin-bottom: 6px;        /* было 12 */
+  font-size: 15px;           /* было 18 */
+
+  line-height: 1.2;
 }
 
 .menu-item a {
+  display: inline-block;     /* важно: убирает неожиданные переносы */
+  white-space: nowrap;       /* 🔥 запрещаем перенос текста */
   text-decoration: none;
   color: #000;
+
   transition: color 0.2s ease;
 }
 
