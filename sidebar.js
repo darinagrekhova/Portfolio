@@ -5,27 +5,33 @@ function loadSidebar() {
   container.innerHTML = `
 <div class="sidebar">
   <a href="/index.html" class="brand">
-  <img src="images/logo.jpg" alt="logo" class="logo" />
+    <img src="images/logo.jpg" alt="logo" class="logo" />
     <div class="name">darina grekhova</div>
   </a>
 
-  <div class="menu-item"><a href="/gallery.html?series=quiexspectat">qui exspectat</a></div>
-  <div class="menu-item"><a href="/gallery.html?series=notnotfun">notnotfun</a></div>
-  <div class="menu-item"><a href="/gallery.html?series=foreigners">foreigners</a></div>
-  <div class="menu-item"><a href="/gallery.html?series=volante">volante</a></div>
-  <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-canvas">slavic myth on canvas</a></div>
-  <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-paper">slavic myth on paper</a></div>
-  <div class="menu-item"><a href="/gallery.html?series=selected-independent">selected independent</a></div>
-  <div class="menu-item"><a href="/gallery.html?series=drawings">drawings</a></div>
+  <div class="menu">
+    <div class="menu-item"><a href="/gallery.html?series=quiexspectat">qui exspectat</a></div>
+    <div class="menu-item"><a href="/gallery.html?series=notnotfun">notnotfun</a></div>
+    <div class="menu-item"><a href="/gallery.html?series=foreigners">foreigners</a></div>
+    <div class="menu-item"><a href="/gallery.html?series=volante">volante</a></div>
+    <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-canvas">slavic myth on canvas</a></div>
+    <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-paper">slavic myth on paper</a></div>
+    <div class="menu-item"><a href="/gallery.html?series=selected-independent">selected independent</a></div>
+    <div class="menu-item"><a href="/gallery.html?series=drawings">drawings</a></div>
 
-  <div class="menu-item"><a href="/cv.html">cv</a></div>
-  <div class="menu-item"><a href="/contact.html">contacts</a></div>
+    <div class="menu-item"><a href="/cv.html">cv</a></div>
+    <div class="menu-item"><a href="/contact.html">contacts</a></div>
+  </div>
 </div>
   `;
 
   highlightActiveLink();
   initMobileSidebarToggle();
 }
+
+/* =========================
+   ACTIVE LINK HIGHLIGHT
+========================= */
 
 function highlightActiveLink() {
   const params = new URLSearchParams(window.location.search);
@@ -37,28 +43,23 @@ function highlightActiveLink() {
     }
   });
 }
-function initMobileSidebarToggle() {
-  const sidebar = document.querySelector(".sidebar");
-  const brand = document.querySelector(".brand");
 
-  if (!sidebar || !brand) return;
+/* =========================
+   MOBILE TOGGLE (FINAL VERSION)
+========================= */
 
-  brand.addEventListener("click", () => {
-    sidebar.classList.toggle("open");
-  });
-}
 function initMobileSidebarToggle() {
   document.addEventListener("click", (e) => {
     const brand = e.target.closest(".brand");
     if (!brand) return;
 
-    const sidebar = document.querySelector(".sidebar");
-    if (!sidebar) return;
-
-    // только мобильная версия
     if (window.innerWidth > 768) return;
 
     e.preventDefault();
+
+    const sidebar = document.querySelector(".sidebar");
+    if (!sidebar) return;
+
     sidebar.classList.toggle("menu-open");
   });
 }
