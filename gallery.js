@@ -163,13 +163,25 @@ function initSilentMode() {
 /* ===================================== */
 
 function loadSidebar() {
+  const container = document.getElementById("sidebar-container");
+  if (!container) return;
+
   const isRU = window.location.pathname.includes('/ru/');
-  const path = isRU ? '/ru/sidebar.html' : '/sidebar.html';
+
+  // 🔥 КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ:
+  const base = window.location.origin;
+
+  const path = isRU
+    ? base + '/ru/sidebar.html'
+    : base + '/sidebar.html';
 
   fetch(path)
-    .then(res => res.text())
+    .then(res => {
+      if (!res.ok) throw new Error("Sidebar fetch failed: " + res.status);
+      return res.text();
+    })
     .then(html => {
-      document.getElementById("sidebar-container").innerHTML = html;
+      container.innerHTML = html;
 
       const file = window.location.pathname.split("/").pop();
 
@@ -179,7 +191,9 @@ function loadSidebar() {
         }
       });
     })
-    .catch(err => console.error("Sidebar error:", err));
+    .catch(err => {
+      console.error("Sidebar error:", err);
+    });
 }
 
 /* ===================================== */
