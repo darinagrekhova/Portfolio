@@ -47,3 +47,18 @@ function initMobileSidebarToggle() {
     sidebar.classList.toggle("open");
   });
 }
+function initMobileSidebarToggle() {
+  document.addEventListener("click", (e) => {
+    const brand = e.target.closest(".brand");
+    if (!brand) return;
+
+    const sidebar = document.querySelector(".sidebar");
+    if (!sidebar) return;
+
+    // только мобильная версия
+    if (window.innerWidth > 768) return;
+
+    e.preventDefault();
+    sidebar.classList.toggle("menu-open");
+  });
+}
