@@ -13,20 +13,22 @@
 <div id="sidebar-container"></div>
 
 <div class="content content--viewer">
- <div class="viewer">
+  <div class="viewer">
 
-  <button class="nav prev" onclick="prevImage()">←</button>
+    <button class="nav prev" onclick="prevImage()">←</button>
 
-  <img id="artwork" class="viewer-image" src="" alt="">
+    <img id="artwork" class="viewer-image" src="" alt="">
 
-  <button class="nav next" onclick="nextImage()">→</button>
+    <button class="nav next" onclick="nextImage()">→</button>
 
-  <div class="viewer-caption" id="caption"></div>
+    <div class="viewer-caption" id="caption"></div>
 
+  </div>
 </div>
-</div>
 
+<!-- SCRIPTS -->
 <script src="gallery.js"></script>
+<script src="sidebar.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -45,13 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
   ]);
 
   initZoom();
-  
   initSilentMode();
-initKeyboard();
-initSwipe();
+  initKeyboard();
+  initSwipe();
+
   loadSidebar();
-
-
 });
 </script>
 
