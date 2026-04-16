@@ -9,15 +9,6 @@
 }
 
 /* ===================================== */
-/* SYSTEM TOKENS */
-/* ===================================== */
-
-:root {
-  --sidebar-width: 260px;
-  --page-top: 60px;
-}
-
-/* ===================================== */
 /* BASE */
 /* ===================================== */
 
@@ -25,10 +16,11 @@ body {
   font-family: 'Cormorant', serif;
   background: #fff;
   color: #000;
+  line-height: 1.6;
 }
 
 /* ===================================== */
-/* SIDEBAR */
+/* SIDEBAR (FIXED SYSTEM) */
 /* ===================================== */
 
 .sidebar {
@@ -39,41 +31,128 @@ body {
   width: 220px;
   height: 100vh;
 
-  padding: var(--page-top) 40px;
+  padding: 40px;
 
-  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+
   background: #fff;
+  border-right: 1px solid #eee;
 
   overflow-y: auto;
+  z-index: 10;
+}
+
+/* brand */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  width: 100px;
+}
+
+.name {
+  font-size: 22px;
+  letter-spacing: 0.3px;
+  text-transform: lowercase;
+}
+
+/* menu */
+.menu-item {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.2s ease;
+}
+
+.menu-item a:hover {
+  color: #666;
+}
+
+.menu-item a.active {
+  font-weight: 500;
 }
 
 /* ===================================== */
-/* CONTENT SHELL */
+/* CONTENT BASE LAYOUT */
 /* ===================================== */
 
 .content {
-  margin-left: var(--sidebar-width);
-  padding: var(--page-top) 40px;
-
+  margin-left: 260px;
+  padding: 80px 40px;
   min-height: 100vh;
 }
 
 /* ===================================== */
-/* TEXT MODE */
+/* TEXT PAGES (INDEX / CV / CONTACT) */
 /* ===================================== */
 
 .content--text {
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
-.text-column {
-  max-width: 620px;
-  width: 100%;
+.text-block,
+.artist-text,
+.cv,
+.contact {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* text styling consistency */
+.artist-text,
+.cv,
+.contact-text {
+  font-size: 17px;
 }
 
 /* ===================================== */
-/* VIEWER MODE */
+/* CV SPECIFIC */
+/* ===================================== */
+
+.cv h2 {
+  font-weight: 400;
+  font-size: 18px;
+
+  margin: 40px 0 20px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.cv p {
+  margin-bottom: 18px;
+}
+
+/* ===================================== */
+/* CONTACT */
+/* ===================================== */
+
+.contact {
+  text-align: center;
+}
+
+.contact-image {
+  max-width: 400px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* ===================================== */
+/* VIEWER (GALLERY SYSTEM) */
 /* ===================================== */
 
 .content--viewer {
@@ -88,40 +167,71 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 14px;
   align-items: center;
+
+  gap: 14px;
 }
 
+/* IMAGE (NO ANIMATION) */
+
 .viewer-image {
+  display: block;
+
+  width: auto;
+  height: auto;
+
   max-width: 100%;
   max-height: 72vh;
+
   object-fit: contain;
+
   cursor: pointer;
+
+  transition: none;
 }
+
+/* CAPTION */
 
 .viewer-caption {
   font-size: 14px;
   font-style: italic;
   text-align: center;
+
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
-/* NAV */
+/* NAVIGATION */
 
 .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
   font-size: 28px;
+
   background: none;
   border: none;
+
   cursor: pointer;
+
+  color: #000;
   opacity: 0.5;
+
+  transition: opacity 0.2s ease;
 }
 
-.prev { left: -80px; }
-.next { right: -80px; }
+.nav:hover {
+  opacity: 1;
+}
+
+.prev {
+  left: -80px;
+}
+
+.next {
+  right: -80px;
+}
 
 /* ===================================== */
 /* MOBILE */
@@ -133,7 +243,10 @@ body {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 20px;
+
+    padding: 20px 18px;
+
+    border-right: none;
     border-bottom: 1px solid #eee;
   }
 
@@ -142,11 +255,15 @@ body {
     padding: 40px 16px;
   }
 
+  .viewer {
+    width: 100%;
+  }
+
   .nav {
     display: none;
   }
 
-  .viewer {
-    width: 100%;
+  .viewer-caption {
+    font-size: 13px;
   }
 }
