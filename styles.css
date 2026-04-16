@@ -242,48 +242,9 @@ body {
   right: -80px;
 }
 
-/* ===================================== */
-/* MOBILE */
-/* ===================================== */
-
 @media (max-width: 768px) {
 
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-
-    padding: 20px 18px;
-
-    border-right: none;
-    border-bottom: 1px solid #eee;
-  }
-
-  .content {
-    margin-left: 0;
-    padding: 40px 16px;
-  }
-
-  .viewer {
-    width: 100%;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .viewer-caption {
-    font-size: 13px;
-  }
-}
-
-/* ===================================== */
-/* MOBILE NAV + GALLERY UX OVERRIDE */
-/* ===================================== */
-
-@media (max-width: 768px) {
-
-  /* ===== SIDEBAR → TOP BAR ===== */
+  /* ===== SIDEBAR ===== */
 
   .sidebar {
     position: fixed;
@@ -293,98 +254,27 @@ body {
     width: 100%;
     height: auto;
 
-    padding: 14px 16px;
+    padding: 10px 14px;
 
+    display: flex;
     flex-direction: column;
 
-    border-right: none;
     border-bottom: 1px solid #eee;
+    border-right: none;
 
     z-index: 1000;
   }
 
-  /* brand becomes header row */
+  /* header row */
   .brand {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
-    margin-bottom: 0;
+    margin-bottom: 6px;
   }
 
-  .logo {
-    width: 42px;
-  }
-
-  .name {
-    font-size: 16px;
-  }
-
-  /* MENU COLLAPSE (hidden by default) */
-  .sidebar .menu {
-    display: none;
-    flex-direction: column;
-
-    margin-top: 12px;
-  }
-
-  .sidebar.open .menu {
-    display: flex;
-  }
-
-  .menu-item {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-
-  /* ===== CONTENT ===== */
-
-  .content {
-    margin-left: 0;
-    padding-top: 90px; /* space for top bar */
-  }
-
-  /* ===== GALLERY FULL WIDTH ===== */
-
-  .viewer {
-    width: 100%;
-  }
-
-  .viewer-image {
-    max-width: 100vw;
-    max-height: 75vh;
-  }
-
-  /* hide arrows completely */
-  .nav {
-    display: none !important;
-  }
-}
-
-/* ===================================== */
-/* MOBILE FINAL LAYOUT FIX */
-/* ===================================== */
-
-@media (max-width: 768px) {
-
-  /* SIDEBAR becomes top bar */
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-
-    padding: 10px 14px; /* сильно уменьшено */
-
-    border-right: none;
-    border-bottom: 1px solid #eee;
-
-    flex-direction: row;
-    align-items: center;
-
-    overflow: hidden;
-  }
-
-  /* logo + name compact */
   .logo {
     width: 32px;
   }
@@ -394,25 +284,34 @@ body {
     letter-spacing: 0.2px;
   }
 
-  /* menu becomes inline row or compact stack */
+  /* menu hidden by default */
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .sidebar.menu-open .menu {
+    display: flex;
+  }
+
   .menu-item {
     font-size: 13px;
-    margin-bottom: 4px;
-    white-space: nowrap; /* no wrapping */
+    white-space: nowrap;
   }
 
   .menu-item a {
     white-space: nowrap;
   }
 
-  /* IMPORTANT: reset ALL content spacing */
+  /* ===== CONTENT ===== */
+
   .content {
-    margin-left: 0 !important;
-    padding: 20px 14px !important;
-    max-width: 100% !important;
+    margin-left: 0;
+    padding: 90px 14px 40px;
   }
 
-  /* TEXT PAGES CENTER FIX */
   .content--text {
     display: flex;
     justify-content: center;
@@ -423,33 +322,22 @@ body {
     max-width: 520px;
   }
 
-  /* VIEWER PAGES */
-  .content--viewer {
-    padding: 10px 0 !important;
-    display: flex;
-    justify-content: center;
-  }
+  /* ===== VIEWER ===== */
 
   .viewer {
     width: 100%;
-    max-width: 100%;
   }
 
-  /* images full width behavior */
   .viewer-image {
-    max-height: 70vh;
     width: 100%;
-    object-fit: contain;
+    max-height: 75vh;
   }
 
-  /* disable desktop arrows */
   .nav {
     display: none !important;
   }
 
-  /* captions tighter */
   .viewer-caption {
     font-size: 12px;
-    padding: 6px 10px;
   }
 }
