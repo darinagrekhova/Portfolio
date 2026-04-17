@@ -52,8 +52,9 @@ function render() {
   caption.innerHTML =
     `<em>${gallery[current].title || ""}</em><br>${gallery[current].meta || ""}`;
 
-  if (seriesText) {
-    seriesText.textContent = currentSeriesDescription || "";
+  const seriesText = document.getElementById("series-text");
+if (seriesText) {
+  seriesText.textContent = currentSeriesDescription || "";
   }
 
   setTimeout(() => {
