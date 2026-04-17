@@ -150,7 +150,7 @@ const SERIES = {
     }
   ],
 
-  "selected-independent": [
+  selected_paintings: [
   
     {
       src: "images/selected-independent/vid-na-dorogu.jpg",
@@ -166,7 +166,7 @@ const SERIES = {
   ],
 
     
-  drawings: [
+  selected_drawings: [
     {
       src: "images/drawings/1.jpg",
       title: "untitled",
