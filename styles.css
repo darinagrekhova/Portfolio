@@ -37,7 +37,7 @@ body {
   flex-direction: column;
 
   background: #fff;
-  border-right: 1px solid #eee;
+  
 
   overflow-y: auto;
   z-index: 10;
