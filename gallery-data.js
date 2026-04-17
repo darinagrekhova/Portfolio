@@ -1,6 +1,8 @@
 const SERIES = {
 
-  quiexspectat: [
+  quiexspectat: {
+     description: ,
+    images: [
     {
       src: "images/qui-exspectat/ladder.jpg",
       title: "ladder",
