@@ -51,6 +51,10 @@ function render() {
   caption.innerHTML =
     `<em>${gallery[current].title || ""}</em><br>${gallery[current].meta || ""}`;
 
+  if (seriesText) {
+    seriesText.textContent = currentSeriesDescription || "";
+  }
+
   setTimeout(() => {
     caption.style.opacity = "1";
   }, 250);
@@ -86,6 +90,8 @@ function prevImage() {
 
   const img = document.getElementById("artwork");
   img.classList.add("fade-out");
+
+  
 
   setTimeout(() => {
     current = (current - 1 + gallery.length) % gallery.length;
