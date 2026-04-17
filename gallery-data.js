@@ -150,6 +150,22 @@ const SERIES = {
     }
   ],
 
+  "selected-independent": [
+  
+    {
+      src: "images/selected-independent/vid-na-dorogu.jpg",
+      title: "view of the road",
+      meta: "oil on paper<br>100×90 cm<br>sold"
+    },
+       {
+      src: "images/selected-independent/devushka-i-sobaka.jpg",
+      title: "girl and a dog",
+      meta: "oil on canvas<br>150×150 cm"
+    }
+    
+  ],
+
+    
   drawings: [
     {
       src: "images/drawings/1.jpg",
