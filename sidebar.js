@@ -16,8 +16,8 @@ function loadSidebar() {
         <div class="menu-item"><a href="/gallery.html?series=volante">volante</a></div>
         <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-canvas">slavic myth on canvas</a></div>
         <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-paper">slavic myth on paper</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-paper">selected-independent</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-paper">drawings</a></div>
+        <div class="menu-item"><a href="/gallery.html?series=selected-independent">selected-independent</a></div>
+        <div class="menu-item"><a href="/gallery.html?series=drawings">drawings</a></div>
         
         <div class="menu-item"><a href="/cv.html">cv</a></div>
         <div class="menu-item"><a href="/contact.html">contacts</a></div>
