@@ -1,6 +1,7 @@
 let current = 0;
 let gallery = [];
 let isAnimating = false;
+let currentSeriesDescription = "";
 
 /* ===================================== */
 /* INIT */
