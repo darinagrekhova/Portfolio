@@ -1,209 +1,302 @@
-/* =========================
-   БАЗОВЫЕ НАСТРОЙКИ СТРАНИЦЫ
-   ========================= */
+/* ===================================== */
+/* RESET */
+/* ===================================== */
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* гарантирует, что padding не ломает размеры блоков */
+  box-sizing: border-box;
 }
+
+/* ===================================== */
+/* BASE */
+/* ===================================== */
 
 body {
   font-family: 'Cormorant', serif;
-  color: rgba(0, 0, 0, 0.85);
   background: #fff;
-  overflow-x: hidden;
-  /* убирает горизонтальный скролл */
+  color: #000;
+  line-height: 1.6;
 }
 
-
-/* =========================
-   SIDEBAR (ЛЕВОЕ МЕНЮ)
-   ========================= */
+/* ===================================== */
+/* SIDEBAR (DESKTOP) */
+/* ===================================== */
 
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
 
-  width: 220px;        /* ширина меню */
-  height: 100vh;       /* на всю высоту экрана */
+  width: 200px;
+  height: 100vh;
 
-  padding: 40px 32px;  /* внутренний воздух */
+  padding: 24px;
 
   display: flex;
   flex-direction: column;
 
   background: #fff;
+  border-right: 1px solid #eee;
 
-  border-right: 1px solid rgba(0,0,0,0.06);
-  /* тонкая линия как в галереях */
-
-  overflow-y: auto;    /* если меню длинное — появляется скролл */
-
+  overflow-y: auto;
   z-index: 10;
 }
 
+/* BRAND */
 
-/* =========================
-   ОСНОВНОЙ КОНТЕНТ
-   ========================= */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  width: 80px;
+}
+
+.name {
+  font-size: 18px;
+  line-height: 1.1;
+  text-transform: lowercase;
+}
+
+/* MENU */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: #000;
+  white-space: nowrap;
+}
+
+.menu-item a.active {
+  font-weight: 500;
+}
+
+/* ===================================== */
+/* CONTENT BASE */
+/* ===================================== */
 
 .content {
-  margin-left: 220px;
-  /* отступ под sidebar */
-
+  margin-left: 260px;
+  padding: 80px 40px;
   min-height: 100vh;
-  /* контент всегда занимает экран */
 }
 
+/* ===================================== */
+/* TEXT PAGES (INDEX / CV / CONTACT) */
+/* ===================================== */
 
-/* =========================
-   VIEWER (ОБЛАСТЬ КАРТИНКИ)
-   ========================= */
+.content--text {
+  display: flex;
+  justify-content: center;
+}
+
+.content--text > * {
+  max-width: 600px;
+}
+
+.artist-text,
+.cv,
+.contact {
+  font-size: 17px;
+}
+
+/* ===================================== */
+/* CV */
+/* ===================================== */
+
+.cv h2 {
+  font-size: 18px;
+  font-weight: 400;
+
+  text-align: center;
+
+  margin: 40px 0 20px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid #eee;
+}
+
+.cv p {
+  margin-bottom: 18px;
+}
+
+/* ===================================== */
+/* CONTACT */
+/* ===================================== */
+
+.contact {
+  text-align: center;
+}
+
+.contact-image {
+  max-width: 400px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* ===================================== */
+/* VIEWER (GALLERY DESKTOP) */
+/* ===================================== */
+
+.content--viewer {
+  display: flex;
+  justify-content: center;
+}
 
 .viewer {
-  width: 100%;
-  height: 100vh;
-
-  padding: 80px 120px;
-  /* создаёт “галерейное пространство” вокруг работы */
-
+  width: 520px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-
-  position: relative;
+  gap: 14px;
 }
-
-
-/* =========================
-   САМА КАРТИНКА
-   ========================= */
 
 .viewer-image {
   max-width: 100%;
-  max-height: 100%;
-
+  max-height: 72vh;
   object-fit: contain;
-  /* сохраняет пропорции без обрезки */
-
-  transition: opacity 0.4s ease;
-  /* плавное появление */
+  cursor: pointer;
 }
 
+.viewer-caption {
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 
-/* =========================
-   СТРЕЛКИ НАВИГАЦИИ
-   ========================= */
+/* NAV */
 
 .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 
-  font-size: 32px;
-  color: rgba(0,0,0,0.4);
+  font-size: 28px;
+  background: none;
+  border: none;
 
   cursor: pointer;
-  user-select: none;
-
-  transition: opacity 0.3s ease;
+  opacity: 0.5;
 }
 
-/* левая стрелка */
-.prev {
-  left: 20px;
-}
+.prev { left: -80px; }
+.next { right: -80px; }
 
-/* правая стрелка */
-.next {
-  right: 20px;
-}
-
-
-/* =========================
-   ПОДПИСЬ К РАБОТЕ
-   ========================= */
-
-.viewer-caption {
-  position: fixed;
-  bottom: 40px;
-  left: 260px;
-
-  font-size: 13px;
-  line-height: 1.5;
-
-  color: rgba(0,0,0,0.6);
-
-  max-width: 400px;
-}
-
-
-/* =========================
-   TABLET (планшеты)
-   ========================= */
-
-@media (max-width: 1024px) {
-
-  .sidebar {
-    width: 200px;
-    padding: 30px 24px;
-  }
-
-  .content {
-    margin-left: 200px;
-  }
-
-  .viewer {
-    padding: 50px 60px;
-    /* уменьшаем “воздух” */
-  }
-
-  .viewer-caption {
-    left: 220px;
-  }
-}
-
-
-/* =========================
-   MOBILE (телефоны)
-   ========================= */
+/* ===================================== */
+/* MOBILE SYSTEM (FINAL CLEAN ARCHITECTURE) */
+/* ===================================== */
 
 @media (max-width: 768px) {
 
-  /* SIDEBAR превращается в верхнюю панель */
+  /* SIDEBAR → TOP BAR */
+
   .sidebar {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+
     width: 100%;
     height: auto;
 
+    padding: 10px 14px;
+
     border-right: none;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid #eee;
+
+    flex-direction: column;
+
+    z-index: 1000;
   }
 
-  /* убираем смещение контента */
+  /* BRAND ROW */
+
+  .brand {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .logo {
+    width: 32px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  /* MENU COLLAPSE */
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .sidebar.open .menu {
+    display: flex;
+  }
+
+  .menu-item {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  /* CONTENT */
+
   .content {
     margin-left: 0;
+    padding: 70px 14px 30px;
   }
 
-  /* viewer становится “естественным”, не 100vh */
+  /* TEXT */
+
+  .content--text {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* VIEWER */
+
+  .content--viewer {
+    display: block;
+  }
+
   .viewer {
-    height: auto;
-    padding: 20px;
+    width: 100%;
   }
 
-  /* убираем стрелки (жесты лучше на мобилке) */
+  .viewer-image {
+    width: 100%;
+    max-height: 75vh;
+  }
+
+  .viewer-caption {
+    opacity: 1;
+    font-size: 12px;
+  }
+
+  /* arrows off */
+
   .nav {
     display: none;
-  }
-
-  /* подпись становится обычным блоком */
-  .viewer-caption {
-    position: static;
-    padding: 16px 20px;
-    font-size: 14px;
-    max-width: 100%;
   }
 }
