@@ -1,14 +1,13 @@
 let current = 0;
 let gallery = [];
 let isAnimating = false;
-let currentSeriesDescription = "";
 
 /* ===================================== */
 /* INIT */
 /* ===================================== */
 
 function initGallery(data) {
-  if (!data || !data.length) return;
+  if (!Array.isArray(data) || data.length === 0) return;
 
   gallery = data;
   current = 0;
@@ -27,6 +26,8 @@ function initGallery(data) {
 /* ===================================== */
 
 function preload() {
+  if (gallery.length < 2) return;
+
   const next = (current + 1) % gallery.length;
 
   [current, next].forEach(i => {
@@ -43,23 +44,20 @@ function render() {
   const img = document.getElementById("artwork");
   const caption = document.getElementById("caption");
 
-  if (!img || !caption) return;
+  if (!img || !caption || !gallery[current]) return;
 
   caption.style.opacity = "0";
 
-  img.src = gallery[current].src;
+  const item = gallery[current];
+
+  img.src = item.src;
 
   caption.innerHTML =
-    `<em>${gallery[current].title || ""}</em><br>${gallery[current].meta || ""}`;
+    `<span>${item.title || ""}</span> · ${item.meta || ""}`;
 
-  const seriesText = document.getElementById("series-text");
-if (seriesText) {
-  seriesText.textContent = currentSeriesDescription || "";
-  }
-
-  setTimeout(() => {
+  requestAnimationFrame(() => {
     caption.style.opacity = "1";
-  }, 250);
+  });
 
   preload();
 }
@@ -70,6 +68,7 @@ if (seriesText) {
 
 function nextImage() {
   if (isAnimating || gallery.length < 2) return;
+
   isAnimating = true;
 
   const img = document.getElementById("artwork");
@@ -88,12 +87,11 @@ function nextImage() {
 
 function prevImage() {
   if (isAnimating || gallery.length < 2) return;
+
   isAnimating = true;
 
   const img = document.getElementById("artwork");
   img.classList.add("fade-out");
-
-  
 
   setTimeout(() => {
     current = (current - 1 + gallery.length) % gallery.length;
@@ -118,13 +116,14 @@ function initKeyboard() {
 }
 
 /* ===================================== */
-/* SWIPE */
+/* SWIPE (mobile UX) */
 /* ===================================== */
 
 function initSwipe() {
-  let startX = 0;
   const img = document.getElementById("artwork");
   if (!img) return;
+
+  let startX = 0;
 
   img.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
@@ -139,18 +138,31 @@ function initSwipe() {
 }
 
 /* ===================================== */
-/* SILENT MODE (FIXED - NO NAV BREAKING) */
+/* TAP NAVIGATION (mobile) */
+/* ===================================== */
+
+function initTapNavigation() {
+  const img = document.getElementById("artwork");
+  if (!img) return;
+
+  img.addEventListener("click", () => {
+    nextImage();
+  });
+}
+
+/* ===================================== */
+/* SILENT MODE */
 /* ===================================== */
 
 function initSilentMode() {
   const nav = document.querySelectorAll(".nav");
-  const caption = document.querySelectorAll(".viewer-caption");
+  const caption = document.querySelector(".viewer-caption");
 
   let timeout;
 
   function showUI() {
     nav.forEach(el => el.style.opacity = "0.5");
-    caption.forEach(el => el.style.opacity = "1");
+    if (caption) caption.style.opacity = "1";
 
     clearTimeout(timeout);
     timeout = setTimeout(hideUI, 2500);
@@ -158,7 +170,7 @@ function initSilentMode() {
 
   function hideUI() {
     nav.forEach(el => el.style.opacity = "0");
-    caption.forEach(el => el.style.opacity = "0.2");
+    if (caption) caption.style.opacity = "0.2";
   }
 
   document.addEventListener("mousemove", showUI);
@@ -168,57 +180,10 @@ function initSilentMode() {
 }
 
 /* ===================================== */
-/* SIDEBAR */
-/* ===================================== */
-
-function loadSidebar() {
-  const container = document.getElementById("sidebar-container");
-  if (!container) return;
-
-  const isRU = window.location.pathname.includes('/ru/');
-
-  // 🔥 КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ:
-  const base = window.location.origin;
-
-  const path = isRU
-    ? base + '/ru/sidebar.html'
-    : base + '/sidebar.html';
-
-  fetch(path)
-    .then(res => {
-      if (!res.ok) throw new Error("Sidebar fetch failed: " + res.status);
-      return res.text();
-    })
-    .then(html => {
-      container.innerHTML = html;
-
-      const file = window.location.pathname.split("/").pop();
-
-      document.querySelectorAll(".menu-item a").forEach(a => {
-        if (a.getAttribute("href") === file) {
-          a.classList.add("active");
-        }
-      });
-    })
-    .catch(err => {
-      console.error("Sidebar error:", err);
-    });
-}
-
-/* ===================================== */
-/* EXPORT */
+/* EXPORTS */
 /* ===================================== */
 
 window.initGallery = initGallery;
 window.nextImage = nextImage;
 window.prevImage = prevImage;
-window.loadSidebar = loadSidebar;
 window.initSilentMode = initSilentMode;
-function initTapNavigation() {
-  const img = document.getElementById("artwork");
-  if (!img) return;
-
-  img.addEventListener("click", () => {
-    nextImage();
-  });
-}
