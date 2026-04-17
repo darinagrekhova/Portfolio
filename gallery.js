@@ -37,7 +37,7 @@ function preload() {
 }
 
 /* ===================================== */
-/* RENDER */
+/* RENDER (CLEAN FORMAT LAYER) */
 /* ===================================== */
 
 function render() {
@@ -46,14 +46,21 @@ function render() {
 
   if (!img || !caption || !gallery[current]) return;
 
-  caption.style.opacity = "0";
-
   const item = gallery[current];
+
+  caption.style.opacity = "0";
 
   img.src = item.src;
 
-  caption.innerHTML =
-    `<span>${item.title || ""}</span> · ${item.meta || ""}`;
+  // единый формат строки (будет расширяться)
+  caption.textContent = "";
+
+  const line = [
+    item.title,
+    item.meta
+  ].filter(Boolean).join(" · ");
+
+  caption.innerHTML = line;
 
   requestAnimationFrame(() => {
     caption.style.opacity = "1";
@@ -72,14 +79,14 @@ function nextImage() {
   isAnimating = true;
 
   const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
+  if (img) img.classList.add("fade-out");
 
   setTimeout(() => {
     current = (current + 1) % gallery.length;
     render();
 
     requestAnimationFrame(() => {
-      img.classList.remove("fade-out");
+      if (img) img.classList.remove("fade-out");
       isAnimating = false;
     });
   }, 200);
@@ -91,14 +98,14 @@ function prevImage() {
   isAnimating = true;
 
   const img = document.getElementById("artwork");
-  img.classList.add("fade-out");
+  if (img) img.classList.add("fade-out");
 
   setTimeout(() => {
     current = (current - 1 + gallery.length) % gallery.length;
     render();
 
     requestAnimationFrame(() => {
-      img.classList.remove("fade-out");
+      if (img) img.classList.remove("fade-out");
       isAnimating = false;
     });
   }, 200);
@@ -145,13 +152,17 @@ function initTapNavigation() {
   const img = document.getElementById("artwork");
   if (!img) return;
 
+  const isMobile = window.innerWidth <= 768;
+
+  if (!isMobile) return;
+
   img.addEventListener("click", () => {
     nextImage();
   });
 }
 
 /* ===================================== */
-/* SILENT MODE */
+/* SILENT MODE (FIXED SAFE VERSION) */
 /* ===================================== */
 
 function initSilentMode() {
@@ -161,7 +172,10 @@ function initSilentMode() {
   let timeout;
 
   function showUI() {
-    nav.forEach(el => el.style.opacity = "0.5");
+    nav.forEach(el => {
+      if (el) el.style.opacity = "0.5";
+    });
+
     if (caption) caption.style.opacity = "1";
 
     clearTimeout(timeout);
@@ -169,7 +183,10 @@ function initSilentMode() {
   }
 
   function hideUI() {
-    nav.forEach(el => el.style.opacity = "0");
+    nav.forEach(el => {
+      if (el) el.style.opacity = "0";
+    });
+
     if (caption) caption.style.opacity = "0.2";
   }
 
@@ -187,3 +204,6 @@ window.initGallery = initGallery;
 window.nextImage = nextImage;
 window.prevImage = prevImage;
 window.initSilentMode = initSilentMode;
+window.initSwipe = initSwipe;
+window.initKeyboard = initKeyboard;
+window.initTapNavigation = initTapNavigation;
