@@ -229,3 +229,20 @@ const SERIES = {
     }
   ]
 };
+const SERIES_DESCRIPTION = {
+  quiexspectat: "A study of suspended gestures and ambiguous narrative moments.",
+
+  notnotfun: "Playful failures, repetition and visual irony.",
+
+  foreigners: "Fragmented perception of otherness and displacement.",
+
+  volante: "Movement, inertia and suspended bodies.",
+
+  "slavic-myth-on-canvas": "Reconstructed mythologies and folkloric imagery.",
+
+  "slavic-myth-on-paper": "Ritual and myth translated into drawing medium.",
+
+  selected_paintings: "Key works selected across different periods.",
+
+  selected_drawings: "Drawing practice as autonomous visual thinking."
+};
