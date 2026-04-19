@@ -92,7 +92,7 @@ body {
 /* ===================================== */
 
 .content {
-  margin-left: 260px;
+  margin-left: 248px;
   padding: 80px 40px;
   min-height: 100vh;
 }
@@ -200,6 +200,7 @@ body {
   opacity: 0.5;
 
   z-index: 1000; /* ← ВОТ ЭТО КРИТИЧНО */
+  }
   
   .prev {
   left: -40px;
