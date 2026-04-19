@@ -172,6 +172,8 @@ body {
   max-height: 72vh;
   object-fit: contain;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .viewer-caption {
@@ -195,10 +197,9 @@ body {
 
   cursor: pointer;
   opacity: 0.5;
-}
 
-.prev { left: -80px; }
-.next { right: -80px; }
+  z-index: 1000; /* ← ВОТ ЭТО КРИТИЧНО */
+}
 
 /* ===================================== */
 /* MOBILE SYSTEM (FINAL CLEAN ARCHITECTURE) */
