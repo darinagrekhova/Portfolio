@@ -308,16 +308,14 @@ body.home-body .sidebar {
 
   display: grid;
 
-  grid-template-columns:
-    auto
-    auto;
+  grid-template-columns: auto auto;
 
   justify-content: space-between;
 
   align-items: start;
-}
 
   background: transparent !important;
+
   border-right: none !important;
 
   overflow: visible;
@@ -373,7 +371,7 @@ body.home-body .menu {
 
   align-items: flex-end;
 
-  gap: 4px;
+  gap: 2px;
 }
 
 /* MENU ITEMS */
@@ -525,6 +523,8 @@ body.home-body .menu-item a.active {
 
     padding: 18px;
 
+    display: flex;
+
     flex-direction: column;
 
     gap: 14px;
@@ -545,11 +545,11 @@ body.home-body .menu-item a.active {
 
     display: flex !important;
 
-    flex-direction: row;
+    flex-direction: column;
 
-    flex-wrap: wrap;
+    align-items: flex-start;
 
-    gap: 10px;
+    gap: 4px;
 
     max-width: 100%;
   }
