@@ -25,6 +25,7 @@ body {
 
 .sidebar {
   position: fixed;
+
   top: 0;
   left: 0;
 
@@ -40,15 +41,20 @@ body {
   border-right: 1px solid #eee;
 
   overflow-y: auto;
+
   z-index: 10;
 }
 
+/* ===================================== */
 /* BRAND */
+/* ===================================== */
 
 .brand {
   display: flex;
   flex-direction: column;
+
   gap: 4px;
+
   margin-bottom: 18px;
 
   text-decoration: none;
@@ -62,10 +68,13 @@ body {
 .name {
   font-size: 18px;
   line-height: 1.1;
+
   text-transform: lowercase;
 }
 
+/* ===================================== */
 /* MENU */
+/* ===================================== */
 
 .menu {
   display: flex;
@@ -80,6 +89,7 @@ body {
 .menu-item a {
   text-decoration: none;
   color: #000;
+
   white-space: nowrap;
 }
 
@@ -93,12 +103,14 @@ body {
 
 .content {
   margin-left: 248px;
+
   padding: 80px 40px;
+
   min-height: 100vh;
 }
 
 /* ===================================== */
-/* TEXT PAGES (INDEX / CV / CONTACT) */
+/* TEXT PAGES */
 /* ===================================== */
 
 .content--text {
@@ -127,6 +139,7 @@ body {
   text-align: center;
 
   margin: 40px 0 20px;
+
   padding-bottom: 6px;
 
   border-bottom: 1px solid #eee;
@@ -147,11 +160,12 @@ body {
 .contact-image {
   max-width: 400px;
   width: 100%;
+
   margin-top: 20px;
 }
 
 /* ===================================== */
-/* VIEWER (GALLERY DESKTOP) */
+/* VIEWER */
 /* ===================================== */
 
 .content--viewer {
@@ -161,18 +175,24 @@ body {
 
 .viewer {
   width: 520px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 14px;
+
   position: relative;
 }
 
 .viewer-image {
   max-width: 100%;
   max-height: 72vh;
+
   object-fit: contain;
+
   cursor: pointer;
+
   position: relative;
   z-index: 1;
 }
@@ -180,45 +200,222 @@ body {
 .viewer-caption {
   font-size: 14px;
   font-style: italic;
+
   text-align: center;
+
   opacity: 0;
+
   transition: opacity 0.4s ease;
 }
 
+/* ===================================== */
 /* NAV */
+/* ===================================== */
 
 .nav {
   position: absolute;
+
   top: 50%;
+
   transform: translateY(-50%);
 
   font-size: 28px;
+
   background: none;
   border: none;
 
   cursor: pointer;
+
   opacity: 0.5;
 
-  z-index: 1000; /* ← ВОТ ЭТО КРИТИЧНО */
-  }
-  
-  .prev {
+  z-index: 1000;
+}
+
+.prev {
   left: -90px;
 }
-  .next {
+
+.next {
   right: -90px;
 }
 
 /* ===================================== */
-/* MOBILE SYSTEM (FINAL CLEAN ARCHITECTURE) */
+/* HOME IMMERSIVE MODE */
+/* ===================================== */
+
+body.home-body {
+  margin: 0;
+
+  background: black;
+
+  overflow: hidden;
+}
+
+/* HERO */
+
+.home-hero {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+/* HERO IMAGE */
+
+#hero-image {
+
+  width: 100vw;
+  height: 100vh;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: opacity 0.8s ease;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+/* FADE */
+
+#hero-image.fade {
+  opacity: 0;
+}
+
+/* ===================================== */
+/* HOMEPAGE SIDEBAR */
+/* ===================================== */
+
+body.home-body .sidebar {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: auto;
+
+  padding: 28px 32px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background: transparent !important;
+  border-right: none !important;
+
+  overflow: visible;
+
+  z-index: 1000;
+}
+
+/* REMOVE LOGO */
+
+body.home-body .logo {
+  display: none;
+}
+
+/* BRAND */
+
+body.home-body .brand {
+
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+
+  margin-bottom: 0;
+}
+
+/* NAME */
+
+body.home-body .name {
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 300;
+
+  letter-spacing: 0.03em;
+
+  opacity: 0.9;
+
+  transition: opacity 0.3s ease;
+}
+
+body.home-body .name:hover {
+  opacity: 1;
+}
+
+/* MENU */
+
+body.home-body .menu {
+
+  display: flex !important;
+
+  flex-direction: row;
+
+  flex-wrap: wrap;
+
+  justify-content: flex-end;
+
+  gap: 18px;
+
+  max-width: 60vw;
+}
+
+/* MENU ITEMS */
+
+body.home-body .menu-item {
+  margin-bottom: 0;
+}
+
+/* LINKS */
+
+body.home-body .menu-item a {
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  opacity: 0.72;
+
+  transition: opacity 0.3s ease;
+}
+
+body.home-body .menu-item a:hover {
+  opacity: 1;
+}
+
+/* ACTIVE */
+
+body.home-body .menu-item a.active {
+  font-weight: 400;
+}
+
+/* ===================================== */
+/* MOBILE */
 /* ===================================== */
 
 @media (max-width: 768px) {
 
-  /* SIDEBAR → TOP BAR */
+  /* SIDEBAR */
 
   .sidebar {
+
     position: fixed;
+
     top: 0;
     left: 0;
 
@@ -235,12 +432,15 @@ body {
     z-index: 1000;
   }
 
-  /* BRAND ROW */
+  /* BRAND */
 
   .brand {
+
     flex-direction: row;
+
     align-items: center;
     justify-content: space-between;
+
     margin-bottom: 0;
   }
 
@@ -252,11 +452,14 @@ body {
     font-size: 14px;
   }
 
-  /* MENU COLLAPSE */
+  /* MENU */
 
   .menu {
+
     display: none;
+
     flex-direction: column;
+
     margin-top: 10px;
   }
 
@@ -272,7 +475,9 @@ body {
   /* CONTENT */
 
   .content {
+
     margin-left: 0;
+
     padding: 70px 14px 30px;
   }
 
@@ -303,197 +508,37 @@ body {
     font-size: 12px;
   }
 
-  /* arrows off */
+  /* ARROWS OFF */
 
   .nav {
     display: none;
   }
-}
 
+  /* ===================================== */
+  /* HOMEPAGE MOBILE */
+  /* ===================================== */
 
-/* ===================================== */
-/* HOME IMMERSIVE MODE */
-/* ===================================== */
+  body.home-body .sidebar {
 
-.home-body {
-  margin: 0;
-  background: black;
-
-  overflow-x: hidden;
-}
-
-/* HERO */
-
-.home-hero {
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
-}
-
-/* IMAGE */
-
-#hero-image {
-  width: 110vw;
-  height: 110vh;
-
-  object-fit: cover;
-
-  transition:
-    opacity 0.8s ease,
-    transform 6s ease;
-
-  cursor: pointer;
-
-  user-select: none;
-
-  position: relative;
-}
-
-/* FADE */
-
-#hero-image.fade {
-  opacity: 0;
-}
-
-/* ===================================== */
-/* SIDEBAR OVERLAY */
-/* ===================================== */
-
-.home-body .sidebar {
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-
-  height: auto;
-
-  padding: 28px 32px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  background: transparent;
-  border-right: none;
-
-  overflow: visible;
-
-  z-index: 1000;
-}
-
-/* LOGO */
-
-.home-body .logo {
-  display: none;
-}
-
-/* BRAND */
-
-.home-body .brand {
-  display: flex;
-  flex-direction: column;
-
-  text-decoration: none;
-
-  margin-bottom: 0;
-}
-
-/* NAME */
-
-.home-body .name {
-  color: white;
-
-  font-size: 18px;
-  font-weight: 300;
-
-  letter-spacing: 0.03em;
-
-  opacity: 0.9;
-
-  transition: opacity 0.3s ease;
-}
-
-.home-body .name:hover {
-  opacity: 1;
-}
-
-/* MENU */
-
-.home-body .menu {
-
-  display: flex !important;
-
-  flex-direction: row;
-
-  flex-wrap: wrap;
-
-  justify-content: flex-end;
-
-  gap: 18px;
-
-  max-width: 60vw;
-}
-
-/* MENU ITEMS */
-
-.home-body .menu-item {
-  margin-bottom: 0;
-}
-
-/* LINKS */
-
-.home-body .menu-item a {
-
-  color: white;
-
-  text-decoration: none;
-
-  font-size: 15px;
-
-  opacity: 0.72;
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
-.home-body .menu-item a:hover {
-  opacity: 1;
-}
-
-/* remove active highlight */
-
-.home-body .menu-item a.active {
-  font-weight: 400;
-}
-
-/* ===================================== */
-/* MOBILE */
-/* ===================================== */
-
-@media (max-width: 768px) {
-
-  .home-body .sidebar {
-
-    padding: 18px 18px;
+    padding: 18px;
 
     flex-direction: column;
 
     gap: 14px;
 
-    border-bottom: none;
+    border-bottom: none !important;
+
+    background: transparent !important;
   }
 
-  .home-body .brand {
+  body.home-body .brand {
+
     flex-direction: row;
+
     align-items: center;
   }
 
-  .home-body .menu {
+  body.home-body .menu {
 
     display: flex !important;
 
@@ -506,17 +551,20 @@ body {
     max-width: 100%;
   }
 
-  .home-body .menu-item a {
+  body.home-body .menu-item a {
     font-size: 13px;
   }
 
-  .home-body .name {
+  body.home-body .name {
     font-size: 15px;
+    color: white;
   }
 
   #hero-image {
 
-    width: 120vw;
+    width: 100vw;
     height: 100vh;
+
+    object-fit: cover;
   }
 }
