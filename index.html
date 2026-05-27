@@ -15,40 +15,104 @@
 
 </head>
 
-<body>
+<body class="home-body">
 
-  <!-- SIDEBAR ROOT (inject point) -->
+  <!-- SIDEBAR -->
   <div id="sidebar-container"></div>
 
-  <!-- MAIN CONTENT -->
-  <main class="content content--text">
+  <!-- HERO IMAGE -->
+  <main class="home-hero">
 
-    <div class="artist-text">
-
-      <p>
-        I am a visual artist working with figurative painting and drawing.
-      </p>
-
-      <p>
-        My practice explores the phenomenology of the image through states of suspension, ambiguity, and incomplete action.
-        I create images that function as open situations, where gesture, memory, and perception remain in flux.
-      </p>
-
-      <p>
-        Independent artist, open to institutional collaborations, research-based projects, and curatorial enquiries.
-      </p>
-
-    </div>
+    <img
+      id="hero-image"
+      src="images/home/fragment-1.jpg"
+      alt="Painting fragment"
+    >
 
   </main>
 
-  <!-- SCRIPTS -->
+  <!-- SIDEBAR -->
   <script src="sidebar.js"></script>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", () => {
       loadSidebar();
     });
+
+    /* ===================================== */
+    /* HOME IMAGES */
+    /* ===================================== */
+
+    const images = [
+      "images/home/fragment-1.jpg",
+      "images/home/fragment-2.jpg",
+      "images/home/fragment-3.jpg",
+      "images/home/fragment-4.jpg"
+    ];
+
+    let current = 0;
+
+    const hero = document.getElementById("hero-image");
+
+    /* ===================================== */
+    /* SHOW IMAGE */
+    /* ===================================== */
+
+    function showImage(index) {
+
+      hero.classList.add("fade");
+
+      setTimeout(() => {
+
+        hero.src = images[index];
+
+        hero.classList.remove("fade");
+
+      }, 300);
+    }
+
+    /* ===================================== */
+    /* NEXT / PREV */
+    /* ===================================== */
+
+    function nextImage() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+
+    function prevImage() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+
+    /* ===================================== */
+    /* CLICK NAVIGATION */
+    /* ===================================== */
+
+    document.addEventListener("click", (e) => {
+
+      // ignore clicks on menu links
+      if (e.target.closest("a")) return;
+
+      const x = e.clientX;
+
+      if (x > window.innerWidth / 2) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+
+    });
+
+    /* ===================================== */
+    /* AUTO TRANSITION */
+    /* ===================================== */
+
+    setInterval(() => {
+      nextImage();
+    }, 10000);
+
   </script>
 
 </body>
