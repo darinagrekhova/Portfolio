@@ -309,3 +309,214 @@ body {
     display: none;
   }
 }
+
+
+/* ===================================== */
+/* HOME IMMERSIVE MODE */
+/* ===================================== */
+
+.home-body {
+  margin: 0;
+  background: black;
+
+  overflow-x: hidden;
+}
+
+/* HERO */
+
+.home-hero {
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+/* IMAGE */
+
+#hero-image {
+  width: 110vw;
+  height: 110vh;
+
+  object-fit: cover;
+
+  transition:
+    opacity 0.8s ease,
+    transform 6s ease;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  position: relative;
+}
+
+/* FADE */
+
+#hero-image.fade {
+  opacity: 0;
+}
+
+/* ===================================== */
+/* SIDEBAR OVERLAY */
+/* ===================================== */
+
+.home-body .sidebar {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: auto;
+
+  padding: 28px 32px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background: transparent;
+  border-right: none;
+
+  overflow: visible;
+
+  z-index: 1000;
+}
+
+/* LOGO */
+
+.home-body .logo {
+  display: none;
+}
+
+/* BRAND */
+
+.home-body .brand {
+  display: flex;
+  flex-direction: column;
+
+  text-decoration: none;
+
+  margin-bottom: 0;
+}
+
+/* NAME */
+
+.home-body .name {
+  color: white;
+
+  font-size: 18px;
+  font-weight: 300;
+
+  letter-spacing: 0.03em;
+
+  opacity: 0.9;
+
+  transition: opacity 0.3s ease;
+}
+
+.home-body .name:hover {
+  opacity: 1;
+}
+
+/* MENU */
+
+.home-body .menu {
+
+  display: flex !important;
+
+  flex-direction: row;
+
+  flex-wrap: wrap;
+
+  justify-content: flex-end;
+
+  gap: 18px;
+
+  max-width: 60vw;
+}
+
+/* MENU ITEMS */
+
+.home-body .menu-item {
+  margin-bottom: 0;
+}
+
+/* LINKS */
+
+.home-body .menu-item a {
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  opacity: 0.72;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.home-body .menu-item a:hover {
+  opacity: 1;
+}
+
+/* remove active highlight */
+
+.home-body .menu-item a.active {
+  font-weight: 400;
+}
+
+/* ===================================== */
+/* MOBILE */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+  .home-body .sidebar {
+
+    padding: 18px 18px;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    border-bottom: none;
+  }
+
+  .home-body .brand {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .home-body .menu {
+
+    display: flex !important;
+
+    flex-direction: row;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    max-width: 100%;
+  }
+
+  .home-body .menu-item a {
+    font-size: 13px;
+  }
+
+  .home-body .name {
+    font-size: 15px;
+  }
+
+  #hero-image {
+
+    width: 120vw;
+    height: 100vh;
+  }
+}
