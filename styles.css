@@ -306,9 +306,16 @@ body.home-body .sidebar {
 
   padding: 28px 32px;
 
-  display: flex;
+  display: grid;
+
+  grid-template-columns:
+    auto
+    auto;
+
   justify-content: space-between;
-  align-items: flex-start;
+
+  align-items: start;
+}
 
   background: transparent !important;
   border-right: none !important;
@@ -362,15 +369,11 @@ body.home-body .menu {
 
   display: flex !important;
 
-  flex-direction: row;
+  flex-direction: column;
 
-  flex-wrap: wrap;
+  align-items: flex-end;
 
-  justify-content: flex-end;
-
-  gap: 18px;
-
-  max-width: 60vw;
+  gap: 4px;
 }
 
 /* MENU ITEMS */
