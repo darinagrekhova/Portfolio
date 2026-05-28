@@ -111,6 +111,11 @@ const SERIES = {
       meta: "oil on canvas<br>80×100 cm"
     },
     {
+      src: "images/selected-independent/devushka-i-sobaka.jpg",
+      title: "girl and a dog",
+      meta: "oil on canvas<br>150×150 cm"
+    },
+    {
       src: "images/slavic mythology/paintings/kisberega.jpg",
       title: "kiselnye berega",
       meta: "oil on canvas<br>30×40 cm"
@@ -157,11 +162,7 @@ const SERIES = {
       title: "view of the road",
       meta: "oil on paper<br>100×90 cm<br>sold"
     },
-       {
-      src: "images/selected-independent/devushka-i-sobaka.jpg",
-      title: "girl and a dog",
-      meta: "oil on canvas<br>150×150 cm"
-    }
+      
     
   ],
 
