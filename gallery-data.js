@@ -96,17 +96,17 @@ const SERIES = {
   
  "half-known": [
     {
-      src: "images/slavic mythology/paintings/domovoy.jpg",
+      src: "images/half-known/paintings/domovoy.jpg",
       title: "inside the house",
       meta: "oil on canvas<br>80×100 cm"
     },
     {
-      src: "images/slavic mythology/paintings/rusalki.jpg",
+      src: "images/half-known/paintings/rusalki.jpg",
       title: "rusalki",
       meta: "oil on canvas<br>70×90 cm<br>sold"
     },
     {
-      src: "images/slavic mythology/paintings/zmey.jpg",
+      src: "images/half-known/paintings/zmey.jpg",
       title: "zmey",
       meta: "oil on canvas<br>80×100 cm"
     },
@@ -116,40 +116,40 @@ const SERIES = {
       meta: "oil on canvas<br>150×150 cm"
     },
     {
-      src: "images/slavic mythology/paintings/kisberega.jpg",
+      src: "images/half-known/paintings/kisberega.jpg",
       title: "kiselnye berega",
       meta: "oil on canvas<br>30×40 cm"
     },
     {
-      src: "images/slavic mythology/paintings/volk.jpg",
+      src: "images/half-known/paintings/volk.jpg",
       title: "volk",
       meta: "oil on canvas<br>30×40 cm"
     }
   ],
   
-  "slavic-myth-on-paper": [
+  "on-paper": [
     {
-      src: "images/slavic mythology/drawings/dodola.jpg",
+      src: "images/half-known/drawings/dodola.jpg",
       title: "Dodola",
       meta: "pastel on paper<br>60×41 cm"
     },
     {
-      src: "images/slavic mythology/drawings/glukhoe vremya.jpg",
+      src: "images/half-known/drawings/glukhoe vremya.jpg",
       title: "Gluhoe vremya",
       meta: "pastel on paper<br>50×35 cm"
     },
     {
-      src: "images/slavic mythology/drawings/orisnicy.jpg",
+      src: "images/half-known/drawings/orisnicy.jpg",
       title: "Orisnicy",
       meta: "pastel on paper<br>50×35 cm"
     },
     {
-      src: "images/slavic mythology/drawings/shulikuni.jpg",
+      src: "images/half-known/drawings/shulikuni.jpg",
       title: "Shulikuny",
       meta: "pastel on paper<br>50×35 cm"
     },
     {
-      src: "images/slavic mythology/drawings/death birth wedding.jpg",
+      src: "images/half-known/drawings/death birth wedding.jpg",
       title: "Death, birth, wedding",
       meta: "pastel on paper<br>61×41 cm"
     }
