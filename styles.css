@@ -566,3 +566,51 @@ body.home-body .menu-item a.active {
     object-fit: cover;
   }
 }
+/* ===================================== */
+/* HERO NAVIGATION */
+/* ===================================== */
+
+.hero-nav {
+
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background: none;
+  border: none;
+
+  color: white;
+
+  font-size: 34px;
+  font-weight: 300;
+
+  cursor: pointer;
+
+  opacity: 0.28;
+
+  transition: opacity 0.25s ease;
+
+  z-index: 1000;
+
+  padding: 20px;
+
+  user-select: none;
+}
+
+.hero-nav:hover {
+  opacity: 0.9;
+}
+
+/* LEFT */
+
+.hero-prev {
+  left: 18px;
+}
+
+/* RIGHT */
+
+.hero-next {
+  right: 18px;
+}
