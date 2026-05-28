@@ -276,18 +276,13 @@ body.home-body {
 
   display: block;
 
-  transition: opacity 0.25s ease;
-
+  
   cursor: pointer;
 
   user-select: none;
 }
 
-/* FADE */
 
-#hero-image.fade {
-  opacity: 0;
-}
 
 /* ===================================== */
 /* HOMEPAGE SIDEBAR */

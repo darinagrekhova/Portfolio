@@ -31,9 +31,10 @@
 
   </main>
 
-  <!-- SIDEBAR -->
+  <!-- SIDEBAR SCRIPT -->
   <script src="sidebar.js"></script>
 
+  <!-- HOME SCRIPT -->
   <script>
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -45,6 +46,7 @@
     /* ===================================== */
 
     const images = [
+
       "images/home/fragment-1.jpg",
       "images/home/fragment-2.jpg",
       "images/home/fragment-3.jpg",
@@ -52,8 +54,8 @@
       "images/home/fragment-5.jpg",
       "images/home/fragment-6.jpg",
       "images/home/fragment-7.jpg",
-      "images/home/fragment-8.jpg",
-      
+      "images/home/fragment-8.jpg"
+
     ];
 
     let current = 0;
@@ -61,34 +63,25 @@
     const hero = document.getElementById("hero-image");
 
     /* ===================================== */
-    /* SHOW IMAGE */
-    /* ===================================== */
-
-    function showImage(index) {
-
-      hero.classList.add("fade");
-
-      setTimeout(() => {
-
-        hero.src = images[index];
-
-        hero.classList.remove("fade");
-
-      }, 300);
-    }
-
-    /* ===================================== */
-    /* NEXT / PREV */
+    /* NEXT IMAGE */
     /* ===================================== */
 
     function nextImage() {
+
       current = (current + 1) % images.length;
-      showImage(current);
+
+      hero.src = images[current];
     }
 
+    /* ===================================== */
+    /* PREVIOUS IMAGE */
+    /* ===================================== */
+
     function prevImage() {
+
       current = (current - 1 + images.length) % images.length;
-      showImage(current);
+
+      hero.src = images[current];
     }
 
     /* ===================================== */
@@ -97,26 +90,49 @@
 
     document.addEventListener("click", (e) => {
 
-      // ignore clicks on menu links
+      // ignore menu clicks
       if (e.target.closest("a")) return;
 
       const x = e.clientX;
 
+      // right side → next
       if (x > window.innerWidth / 2) {
+
         nextImage();
+
+      // left side → previous
       } else {
+
         prevImage();
       }
 
     });
 
     /* ===================================== */
-    /* AUTO TRANSITION */
+    /* KEYBOARD */
+    /* ===================================== */
+
+    document.addEventListener("keydown", (e) => {
+
+      if (e.key === "ArrowRight") {
+        nextImage();
+      }
+
+      if (e.key === "ArrowLeft") {
+        prevImage();
+      }
+
+    });
+
+    /* ===================================== */
+    /* VERY SLOW AUTOPLAY */
     /* ===================================== */
 
     setInterval(() => {
+
       nextImage();
-    }, 10000);
+
+    }, 20000);
 
   </script>
 
