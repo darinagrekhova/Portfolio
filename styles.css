@@ -510,6 +510,15 @@ body.home-body .menu-item a.active {
     display: none;
   }
 
+  /* HERO NAV MOBILE */
+
+.hero-nav {
+
+  font-size: 26px;
+
+  padding: 14px;
+}
+
   /* ===================================== */
   /* HOMEPAGE MOBILE */
   /* ===================================== */
