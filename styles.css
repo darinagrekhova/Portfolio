@@ -276,7 +276,7 @@ body.home-body {
 
   display: block;
 
-  transition: opacity 0.8s ease;
+  transition: opacity 0.25s ease;
 
   cursor: pointer;
 
