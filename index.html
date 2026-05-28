@@ -28,7 +28,14 @@
       src="images/home/fragment-1.jpg"
       alt="Painting fragment"
     >
+<button class="hero-nav hero-prev" onclick="prevImage()">
+  ←
+</button>
 
+<button class="hero-nav hero-next" onclick="nextImage()">
+  →
+</button>
+    
   </main>
 
   <!-- SIDEBAR SCRIPT -->
@@ -88,25 +95,7 @@
     /* CLICK NAVIGATION */
     /* ===================================== */
 
-    document.addEventListener("click", (e) => {
-
-      // ignore menu clicks
-      if (e.target.closest("a")) return;
-
-      const x = e.clientX;
-
-      // right side → next
-      if (x > window.innerWidth / 2) {
-
-        nextImage();
-
-      // left side → previous
-      } else {
-
-        prevImage();
-      }
-
-    });
+  
 
     /* ===================================== */
     /* KEYBOARD */
