@@ -94,10 +94,10 @@ const SERIES = {
     }
   ],
   
- "slavic-myth-on-canvas": [
+ "half-known": [
     {
       src: "images/slavic mythology/paintings/domovoy.jpg",
-      title: "domovoy",
+      title: "inside the house",
       meta: "oil on canvas<br>80×100 cm"
     },
     {
