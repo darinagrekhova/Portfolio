@@ -5,7 +5,7 @@ function loadSidebar() {
   container.innerHTML = `
     <div class="sidebar">
       <a href="/index.html" class="brand">
-        <img src="images/logo.jpg" class="logo" alt="logo"/>
+        
         <div class="name">darina grekhova</div>
       </a>
 
@@ -16,7 +16,7 @@ function loadSidebar() {
         <div class="menu-item"><a href="/gallery.html?series=volante">volante</a></div>
         <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-canvas">half-known</a></div>
         <div class="menu-item"><a href="/gallery.html?series=slavic-myth-on-paper">on paper</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=selected_paintings">selected paintings</a></div>
+        //div class="menu-item"><a href="/gallery.html?series=selected_paintings">selected paintings</a></div//
         <div class="menu-item"><a href="/gallery.html?series=selected_drawings">selected drawings</a></div>
         <div class="menu-item"><a href="/about.html">about</a></div>
         <div class="menu-item"><a href="/cv.html">cv</a></div>
