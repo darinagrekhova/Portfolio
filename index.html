@@ -28,14 +28,17 @@
       src="images/home/fragment-1.jpg"
       alt="Painting fragment"
     >
-<button class="hero-nav hero-prev" onclick="prevImage()">
-  ←
-</button>
 
-<button class="hero-nav hero-next" onclick="nextImage()">
-  →
-</button>
-    
+    <!-- NAVIGATION -->
+
+    <button class="hero-nav hero-prev" onclick="prevImage(true)">
+      ←
+    </button>
+
+    <button class="hero-nav hero-next" onclick="nextImage(true)">
+      →
+    </button>
+
   </main>
 
   <!-- SIDEBAR SCRIPT -->
@@ -65,6 +68,7 @@
       "images/home/fragment-9.jpg",
       "images/home/fragment-10.jpg",
       "images/home/fragment-11.jpg"
+
     ];
 
     let current = 0;
@@ -75,82 +79,103 @@
     /* NEXT IMAGE */
     /* ===================================== */
 
-    function nextImage() {
+    function nextImage(manual = false) {
 
       current = (current + 1) % images.length;
 
       hero.src = images[current];
+
+      if (manual) {
+        resetAutoplay();
+      }
     }
 
     /* ===================================== */
     /* PREVIOUS IMAGE */
     /* ===================================== */
 
-    function prevImage() {
+    function prevImage(manual = false) {
 
       current = (current - 1 + images.length) % images.length;
 
       hero.src = images[current];
+
+      if (manual) {
+        resetAutoplay();
+      }
     }
 
     /* ===================================== */
-    /* CLICK NAVIGATION */
-    /* ===================================== */
-
-  
-
-    /* ===================================== */
-    /* KEYBOARD */
+    /* KEYBOARD NAVIGATION */
     /* ===================================== */
 
     document.addEventListener("keydown", (e) => {
 
       if (e.key === "ArrowRight") {
-        nextImage();
+        nextImage(true);
       }
 
       if (e.key === "ArrowLeft") {
-        prevImage();
+        prevImage(true);
       }
 
     });
 
     /* ===================================== */
-    /* VERY SLOW AUTOPLAY */
+    /* SHOW NAV ON MOVE */
     /* ===================================== */
 
-    /* ===================================== */
-/* SHOW NAV ON MOVE */
-/* ===================================== */
+    const heroContainer = document.querySelector(".home-hero");
 
-const heroContainer = document.querySelector(".home-hero");
+    let navTimeout;
 
-let navTimeout;
+    function showNav() {
 
-function showNav() {
+      heroContainer.classList.add("show-nav");
 
-  heroContainer.classList.add("show-nav");
+      clearTimeout(navTimeout);
 
-  clearTimeout(navTimeout);
+      navTimeout = setTimeout(() => {
 
-  navTimeout = setTimeout(() => {
+        heroContainer.classList.remove("show-nav");
 
-    heroContainer.classList.remove("show-nav");
+      }, 1200);
+    }
 
-  }, 1200);
-}
+    document.addEventListener("mousemove", showNav);
 
-document.addEventListener("mousemove", showNav);
-
-document.addEventListener("touchstart", showNav);
+    document.addEventListener("touchstart", showNav);
 
     showNav();
 
-    setInterval(() => {
+    /* ===================================== */
+    /* AUTOPLAY */
+    /* ===================================== */
 
-      nextImage();
+    let autoplay;
 
-    }, 20000);
+    /* START AUTOPLAY */
+
+    function startAutoplay() {
+
+      clearInterval(autoplay);
+
+      autoplay = setInterval(() => {
+
+        nextImage();
+
+      }, 25000);
+    }
+
+    /* RESET AUTOPLAY AFTER MANUAL NAVIGATION */
+
+    function resetAutoplay() {
+      startAutoplay();
+    }
+
+    /* START */
+
+    startAutoplay();
 
   </script>
 
