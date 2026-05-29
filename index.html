@@ -119,6 +119,33 @@
     /* VERY SLOW AUTOPLAY */
     /* ===================================== */
 
+    /* ===================================== */
+/* SHOW NAV ON MOVE */
+/* ===================================== */
+
+const heroContainer = document.querySelector(".home-hero");
+
+let navTimeout;
+
+function showNav() {
+
+  heroContainer.classList.add("show-nav");
+
+  clearTimeout(navTimeout);
+
+  navTimeout = setTimeout(() => {
+
+    heroContainer.classList.remove("show-nav");
+
+  }, 1200);
+}
+
+document.addEventListener("mousemove", showNav);
+
+document.addEventListener("touchstart", showNav);
+
+    showNav();
+
     setInterval(() => {
 
       nextImage();
