@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +23,9 @@
   <!-- HERO -->
   <main class="home-hero">
 
-    <img
-      id="hero-image"
-      alt="Painting fragment"
-    >
+    <img id="hero-image" alt="Painting fragment">
 
     <!-- CLICK ZONES -->
-
     <div class="hero-click hero-left"></div>
     <div class="hero-click hero-right"></div>
 
@@ -43,167 +38,167 @@
   <script>
 
     document.addEventListener("DOMContentLoaded", () => {
+
       loadSidebar();
-    });
 
-    /* ===================================== */
-    /* IMAGES */
-    /* ===================================== */
+      /* ========================= */
+      /* IMAGES */
+      /* ========================= */
 
-    const desktopImages = [
+      const desktopImages = [
+        "images/home/fragment-1.jpg",
+        "images/home/fragment-2.jpg",
+        "images/home/fragment-3.jpg",
+        "images/home/fragment-4.jpg",
+        "images/home/fragment-5.jpg",
+        "images/home/fragment-6.jpg",
+        "images/home/fragment-7.jpg",
+        "images/home/fragment-8.jpg",
+        "images/home/fragment-9.jpg",
+        "images/home/fragment-10.jpg",
+        "images/home/fragment-11.jpg",
+        "images/home/fragment-12.jpg"
+      ];
 
-      "images/home/fragment-1.jpg",
-      "images/home/fragment-2.jpg",
-      "images/home/fragment-3.jpg",
-      "images/home/fragment-4.jpg",
-      "images/home/fragment-5.jpg",
-      "images/home/fragment-6.jpg",
-      "images/home/fragment-7.jpg",
-      "images/home/fragment-8.jpg",
-      "images/home/fragment-9.jpg",
-      "images/home/fragment-10.jpg",
-      "images/home/fragment-11.jpg",
-      "images/home/fragment-12.jpg"
+      const mobileImages = [
+        "images/home/fragment-1-mobile.jpg",
+        "images/home/fragment-2-mobile.jpg",
+        "images/home/fragment-3-mobile.jpg",
+        "images/home/fragment-4-mobile.jpg",
+        "images/home/fragment-5-mobile.jpg",
+        "images/home/fragment-6-mobile.jpg",
+        "images/home/fragment-7-mobile.jpg",
+        "images/home/fragment-8-mobile.jpg",
+        "images/home/fragment-9-mobile.jpg",
+        "images/home/fragment-10-mobile.jpg",
+        "images/home/fragment-11-mobile.jpg",
+        "images/home/fragment-12-mobile.jpg"
+      ];
 
-    ];
+      const isMobile = window.innerWidth <= 768;
+      const images = isMobile ? mobileImages : desktopImages;
 
-    const mobileImages = [
+      /* ========================= */
+      /* STATE */
+      /* ========================= */
 
-      "images/home/fragment-1-mobile.jpg",
-      "images/home/fragment-2-mobile.jpg",
-      "images/home/fragment-3-mobile.jpg",
-      "images/home/fragment-4-mobile.jpg",
-      "images/home/fragment-5-mobile.jpg",
-      "images/home/fragment-6-mobile.jpg",
-      "images/home/fragment-7-mobile.jpg",
-      "images/home/fragment-8-mobile.jpg",
-      "images/home/fragment-9-mobile.jpg",
-      "images/home/fragment-10-mobile.jpg",
-      "images/home/fragment-11-mobile.jpg",
-      "images/home/fragment-12-mobile.jpg"
+      let current = 0;
+      let locked = false;
+      let autoplay;
 
-    ];
-
-    /* ===================================== */
-    /* DEVICE DETECTION */
-    /* ===================================== */
-
-    const isMobile = window.innerWidth <= 768;
-
-    const images = isMobile
-      ? mobileImages
-      : desktopImages;
-
-    let wasMobile = isMobile;
-
-    window.addEventListener("resize", () => {
-
-      const isMobileNow = window.innerWidth <= 768;
-
-      if (isMobileNow !== wasMobile) {
-        location.reload();
-      }
-
-    });
-
-    /* ===================================== */
-    /* HERO */
-    /* ===================================== */
-
-    let current = 0;
-
-    const hero = document.getElementById("hero-image");
-
-    hero.src = images[0];
-
-    /* ===================================== */
-    /* NAVIGATION */
-    /* ===================================== */
-
-    function nextImage(manual = false) {
-
-      current = (current + 1) % images.length;
+      const hero = document.getElementById("hero-image");
+      if (!hero) return;
 
       hero.src = images[current];
 
-      if (manual) {
-        resetAutoplay();
+      /* ========================= */
+      /* PRELOAD */
+      /* ========================= */
+
+      function preload(i) {
+        const img = new Image();
+        img.src = images[i];
       }
 
-    }
-
-    function prevImage(manual = false) {
-
-      current = (current - 1 + images.length) % images.length;
-
-      hero.src = images[current];
-
-      if (manual) {
-        resetAutoplay();
+      function preloadAdjacent() {
+        preload((current + 1) % images.length);
+        preload((current - 1 + images.length) % images.length);
       }
 
-    }
+      preloadAdjacent();
 
-    /* ===================================== */
-    /* CLICK AREAS */
-    /* ===================================== */
+      /* ========================= */
+      /* NAVIGATION */
+      /* ========================= */
 
-    const leftZone = document.querySelector(".hero-left");
-    const rightZone = document.querySelector(".hero-right");
+      function next(manual = false) {
+        if (locked) return;
+        locked = true;
 
-    leftZone.addEventListener("click", () => {
-      prevImage(true);
-    });
+        current = (current + 1) % images.length;
+        hero.src = images[current];
 
-    rightZone.addEventListener("click", () => {
-      nextImage(true);
-    });
+        preloadAdjacent();
+        if (manual) resetAutoplay();
 
-    /* ===================================== */
-    /* KEYBOARD */
-    /* ===================================== */
-
-    document.addEventListener("keydown", (e) => {
-
-      if (e.key === "ArrowRight") {
-        nextImage(true);
+        setTimeout(() => locked = false, 200);
       }
 
-      if (e.key === "ArrowLeft") {
-        prevImage(true);
+      function prev(manual = false) {
+        if (locked) return;
+        locked = true;
+
+        current = (current - 1 + images.length) % images.length;
+        hero.src = images[current];
+
+        preloadAdjacent();
+        if (manual) resetAutoplay();
+
+        setTimeout(() => locked = false, 200);
       }
 
-    });
+      /* ========================= */
+      /* CLICK ZONES */
+      /* ========================= */
 
-    /* ===================================== */
-    /* AUTOPLAY */
-    /* ===================================== */
+      const leftZone = document.querySelector(".hero-left");
+      const rightZone = document.querySelector(".hero-right");
 
-    let autoplay;
+      if (leftZone) leftZone.addEventListener("click", () => prev(true));
+      if (rightZone) rightZone.addEventListener("click", () => next(true));
 
-    function startAutoplay() {
+      /* ========================= */
+      /* KEYBOARD */
+      /* ========================= */
 
-      clearInterval(autoplay);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") next(true);
+        if (e.key === "ArrowLeft") prev(true);
+      });
 
-      autoplay = setInterval(() => {
+      /* ========================= */
+      /* SWIPE */
+      /* ========================= */
 
-        nextImage();
+      let startX = 0;
 
-      }, 25000);
+      hero.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
 
-    }
+      hero.addEventListener("touchend", (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
 
-    function resetAutoplay() {
+        if (Math.abs(diff) < 40) return;
+
+        if (diff > 0) next(true);
+        else prev(true);
+      });
+
+      /* ========================= */
+      /* AUTOPLAY */
+      /* ========================= */
+
+      function startAutoplay() {
+        clearTimeout(autoplay);
+
+        autoplay = setTimeout(function loop() {
+          next(false);
+          autoplay = setTimeout(loop, 25000);
+        }, 25000);
+      }
+
+      function resetAutoplay() {
+        startAutoplay();
+      }
 
       startAutoplay();
 
-    }
-
-    startAutoplay();
+    });
 
   </script>
 
 </body>
 
 </html>
-```
