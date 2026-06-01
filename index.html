@@ -1,176 +1,225 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
 
-  document.addEventListener("DOMContentLoaded", () => {
-    loadSidebar();
-  });
+<head>
 
-  /* ===================================== */
-  /* HOME IMAGES */
-  /* ===================================== */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  const desktopImages = [
+  <title>Darina Grekhova</title>
 
-    "images/home/fragment-1.jpg",
-    "images/home/fragment-2.jpg",
-    "images/home/fragment-3.jpg",
-    "images/home/fragment-4.jpg",
-    "images/home/fragment-5.jpg",
-    "images/home/fragment-6.jpg",
-    "images/home/fragment-7.jpg",
-    "images/home/fragment-8.jpg",
-    "images/home/fragment-9.jpg",
-    "images/home/fragment-10.jpg",
-    "images/home/fragment-11.jpg",
-    "images/home/fragment-12.jpg"
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/favicon.png" type="image/png">
 
-  ];
+  <!-- Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&display=swap" rel="stylesheet">
 
-  const mobileImages = [
+</head>
 
-    "images/home/fragment-1-mobile.jpg",
-    "images/home/fragment-2-mobile.jpg",
-    "images/home/fragment-3-mobile.jpg",
-    "images/home/fragment-4-mobile.jpg",
-    "images/home/fragment-5-mobile.jpg",
-    "images/home/fragment-6-mobile.jpg",
-    "images/home/fragment-7-mobile.jpg",
-    "images/home/fragment-8-mobile.jpg",
-    "images/home/fragment-9-mobile.jpg",
-    "images/home/fragment-10-mobile.jpg",
-    "images/home/fragment-11-mobile.jpg",
-    "images/home/fragment-12-mobile.jpg"
+<body class="home-body">
 
-  ];
+  <!-- SIDEBAR -->
+  <div id="sidebar-container"></div>
 
-  /* ===================================== */
-  /* MOBILE / DESKTOP DETECTION */
-  /* ===================================== */
+  <!-- HERO IMAGE -->
+  <main class="home-hero">
 
-  const isMobile = window.innerWidth <= 768;
-  const images = isMobile ? mobileImages : desktopImages;
+    <img
+      id="hero-image"
+      alt="Painting fragment"
+    >
 
-  let wasMobile = isMobile;
+    <!-- NAVIGATION -->
 
-  window.addEventListener("resize", () => {
+    <button class="hero-nav hero-prev" onclick="prevImage(true)">
+      ←
+    </button>
 
-    const isMobileNow = window.innerWidth <= 768;
+    <button class="hero-nav hero-next" onclick="nextImage(true)">
+      →
+    </button>
 
-    if (isMobileNow !== wasMobile) {
-      location.reload();
+  </main>
+
+  <!-- SIDEBAR SCRIPT -->
+  <script src="sidebar.js"></script>
+
+  <!-- HOME SCRIPT -->
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSidebar();
+    });
+
+    /* ===================================== */
+    /* HOME IMAGES */
+    /* ===================================== */
+
+    const desktopImages = [
+
+      "images/home/fragment-1.jpg",
+      "images/home/fragment-2.jpg",
+      "images/home/fragment-3.jpg",
+      "images/home/fragment-4.jpg",
+      "images/home/fragment-5.jpg",
+      "images/home/fragment-6.jpg",
+      "images/home/fragment-7.jpg",
+      "images/home/fragment-8.jpg",
+      "images/home/fragment-9.jpg",
+      "images/home/fragment-10.jpg",
+      "images/home/fragment-11.jpg",
+      "images/home/fragment-12.jpg"
+
+    ];
+
+    const mobileImages = [
+
+      "images/home/fragment-1-mobile.jpg",
+      "images/home/fragment-2-mobile.jpg",
+      "images/home/fragment-3-mobile.jpg",
+      "images/home/fragment-4-mobile.jpg",
+      "images/home/fragment-5-mobile.jpg",
+      "images/home/fragment-6-mobile.jpg",
+      "images/home/fragment-7-mobile.jpg",
+      "images/home/fragment-8-mobile.jpg",
+      "images/home/fragment-9-mobile.jpg",
+      "images/home/fragment-10-mobile.jpg",
+      "images/home/fragment-11-mobile.jpg",
+      "images/home/fragment-12-mobile.jpg"
+
+    ];
+
+    /* ===================================== */
+    /* MOBILE / DESKTOP DETECTION */
+    /* ===================================== */
+
+    const isMobile = window.innerWidth <= 768;
+    const images = isMobile ? mobileImages : desktopImages;
+
+    let wasMobile = isMobile;
+
+    window.addEventListener("resize", () => {
+
+      const isMobileNow = window.innerWidth <= 768;
+
+      if (isMobileNow !== wasMobile) {
+        location.reload();
+      }
+
+    });
+
+    /* ===================================== */
+    /* HERO IMAGE */
+    /* ===================================== */
+
+    let current = 0;
+
+    const hero = document.getElementById("hero-image");
+
+    hero.src = images[0];
+
+    /* ===================================== */
+    /* NEXT IMAGE */
+    /* ===================================== */
+
+    function nextImage(manual = false) {
+
+      current = (current + 1) % images.length;
+
+      hero.src = images[current];
+
+      if (manual) {
+        resetAutoplay();
+      }
+
     }
 
-  });
+    /* ===================================== */
+    /* PREVIOUS IMAGE */
+    /* ===================================== */
 
-  /* ===================================== */
-  /* HERO IMAGE */
-  /* ===================================== */
+    function prevImage(manual = false) {
 
-  let current = 0;
+      current = (current - 1 + images.length) % images.length;
 
-  const hero = document.getElementById("hero-image");
+      hero.src = images[current];
 
-  /* Сразу подставляем нужную версию изображения */
-  hero.src = images[0];
+      if (manual) {
+        resetAutoplay();
+      }
 
-  /* ===================================== */
-  /* NEXT IMAGE */
-  /* ===================================== */
-
-  function nextImage(manual = false) {
-
-    current = (current + 1) % images.length;
-
-    hero.src = images[current];
-
-    if (manual) {
-      resetAutoplay();
     }
 
-  }
+    /* ===================================== */
+    /* KEYBOARD NAVIGATION */
+    /* ===================================== */
 
-  /* ===================================== */
-  /* PREVIOUS IMAGE */
-  /* ===================================== */
+    document.addEventListener("keydown", (e) => {
 
-  function prevImage(manual = false) {
+      if (e.key === "ArrowRight") {
+        nextImage(true);
+      }
 
-    current = (current - 1 + images.length) % images.length;
+      if (e.key === "ArrowLeft") {
+        prevImage(true);
+      }
 
-    hero.src = images[current];
+    });
 
-    if (manual) {
-      resetAutoplay();
+    /* ===================================== */
+    /* SHOW NAV ON MOVE */
+    /* ===================================== */
+
+    const heroContainer = document.querySelector(".home-hero");
+
+    let navTimeout;
+
+    function showNav() {
+
+      heroContainer.classList.add("show-nav");
+
+      clearTimeout(navTimeout);
+
+      navTimeout = setTimeout(() => {
+
+        heroContainer.classList.remove("show-nav");
+
+      }, 1200);
+
     }
 
-  }
+    document.addEventListener("mousemove", showNav);
+    document.addEventListener("touchstart", showNav);
 
-  /* ===================================== */
-  /* KEYBOARD NAVIGATION */
-  /* ===================================== */
+    showNav();
 
-  document.addEventListener("keydown", (e) => {
+    /* ===================================== */
+    /* AUTOPLAY */
+    /* ===================================== */
 
-    if (e.key === "ArrowRight") {
-      nextImage(true);
+    let autoplay;
+
+    function startAutoplay() {
+
+      clearInterval(autoplay);
+
+      autoplay = setInterval(() => {
+
+        nextImage();
+
+      }, 25000);
+
     }
 
-    if (e.key === "ArrowLeft") {
-      prevImage(true);
+    function resetAutoplay() {
+
+      startAutoplay();
+
     }
-
-  });
-
-  /* ===================================== */
-  /* SHOW NAV ON MOVE */
-  /* ===================================== */
-
-  const heroContainer = document.querySelector(".home-hero");
-
-  let navTimeout;
-
-  function showNav() {
-
-    heroContainer.classList.add("show-nav");
-
-    clearTimeout(navTimeout);
-
-    navTimeout = setTimeout(() => {
-
-      heroContainer.classList.remove("show-nav");
-
-    }, 1200);
-
-  }
-
-  document.addEventListener("mousemove", showNav);
-  document.addEventListener("touchstart", showNav);
-
-  showNav();
-
-  /* ===================================== */
-  /* AUTOPLAY */
-  /* ===================================== */
-
-  let autoplay;
-
-  function startAutoplay() {
-
-    clearInterval(autoplay);
-
-    autoplay = setInterval(() => {
-
-      nextImage();
-
-    }, 25000);
-
-  }
-
-  function resetAutoplay() {
 
     startAutoplay();
 
-  }
+  </script>
 
-  startAutoplay();
-
-</script>
+</body>
+</html>
