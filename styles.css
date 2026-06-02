@@ -280,6 +280,7 @@ body.home-body .sidebar {
   left: 0;
 
   width: 100%;
+  height: auto;
 
   display: flex;
   justify-content: space-between;
@@ -289,6 +290,7 @@ body.home-body .sidebar {
 
   background: transparent;
   border: none;
+  overflow: visible;
 
   z-index: 10;
 }
@@ -431,13 +433,4 @@ body.home-body .menu-item a.active {
   }
 }
 
-#sidebar-container {
-  pointer-events: none;
-}
 
-.sidebar,
-.sidebar a,
-.sidebar .menu,
-.sidebar .brand {
-  pointer-events: auto;
-}
