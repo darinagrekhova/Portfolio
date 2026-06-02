@@ -434,6 +434,7 @@ body.home-body .menu-item a.active {
   display: flex !important;
   outline: 1px solid red;
   background: red !important;
+    flex-direction: row !important;
 }
 }
 
