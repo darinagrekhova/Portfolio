@@ -278,6 +278,7 @@ body.home-body .sidebar {
 
   top: 0;
   left: 0;
+  right: 0;
 
   width: 100%;
   height: auto;
@@ -290,8 +291,7 @@ body.home-body .sidebar {
 
   background: transparent;
   border: none;
-  overflow: visible;
-
+  
   z-index: 10;
 }
 
@@ -431,6 +431,8 @@ body.home-body .menu-item a.active {
   body.home-body .name {
     font-size: 15px;
   }
-}
+
+
+
 
 
