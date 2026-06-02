@@ -430,3 +430,14 @@ body.home-body .menu-item a.active {
     font-size: 15px;
   }
 }
+
+#sidebar-container {
+  pointer-events: none;
+}
+
+.sidebar,
+.sidebar a,
+.sidebar .menu,
+.sidebar .brand {
+  pointer-events: auto;
+}
