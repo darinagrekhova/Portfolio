@@ -418,28 +418,21 @@ body.home-body .menu-item a.active {
 
   /* homepage mobile */
 
-  body.home-body .sidebar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 18px;
-    gap: 12px;
-  }
-
-  body.home-body .menu {
-    align-items: flex-start;
-  }
-
-  body.home-body .name {
-    font-size: 15px;
-
-  display: flex !important;
-  outline: 1px solid red;
-  background: red !important;
-    flex-direction: row !important;
+body.home-body .sidebar {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 18px;
+  gap: 12px;
 }
+
+body.home-body .menu {
+  align-items: flex-start;
+}
+
+body.home-body .name {
+  font-size: 15px;
 }
 
 }
-
 
 
