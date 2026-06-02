@@ -430,7 +430,10 @@ body.home-body .menu-item a.active {
 
   body.home-body .name {
     font-size: 15px;
-  }
+
+  display: flex !important;
+  outline: 1px solid red;
+}
 
 }
 
