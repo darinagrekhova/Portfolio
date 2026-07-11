@@ -12,11 +12,15 @@
 html {
   width: 100%;
   min-height: 100%;
+
+  overflow-x: hidden;
 }
 
 body {
   width: 100%;
   min-height: 100vh;
+
+  overflow-x: hidden;
 }
 
 /* ===================================== */
@@ -25,8 +29,10 @@ body {
 
 body {
   font-family: 'Cormorant', serif;
+
   background: #fff;
   color: #000;
+
   line-height: 1.6;
 }
 
@@ -45,6 +51,7 @@ button {
 
 .sidebar {
   position: fixed;
+
   top: 0;
   left: 0;
 
@@ -108,6 +115,7 @@ button {
 
 .menu-item a {
   color: #000;
+
   text-decoration: none;
   white-space: nowrap;
 }
@@ -117,7 +125,7 @@ button {
 }
 
 /* ===================================== */
-/* MOBILE NAVIGATION — HIDDEN ON DESKTOP */
+/* MOBILE NAVIGATION HIDDEN ON DESKTOP */
 /* ===================================== */
 
 .mobile-site-nav {
@@ -224,6 +232,7 @@ button {
 
 .viewer-image {
   position: relative;
+
   z-index: 1;
 
   max-width: 100%;
@@ -235,6 +244,7 @@ button {
 
   cursor: pointer;
   user-select: none;
+
   -webkit-user-drag: none;
 }
 
@@ -262,6 +272,7 @@ button {
 
 .nav {
   position: absolute;
+
   top: 50%;
 
   z-index: 10;
@@ -291,7 +302,7 @@ button {
   right: -90px;
 }
 
-/* Mobile text navigation is hidden on desktop */
+/* Mobile text navigation hidden on desktop */
 
 .mobile-gallery-nav {
   display: none;
@@ -315,6 +326,7 @@ body.home-body {
 
 .home-hero {
   position: fixed;
+
   inset: 0;
 
   width: 100vw;
@@ -334,6 +346,7 @@ body.home-body {
   object-fit: cover;
 
   user-select: none;
+
   -webkit-user-drag: none;
 }
 
@@ -343,6 +356,7 @@ body.home-body {
 
 .hero-click {
   position: absolute;
+
   top: 0;
   bottom: 0;
 
@@ -351,6 +365,7 @@ body.home-body {
   z-index: 5;
 
   cursor: pointer;
+
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -368,6 +383,7 @@ body.home-body {
 
 body.home-body .desktop-sidebar {
   position: fixed;
+
   top: 0;
   left: 0;
   right: 0;
@@ -443,6 +459,22 @@ body.home-body .menu-item a.active {
 @media (max-width: 768px) {
 
   /* ===================================== */
+  /* GENERAL MOBILE SAFETY */
+  /* ===================================== */
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  /* ===================================== */
   /* INTERNAL MOBILE PAGE BASE */
   /* ===================================== */
 
@@ -450,13 +482,13 @@ body.home-body .menu-item a.active {
     min-height: 100vh;
     min-height: 100dvh;
 
-    padding-top: calc(92px + env(safe-area-inset-top));
-    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+    padding-top: calc(74px + env(safe-area-inset-top));
+    padding-bottom: calc(54px + env(safe-area-inset-bottom));
 
     overflow-x: hidden;
   }
 
-  /* Hide desktop sidebar on internal mobile pages */
+  /* Hide desktop sidebar on internal pages */
 
   body:not(.home-body) .desktop-sidebar {
     display: none;
@@ -470,20 +502,22 @@ body.home-body .menu-item a.active {
 
   /* ===================================== */
   /* MOBILE HEADER */
-/* ===================================== */
+  /* ===================================== */
 
   .mobile-header {
     position: fixed;
+
     top: 0;
     left: 0;
     right: 0;
 
-    min-height: calc(92px + env(safe-area-inset-top));
+    width: 100%;
+    min-height: calc(74px + env(safe-area-inset-top));
 
     padding:
-      calc(20px + env(safe-area-inset-top))
-      18px
-      16px;
+      calc(14px + env(safe-area-inset-top))
+      16px
+      12px;
 
     display: flex;
     flex-direction: column;
@@ -498,6 +532,8 @@ body.home-body .menu-item a.active {
     appearance: none;
     -webkit-appearance: none;
 
+    max-width: 100%;
+
     margin: 0;
     padding: 0;
 
@@ -507,12 +543,13 @@ body.home-body .menu-item a.active {
     color: #000;
 
     font-family: 'Cormorant', serif;
-    font-size: clamp(34px, 10vw, 48px);
+    font-size: clamp(30px, 9vw, 40px);
     font-weight: 400;
     line-height: 1;
     letter-spacing: 0.01em;
 
     cursor: pointer;
+
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -522,8 +559,9 @@ body.home-body .menu-item a.active {
 
   .mobile-series-menu {
     width: 100%;
+    max-width: 100%;
 
-    padding: 30px 12px 24px;
+    padding: 24px 12px 20px;
 
     display: none;
     flex-direction: column;
@@ -539,14 +577,18 @@ body.home-body .menu-item a.active {
   }
 
   .mobile-series-menu a {
+    max-width: 100%;
+
     color: #000;
 
     text-decoration: none;
 
     font-family: 'Cormorant', serif;
-    font-size: clamp(27px, 7.5vw, 37px);
+    font-size: clamp(24px, 7vw, 33px);
     font-weight: 400;
-    line-height: 1.08;
+    line-height: 1.1;
+
+    overflow-wrap: break-word;
   }
 
   .mobile-series-menu a.active {
@@ -554,7 +596,7 @@ body.home-body .menu-item a.active {
   }
 
   .mobile-header:has(.mobile-series-menu.is-open) {
-    bottom: calc(64px + env(safe-area-inset-bottom));
+    bottom: calc(54px + env(safe-area-inset-bottom));
 
     min-height: auto;
 
@@ -567,16 +609,18 @@ body.home-body .menu-item a.active {
 
   .mobile-bottom-nav {
     position: fixed;
+
     left: 0;
     right: 0;
     bottom: 0;
 
-    min-height: calc(64px + env(safe-area-inset-bottom));
+    width: 100%;
+    min-height: calc(54px + env(safe-area-inset-bottom));
 
     padding:
-      10px
+      8px
       18px
-      calc(10px + env(safe-area-inset-bottom));
+      calc(8px + env(safe-area-inset-bottom));
 
     display: flex;
     justify-content: space-between;
@@ -588,14 +632,18 @@ body.home-body .menu-item a.active {
   }
 
   .mobile-bottom-nav a {
+    min-width: 0;
+
     color: #000;
 
     text-decoration: none;
 
     font-family: 'Cormorant', serif;
-    font-size: clamp(27px, 8vw, 38px);
+    font-size: clamp(23px, 7vw, 31px);
     font-weight: 400;
     line-height: 1;
+
+    white-space: nowrap;
   }
 
   .mobile-bottom-nav a.active {
@@ -608,11 +656,14 @@ body.home-body .menu-item a.active {
 
   body:not(.home-body) .content {
     width: 100%;
+    max-width: 100%;
     min-height: auto;
 
     margin-left: 0;
 
-    padding: 34px 18px 38px;
+    padding: 24px 20px 28px;
+
+    overflow-x: hidden;
   }
 
   body:not(.home-body) .content--text {
@@ -622,6 +673,16 @@ body.home-body .menu-item a.active {
   body:not(.home-body) .content--text > * {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
+  }
+
+  .artist-text,
+  .cv,
+  .contact,
+  .viewer {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   /* ===================================== */
@@ -631,23 +692,27 @@ body.home-body .menu-item a.active {
   .artist-text {
     min-height: calc(
       100dvh -
-      92px -
-      68px -
+      74px -
+      54px -
       env(safe-area-inset-top) -
       env(safe-area-inset-bottom) -
-      72px
+      48px
     );
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    font-size: 18px;
+    padding: 0;
+
+    font-size: 17px;
     line-height: 1.3;
+
+    overflow-wrap: break-word;
   }
 
   .artist-text p {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
   }
 
   .artist-text p:last-child {
@@ -660,24 +725,25 @@ body.home-body .menu-item a.active {
 
   .cv {
     width: 100%;
+    max-width: 100%;
 
-    padding: 0 10px 30px;
+    padding: 0 8px 24px;
 
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.25;
 
-    overflow-wrap: normal;
+    overflow-wrap: break-word;
     word-break: normal;
     hyphens: none;
   }
 
   .cv h2 {
-    margin: 32px 0 28px;
-    padding-bottom: 0;
+    margin: 22px 0 24px;
+    padding: 0;
 
-    border-bottom: none;
+    border: none;
 
-    font-size: 31px;
+    font-size: 27px;
     font-weight: 400;
     line-height: 1.1;
     text-align: center;
@@ -688,7 +754,9 @@ body.home-body .menu-item a.active {
   }
 
   .cv p {
-    margin-bottom: 30px;
+    max-width: 100%;
+
+    margin-bottom: 26px;
 
     font-size: inherit;
     line-height: inherit;
@@ -701,11 +769,11 @@ body.home-body .menu-item a.active {
   .contact {
     min-height: calc(
       100dvh -
-      92px -
-      68px -
+      74px -
+      54px -
       env(safe-area-inset-top) -
       env(safe-area-inset-bottom) -
-      72px
+      48px
     );
 
     display: flex;
@@ -713,14 +781,27 @@ body.home-body .menu-item a.active {
     justify-content: center;
     align-items: center;
 
-    font-size: 18px;
-    line-height: 1.3;
+    padding: 0;
+
     text-align: center;
   }
 
   .contact-text {
-    font-size: clamp(22px, 6.5vw, 31px);
+    width: 100%;
+    max-width: 100%;
+
+    padding: 0 4px;
+
+    font-size: clamp(18px, 5.5vw, 24px);
     line-height: 1.15;
+
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .contact-text p {
+    width: 100%;
+    max-width: 100%;
   }
 
   .contact-image {
@@ -735,47 +816,57 @@ body.home-body .menu-item a.active {
     min-height: 100vh;
     min-height: 100dvh;
 
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   body.gallery-body .content--viewer {
-    min-height: calc(
+    width: 100%;
+
+    height: calc(
       100dvh -
-      92px -
-      68px -
+      74px -
+      54px -
       env(safe-area-inset-top) -
       env(safe-area-inset-bottom)
     );
 
-    padding:
-      clamp(36px, 7vh, 74px)
-      18px
-      40px;
+    min-height: 0;
+
+    padding: 14px 18px 12px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
   }
 
   body.gallery-body .viewer {
     width: 100%;
-    max-width: none;
+    height: 100%;
+    min-width: 0;
 
     padding: 0;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
 
-    gap: 0;
+    grid-template-rows:
+      minmax(0, 1fr)
+      auto
+      auto;
+
+    align-items: center;
+    justify-items: center;
+
+    gap: 8px;
   }
 
   body.gallery-body .viewer-image {
-    width: 100%;
+    width: auto;
     max-width: 100%;
 
     height: auto;
-    max-height: 52dvh;
+    max-height: 100%;
 
     display: block;
 
@@ -784,13 +875,16 @@ body.home-body .menu-item a.active {
     cursor: pointer;
 
     touch-action: pan-y;
+
     -webkit-tap-highlight-color: transparent;
   }
 
   body.gallery-body .viewer-caption {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
 
-    margin-top: 22px;
+    margin: 0;
 
     display: flex;
     flex-direction: column;
@@ -798,12 +892,14 @@ body.home-body .menu-item a.active {
 
     color: #000;
 
-    font-size: clamp(20px, 5.8vw, 27px);
+    font-size: clamp(14px, 4.1vw, 18px);
     font-style: normal;
     line-height: 1.08;
     text-align: center;
 
     opacity: 1;
+
+    overflow-wrap: break-word;
   }
 
   body.gallery-body .caption-title {
@@ -827,13 +923,13 @@ body.home-body .menu-item a.active {
   .mobile-gallery-nav {
     width: 100%;
 
-    margin-top: 30px;
+    margin: 2px 0 0;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    gap: 34px;
+    gap: 26px;
   }
 
   .mobile-gallery-nav button {
@@ -841,7 +937,7 @@ body.home-body .menu-item a.active {
     -webkit-appearance: none;
 
     margin: 0;
-    padding: 3px 0;
+    padding: 2px 0;
 
     border: none;
     border-bottom: 1px solid currentColor;
@@ -851,7 +947,7 @@ body.home-body .menu-item a.active {
     color: #000;
 
     font-family: 'Cormorant', serif;
-    font-size: clamp(20px, 5.8vw, 27px);
+    font-size: clamp(15px, 4.3vw, 19px);
     font-style: italic;
     font-weight: 400;
     line-height: 1;
@@ -873,28 +969,28 @@ body.home-body .menu-item a.active {
     overflow: hidden;
   }
 
-  /* The internal mobile navigation is not used on the hero page */
-
   body.home-body .mobile-site-nav {
     display: none;
   }
 
-  /* Keep the existing overlay navigation on mobile home */
+  /* Keep current overlay navigation on mobile home */
 
   body.home-body .desktop-sidebar {
-    width: auto;
-    height: auto;
+    position: fixed;
 
     top: 0;
     left: 0;
     right: auto;
 
+    width: auto;
+    height: auto;
+
     padding: 18px;
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: flex-start;
+    align-items: flex-start;
 
     gap: 12px;
 
@@ -933,8 +1029,6 @@ body.home-body .menu-item a.active {
 
     font-size: 13px;
   }
-
-  /* Hero remains fullscreen */
 
   .home-hero,
   #hero-image {
