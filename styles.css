@@ -757,7 +757,7 @@ body.home-body .menu-item a.active {
     object-fit: contain;
 
     cursor: pointer;
-    touch-action: pan-y;
+    touch-action: pan-y pinch-zoom;
     -webkit-tap-highlight-color: transparent;
   }
 
