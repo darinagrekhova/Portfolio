@@ -1,3 +1,4 @@
+```css
 /* ===================================== */
 /* RESET */
 /* ===================================== */
@@ -6,6 +7,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* ===================================== */
@@ -19,8 +30,17 @@ body {
   line-height: 1.6;
 }
 
+a,
+button {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
 /* ===================================== */
-/* SIDEBAR (DEFAULT PAGES) */
+/* DESKTOP SIDEBAR */
 /* ===================================== */
 
 .sidebar {
@@ -41,20 +61,23 @@ body {
 
   overflow-y: auto;
 
-  z-index: 10;
+  z-index: 100;
 }
 
-/* BRAND */
+/* ===================================== */
+/* SIDEBAR BRAND */
+/* ===================================== */
 
 .brand {
   display: flex;
   flex-direction: column;
+
   gap: 4px;
 
   margin-bottom: 18px;
 
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 .logo {
@@ -64,10 +87,13 @@ body {
 .name {
   font-size: 18px;
   line-height: 1.1;
+
   text-transform: lowercase;
 }
 
-/* MENU */
+/* ===================================== */
+/* DESKTOP MENU */
+/* ===================================== */
 
 .menu {
   display: flex;
@@ -75,13 +101,14 @@ body {
 }
 
 .menu-item {
-  font-size: 15px;
   margin-bottom: 6px;
+
+  font-size: 15px;
 }
 
 .menu-item a {
-  text-decoration: none;
   color: #000;
+  text-decoration: none;
   white-space: nowrap;
 }
 
@@ -90,16 +117,27 @@ body {
 }
 
 /* ===================================== */
+/* MOBILE NAVIGATION — HIDDEN ON DESKTOP */
+/* ===================================== */
+
+.mobile-site-nav {
+  display: none;
+}
+
+/* ===================================== */
 /* CONTENT */
 /* ===================================== */
 
 .content {
+  min-height: 100vh;
+
   margin-left: 248px;
   padding: 80px 40px;
-  min-height: 100vh;
 }
 
+/* ===================================== */
 /* TEXT PAGES */
+/* ===================================== */
 
 .content--text {
   display: flex;
@@ -107,6 +145,7 @@ body {
 }
 
 .content--text > * {
+  width: 100%;
   max-width: 600px;
 }
 
@@ -116,19 +155,27 @@ body {
   font-size: 17px;
 }
 
+.artist-text p {
+  margin-bottom: 20px;
+}
+
 /* ===================================== */
 /* CV */
 /* ===================================== */
 
 .cv h2 {
-  font-size: 18px;
-  font-weight: 400;
-  text-align: center;
-
   margin: 40px 0 20px;
   padding-bottom: 6px;
 
   border-bottom: 1px solid #eee;
+
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.cv h2:first-child {
+  margin-top: 0;
 }
 
 .cv p {
@@ -143,14 +190,19 @@ body {
   text-align: center;
 }
 
+.contact-text a {
+  color: inherit;
+}
+
 .contact-image {
-  max-width: 400px;
   width: 100%;
+  max-width: 400px;
+
   margin-top: 20px;
 }
 
 /* ===================================== */
-/* VIEWER */
+/* DESKTOP VIEWER */
 /* ===================================== */
 
 .content--viewer {
@@ -159,6 +211,8 @@ body {
 }
 
 .viewer {
+  position: relative;
+
   width: 520px;
 
   display: flex;
@@ -166,50 +220,82 @@ body {
   align-items: center;
 
   gap: 14px;
-
-  position: relative;
 }
 
 .viewer-image {
+  position: relative;
+  z-index: 1;
+
   max-width: 100%;
   max-height: 72vh;
+
+  display: block;
 
   object-fit: contain;
 
   cursor: pointer;
-
-  position: relative;
-  z-index: 1;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .viewer-caption {
   font-size: 14px;
   font-style: italic;
+  line-height: 1.25;
   text-align: center;
 
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  opacity: 1;
 }
 
-/* viewer arrows (other pages) */
+.caption-title,
+.caption-meta {
+  display: block;
+}
+
+.caption-title {
+  font-style: italic;
+}
+
+/* ===================================== */
+/* DESKTOP VIEWER ARROWS */
+/* ===================================== */
 
 .nav {
   position: absolute;
   top: 50%;
+
+  z-index: 10;
+
   transform: translateY(-50%);
 
-  font-size: 28px;
-  background: none;
+  padding: 12px;
+
   border: none;
+  background: none;
+
+  font-size: 28px;
 
   cursor: pointer;
   opacity: 0.5;
-
-  z-index: 1000;
 }
 
-.prev { left: -90px; }
-.next { right: -90px; }
+.nav:hover {
+  opacity: 1;
+}
+
+.prev {
+  left: -90px;
+}
+
+.next {
+  right: -90px;
+}
+
+/* Mobile text navigation is hidden on desktop */
+
+.mobile-gallery-nav {
+  display: none;
+}
 
 /* ===================================== */
 /* HOME PAGE */
@@ -217,37 +303,42 @@ body {
 
 body.home-body {
   margin: 0;
-  background: black;
+
+  background: #000;
+
   overflow: hidden;
 }
 
-/* HERO */
+/* ===================================== */
+/* HOME HERO */
+/* ===================================== */
 
 .home-hero {
   position: fixed;
   inset: 0;
 
   width: 100vw;
+  height: 100vh;
   height: 100dvh;
 
   overflow: hidden;
 }
 
-/* HERO IMAGE */
-
 #hero-image {
   width: 100vw;
+  height: 100vh;
   height: 100dvh;
-
-  object-fit: cover;
 
   display: block;
 
+  object-fit: cover;
+
   user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* ===================================== */
-/* CLICK NAVIGATION ZONES */
+/* HOME CLICK NAVIGATION */
 /* ===================================== */
 
 .hero-click {
@@ -258,7 +349,9 @@ body.home-body {
   width: 50%;
 
   z-index: 5;
+
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .hero-left {
@@ -270,12 +363,11 @@ body.home-body {
 }
 
 /* ===================================== */
-/* HOMEPAGE SIDEBAR OVERLAY */
+/* HOME DESKTOP SIDEBAR OVERLAY */
 /* ===================================== */
 
-body.home-body .sidebar {
+body.home-body .desktop-sidebar {
   position: fixed;
-
   top: 0;
   left: 0;
   right: 0;
@@ -283,58 +375,61 @@ body.home-body .sidebar {
   width: 100%;
   height: auto;
 
+  padding: 28px 32px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 
-  padding: 28px 32px;
-
   background: transparent;
   border: none;
-  
-  z-index: 10;
-}
 
-/* brand */
+  overflow: visible;
+
+  z-index: 20;
+}
 
 body.home-body .brand {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 0;
 }
-
-/* logo hidden */
 
 body.home-body .logo {
   display: none;
 }
 
-/* name */
-
 body.home-body .name {
-  color: white;
+  color: #fff;
+
   font-size: 18px;
   font-weight: 300;
   letter-spacing: 0.03em;
+
   opacity: 0.9;
 }
 
-/* menu */
-
-body.home-body .menu {
+body.home-body .desktop-menu {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+
+  gap: 2px;
 }
 
-/* links */
+body.home-body .menu-item {
+  margin-bottom: 0;
+}
 
 body.home-body .menu-item a {
-  color: white;
-  text-decoration: none;
+  color: #fff;
+
   font-size: 15px;
+
   opacity: 0.72;
+}
+
+body.home-body .menu-item a:hover {
+  opacity: 1;
 }
 
 body.home-body .menu-item a.active {
@@ -342,44 +437,32 @@ body.home-body .menu-item a.active {
 }
 
 /* ===================================== */
-/* MOBILE NAVIGATION: DESKTOP DEFAULT */
-/* ===================================== */
-
-.mobile-site-nav {
-  display: none;
-}
-
-/* ===================================== */
 /* MOBILE */
 /* ===================================== */
-/* Mobile gallery navigation is hidden on desktop */
-
-.mobile-gallery-nav {
-  display: none;
-}
 
 @media (max-width: 768px) {
 
   /* ===================================== */
-  /* MOBILE PAGE BASE */
+  /* INTERNAL MOBILE PAGE BASE */
   /* ===================================== */
 
   body:not(.home-body) {
+    min-height: 100vh;
     min-height: 100dvh;
-    padding-top: 105px;
-    padding-bottom: calc(78px + env(safe-area-inset-bottom));
+
+    padding-top: calc(92px + env(safe-area-inset-top));
+    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+
+    overflow-x: hidden;
   }
 
-  /* Старый десктопный sidebar скрыт
-     только на внутренних мобильных страницах */
+  /* Hide desktop sidebar on internal mobile pages */
 
   body:not(.home-body) .desktop-sidebar {
     display: none;
   }
 
-  /* ===================================== */
-  /* MOBILE NAVIGATION */
-  /* ===================================== */
+  /* Show independent mobile navigation */
 
   body:not(.home-body) .mobile-site-nav {
     display: block;
@@ -387,16 +470,15 @@ body.home-body .menu-item a.active {
 
   /* ===================================== */
   /* MOBILE HEADER */
-  /* ===================================== */
+/* ===================================== */
 
   .mobile-header {
     position: fixed;
-
     top: 0;
     left: 0;
     right: 0;
 
-    min-height: 92px;
+    min-height: calc(92px + env(safe-area-inset-top));
 
     padding:
       calc(20px + env(safe-area-inset-top))
@@ -414,12 +496,15 @@ body.home-body .menu-item a.active {
 
   .mobile-brand-button {
     appearance: none;
+    -webkit-appearance: none;
 
     margin: 0;
     padding: 0;
 
-    background: none;
     border: none;
+    background: none;
+
+    color: #000;
 
     font-family: 'Cormorant', serif;
     font-size: clamp(34px, 10vw, 48px);
@@ -427,9 +512,8 @@ body.home-body .menu-item a.active {
     line-height: 1;
     letter-spacing: 0.01em;
 
-    color: #000;
-
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* ===================================== */
@@ -437,12 +521,11 @@ body.home-body .menu-item a.active {
   /* ===================================== */
 
   .mobile-series-menu {
-    display: none;
-
     width: 100%;
 
-    padding: 30px 12px 22px;
+    padding: 30px 12px 24px;
 
+    display: none;
     flex-direction: column;
     align-items: center;
 
@@ -470,11 +553,10 @@ body.home-body .menu-item a.active {
     font-style: italic;
   }
 
-  /* Когда меню открыто, белая область продолжается вниз */
-
   .mobile-header:has(.mobile-series-menu.is-open) {
-    min-height: auto;
     bottom: calc(64px + env(safe-area-inset-bottom));
+
+    min-height: auto;
 
     overflow-y: auto;
   }
@@ -485,12 +567,11 @@ body.home-body .menu-item a.active {
 
   .mobile-bottom-nav {
     position: fixed;
-
     left: 0;
     right: 0;
     bottom: 0;
 
-    min-height: 64px;
+    min-height: calc(64px + env(safe-area-inset-bottom));
 
     padding:
       10px
@@ -522,20 +603,16 @@ body.home-body .menu-item a.active {
   }
 
   /* ===================================== */
-  /* MOBILE CONTENT */
+  /* INTERNAL MOBILE CONTENT */
   /* ===================================== */
 
   body:not(.home-body) .content {
+    width: 100%;
+    min-height: auto;
+
     margin-left: 0;
 
-    width: 100%;
-
-    padding:
-      36px
-      18px
-      42px;
-
-    min-height: auto;
+    padding: 34px 18px 38px;
   }
 
   body:not(.home-body) .content--text {
@@ -543,27 +620,38 @@ body.home-body .menu-item a.active {
   }
 
   body:not(.home-body) .content--text > * {
+    width: 100%;
     max-width: 100%;
   }
 
   /* ===================================== */
-  /* MOBILE TEXT PAGES */
+  /* MOBILE ABOUT */
   /* ===================================== */
 
-  .artist-text,
-  .cv,
-  .contact {
+  .artist-text {
+    min-height: calc(
+      100dvh -
+      92px -
+      68px -
+      env(safe-area-inset-top) -
+      env(safe-area-inset-bottom) -
+      72px
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     font-size: 18px;
     line-height: 1.3;
   }
 
-  .artist-text {
-    max-width: 620px;
-    margin: 0 auto;
-  }
-
   .artist-text p {
     margin-bottom: 22px;
+  }
+
+  .artist-text p:last-child {
+    margin-bottom: 0;
   }
 
   /* ===================================== */
@@ -575,14 +663,16 @@ body.home-body .menu-item a.active {
 
     padding: 0 10px 30px;
 
+    font-size: 18px;
+    line-height: 1.25;
+
     overflow-wrap: normal;
     word-break: normal;
     hyphens: none;
   }
 
   .cv h2 {
-    margin: 28px 0 28px;
-
+    margin: 32px 0 28px;
     padding-bottom: 0;
 
     border-bottom: none;
@@ -600,8 +690,8 @@ body.home-body .menu-item a.active {
   .cv p {
     margin-bottom: 30px;
 
-    font-size: 18px;
-    line-height: 1.25;
+    font-size: inherit;
+    line-height: inherit;
   }
 
   /* ===================================== */
@@ -609,12 +699,13 @@ body.home-body .menu-item a.active {
   /* ===================================== */
 
   .contact {
-    width: 100%;
     min-height: calc(
       100dvh -
-      105px -
-      78px -
-      env(safe-area-inset-bottom)
+      92px -
+      68px -
+      env(safe-area-inset-top) -
+      env(safe-area-inset-bottom) -
+      72px
     );
 
     display: flex;
@@ -622,6 +713,8 @@ body.home-body .menu-item a.active {
     justify-content: center;
     align-items: center;
 
+    font-size: 18px;
+    line-height: 1.3;
     text-align: center;
   }
 
@@ -634,42 +727,47 @@ body.home-body .menu-item a.active {
     display: none;
   }
 
-    /* ===================================== */
-  /* MOBILE GALLERY */
+  /* ===================================== */
+  /* MOBILE GALLERY PAGE */
   /* ===================================== */
 
   body.gallery-body {
+    min-height: 100vh;
     min-height: 100dvh;
+
     overflow-x: hidden;
   }
 
   body.gallery-body .content--viewer {
-    display: block;
-
     min-height: calc(
       100dvh -
-      105px -
-      78px -
+      92px -
+      68px -
+      env(safe-area-inset-top) -
       env(safe-area-inset-bottom)
     );
 
     padding:
-      clamp(42px, 10vh, 105px)
+      clamp(36px, 7vh, 74px)
       18px
-      46px;
+      40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   body.gallery-body .viewer {
     width: 100%;
     max-width: none;
 
+    padding: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 
     gap: 0;
-
-    padding: 0;
   }
 
   body.gallery-body .viewer-image {
@@ -677,11 +775,11 @@ body.home-body .menu-item a.active {
     max-width: 100%;
 
     height: auto;
-    max-height: 55dvh;
-
-    object-fit: contain;
+    max-height: 52dvh;
 
     display: block;
+
+    object-fit: contain;
 
     cursor: pointer;
 
@@ -692,24 +790,25 @@ body.home-body .menu-item a.active {
   body.gallery-body .viewer-caption {
     width: 100%;
 
-    margin-top: 23px;
+    margin-top: 22px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    opacity: 1;
-
     color: #000;
 
-    font-size: clamp(20px, 5.8vw, 28px);
+    font-size: clamp(20px, 5.8vw, 27px);
     font-style: normal;
-    line-height: 1.06;
+    line-height: 1.08;
     text-align: center;
+
+    opacity: 1;
   }
 
   body.gallery-body .caption-title {
     display: block;
+
     font-style: italic;
   }
 
@@ -721,12 +820,14 @@ body.home-body .menu-item a.active {
     display: none;
   }
 
-  /* MOBILE PREVIOUS / NEXT */
+  /* ===================================== */
+  /* MOBILE GALLERY PREVIOUS / NEXT */
+  /* ===================================== */
 
   .mobile-gallery-nav {
     width: 100%;
 
-    margin-top: 32px;
+    margin-top: 30px;
 
     display: flex;
     justify-content: center;
@@ -737,6 +838,7 @@ body.home-body .menu-item a.active {
 
   .mobile-gallery-nav button {
     appearance: none;
+    -webkit-appearance: none;
 
     margin: 0;
     padding: 3px 0;
@@ -762,37 +864,83 @@ body.home-body .menu-item a.active {
   }
 
   /* ===================================== */
-  /* MOBILE HOME — ПОКА СОХРАНЯЕМ */
+  /* MOBILE HOME */
   /* ===================================== */
 
   body.home-body {
     padding: 0;
+
+    overflow: hidden;
   }
+
+  /* The internal mobile navigation is not used on the hero page */
 
   body.home-body .mobile-site-nav {
     display: none;
   }
 
-  body.home-body .desktop-sidebar {
-    display: flex;
-  }
+  /* Keep the existing overlay navigation on mobile home */
 
-  body.home-body .sidebar {
-    flex-direction: column;
-    align-items: flex-start;
+  body.home-body .desktop-sidebar {
+    width: auto;
+    height: auto;
+
+    top: 0;
+    left: 0;
+    right: auto;
 
     padding: 18px;
 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
     gap: 12px;
+
+    background: transparent;
+    border: none;
+
+    overflow: visible;
+
+    z-index: 20;
   }
 
-  body.home-body .menu {
-    align-items: flex-start;
+  body.home-body .brand {
+    margin-bottom: 0;
   }
 
   body.home-body .name {
+    color: #fff;
+
     font-size: 15px;
   }
 
-}
+  body.home-body .desktop-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
+    gap: 4px;
+  }
+
+  body.home-body .menu-item {
+    margin-bottom: 0;
+  }
+
+  body.home-body .menu-item a {
+    color: #fff;
+
+    font-size: 13px;
+  }
+
+  /* Hero remains fullscreen */
+
+  .home-hero,
+  #hero-image {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+```
