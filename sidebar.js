@@ -1,85 +1,207 @@
 function loadSidebar() {
   const container = document.getElementById("sidebar-container");
-  if (!container) return;
+
+  if (!container) {
+    return;
+  }
 
   container.innerHTML = `
-    <div class="sidebar">
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="sidebar desktop-sidebar">
+
       <a href="/index.html" class="brand">
-        
         <div class="name">darina grekhova</div>
       </a>
 
-      <div class="menu">
-        <div class="menu-item"><a href="/gallery.html?series=quiexspectat">qui exspectat</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=notnotfun">notnotfun</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=foreigners">foreigners</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=volante">volante</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=half-known">half-known</a></div>
-        <div class="menu-item"><a href="/gallery.html?series=on-paper">on paper</a></div>
+      <nav class="menu desktop-menu">
+        <div class="menu-item">
+          <a href="/gallery.html?series=quiexspectat">qui exspectat</a>
+        </div>
 
-        <div class="menu-item"><a href="/gallery.html?series=selected_drawings">selected drawings</a></div>
-        <div class="menu-item"><a href="/about.html">about</a></div>
-        <div class="menu-item"><a href="/cv.html">cv</a></div>
-        <div class="menu-item"><a href="/contact.html">contacts</a></div>
-      </div>
+        <div class="menu-item">
+          <a href="/gallery.html?series=notnotfun">notnotfun</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/gallery.html?series=foreigners">foreigners</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/gallery.html?series=volante">volante</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/gallery.html?series=half-known">half-known</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/gallery.html?series=on-paper">on paper</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/gallery.html?series=selected_drawings">
+            selected drawings
+          </a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/about.html">about</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/cv.html">cv</a>
+        </div>
+
+        <div class="menu-item">
+          <a href="/contact.html">contacts</a>
+        </div>
+      </nav>
+
+    </aside>
+
+    <!-- MOBILE NAVIGATION -->
+    <div class="mobile-site-nav">
+
+      <header class="mobile-header">
+
+        <button
+          class="mobile-brand-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-series-menu"
+        >
+          darina grekhova
+        </button>
+
+        <nav
+          class="mobile-series-menu"
+          id="mobile-series-menu"
+          aria-hidden="true"
+        >
+          <a href="/gallery.html?series=quiexspectat">
+            qui exspectat
+          </a>
+
+          <a href="/gallery.html?series=notnotfun">
+            notnotfun
+          </a>
+
+          <a href="/gallery.html?series=foreigners">
+            foreigners
+          </a>
+
+          <a href="/gallery.html?series=volante">
+            volante
+          </a>
+
+          <a href="/gallery.html?series=half-known">
+            half-known
+          </a>
+
+          <a href="/gallery.html?series=on-paper">
+            on paper
+          </a>
+
+          <a href="/gallery.html?series=selected_drawings">
+            selected drawings
+          </a>
+        </nav>
+
+      </header>
+
+      <nav class="mobile-bottom-nav" aria-label="Main navigation">
+        <a href="/about.html">about</a>
+        <a href="/cv.html">cv</a>
+        <a href="/contact.html">contacts</a>
+      </nav>
+
     </div>
   `;
 
   highlightActiveLink();
-  initMobileSidebar();
+  initMobileNavigation();
 }
 
 /* ===================================== */
-/* ACTIVE LINK HIGHLIGHT */
+/* ACTIVE LINK */
 /* ===================================== */
 
 function highlightActiveLink() {
+  const currentPath = window.location.pathname;
   const params = new URLSearchParams(window.location.search);
-  const series = params.get("series");
+  const currentSeries = params.get("series");
 
-  document.querySelectorAll(".menu-item a").forEach(link => {
-    if (series && link.href.includes(series)) {
+  document.querySelectorAll("a").forEach((link) => {
+    const linkUrl = new URL(link.href, window.location.origin);
+    const linkSeries = linkUrl.searchParams.get("series");
+
+    const isCurrentSeries =
+      currentSeries &&
+      linkSeries &&
+      currentSeries === linkSeries;
+
+    const isCurrentPage =
+      !currentSeries &&
+      linkUrl.pathname === currentPath;
+
+    if (isCurrentSeries || isCurrentPage) {
       link.classList.add("active");
     }
   });
 }
 
 /* ===================================== */
-/* MOBILE TOGGLE (STABLE VERSION) */
+/* MOBILE MENU */
 /* ===================================== */
 
-function initMobileSidebar() {
-  const sidebar = document.querySelector(".sidebar");
-  const brand = document.querySelector(".brand");
+function initMobileNavigation() {
+  const button = document.querySelector(".mobile-brand-button");
+  const menu = document.querySelector(".mobile-series-menu");
 
-  if (!sidebar || !brand) return;
+  if (!button || !menu) {
+    return;
+  }
 
-  // remove old listeners by cloning (prevents duplication bugs)
-  const newBrand = brand.cloneNode(true);
-  brand.parentNode.replaceChild(newBrand, brand);
+  function openMenu() {
+    menu.classList.add("is-open");
+    menu.setAttribute("aria-hidden", "false");
+    button.setAttribute("aria-expanded", "true");
+  }
 
-  newBrand.addEventListener("click", (e) => {
-    if (window.innerWidth > 768) return;
+  function closeMenu() {
+    menu.classList.remove("is-open");
+    menu.setAttribute("aria-hidden", "true");
+    button.setAttribute("aria-expanded", "false");
+  }
 
-    e.preventDefault();
-    sidebar.classList.toggle("open");
+  function toggleMenu() {
+    const isOpen = menu.classList.contains("is-open");
+
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  button.addEventListener("click", toggleMenu);
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 
-  // optional UX improvement: close menu after click on link
-  document.querySelectorAll(".menu-item a").forEach(link => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth <= 768) {
-        sidebar.classList.remove("open");
-      }
-    });
+  document.addEventListener("click", (event) => {
+    const clickedInsideHeader = event.target.closest(".mobile-header");
+
+    if (!clickedInsideHeader) {
+      closeMenu();
+    }
   });
 
-  // close on outside click
-  document.addEventListener("click", (e) => {
-    if (window.innerWidth > 768) return;
-
-    if (!sidebar.contains(e.target)) {
-      sidebar.classList.remove("open");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+      button.focus();
     }
   });
 }
