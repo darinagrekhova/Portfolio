@@ -1,209 +1,261 @@
 let current = 0;
 let gallery = [];
-let isAnimating = false;
+let navigationInitialized = false;
 
 /* ===================================== */
-/* INIT */
+/* INITIALIZATION */
 /* ===================================== */
 
 function initGallery(data) {
-  if (!Array.isArray(data) || data.length === 0) return;
+  if (!Array.isArray(data) || data.length === 0) {
+    showGalleryError();
+    return;
+  }
 
   gallery = data;
   current = 0;
 
   render();
-  preload();
+  preloadAdjacent();
 
-  initKeyboard();
-  initSwipe();
-  initSilentMode();
-  initTapNavigation();
+  if (!navigationInitialized) {
+    initNavigation();
+    navigationInitialized = true;
+  }
+}
+
+/* ===================================== */
+/* ERROR STATE */
+/* ===================================== */
+
+function showGalleryError() {
+  const caption = document.getElementById("caption");
+
+  if (caption) {
+    caption.textContent = "Series not found.";
+  }
+}
+
+/* ===================================== */
+/* RENDER */
+/* ===================================== */
+
+function render() {
+  const artwork = document.getElementById("artwork");
+  const caption = document.getElementById("caption");
+  const item = gallery[current];
+
+  if (!artwork || !caption || !item) {
+    return;
+  }
+
+  artwork.src = item.src;
+  artwork.alt = item.title || "Artwork";
+
+  caption.innerHTML = `
+    ${item.title ? `<span class="caption-title">${item.title}</span>` : ""}
+    ${item.meta ? `<span class="caption-meta">${item.meta}</span>` : ""}
+  `;
+
+  updateMobileNavigation();
+  preloadAdjacent();
+}
+
+/* ===================================== */
+/* NEXT / PREVIOUS */
+/* ===================================== */
+
+function nextImage() {
+  if (gallery.length < 2) {
+    return;
+  }
+
+  current = (current + 1) % gallery.length;
+  render();
+}
+
+function prevImage() {
+  if (gallery.length < 2) {
+    return;
+  }
+
+  current = (current - 1 + gallery.length) % gallery.length;
+  render();
 }
 
 /* ===================================== */
 /* PRELOAD */
 /* ===================================== */
 
-function preload() {
-  if (gallery.length < 2) return;
+function preloadImage(index) {
+  const item = gallery[index];
 
-  const next = (current + 1) % gallery.length;
+  if (!item) {
+    return;
+  }
 
-  [current, next].forEach(i => {
-    const img = new Image();
-    img.src = gallery[i].src;
-  });
+  const image = new Image();
+  image.src = item.src;
+}
+
+function preloadAdjacent() {
+  if (gallery.length < 2) {
+    return;
+  }
+
+  const nextIndex = (current + 1) % gallery.length;
+  const previousIndex =
+    (current - 1 + gallery.length) % gallery.length;
+
+  preloadImage(nextIndex);
+  preloadImage(previousIndex);
 }
 
 /* ===================================== */
-/* RENDER (CLEAN FORMAT LAYER) */
+/* NAVIGATION INITIALIZATION */
 /* ===================================== */
 
-function render() {
-  const img = document.getElementById("artwork");
-  const caption = document.getElementById("caption");
+function initNavigation() {
+  const previousArrow = document.querySelector(".nav.prev");
+  const nextArrow = document.querySelector(".nav.next");
 
-  if (!img || !caption || !gallery[current]) return;
+  const mobilePrevious =
+    document.querySelector(".mobile-gallery-previous");
 
-  const item = gallery[current];
+  const mobileNext =
+    document.querySelector(".mobile-gallery-next");
 
-  caption.style.opacity = "0";
+  const artwork = document.getElementById("artwork");
 
-  img.src = item.src;
+  if (previousArrow) {
+    previousArrow.addEventListener("click", prevImage);
+  }
 
-  // единый формат строки (будет расширяться)
-  caption.textContent = "";
+  if (nextArrow) {
+    nextArrow.addEventListener("click", nextImage);
+  }
 
-  const line = [
-    item.title,
-    item.meta
-  ].filter(Boolean).join(" · ");
+  if (mobilePrevious) {
+    mobilePrevious.addEventListener("click", prevImage);
+  }
 
-  caption.innerHTML = line;
+  if (mobileNext) {
+    mobileNext.addEventListener("click", nextImage);
+  }
 
-  requestAnimationFrame(() => {
-    caption.style.opacity = "1";
-  });
+  document.addEventListener("keydown", handleKeyboard);
 
-  preload();
-}
-
-/* ===================================== */
-/* NAVIGATION */
-/* ===================================== */
-
-function nextImage() {
-  if (isAnimating || gallery.length < 2) return;
-
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  if (img) img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current + 1) % gallery.length;
-    render();
-
-    requestAnimationFrame(() => {
-      if (img) img.classList.remove("fade-out");
-      isAnimating = false;
-    });
-  }, 200);
-}
-
-function prevImage() {
-  if (isAnimating || gallery.length < 2) return;
-
-  isAnimating = true;
-
-  const img = document.getElementById("artwork");
-  if (img) img.classList.add("fade-out");
-
-  setTimeout(() => {
-    current = (current - 1 + gallery.length) % gallery.length;
-    render();
-
-    requestAnimationFrame(() => {
-      if (img) img.classList.remove("fade-out");
-      isAnimating = false;
-    });
-  }, 200);
+  if (artwork) {
+    initArtworkTap(artwork);
+    initSwipe(artwork);
+  }
 }
 
 /* ===================================== */
 /* KEYBOARD */
 /* ===================================== */
 
-function initKeyboard() {
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") nextImage();
-    if (e.key === "ArrowLeft") prevImage();
-  });
-}
-
-/* ===================================== */
-/* SWIPE (mobile UX) */
-/* ===================================== */
-
-function initSwipe() {
-  const img = document.getElementById("artwork");
-  if (!img) return;
-
-  let startX = 0;
-
-  img.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-  });
-
-  img.addEventListener("touchend", (e) => {
-    const endX = e.changedTouches[0].clientX;
-
-    if (endX - startX > 50) prevImage();
-    if (startX - endX > 50) nextImage();
-  });
-}
-
-/* ===================================== */
-/* TAP NAVIGATION (mobile) */
-/* ===================================== */
-
-function initTapNavigation() {
-  const img = document.getElementById("artwork");
-  if (!img) return;
-
-  const isMobile = window.innerWidth <= 768;
-
-  if (!isMobile) return;
-
-  img.addEventListener("click", () => {
+function handleKeyboard(event) {
+  if (event.key === "ArrowRight") {
     nextImage();
+  }
+
+  if (event.key === "ArrowLeft") {
+    prevImage();
+  }
+}
+
+/* ===================================== */
+/* MOBILE TAP */
+/* ===================================== */
+
+function initArtworkTap(artwork) {
+  artwork.addEventListener("click", (event) => {
+    if (window.innerWidth > 768) {
+      return;
+    }
+
+    const rectangle = artwork.getBoundingClientRect();
+    const clickPosition = event.clientX - rectangle.left;
+    const middle = rectangle.width / 2;
+
+    if (clickPosition < middle) {
+      prevImage();
+    } else {
+      nextImage();
+    }
   });
 }
 
 /* ===================================== */
-/* SILENT MODE (FIXED SAFE VERSION) */
+/* MOBILE SWIPE */
 /* ===================================== */
 
-function initSilentMode() {
-  const nav = document.querySelectorAll(".nav");
-  const caption = document.querySelector(".viewer-caption");
+function initSwipe(artwork) {
+  let startX = 0;
+  let startY = 0;
 
-  let timeout;
+  artwork.addEventListener(
+    "touchstart",
+    (event) => {
+      const touch = event.touches[0];
 
-  function showUI() {
-    nav.forEach(el => {
-      if (el) el.style.opacity = "0.5";
-    });
+      startX = touch.clientX;
+      startY = touch.clientY;
+    },
+    { passive: true }
+  );
 
-    if (caption) caption.style.opacity = "1";
+  artwork.addEventListener(
+    "touchend",
+    (event) => {
+      const touch = event.changedTouches[0];
 
-    clearTimeout(timeout);
-    timeout = setTimeout(hideUI, 2500);
-  }
+      const differenceX = startX - touch.clientX;
+      const differenceY = startY - touch.clientY;
 
-  function hideUI() {
-    nav.forEach(el => {
-      if (el) el.style.opacity = "0";
-    });
+      const horizontalSwipe =
+        Math.abs(differenceX) > Math.abs(differenceY);
 
-    if (caption) caption.style.opacity = "0.2";
-  }
+      if (!horizontalSwipe || Math.abs(differenceX) < 45) {
+        return;
+      }
 
-  document.addEventListener("mousemove", showUI);
-  document.addEventListener("touchstart", showUI);
-
-  showUI();
+      if (differenceX > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    },
+    { passive: true }
+  );
 }
 
 /* ===================================== */
-/* EXPORTS */
+/* MOBILE NAVIGATION STATE */
+/* ===================================== */
+
+function updateMobileNavigation() {
+  const previousButton =
+    document.querySelector(".mobile-gallery-previous");
+
+  const nextButton =
+    document.querySelector(".mobile-gallery-next");
+
+  if (!previousButton || !nextButton) {
+    return;
+  }
+
+  const hasSeveralImages = gallery.length > 1;
+
+  previousButton.hidden = !hasSeveralImages;
+  nextButton.hidden = !hasSeveralImages;
+}
+
+/* ===================================== */
+/* EXPORT */
 /* ===================================== */
 
 window.initGallery = initGallery;
 window.nextImage = nextImage;
 window.prevImage = prevImage;
-window.initSilentMode = initSilentMode;
-window.initSwipe = initSwipe;
-window.initKeyboard = initKeyboard;
-window.initTapNavigation = initTapNavigation;
