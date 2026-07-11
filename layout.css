@@ -1,0 +1,276 @@
+/* ===================================== */
+/* DESKTOP SIDEBAR */
+/* ===================================== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 200px;
+  height: 100vh;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #fff;
+  border-right: 1px solid #eee;
+  overflow-y: auto;
+
+  z-index: 100;
+}
+
+/* ===================================== */
+/* SIDEBAR BRAND */
+/* ===================================== */
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-bottom: 18px;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo {
+  width: 80px;
+}
+
+.name {
+  font-size: 18px;
+  line-height: 1.1;
+  text-transform: lowercase;
+}
+
+/* ===================================== */
+/* DESKTOP MENU */
+/* ===================================== */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.menu-item a {
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu-item a.active {
+  font-weight: 500;
+}
+
+/* Mobile navigation is hidden on desktop */
+
+.mobile-site-nav {
+  display: none;
+}
+
+/* ===================================== */
+/* CONTENT */
+/* ===================================== */
+
+.content {
+  min-height: 100vh;
+  margin-left: 248px;
+  padding: 80px 40px;
+}
+
+/* ===================================== */
+/* TEXT PAGES */
+/* ===================================== */
+
+.content--text {
+  display: flex;
+  justify-content: center;
+}
+
+.content--text > * {
+  width: 100%;
+  max-width: 600px;
+}
+
+.artist-text,
+.cv,
+.contact {
+  font-size: 17px;
+}
+
+.artist-text p {
+  margin-bottom: 20px;
+}
+
+/* ===================================== */
+/* CV */
+/* ===================================== */
+
+.cv h2 {
+  margin: 40px 0 20px;
+  padding-bottom: 6px;
+
+  border-bottom: 1px solid #eee;
+
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.cv h2:first-child {
+  margin-top: 0;
+}
+
+.cv p {
+  margin-bottom: 18px;
+}
+
+/* ===================================== */
+/* CONTACT */
+/* ===================================== */
+
+.contact {
+  text-align: center;
+}
+
+.contact-text a {
+  color: inherit;
+}
+
+.contact-image {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+/* ===================================== */
+/* HOME PAGE */
+/* ===================================== */
+
+body.home-body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.home-hero {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  overflow: hidden;
+}
+
+#hero-image {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+
+  display: block;
+  object-fit: cover;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ===================================== */
+/* HOME CLICK NAVIGATION */
+/* ===================================== */
+
+.hero-click {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  width: 50%;
+
+  z-index: 5;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-left {
+  left: 0;
+}
+
+.hero-right {
+  right: 0;
+}
+
+/* ===================================== */
+/* HOME DESKTOP SIDEBAR OVERLAY */
+/* ===================================== */
+
+body.home-body .desktop-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: auto;
+  padding: 28px 32px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background: transparent;
+  border: none;
+  overflow: visible;
+
+  z-index: 20;
+}
+
+body.home-body .brand {
+  margin-bottom: 0;
+}
+
+body.home-body .logo {
+  display: none;
+}
+
+body.home-body .name {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  opacity: 0.9;
+}
+
+body.home-body .desktop-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+body.home-body .menu-item {
+  margin-bottom: 0;
+}
+
+body.home-body .menu-item a {
+  color: #fff;
+  font-size: 15px;
+  opacity: 0.72;
+}
+
+body.home-body .menu-item a:hover {
+  opacity: 1;
+}
+
+body.home-body .menu-item a.active {
+  font-weight: 400;
+}

@@ -1,0 +1,45 @@
+/* ===================================== */
+/* RESET */
+/* ===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===================================== */
+/* BASE */
+/* ===================================== */
+
+body {
+  font-family: "Cormorant", serif;
+  background: #fff;
+  color: #000;
+  line-height: 1.6;
+}
+
+a,
+button {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}

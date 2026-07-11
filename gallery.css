@@ -1,0 +1,124 @@
+/* ===================================== */
+/* DESKTOP GALLERY */
+/* ===================================== */
+
+.content--viewer {
+  display: flex;
+  justify-content: center;
+}
+
+.viewer {
+  width: 520px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.viewer-image {
+  max-width: 100%;
+  max-height: 72vh;
+
+  display: block;
+  object-fit: contain;
+
+  cursor: zoom-in;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.viewer-caption {
+  font-size: 14px;
+  line-height: 1.25;
+  text-align: center;
+  opacity: 1;
+}
+
+.caption-title,
+.caption-meta {
+  display: block;
+}
+
+.caption-title {
+  font-style: italic;
+}
+
+/* ===================================== */
+/* TEXT NAVIGATION */
+/* ===================================== */
+
+.gallery-text-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.gallery-text-nav button {
+  margin: 0;
+  padding: 2px 0;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+
+  color: #000;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.gallery-text-nav button[hidden] {
+  display: none;
+}
+
+/* ===================================== */
+/* LIGHTBOX */
+/* ===================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 28px;
+
+  background: rgba(255, 255, 255, 0.97);
+  cursor: zoom-out;
+
+  z-index: 5000;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox-image {
+  max-width: calc(100vw - 56px);
+  max-height: calc(100vh - 56px);
+  max-height: calc(100dvh - 56px);
+
+  display: block;
+  object-fit: contain;
+
+  cursor: default;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  touch-action: auto;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
