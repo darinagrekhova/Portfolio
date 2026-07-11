@@ -1,50 +1,111 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Gallery | Darina Grekhova</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css?v=20260711">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+
 </head>
 
-<body>
+<body class="gallery-body">
 
-<div id="sidebar-container"></div>
+  <!-- NAVIGATION -->
+  <div id="sidebar-container"></div>
 
-<div class="content content--viewer">
-  <div class="viewer">
-    <div class="series-text" id="series-text"></div>
+  <!-- GALLERY -->
+  <main class="content content--viewer">
 
-    <button class="nav prev" onclick="prevImage()">←</button>
+    <div class="viewer">
 
-    <img id="artwork" class="viewer-image" src="" alt="">
+      <!-- DESKTOP PREVIOUS -->
+      <button
+        class="nav prev"
+        type="button"
+        aria-label="Previous artwork"
+      >
+        ←
+      </button>
 
-    <button class="nav next" onclick="nextImage()">→</button>
+      <!-- ARTWORK -->
+      <img
+        id="artwork"
+        class="viewer-image"
+        src=""
+        alt=""
+        draggable="false"
+      >
 
-    <div class="viewer-caption" id="caption"></div>
+      <!-- DESKTOP NEXT -->
+      <button
+        class="nav next"
+        type="button"
+        aria-label="Next artwork"
+      >
+        →
+      </button>
 
-  </div>
-</div>
+      <!-- CAPTION -->
+      <div
+        class="viewer-caption"
+        id="caption"
+        aria-live="polite"
+      ></div>
 
-<script src="/gallery.js"></script>
-<script src="/sidebar.js"></script>
-  <script src="/gallery-data.js"></script>
+      <!-- MOBILE PREVIOUS / NEXT -->
+      <div class="mobile-gallery-nav">
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+        <button
+          class="mobile-gallery-previous"
+          type="button"
+        >
+          previous
+        </button>
 
-  const params = new URLSearchParams(window.location.search);
-  const series = params.get("series");
+        <button
+          class="mobile-gallery-next"
+          type="button"
+        >
+          next
+        </button>
 
-  initGallery(SERIES[series]);
+      </div>
 
-  initKeyboard();
-  initSwipe();
+    </div>
 
-  loadSidebar();
-});
-</script>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script src="gallery-data.js"></script>
+  <script src="gallery.js"></script>
+  <script src="sidebar.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      loadSidebar();
+
+      const params = new URLSearchParams(window.location.search);
+      const seriesKey = params.get("series");
+      const seriesData = SERIES[seriesKey];
+
+      initGallery(seriesData);
+
+    });
+  </script>
 
 </body>
+
 </html>
+```
