@@ -20,12 +20,13 @@ function initGallery(data) {
 
   if (!navigationInitialized) {
     initNavigation();
+    initLightbox();
     navigationInitialized = true;
   }
 }
 
 /* ===================================== */
-/* ERROR STATE */
+/* ERROR */
 /* ===================================== */
 
 function showGalleryError() {
@@ -57,7 +58,7 @@ function render() {
     ${item.meta ? `<span class="caption-meta">${item.meta}</span>` : ""}
   `;
 
-  updateMobileNavigation();
+  updateLightboxImage();
   preloadAdjacent();
 }
 
@@ -112,43 +113,25 @@ function preloadAdjacent() {
 }
 
 /* ===================================== */
-/* NAVIGATION INITIALIZATION */
+/* NAVIGATION */
 /* ===================================== */
 
 function initNavigation() {
-  const previousArrow = document.querySelector(".nav.prev");
-  const nextArrow = document.querySelector(".nav.next");
+  const previousButton =
+    document.querySelector(".gallery-previous");
 
-  const mobilePrevious =
-    document.querySelector(".mobile-gallery-previous");
+  const nextButton =
+    document.querySelector(".gallery-next");
 
-  const mobileNext =
-    document.querySelector(".mobile-gallery-next");
-
-  const artwork = document.getElementById("artwork");
-
-  if (previousArrow) {
-    previousArrow.addEventListener("click", prevImage);
+  if (previousButton) {
+    previousButton.addEventListener("click", prevImage);
   }
 
-  if (nextArrow) {
-    nextArrow.addEventListener("click", nextImage);
-  }
-
-  if (mobilePrevious) {
-    mobilePrevious.addEventListener("click", prevImage);
-  }
-
-  if (mobileNext) {
-    mobileNext.addEventListener("click", nextImage);
+  if (nextButton) {
+    nextButton.addEventListener("click", nextImage);
   }
 
   document.addEventListener("keydown", handleKeyboard);
-
-  if (artwork) {
-    initArtworkTap(artwork);
-    initSwipe(artwork);
-  }
 }
 
 /* ===================================== */
@@ -156,100 +139,100 @@ function initNavigation() {
 /* ===================================== */
 
 function handleKeyboard(event) {
-  if (event.key === "ArrowRight") {
-    nextImage();
+  const lightbox = document.getElementById("lightbox");
+  const lightboxIsOpen =
+    lightbox && lightbox.classList.contains("is-open");
+
+  if (lightboxIsOpen) {
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    return;
   }
 
   if (event.key === "ArrowLeft") {
     prevImage();
   }
+
+  if (event.key === "ArrowRight") {
+    nextImage();
+  }
 }
 
 /* ===================================== */
-/* MOBILE TAP */
+/* LIGHTBOX INITIALIZATION */
 /* ===================================== */
 
-function initArtworkTap(artwork) {
-  artwork.addEventListener("click", (event) => {
-    if (window.innerWidth > 768) {
-      return;
-    }
+function initLightbox() {
+  const artwork = document.getElementById("artwork");
+  const lightbox = document.getElementById("lightbox");
 
-    const rectangle = artwork.getBoundingClientRect();
-    const clickPosition = event.clientX - rectangle.left;
-    const middle = rectangle.width / 2;
+  if (!artwork || !lightbox) {
+    return;
+  }
 
-    if (clickPosition < middle) {
-      prevImage();
-    } else {
-      nextImage();
+  artwork.addEventListener("click", openLightbox);
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
     }
   });
 }
 
 /* ===================================== */
-/* MOBILE SWIPE */
+/* OPEN LIGHTBOX */
 /* ===================================== */
 
-function initSwipe(artwork) {
-  let startX = 0;
-  let startY = 0;
+function openLightbox() {
+  const lightbox = document.getElementById("lightbox");
 
-  artwork.addEventListener(
-    "touchstart",
-    (event) => {
-      const touch = event.touches[0];
-
-      startX = touch.clientX;
-      startY = touch.clientY;
-    },
-    { passive: true }
-  );
-
-  artwork.addEventListener(
-    "touchend",
-    (event) => {
-      const touch = event.changedTouches[0];
-
-      const differenceX = startX - touch.clientX;
-      const differenceY = startY - touch.clientY;
-
-      const horizontalSwipe =
-        Math.abs(differenceX) > Math.abs(differenceY);
-
-      if (!horizontalSwipe || Math.abs(differenceX) < 45) {
-        return;
-      }
-
-      if (differenceX > 0) {
-        nextImage();
-      } else {
-        prevImage();
-      }
-    },
-    { passive: true }
-  );
-}
-
-/* ===================================== */
-/* MOBILE NAVIGATION STATE */
-/* ===================================== */
-
-function updateMobileNavigation() {
-  const previousButton =
-    document.querySelector(".mobile-gallery-previous");
-
-  const nextButton =
-    document.querySelector(".mobile-gallery-next");
-
-  if (!previousButton || !nextButton) {
+  if (!lightbox) {
     return;
   }
 
-  const hasSeveralImages = gallery.length > 1;
+  updateLightboxImage();
 
-  previousButton.hidden = !hasSeveralImages;
-  nextButton.hidden = !hasSeveralImages;
+  lightbox.classList.add("is-open");
+  lightbox.setAttribute("aria-hidden", "false");
+
+  document.body.classList.add("lightbox-open");
+}
+
+/* ===================================== */
+/* CLOSE LIGHTBOX */
+/* ===================================== */
+
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox");
+
+  if (!lightbox) {
+    return;
+  }
+
+  lightbox.classList.remove("is-open");
+  lightbox.setAttribute("aria-hidden", "true");
+
+  document.body.classList.remove("lightbox-open");
+}
+
+/* ===================================== */
+/* UPDATE LIGHTBOX IMAGE */
+/* ===================================== */
+
+function updateLightboxImage() {
+  const lightboxImage =
+    document.getElementById("lightbox-image");
+
+  const item = gallery[current];
+
+  if (!lightboxImage || !item) {
+    return;
+  }
+
+  lightboxImage.src = item.src;
+  lightboxImage.alt = item.title || "Artwork";
 }
 
 /* ===================================== */
