@@ -277,7 +277,7 @@
 
   body.gallery-body .content--viewer {
     min-height: calc(100svh - 64px - 48px);
-    padding: clamp(26px, 5.5svh, 46px) 18px 18px;
+    padding: clamp(60px, 11svh, 92px) 18px 18px;
 
     display: flex;
     justify-content: center;
