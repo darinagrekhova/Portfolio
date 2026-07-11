@@ -29,9 +29,8 @@
 }
 
 .viewer-caption {
-  font-size: 14px;
-  line-height: 1.25;
   text-align: center;
+  line-height: 1.2;
   opacity: 1;
 }
 
@@ -41,7 +40,14 @@
 }
 
 .caption-title {
+  font-size: 16px;
   font-style: italic;
+}
+
+.caption-meta {
+  margin-top: 3px;
+  font-size: 13px;
+  opacity: 0.78;
 }
 
 /* ===================================== */

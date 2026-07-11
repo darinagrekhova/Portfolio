@@ -17,8 +17,8 @@
 
   body:not(.home-body) {
     min-height: 100svh;
-    padding-top: calc(68px + env(safe-area-inset-top));
-    padding-bottom: calc(52px + env(safe-area-inset-bottom));
+    padding-top: calc(64px + env(safe-area-inset-top));
+    padding-bottom: calc(48px + env(safe-area-inset-bottom));
   }
 
   body:not(.home-body) .desktop-sidebar {
@@ -61,8 +61,8 @@
     z-index: 2000;
 
     width: 100%;
-    min-height: calc(68px + env(safe-area-inset-top));
-    padding: calc(12px + env(safe-area-inset-top)) 14px 10px;
+    min-height: calc(64px + env(safe-area-inset-top));
+    padding: calc(10px + env(safe-area-inset-top)) 14px 8px;
 
     display: flex;
     flex-direction: column;
@@ -84,7 +84,7 @@
 
     color: #000;
     font-family: "Cormorant", serif;
-    font-size: clamp(29px, 8.5vw, 38px);
+    font-size: clamp(29px, 8.3vw, 37px);
     font-weight: 400;
     line-height: 1;
     white-space: nowrap;
@@ -131,7 +131,7 @@
   }
 
   .mobile-header:has(.mobile-series-menu.is-open) {
-    bottom: calc(52px + env(safe-area-inset-bottom));
+    bottom: calc(48px + env(safe-area-inset-bottom));
     overflow-y: auto;
   }
 
@@ -148,8 +148,8 @@
     z-index: 2100;
 
     width: 100%;
-    min-height: calc(52px + env(safe-area-inset-bottom));
-    padding: 7px 18px calc(7px + env(safe-area-inset-bottom));
+    min-height: calc(48px + env(safe-area-inset-bottom));
+    padding: 6px 18px calc(6px + env(safe-area-inset-bottom));
 
     display: flex;
     justify-content: space-between;
@@ -165,7 +165,7 @@
     text-decoration: none;
 
     font-family: "Cormorant", serif;
-    font-size: clamp(22px, 6.7vw, 29px);
+    font-size: clamp(21px, 6.2vw, 27px);
     font-weight: 400;
     line-height: 1;
     white-space: nowrap;
@@ -180,7 +180,7 @@
   /* ===================================== */
 
   .artist-text {
-    min-height: calc(100svh - 68px - 52px - 44px);
+    min-height: calc(100svh - 64px - 48px - 44px);
 
     display: flex;
     flex-direction: column;
@@ -241,7 +241,7 @@
   /* ===================================== */
 
   .contact {
-    min-height: calc(100svh - 68px - 52px - 44px);
+    min-height: calc(100svh - 64px - 48px - 44px);
 
     display: flex;
     flex-direction: column;
@@ -276,12 +276,12 @@
   }
 
   body.gallery-body .content--viewer {
-    min-height: calc(100svh - 68px - 52px);
-    padding: 18px 18px 20px;
+    min-height: calc(100svh - 64px - 48px);
+    padding: clamp(26px, 5.5svh, 46px) 18px 18px;
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
   }
 
   body.gallery-body .viewer {
@@ -316,14 +316,13 @@
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    margin-top: 14px;
+    margin-top: 22px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
     color: #000;
-    font-size: clamp(13px, 3.8vw, 16px);
     line-height: 1.12;
     text-align: center;
 
@@ -332,7 +331,7 @@
   }
 
   body.gallery-body .gallery-text-nav {
-    margin-top: 14px;
+    margin-top: 22px;
     gap: 24px;
   }
 
