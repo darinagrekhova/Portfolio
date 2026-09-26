@@ -10,7 +10,7 @@
 
   <meta
     name="description"
-    content="CV of visual artist Darina Grekhova (Дарина Грехова): education and selected group exhibitions."
+    content="CV of visual artist Darina Grekhova (Дарина Грехова): education, exhibitions, art fairs and publications."
   >
 
   <meta name="robots" content="index, follow">
@@ -31,7 +31,12 @@
 
   <!-- Fonts & Styles -->
   <link rel="stylesheet" href="styles.css?v=20260716">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="icon" href="images/favicon.png">
 
   <!-- Structured data -->
@@ -42,9 +47,30 @@
     "@id": "https://darinagrekhova.com/#darina-grekhova",
     "name": "Darina Grekhova",
     "alternateName": "Дарина Грехова",
-    "url": "https://darinagrekhova.com/"
+    "url": "https://darinagrekhova.com/",
+    "jobTitle": "Visual Artist"
   }
   </script>
+
+  <!-- Link styling -->
+  <style>
+
+    .content--text a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .content--text a:visited {
+      color: inherit;
+    }
+
+    .content--text a:hover {
+      opacity: 0.6;
+    }
+
+  </style>
 
 </head>
 
@@ -57,6 +83,8 @@
   <main class="content content--text">
 
     <div class="cv">
+
+      <!-- EDUCATION -->
 
       <h2>education</h2>
 
@@ -93,41 +121,88 @@
         Russian State University for the Humanities
       </p>
 
+
+      <!-- GROUP EXHIBITIONS -->
+
       <h2>group exhibitions</h2>
 
       <p>
         2025<br>
-        — blazar young art fair 2025, Museum of Moscow<br>
-        — aha, you hear that radio too, Cube.Moscow – Curated by Olya Makhno<br>
-        — a—s—t—r—a open vol.6, January – Curated by Svetlana Taylor<br>
-        — Altai Biennale of Contemporary Art, January – Curated by Svetlana Taylor
+
+        — <a href="https://radiopaint.ru/cube">
+          aha, you hear that radio too
+        </a>, Cube.Moscow, Moscow, Russia<br>
+
+        — Altai Biennale of Contemporary Art, Russia<br>
+
+        — <a href="https://a-s-t-r-a.ru/page/astra-open-vol6">
+          a—s—t—r—a open vol.6
+        </a>, Moscow, Russia
       </p>
 
       <p>
         2024<br>
-        — And Here I Am, Omelchenko Gallery<br>
-        — So That’s How It Was, Space13 Gallery, Samara<br>
-        — So That’s How It Was, RadioGallery (online)<br>
-        — How Are You? How Am I?, U Contemporary Gallery
+
+        — That’s How It All Was, RadioGallery<br>
+
+        — How Are You? How Am I?, U Contemporary Gallery, Moscow, Russia<br>
+
+        — That’s How It All Was, Space13 Gallery, Samara, Russia<br>
+
+        — And Here I Am, Omelchenko Gallery, Moscow, Russia
       </p>
 
       <p>
         2023<br>
-        — Mural for Artplay Center<br>
-        — Hung the Earth on Nothing, BIS ART GALLERY
+
+        — He Hangeth the Earth upon Nothing, BIS ART GALLERY, Moscow, Russia<br>
+
+        — Mural for Artplay Centre, Moscow, Russia
+      </p>
+
+
+      <!-- ART FAIRS -->
+
+      <h2>art fairs</h2>
+
+      <p>
+        2025<br>
+
+        — <a href="https://blazar.art/past-participants/">
+          blazar
+        </a>, Museum of Moscow, Independent Artists Section, September 2025
+      </p>
+
+
+      <!-- PUBLICATIONS -->
+
+      <h2>publications</h2>
+
+      <p>
+        2025<br>
+
+        — <a href="https://www.theartnewspaper.ru/posts/20250902-ryzm/">
+          The Art Newspaper Russia
+        </a>,
+        “blazar: reflections in the river and findings on the asphalt”,
+        September 2, 2025
       </p>
 
     </div>
 
   </main>
 
+
   <!-- SIDEBAR SCRIPT -->
+
   <script src="sidebar.js"></script>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", () => {
       loadSidebar();
     });
+
   </script>
 
 </body>
