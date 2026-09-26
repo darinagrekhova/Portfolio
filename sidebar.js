@@ -9,7 +9,7 @@ function loadSidebar() {
     <!-- DESKTOP SIDEBAR -->
     <aside class="sidebar desktop-sidebar">
 
-      <a href="/index.html" class="brand">
+      <a href="/" class="brand">
         <div class="name">darina grekhova</div>
       </a>
 
