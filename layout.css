@@ -133,6 +133,21 @@
   margin-bottom: 18px;
 }
 
+.cv a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.cv a:visited {
+  color: inherit;
+}
+
+.cv a:hover {
+  opacity: 0.6;
+}
+
 /* ===================================== */
 /* CONTACT */
 /* ===================================== */
