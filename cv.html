@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
@@ -31,6 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
   <link rel="icon" href="images/favicon.png">
 
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,3 +47,89 @@
   </script>
 
 </head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar-container"></div>
+
+  <!-- CONTENT -->
+  <main class="content content--text">
+
+    <div class="cv">
+
+      <h2>education</h2>
+
+      <p>
+        2024–2025<br>
+        Professional Development Program in Academic Painting and Drawing,<br>
+        Moscow Academic Art Institute named after V.I. Surikov<br>
+        Online Painting Workshop, RadioPaint
+      </p>
+
+      <p>
+        2022–2024<br>
+        Illustration, British Higher School of Art and Design
+      </p>
+
+      <p>
+        2020–2021<br>
+        BBE: Graphic Design and Illustration
+      </p>
+
+      <p>
+        2019–2020<br>
+        Art Criticism Lab, “Baza” Institute
+      </p>
+
+      <p>
+        2017–2019<br>
+        Visual Culture, Higher School of Economics
+      </p>
+
+      <p>
+        2012–2016<br>
+        Cultural Studies: Western European Culture,<br>
+        Russian State University for the Humanities
+      </p>
+
+      <h2>group exhibitions</h2>
+
+      <p>
+        2025<br>
+        — blazar young art fair 2025, Museum of Moscow<br>
+        — aha, you hear that radio too, Cube.Moscow – Curated by Olya Makhno<br>
+        — a—s—t—r—a open vol.6, January – Curated by Svetlana Taylor<br>
+        — Altai Biennale of Contemporary Art, January – Curated by Svetlana Taylor
+      </p>
+
+      <p>
+        2024<br>
+        — And Here I Am, Omelchenko Gallery<br>
+        — So That’s How It Was, Space13 Gallery, Samara<br>
+        — So That’s How It Was, RadioGallery (online)<br>
+        — How Are You? How Am I?, U Contemporary Gallery
+      </p>
+
+      <p>
+        2023<br>
+        — Mural for Artplay Center<br>
+        — Hung the Earth on Nothing, BIS ART GALLERY
+      </p>
+
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR SCRIPT -->
+  <script src="sidebar.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSidebar();
+    });
+  </script>
+
+</body>
+
+</html>
