@@ -2,6 +2,11 @@ const SERIES = {
 
   quiexspectat: [
     {
+  src: "images/qui-exspectat/its-green-at-night.jpg",
+  title: "it’s green at night",
+  meta: "oil on canvas<br>50×60 cm"
+    },
+    {
       src: "images/qui-exspectat/ladder.jpg",
       title: "ladder",
       meta: "oil on canvas<br>50×60 cm"
