@@ -6,19 +6,177 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Gallery | Darina Grekhova</title>
+  <!-- Default values; replaced below for a valid series -->
+  <title>Gallery — Darina Grekhova</title>
 
+  <meta
+    id="page-description"
+    name="description"
+    content="Selected works by visual artist Darina Grekhova."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <!--
+    SERIES-SPECIFIC SEO
+
+    Each ?series= URL receives its own title,
+    description and canonical URL.
+  -->
+  <script>
+    (function () {
+
+      const params = new URLSearchParams(window.location.search);
+      const seriesKey = params.get("series");
+
+      const seriesSEO = {
+
+        quiexspectat: {
+          title: "qui exspectat — Darina Grekhova",
+          description: "qui exspectat — paintings by visual artist Darina Grekhova."
+        },
+
+        notnotfun: {
+          title: "notnotfun — Darina Grekhova",
+          description: "notnotfun — paintings by visual artist Darina Grekhova."
+        },
+
+        foreigners: {
+          title: "foreigners — Darina Grekhova",
+          description: "foreigners — works by visual artist Darina Grekhova."
+        },
+
+        volante: {
+          title: "volante — Darina Grekhova",
+          description: "volante — paintings by visual artist Darina Grekhova."
+        },
+
+        "half-known": {
+          title: "half-known — Darina Grekhova",
+          description: "half-known — works by visual artist Darina Grekhova."
+        },
+
+        "on-paper": {
+          title: "on paper — Darina Grekhova",
+          description: "Works on paper by visual artist Darina Grekhova."
+        },
+
+        selected_drawings: {
+          title: "selected drawings — Darina Grekhova",
+          description: "Selected drawings by visual artist Darina Grekhova."
+        }
+
+      };
+
+      const seo = seriesSEO[seriesKey];
+
+      if (seo) {
+
+        /* TITLE */
+        document.title = seo.title;
+
+        /* DESCRIPTION */
+        const description =
+          document.getElementById("page-description");
+
+        if (description) {
+          description.setAttribute(
+            "content",
+            seo.description
+          );
+        }
+
+        /* CANONICAL */
+        const canonical =
+          document.createElement("link");
+
+        canonical.setAttribute("rel", "canonical");
+
+        canonical.setAttribute(
+          "href",
+          "https://darinagrekhova.com/gallery.html?series=" +
+          encodeURIComponent(seriesKey)
+        );
+
+        document.head.appendChild(canonical);
+
+      } else {
+
+        /* Fallback canonical for gallery without a valid series */
+        const canonical =
+          document.createElement("link");
+
+        canonical.setAttribute("rel", "canonical");
+        canonical.setAttribute(
+          "href",
+          "https://darinagrekhova.com/gallery.html"
+        );
+
+        document.head.appendChild(canonical);
+
+      }
+
+    })();
+  </script>
+
+  <!-- FONT -->
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="styles.css?v=20260717">
-  <link rel="icon" href="images/favicon.png" type="image/png">
+  <!-- STYLES -->
+  <link
+    rel="stylesheet"
+    href="styles.css?v=20260717"
+  >
+
+  <!-- FAVICON -->
+  <link
+    rel="icon"
+    href="images/favicon.png"
+    type="image/png"
+  >
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://darinagrekhova.com/#darina-grekhova",
+    "name": "Darina Grekhova",
+    "alternateName": "Дарина Грехова",
+    "url": "https://darinagrekhova.com/",
+    "jobTitle": "Visual Artist"
+  }
+  </script>
+
+  <!-- Hidden semantic heading -->
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
 
 </head>
 
 <body class="gallery-body">
+
+  <!-- SERIES TITLE FOR SEARCH ENGINES / ACCESSIBILITY -->
+  <h1
+    id="series-title"
+    class="visually-hidden"
+  >
+    Works by Darina Grekhova
+  </h1>
 
   <!-- NAVIGATION -->
   <div id="sidebar-container"></div>
@@ -74,8 +232,6 @@
     aria-hidden="true"
   >
 
-
-
     <img
       class="lightbox-image"
       id="lightbox-image"
@@ -91,17 +247,52 @@
   <script src="sidebar.js"></script>
 
   <script>
+
     document.addEventListener("DOMContentLoaded", () => {
 
       loadSidebar();
 
-      const params = new URLSearchParams(window.location.search);
-      const seriesKey = params.get("series");
-      const seriesData = SERIES[seriesKey];
+      const params =
+        new URLSearchParams(window.location.search);
+
+      const seriesKey =
+        params.get("series");
+
+      const seriesData =
+        SERIES[seriesKey];
+
+      /* Human-readable series names */
+
+      const seriesNames = {
+        quiexspectat: "qui exspectat",
+        notnotfun: "notnotfun",
+        foreigners: "foreigners",
+        volante: "volante",
+        "half-known": "half-known",
+        "on-paper": "on paper",
+        selected_drawings: "selected drawings"
+      };
+
+      /* Update semantic H1 */
+
+      const seriesTitle =
+        document.getElementById("series-title");
+
+      if (
+        seriesTitle &&
+        seriesNames[seriesKey]
+      ) {
+        seriesTitle.textContent =
+          seriesNames[seriesKey] +
+          " — Darina Grekhova";
+      }
+
+      /* Start gallery */
 
       initGallery(seriesData);
 
     });
+
   </script>
 
 </body>
