@@ -24,35 +24,44 @@
   <!-- OPEN GRAPH -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Darina Grekhova — Artist">
+
   <meta
     property="og:description"
     content="Visual artist working with figurative painting and drawing."
   >
-  <meta property="og:url" content="https://darinagrekhova.com/">,
+
+  <meta property="og:url" content="https://darinagrekhova.com/">
   <meta property="og:site_name" content="Darina Grekhova">
 
   <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://darinagrekhova.com/#darina-grekhova",
-  "name": "Darina Grekhova",
-  "alternateName": "Дарина Грехова",
-  "url": "https://darinagrekhova.com/",
-  "jobTitle": "Visual Artist",
-  "sameAs": [
-    "https://www.booooooom.com/user/darinagrekhovagmail-com/"
-    "https://www.instagram.com/belfesprit/"
-  ]
-}
-</script>
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://darinagrekhova.com/#darina-grekhova",
+    "name": "Darina Grekhova",
+    "alternateName": "Дарина Грехова",
+    "url": "https://darinagrekhova.com/",
+    "jobTitle": "Visual Artist",
+    "sameAs": [
+      "https://www.booooooom.com/user/darinagrekhovagmail-com/",
+      "https://www.instagram.com/belfesprit/"
+    ]
+  }
+  </script>
 
   <!-- STYLES -->
-  <link rel="stylesheet" href="styles.css?v=20260716">
+  <link
+    rel="stylesheet"
+    href="styles.css?v=20260716"
+  >
 
   <!-- FAVICON -->
-  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link
+    rel="icon"
+    href="images/favicon.png"
+    type="image/png"
+  >
 
   <!-- FONT -->
   <link
@@ -60,11 +69,9 @@
     rel="stylesheet"
   >
 
-  <!--
-    Hidden semantic heading for accessibility and search engines.
-    This does not affect the visual layout.
-  -->
+  <!-- Hidden semantic heading for accessibility -->
   <style>
+
     .visually-hidden {
       position: absolute;
       width: 1px;
@@ -76,6 +83,7 @@
       white-space: nowrap;
       border: 0;
     }
+
   </style>
 
 </head>
@@ -93,7 +101,10 @@
   <!-- HERO -->
   <main class="home-hero">
 
-    <img id="hero-image" alt="Painting fragment">
+    <img
+      id="hero-image"
+      alt="Painting fragment"
+    >
 
     <!-- CLICK ZONES -->
     <div class="hero-click hero-left"></div>
@@ -147,8 +158,13 @@
         "images/home/fragment-1-mobile.jpg"
       ];
 
-      const isMobile = window.innerWidth <= 768;
-      const images = isMobile ? mobileImages : desktopImages;
+      const isMobile =
+        window.innerWidth <= 768;
+
+      const images =
+        isMobile
+          ? mobileImages
+          : desktopImages;
 
       /* ========================= */
       /* STATE */
@@ -158,8 +174,12 @@
       let locked = false;
       let autoplay;
 
-      const hero = document.getElementById("hero-image");
-      if (!hero) return;
+      const hero =
+        document.getElementById("hero-image");
+
+      if (!hero) {
+        return;
+      }
 
       hero.src = images[current];
 
@@ -173,8 +193,14 @@
       }
 
       function preloadAdjacent() {
-        preload((current + 1) % images.length);
-        preload((current - 1 + images.length) % images.length);
+        preload(
+          (current + 1) % images.length
+        );
+
+        preload(
+          (current - 1 + images.length) %
+          images.length
+        );
       }
 
       preloadAdjacent();
@@ -184,49 +210,100 @@
       /* ========================= */
 
       function next(manual = false) {
-        if (locked) return;
+
+        if (locked) {
+          return;
+        }
+
         locked = true;
 
-        current = (current + 1) % images.length;
-        hero.src = images[current];
+        current =
+          (current + 1) %
+          images.length;
+
+        hero.src =
+          images[current];
 
         preloadAdjacent();
-        if (manual) resetAutoplay();
 
-        setTimeout(() => locked = false, 200);
+        if (manual) {
+          resetAutoplay();
+        }
+
+        setTimeout(
+          () => locked = false,
+          200
+        );
       }
 
       function prev(manual = false) {
-        if (locked) return;
+
+        if (locked) {
+          return;
+        }
+
         locked = true;
 
-        current = (current - 1 + images.length) % images.length;
-        hero.src = images[current];
+        current =
+          (current - 1 + images.length) %
+          images.length;
+
+        hero.src =
+          images[current];
 
         preloadAdjacent();
-        if (manual) resetAutoplay();
 
-        setTimeout(() => locked = false, 200);
+        if (manual) {
+          resetAutoplay();
+        }
+
+        setTimeout(
+          () => locked = false,
+          200
+        );
       }
 
       /* ========================= */
       /* CLICK ZONES */
       /* ========================= */
 
-      const leftZone = document.querySelector(".hero-left");
-      const rightZone = document.querySelector(".hero-right");
+      const leftZone =
+        document.querySelector(".hero-left");
 
-      if (leftZone) leftZone.addEventListener("click", () => prev(true));
-      if (rightZone) rightZone.addEventListener("click", () => next(true));
+      const rightZone =
+        document.querySelector(".hero-right");
+
+      if (leftZone) {
+        leftZone.addEventListener(
+          "click",
+          () => prev(true)
+        );
+      }
+
+      if (rightZone) {
+        rightZone.addEventListener(
+          "click",
+          () => next(true)
+        );
+      }
 
       /* ========================= */
       /* KEYBOARD */
       /* ========================= */
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight") next(true);
-        if (e.key === "ArrowLeft") prev(true);
-      });
+      document.addEventListener(
+        "keydown",
+        (e) => {
+
+          if (e.key === "ArrowRight") {
+            next(true);
+          }
+
+          if (e.key === "ArrowLeft") {
+            prev(true);
+          }
+        }
+      );
 
       /* ========================= */
       /* SWIPE */
@@ -234,31 +311,59 @@
 
       let startX = 0;
 
-      hero.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-      });
+      hero.addEventListener(
+        "touchstart",
+        (e) => {
 
-      hero.addEventListener("touchend", (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const diff = startX - endX;
+          startX =
+            e.touches[0].clientX;
+        }
+      );
 
-        if (Math.abs(diff) < 40) return;
+      hero.addEventListener(
+        "touchend",
+        (e) => {
 
-        if (diff > 0) next(true);
-        else prev(true);
-      });
+          const endX =
+            e.changedTouches[0].clientX;
+
+          const diff =
+            startX - endX;
+
+          if (Math.abs(diff) < 40) {
+            return;
+          }
+
+          if (diff > 0) {
+            next(true);
+          } else {
+            prev(true);
+          }
+        }
+      );
 
       /* ========================= */
       /* AUTOPLAY */
       /* ========================= */
 
       function startAutoplay() {
+
         clearTimeout(autoplay);
 
-        autoplay = setTimeout(function loop() {
-          next(false);
-          autoplay = setTimeout(loop, 25000);
-        }, 25000);
+        autoplay =
+          setTimeout(
+            function loop() {
+
+              next(false);
+
+              autoplay =
+                setTimeout(
+                  loop,
+                  25000
+                );
+            },
+            25000
+          );
       }
 
       function resetAutoplay() {
